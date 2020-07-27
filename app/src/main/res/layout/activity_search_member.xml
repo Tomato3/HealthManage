@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.searchMember.SearchMemberViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPageBg"
+        >
+
+        <EditText
+            android:id="@+id/et_search"
+            style="@style/ActivitySearchMemberTxtStyle.Input"
+            android:text="@={ViewModel.search}"
+            />
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            style="@style/ActivitySearchMemberTxtStyle.Cancel" />
+        
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_search_member"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="60dp"/>
+    </RelativeLayout>
+
+</layout>

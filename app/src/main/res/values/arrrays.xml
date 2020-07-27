@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="activity_login_profession">
+        <item>@string/activity_login_profession_manager</item>
+        <item>@string/activity_login_profession_nutritionist</item>
+        <item>@string/activity_login_profession_doctor</item>
+    </string-array>
+
+    <string-array name="activity_my_studio_approval_status">
+        <item>@string/activity_my_studio_approval_status_succeed</item>
+        <item>@string/activity_my_studio_approval_status_ing</item>
+        <item>@string/activity_my_studio_approval_status_failure</item>
+    </string-array>
+
+</resources>

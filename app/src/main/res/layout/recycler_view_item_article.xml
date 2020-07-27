@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="ArticleRecyclerView"
+            type="com.example.healthmanage.view.ArticleRecyclerView" />
+    </data>
+
+    <RelativeLayout style="@style/RecyclerViewArticleLayoutStyle">
+
+        <TextView
+            style="@style/RecyclerViewArticleTxtStyle.Title"
+            android:text="@{ArticleRecyclerView.title}" />
+
+        <TextView
+            style="@style/RecyclerViewArticleTxtStyle.Content"
+            android:text="@{ArticleRecyclerView.content}" />
+
+        <TextView
+            style="@style/RecyclerViewArticleTxtStyle.SettingScore"
+            android:text="@{ArticleRecyclerView.settingScore}" />
+
+        <TextView
+            style="@style/RecyclerViewArticleTxtStyle.ReleaseTime"
+            android:text="@{ArticleRecyclerView.releaseTime}" />
+
+        <TextView
+            style="@style/RecyclerViewArticleTxtStyle.Like"
+            android:text="@{ArticleRecyclerView.like}" />
+
+        <TextView
+            style="@style/RecyclerViewArticleTxtStyle.Comment"
+            android:text="@{ArticleRecyclerView.comment}" />
+
+        <ImageView
+            style="@style/RecyclerViewArticleViewStyle.Photo"
+            android:url="@{ArticleRecyclerView.photo}" />
+
+    </RelativeLayout>
+</layout>

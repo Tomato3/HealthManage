@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.fragment.my.MyViewModel" />
+    </data>
+
+    <RelativeLayout style="@style/FragmentMyLayoutStyle">
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/FragmentMyTextStyle.Bg"
+            android:text="@{ViewModel.name}" />
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            style="@style/FragmentMyViewStyle"
+            android:url="@{ViewModel.avatar}" />
+
+        <TextView
+            android:id="@+id/tv_my_score"
+            style="@style/FragmentMyTextStyle.MyScore"
+            android:onClick="@{()->ViewModel.empty()}" />
+
+        <TextView
+            android:id="@+id/tv_my_order"
+            style="@style/FragmentMyTextStyle.MyOrder"
+            android:onClick="@{()->ViewModel.empty()}" />
+
+        <TextView
+            android:id="@+id/tv_my_studio"
+            style="@style/FragmentMyTextStyle.MyStudio" />
+
+        <TextView
+            android:id="@+id/tv_my_comment"
+            style="@style/FragmentMyTextStyle.MyComment"
+            android:onClick="@{()->ViewModel.empty()}" />
+
+        <TextView
+            android:id="@+id/tv_inviting_members"
+            style="@style/FragmentMyTextStyle.InvitingMembers" />
+
+        <TextView
+            android:id="@+id/tv_legal_advice"
+            style="@style/FragmentMyTextStyle.LegalAdvice" />
+
+        <TextView
+            android:id="@+id/tv_my_substitute"
+            style="@style/FragmentMyTextStyle.MySubstitute" />
+
+        <TextView
+            android:id="@+id/tv_service_center"
+            style="@style/FragmentMyTextStyle.ServiceCenter"
+            android:onClick="@{()->ViewModel.empty()}" />
+    </RelativeLayout>
+
+</layout>

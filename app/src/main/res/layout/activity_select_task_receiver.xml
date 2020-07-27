@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.selectTaskReceiver.SelectTaskReceiverViewModel" />
+    </data>
+
+    <RelativeLayout style="@style/ActivitySelectTaskReceiverLayoutStyle">
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            style="@style/ActivitySelectTaskReceiverTxtStyle.Cancel" />
+
+        <TextView style="@style/ActivitySelectTaskReceiverTxtStyle.Title" />
+
+        <TextView style="@style/ActivitySelectTaskReceiverTxtStyle.MultipleChoice" />
+
+<!--        <EditText-->
+<!--            style="@style/ActivitySelectTaskReceiverTxtStyle.Search"-->
+<!--            android:text="@={ViewModel.taskReceiverName}" />-->
+        <include layout="@layout/include_search"
+            style="@style/ActivitySelectTaskReceiverIncludeStyle"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_task_receiver"
+            style="@style/ActivitySelectTaskReceiverRecyclerViewStyle" />
+
+    </RelativeLayout>
+</layout>

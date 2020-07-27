@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.mystudio.MyStudioViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/include_title"
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+
+        <TextView style="@style/ActivityMyStudioTxtStyle.MyLectureHall" />
+
+        <TextView style="@style/ActivityMyStudioTxtStyle.ProductRelease" />
+
+        <TextView style="@style/ActivityMyStudioTxtStyle.MyNeeds" />
+
+        <TextView style="@style/ActivityMyStudioTxtStyle.AcademicJournal" />
+
+        <View style="@style/ActivityMyStudioViewStyle" />
+
+        <Spinner
+            android:id="@+id/spinner_approval_status"
+            style="@style/ActivityMyStudioSpinnerStyle" />
+
+        <TextView
+            android:id="@+id/tv_date_picker"
+            style="@style/ActivityMyStudioDatePickerStyle"
+            android:text="@={ViewModel.date}" />
+
+        <Button style="@style/ActivityMyStudioButtonStyle" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="420dp" />
+
+    </RelativeLayout>
+</layout>

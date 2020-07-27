@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#CCCCCC</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorPageBg">#F1F1F1</color>
+    <color name="colorBlue">#00A2FF</color>
+    <color name="colorBottomText">#6C6C6C</color>
+    <color name="colorDropdownBg">#E5F6FF</color>
+    <color name="colorHistoryData">#B6E2FC</color>
+    <color name="colorTextGrey">#424242</color>
+    <color name="colorOrange">#FBCD9B</color>
+    <color name="colorPink">#F9A2C9</color>
+    <color name="colorYellow">#F9E783</color>
+    <color name="colorBg">#F6F6F6</color>
+    <color name="colorLine">#F3F3F3</color>
+    <color name="colorSolidBlue">#E5F6FF</color>
+    <color name="colorStrokeBlue">#AEE1FF</color>
+    <color name="colorSolidOrange">#FEF9E9</color>
+    <color name="colorStrokeOrange">#FDE495</color>
+    <color name="colorSolidGreen">#F0FBF3</color>
+    <color name="colorStrokeGreen">#AEE9C0</color>
+    <color name="colorSolidPurple">#F1F0FB</color>
+    <color name="colorStrokePurple">#C2BEEC</color>
+    <color name="colorViewFlipper">#4E5458</color>
+    <color name="colorSpinnerStroke">#EEEEEE</color>
+</resources>

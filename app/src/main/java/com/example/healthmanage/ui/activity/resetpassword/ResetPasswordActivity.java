@@ -1,0 +1,69 @@
+package com.example.healthmanage.ui.activity.resetpassword;
+
+import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+
+import androidx.lifecycle.Observer;
+
+import com.example.healthmanage.BR;
+import com.example.healthmanage.R;
+import com.example.healthmanage.base.BaseActivity;
+import com.example.healthmanage.databinding.ActivityResetPasswordBinding;
+import com.example.healthmanage.widget.TitleToolBar;
+
+public class ResetPasswordActivity extends BaseActivity<ActivityResetPasswordBinding, ResetPasswordViewModel> implements TitleToolBar.OnTitleIconClickCallBack {
+    private TitleToolBar titleToolBar = new TitleToolBar();
+
+    @Override
+    protected void initData() {
+        titleToolBar.setTitle("忘记密码");
+        titleToolBar.setLeftIconVisible(true);
+        viewModel.setTitleToolBar(titleToolBar);
+    }
+
+    @Override
+    protected int initVariableId() {
+        return BR.ViewModel;
+    }
+
+    @Override
+    protected int setContentViewSrc(Bundle savedInstanceState) {
+        return R.layout.activity_reset_password;
+    }
+
+    @Override
+    protected void registerUIChangeEventObserver() {
+        super.registerUIChangeEventObserver();
+        viewModel.eyeState.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if (viewModel.eyeState.getValue()) {
+                    dataBinding.etNewPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    dataBinding.etNewPassword.setSelection(dataBinding.etNewPassword.getText().length());
+                    dataBinding.ivEye.setImageResource(R.drawable.activity_login_password_open);
+                } else {
+                    dataBinding.etNewPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    dataBinding.etNewPassword.setSelection(dataBinding.etNewPassword.getText().length());
+                    dataBinding.ivEye.setImageResource(R.drawable.activity_login_password_close);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void initViewListener() {
+        super.initViewListener();
+        titleToolBar.setOnClickCallBack(this);
+    }
+
+    @Override
+    public void onRightIconClick() {
+
+    }
+
+    @Override
+    public void onBackIconClick() {
+        finish();
+    }
+}

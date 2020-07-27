@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="TitleToolBar"
+            type="com.example.healthmanage.widget.TitleToolBar" />
+
+    </data>
+
+    <RelativeLayout android:id="@+id/toolbar_title" style="@style/ToolbarTitleLayoutStyle">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            style="@style/ToolbarTitleViewStyle.Back"
+            android:onClick="@{TitleToolBar::viewOnclick}"
+            android:visibility="@{TitleToolBar.leftIconVisible?View.VISIBLE:View.GONE}" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/ToolbarTitleViewStyle.Title"
+            android:text="@={TitleToolBar.title}" />
+
+        <ImageView
+            android:id="@+id/iv_right"
+            style="@style/ToolbarTitleViewStyle.Right"
+            android:ImageSrc="@{TitleToolBar.rightIconSrc}"
+            android:onClick="@{TitleToolBar::viewOnclick}"
+            android:visibility="@{TitleToolBar.rightIconVisible?View.VISIBLE:View.GONE}" />
+
+    </RelativeLayout>
+
+</layout>

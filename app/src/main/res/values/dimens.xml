@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    //font
+    <dimen name="text_size_16">16sp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
+    <dimen name="text_size_22">22sp</dimen>
+    <dimen name="text_size_24">24sp</dimen>
+    <dimen name="text_size_26">26sp</dimen>
+
+    //toolbar_title
+    <dimen name="toolbar_title_h">56dp</dimen>
+    <dimen name="toolbar_title_margin_s">200dp</dimen>
+    <dimen name="toolbar_title_margin_t">5dp</dimen>
+    <dimen name="toolbar_back_margin_s">10dp</dimen>
+    <dimen name="toolbar_add_margin_s">590dp</dimen>
+
+    //activity_login
+    <dimen name="activity_login_logo_margin_t">200dp</dimen>
+    <dimen name="activity_login_login_margin_t">700dp</dimen>
+    <dimen name="activity_login_text_w">400dp</dimen>
+    <dimen name="activity_login_text_h">70dp</dimen>
+    <dimen name="activity_login_text_margin_s">110dp</dimen>
+    <dimen name="activity_login_text_margin_t">400dp</dimen>
+    <dimen name="activity_login_forget_margin_s">420dp</dimen>
+    <dimen name="activity_login_forget_margin_t">640dp</dimen>
+    <dimen name="activity_login_password_margin_t">480dp</dimen>
+    <dimen name="activity_login_profession_margin_t">560dp</dimen>
+    <dimen name="activity_login_auto_h">48dp</dimen>
+    <dimen name="activity_login_auto_margin_s">150dp</dimen>
+    <dimen name="activity_login_auto_margin_t">640dp</dimen>
+    <dimen name="activity_login_eye_margin_s">450dp</dimen>
+    <dimen name="activity_login_eye_margin_t">490dp</dimen>
+    <dimen name="activity_login_register_margin_t">780dp</dimen>
+
+    //activity_register
+    <dimen name="activity_register_text_w">500dp</dimen>
+    <dimen name="activity_register_text_h">70dp</dimen>
+    <dimen name="activity_register_phone_margin_t">100dp</dimen>
+    <dimen name="activity_register_password_margin_t">180dp</dimen>
+    <dimen name="activity_register_verification_code_w">350dp</dimen>
+    <dimen name="activity_register_verification_code_margin_s">70dp</dimen>
+    <dimen name="activity_register_verification_code_margin_t">260dp</dimen>
+    <dimen name="activity_register_countdown_w">150dp</dimen>
+    <dimen name="activity_register_countdown_margin_s">420dp</dimen>
+    <dimen name="activity_register_countdown_margin_t">260dp</dimen>
+    <dimen name="activity_register_register_margin_t">400dp</dimen>
+    <dimen name="activity_register_eye_margin_s">500dp</dimen>
+    <dimen name="activity_register_eye_margin_t">180dp</dimen>
+
+    //activity_reset_password
+    <dimen name="activity_reset_password_phone_margin_t">100dp</dimen>
+    <dimen name="activity_reset_password_verification_code_margin_t">180dp</dimen>
+    <dimen name="activity_reset_password_new_password_margin_t">260dp</dimen>
+    <dimen name="activity_reset_password_verification_code_w">350dp</dimen>
+    <dimen name="activity_reset_password_countdown_w">150dp</dimen>
+    <dimen name="activity_reset_password_countdown_margin_s">420dp</dimen>
+    <dimen name="activity_reset_password_countdown_margin_t">180dp</dimen>
+    <dimen name="activity_reset_password_verification_code_margin_s">70dp</dimen>
+    <dimen name="activity_reset_password_eye_margin_s">500dp</dimen>
+    <dimen name="activity_reset_password_eye_margin_t">260dp</dimen>
+    <dimen name="activity_main_bottom_h">56dp</dimen>
+    <dimen name="dropdown_bar_h">40dp</dimen>
+    <dimen name="dropdown_title_margin_s">20dp</dimen>
+    <dimen name="dropdown_title_margin_r">20dp</dimen>
+
+    <dimen name="dp_10">10dp</dimen>
+    <dimen name="dp_20">20dp</dimen>
+    <dimen name="dp_50">50dp</dimen>
+    <dimen name="dp_32">32dp</dimen>
+    <dimen name="dp_30">30dp</dimen>
+    <dimen name="dp_1">1dp</dimen>
+    <dimen name="dp_150">150dp</dimen>
+    <dimen name="dp_100">100dp</dimen>
+    <dimen name="dp_200">200dp</dimen>
+    <dimen name="dp_56">56dp</dimen>
+    <dimen name="dp_400">400dp</dimen>
+    <dimen name="dp_48">48dp</dimen>
+    <dimen name="dp_68">68dp</dimen>
+    <dimen name="dp_0.1">0.1dp</dimen>
+    <dimen name="dp_46">46dp</dimen>
+    <dimen name="dp_5">5dp</dimen>
+    <dimen name="dp_36">36dp</dimen>
+    <dimen name="dp_40">40dp</dimen>
+    <dimen name="dp_110">110dp</dimen>
+    <dimen name="dp_120">120dp</dimen>
+    <dimen name="dp_45">45dp</dimen>
+
+</resources>

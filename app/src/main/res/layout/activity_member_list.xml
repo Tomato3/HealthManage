@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.memberlist.MemberListViewModel" />
+    </data>
+
+    <RelativeLayout style="@style/ActivityMemberListLayoutStyle">
+
+        <include
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+
+        <TextView
+            style="@style/ActivityMemberListTxtStyle.Input"
+            android:onClick="@{()->ViewModel.searchMember()}"
+            android:text="@={ViewModel.searchPhone}" />
+
+        <Button
+            style="@style/ActivityMemberListButtonStyle"
+            android:onClick="@{()->ViewModel.searchMember()}" />
+
+        <RadioGroup
+            android:id="@+id/rg"
+            style="@style/ActivityMemberListRadioGroupStyle">
+
+            <RadioButton
+                android:id="@+id/rb_ordinary_member"
+                style="@style/ActivityMemberListRadioGroupStyle.OrdinaryMember"
+                android:checked="@{ViewModel.selected}" />
+
+            <RadioButton
+                android:id="@+id/rb_vip_member"
+                style="@style/ActivityMemberListRadioGroupStyle.VipMember" />
+
+            <RadioButton
+                android:id="@+id/rb_svip_member"
+                style="@style/ActivityMemberListRadioGroupStyle.SVipMember" />
+        </RadioGroup>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_member_list"
+            style="@style/ActivityMemberListRecyclerViewStyle" />
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="MyTaskDetailRecyclerView"
+            type="com.example.healthmanage.view.MyTaskDetailRecyclerView" />
+    </data>
+
+    <LinearLayout
+        style="@style/RecyclerViewItemMyTaskDetailLayoutStyle"
+        android:orientation="vertical">
+
+        <LinearLayout
+            style="@style/RecyclerViewItemMyTaskDetailLayoutStyle"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/RecyclerViewItemMyTaskDetailTxtStyle.PostedBy"
+                android:text="@{MyTaskDetailRecyclerView.postedBy}"
+                android:textColor="@{MyTaskDetailRecyclerView.color}" />
+
+            <TextView
+                style="@style/RecyclerViewItemMyTaskDetailTxtStyle.CreateTime"
+                android:text="@{MyTaskDetailRecyclerView.createTime}" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/RecyclerViewItemMyTaskDetailTxtStyle.Description"
+            android:text="@{MyTaskDetailRecyclerView.description}" />
+    </LinearLayout>
+</layout>

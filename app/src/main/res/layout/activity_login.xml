@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.login.LoginViewModel" />
+    </data>
+
+    <RelativeLayout
+        style="@style/ActivityLoginLayoutStyle"
+        tools:context=".ui.activity.login.LoginActivity">
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            style="@style/ActivityLoginViewStyle.Logo" />
+
+        <EditText
+            android:id="@+id/et_phone"
+            style="@style/ActivityLoginTextStyle.Phone"
+            android:text="@={ViewModel.phone}" />
+
+        <EditText
+            android:id="@+id/et_password"
+            style="@style/ActivityLoginTextStyle.Password"
+            android:text="@={ViewModel.password}" />
+
+        <ImageView
+            android:id="@+id/iv_eye"
+            style="@style/ActivityLoginViewStyle.Eye"
+            android:onClick="@{()->ViewModel.changePasswordEye()}" />
+
+        <Spinner
+            android:id="@+id/spinner_profession"
+            style="@style/ActivityLoginTextStyle.Profession" />
+
+        <CheckBox
+            android:id="@+id/rb_auto_login"
+            style="@style/ActivityLoginRadioButtonStyle"
+            android:onClick="@{()->ViewModel.changeAutoLogin()}" />
+
+        <TextView style="@style/ActivityLoginTextStyle.Auto" />
+
+        <TextView
+            android:id="@+id/tv_forget_password"
+            style="@style/ActivityLoginTextStyle.Forget"
+            android:onClick="@{()->ViewModel.jumpToResentPasswordActivity()}" />
+
+        <TextView
+            android:id="@+id/tv_register"
+            style="@style/ActivityLoginTextStyle.Register"
+            android:onClick="@{()->ViewModel.jumpToRegisterActivity()}" />
+
+        <Button
+            android:id="@+id/btn_login"
+            style="@style/ActivityLoginButtonStyle"
+            android:onClick="@{()->ViewModel.jumpToMainActivity()}" />
+
+    </RelativeLayout>
+</layout>

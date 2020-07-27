@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="SelectTaskReceiverDialog"
+            type="com.example.healthmanage.view.SelectTaskReceiverDialog" />
+    </data>
+
+    <RelativeLayout style="@style/DialogSelectTaskReceiverLayoutStyle">
+
+        <TextView style="@style/DialogSelectTaskReceiverTxtStyle.Title" />
+
+        <ImageView
+            android:id="@+id/iv_receiver_avatar"
+            style="@style/DialogSelectTaskReceiverViewStyle.ReceiverAvatar"
+            android:url="@{SelectTaskReceiverDialog.receiverAvatar}" />
+
+        <TextView
+            android:id="@+id/tv_receiver_name"
+            style="@style/DialogSelectTaskReceiverTxtStyle.ReceiverName"
+            android:text="@={SelectTaskReceiverDialog.receiverName}" />
+
+        <View style="@style/DialogSelectTaskReceiverViewStyle.LineOne" />
+
+        <TextView
+            android:id="@+id/tv_task_content"
+            style="@style/DialogSelectTaskReceiverTxtStyle.TaskContent"
+            android:text="@{SelectTaskReceiverDialog.taskContent}" />
+
+        <View style="@style/DialogSelectTaskReceiverViewStyle.LineTwo" />
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            style="@style/DialogSelectTaskReceiverTxtStyle.Cancel" />
+
+        <View style="@style/DialogSelectTaskReceiverViewStyle.LineThree" />
+
+        <TextView
+            android:id="@+id/tv_send"
+            style="@style/DialogSelectTaskReceiverTxtStyle.Send" />
+
+    </RelativeLayout>
+</layout>

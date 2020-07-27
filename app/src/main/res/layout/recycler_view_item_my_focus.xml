@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="MyFocusRecyclerView"
+            type="com.example.healthmanage.view.MyFocusRecyclerView" />
+    </data>
+
+    <RelativeLayout style="@style/RecyclerViewMyFocusLayoutStyle">
+
+        <TextView
+            style="@style/RecyclerViewMyFocusTextStyle.MemberName"
+            android:onClick="@{()->MyFocusRecyclerView.jumpMemberInfos()}"
+            android:text="@={MyFocusRecyclerView.memberName}" />
+
+        <ImageView style="@style/RecyclerViewMyFocusViewStyle" />
+
+        <TextView
+            style="@style/RecyclerViewMyFocusTextStyle.MemberRank"
+            android:text="@={MyFocusRecyclerView.memberRank}" />
+
+        <TextView
+            style="@style/RecyclerViewMyFocusTextStyle.HistoryData"
+            android:onClick="@{()->MyFocusRecyclerView.jumpHistoryData()}" />
+
+        <TextView
+            style="@style/RecyclerViewMyFocusTextStyle.HealthManage"
+            android:onClick="@{()->MyFocusRecyclerView.jumpHealthManage()}" />
+    </RelativeLayout>
+</layout>
+

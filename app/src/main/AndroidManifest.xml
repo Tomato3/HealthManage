@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.healthmanage">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:name=".base.BaseApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/activity_login_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".ui.activity.resetpassword.ResetPasswordActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.activity.main.MainActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.activity.register.RegisterActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.activity.login.LoginActivity"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.activity.invitingmembers.InvitingMembersActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity android:name=".ui.activity.memberdetail.MemberDetailActivity" />
+        <activity android:name=".base.ContainerActivity" />
+        <activity android:name=".ui.activity.memberlist.MemberListActivity" />
+        <activity
+            android:name=".ui.activity.splash.SplashActivity"
+            android:launchMode="singleTask">
+
+        </activity>
+        <activity android:name=".ui.activity.mystudio.MyStudioActivity" />
+        <activity android:name=".ui.activity.searchMember.SearchMemberActivity" />
+        <activity android:name=".ui.activity.mytask.MyTaskActivity" />
+        <activity android:name=".ui.activity.mytaskdetail.MyTaskDetailActivity" />
+        <activity android:name=".ui.activity.selectTaskReceiver.SelectTaskReceiverActivity" />
+        <activity android:name=".ui.activity.myinfo.MyInfoActivity" />
+        <activity android:name=".ui.activity.memberinfo.MemberInfoActivity" />
+    </application>
+
+</manifest>

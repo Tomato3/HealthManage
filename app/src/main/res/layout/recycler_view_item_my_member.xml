@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.graphics.drawable.Drawable" />
+
+        <variable
+            name="MyMemberRecyclerView"
+            type="com.example.healthmanage.view.MyMemberRecyclerView" />
+    </data>
+
+    <RelativeLayout style="@style/RecyclerViewMyMemberLayoutStyle">
+
+        <TextView
+            style="@style/RecyclerViewMyMemberTextStyle.MemberName"
+            android:text="@={MyMemberRecyclerView.memberName}"
+            android:onClick="@{()->MyMemberRecyclerView.jumpMemberInfo()}"
+            />
+
+        <ImageView style="@style/RecyclerViewMyMemberViewStyle.MemberRank" />
+
+        <TextView
+            style="@style/RecyclerViewMyMemberTextStyle.MemberRank"
+            android:text="@={MyMemberRecyclerView.memberRank}" />
+        <ImageView
+            android:id="@+id/iv_focus"
+            style="@style/RecyclerViewMyMemberViewStyle.MemberFocus"
+            android:ImageSrc="@{MyMemberRecyclerView.drawable}"
+            />
+
+        <ImageView
+            style="@style/RecyclerViewMyMemberViewStyle.MemberDetails"
+            android:onClick="@{()->MyMemberRecyclerView.jumpMemberDetails()}" />
+
+    </RelativeLayout>
+</layout>

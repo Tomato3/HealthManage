@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">HealthManage</string>
+
+    <string name="activity_login_phone_hint">"手机号"</string>
+    <string name="activity_login_password_hint">"密码"</string>
+    <string name="activity_login_forget">"忘记密码？"</string>
+    <string name="activity_login_register">"注册新用户"</string>
+    <string name="activity_login_login">"登录"</string>
+    <string name="activity_login_auto">"下次自动登录"</string>
+
+    <string name="activity_login_profession_manager">"健康管理师"</string>
+    <string name="activity_login_profession_nutritionist">"健康营养师"</string>
+    <string name="activity_login_profession_doctor">"健康医师"</string>
+    <string name="activity_register_phone">"输入手机号"</string>
+    <string name="activity_register_countdown">"获取验证码"</string>
+    <string name="activity_register_verification_code">"请输入验证码"</string>
+    <string name="activity_register_password">"请输入密码"</string>
+    <string name="activity_register_register">"注册"</string>
+    <string name="activity_reset_password_new_password">"请输入新密码"</string>
+    <string name="activity_reset_password_confirm">"确认重置"</string>
+    <string name="activity_main_toolbar_title">"主页"</string>
+    <string name="activity_register_toolbar_title">"注册"</string>
+    <string name="activity_reset_password_toolbar_title">"忘记密码"</string>
+
+    <string name="activity_main_bottom_home">"首页"</string>
+    <string name="activity_main_bottom_business">"业务服务"</string>
+    <string name="activity_main_bottom_education">"教育培训"</string>
+    <string name="activity_main_bottom_mall">"商城"</string>
+    <string name="activity_main_bottom_my">"我的"</string>
+    <string name="dropdown_more">"更多"</string>
+    <string name="fragment_home_warning">"健康异常"</string>
+    <string name="fragment_home_message">"咨询信息"</string>
+    <string name="fragment_home_plan">"工作提醒"</string>
+    <string name="fragment_home_famous_doctors">"名医堂"</string>
+    <string name="fragment_home_health_club">"健康荟"</string>
+    <string name="fragment_home_service_provider">"服务商"</string>
+    <string name="fragment_my_inviting_members">"邀请会员"</string>
+    <string name="activity_inviting_phone">"请输入会员手机号"</string>
+    <string name="activity_inviting_search">"搜索"</string>
+    <string name="activity_inviting_invite">"邀请"</string>
+    <string name="recyclerview_my_focus_history_data">历史数据</string>
+    <string name="recyclerview_my_focus_health_manage">健康管理</string>
+
+    <string name="activity_my_studio_approval_status_succeed">"审核通过"</string>
+    <string name="activity_my_studio_approval_status_ing">"审核中"</string>
+    <string name="activity_my_studio_approval_status_failure">"审核失败"</string>
+    <string name="fragment_home_my_task">我的任务</string>
+
+    <string name="cancel">"取消"</string>
+    <string name="create">"创建"</string>
+    <string name="update">"修改"</string>
+    <string name="search">"搜索"</string>
+    <string name="multiple_choice">"多选"</string>
+    <string name="send">"发送"</string>
+
+</resources>

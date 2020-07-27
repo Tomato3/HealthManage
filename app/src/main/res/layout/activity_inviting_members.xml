@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.invitingmembers.InvitingMembersViewModel" />
+    </data>
+
+    <RelativeLayout style="@style/ActivityInvitingMembersLayoutStyle">
+
+        <include
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+
+        <EditText
+            android:id="@+id/et_phone"
+            style="@style/ActivityInvitingTextStyle.Phone"
+            android:text="@={ViewModel.phone}" />
+
+        <Button
+            android:id="@+id/btn_search"
+            style="@style/ActivityInvitingBtnStyle"
+            android:onClick="@{()->ViewModel.searchMember()}" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginTop="150dp"
+            android:background="@color/colorPageBg"/>
+
+        <TextView
+            android:id="@+id/tv_member_name"
+            style="@style/ActivityInvitingTextStyle.MemberName"
+            android:text="@={ViewModel.name}"
+            android:visibility="@{ViewModel.inviteBtnVisible?View.VISIBLE:View.GONE}" />
+
+        <TextView
+            android:id="@+id/tv_member_rank"
+            style="@style/ActivityInvitingTextStyle.MemberRank"
+            android:text="@={ViewModel.rank}" />
+
+        <Button
+            android:id="@+id/btn_invite"
+            style="@style/ActivityInvitingBtnStyle.Invite"
+            android:onClick="@{()->ViewModel.inviteMember()}"
+            android:visibility="@{ViewModel.inviteBtnVisible?View.VISIBLE:View.GONE}" />
+
+
+    </RelativeLayout>
+</layout>

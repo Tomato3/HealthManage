@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="TaskReceiverRecyclerView"
+            type="com.example.healthmanage.view.TaskReceiverRecyclerView" />
+    </data>
+
+    <LinearLayout style="@style/RecyclerViewItemTaskReceiverLayoutStyle">
+
+        <ImageView
+            style="@style/RecyclerViewItemTaskReceiverViewStyle.Avatar"
+            android:url="@{TaskReceiverRecyclerView.avatarUrl}" />
+
+        <TextView
+            style="@style/RecyclerViewItemTaskReceiverTxtStyle.Name"
+            android:text="@={TaskReceiverRecyclerView.name}" />
+
+        <TextView
+            style="@style/RecyclerViewItemTaskReceiverTxtStyle.Type"
+            android:text="@={TaskReceiverRecyclerView.type}" />
+
+        <TextView
+            style="@style/RecyclerViewItemTaskReceiverTxtStyle.ProfessionalTitle"
+            android:text="@={TaskReceiverRecyclerView.professionalTitle}" />
+
+        <TextView
+            style="@style/RecyclerViewItemTaskReceiverTxtStyle.SittingPlace"
+            android:text="@={TaskReceiverRecyclerView.sittingPlace}" />
+    </LinearLayout>
+</layout>

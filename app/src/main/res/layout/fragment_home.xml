@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.ListAdapter" />
+
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.fragment.home.HomeViewModel" />
+
+    </data>
+
+    <RelativeLayout style="@style/FragmentHomeLayoutStyle">
+
+        <TextView
+            android:id="@+id/tv_waring"
+            style="@style/FragmentHomeTextStyle.Warning" />
+
+        <TextView
+            android:id="@+id/tv_message"
+            style="@style/FragmentHomeTextStyle.Message" />
+
+        <TextView
+            android:id="@+id/tv_plan"
+            style="@style/FragmentHomeTextStyle.Plan" />
+
+        <TextView android:id="@+id/tv_my_task" style="@style/FragmentHomeTextStyle.MyTask" />
+
+        <include
+            android:id="@+id/dropdown_bar_my_focus"
+            style="@style/FragmentHomeIncludeStyle.MyFocus"
+            layout="@layout/dropdown_bar"
+            app:DropdownBar="@{ViewModel.dropdownBarLists.get(0)}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_my_focus"
+            style="@style/FragmentHomeViewStyle.MyFocus"
+            tools:listitem="@layout/recycler_view_item_my_focus" />
+
+        <include
+            android:id="@+id/dropdown_bar_my_member"
+            style="@style/FragmentHomeIncludeStyle.MyMember"
+            layout="@layout/dropdown_bar"
+            app:DropdownBar="@{ViewModel.dropdownBarLists.get(1)}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_my_member"
+            style="@style/FragmentHomeViewStyle.MyMember"
+            tools:listitem="@layout/recycler_view_item_my_member" />
+
+        <include
+            android:id="@+id/dropdown_bar_service_navigation"
+            style="@style/FragmentHomeIncludeStyle.ServiceNavigation"
+            layout="@layout/dropdown_bar"
+            app:DropdownBar="@{ViewModel.dropdownBarLists.get(2)}" />
+
+        <TextView
+            android:id="@+id/tv_famous_doctors"
+            style="@style/FragmentHomeViewStyle.FamousDoctors" />
+
+        <TextView
+            android:id="@+id/tv_health_club"
+            style="@style/FragmentHomeViewStyle.HealthClub" />
+
+        <TextView
+            android:id="@+id/tv_service_provider"
+            style="@style/FragmentHomeViewStyle.ServiceProvider" />
+
+    </RelativeLayout>
+</layout>

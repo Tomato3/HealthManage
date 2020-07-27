@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="DataItem"
+            type="com.example.healthmanage.widget.DataItem" />
+    </data>
+
+    <LinearLayout style="@style/ActivityMemberDetailDataItemLayoutStyle">
+
+        <TextView
+            style="@style/ActivityMemberDetailDataItemTextStyle.First"
+            android:text="@={DataItem.firstTxt}" />
+
+        <TextView
+            style="@style/ActivityMemberDetailDataItemTextStyle.Second"
+            android:text="@={DataItem.secondTxt}"
+
+            />
+
+        <TextView
+            style="@style/ActivityMemberDetailDataItemTextStyle.Third"
+            android:text="@={DataItem.thirdTxt}"
+
+            />
+
+        <TextView
+            style="@style/ActivityMemberDetailDataItemTextStyle.Four"
+            android:text="@={DataItem.fourthTxt}"
+
+            />
+
+    </LinearLayout>
+</layout>
