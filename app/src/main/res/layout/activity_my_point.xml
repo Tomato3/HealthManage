@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.mypoint.MyPointViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPageBg"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_120"
+                android:background="@color/colorBlue"
+                android:gravity="center"
+                android:text="10000"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/text_size_24" />
+
+            <TextView
+                android:id="@+id/tv_get_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:text="@string/tip_get_point"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_60"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="@dimen/dp_100"
+                android:layout_marginTop="@dimen/dp_90"
+                android:background="@drawable/text_bg_white_radius_50" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_60"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="@dimen/dp_100"
+                android:layout_marginTop="@dimen/dp_90">
+
+                <TextView
+                    android:id="@+id/tv_wallet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/activity_my_point_my_wallet"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp_90"
+                    android:text="我的钱包" />
+
+                <TextView
+                    android:id="@+id/tv_growth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/activity_my_point_my_growth"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp_50"
+                    android:text="我的成长" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/dp_1"
+                android:layout_height="@dimen/dp_30"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="105dp"
+                android:background="@color/colorPageBg" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_60"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@color/colorWhite">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp_10"
+                android:text="积分兑换"
+                android:textColor="@color/colorTextGrey"
+                android:textSize="@dimen/text_size_18" />
+
+
+            <TextView
+                android:id="@+id/tv_more"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:drawableRight="@drawable/dropdown_more_icon"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp_10"
+                android:text="更多"
+                android:textColor="@color/colorTextGrey"
+                android:textSize="@dimen/text_size_16" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_10"
+            android:background="@color/colorWhite">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_0.1"
+                android:background="@color/colorPageBg" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_exchange_commodity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite" />
+    </LinearLayout>
+</layout>

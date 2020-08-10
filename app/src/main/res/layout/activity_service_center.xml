@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.servicecenter.ServiceCenterViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="false"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_60"
+            android:background="@drawable/line_grey"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp_10"
+            android:text="电话联系客服"
+            android:textColor="@color/colorTextGrey"
+            android:textSize="@dimen/text_size_18" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_60"
+            android:background="@drawable/line_grey"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp_10"
+            android:text="在线联系客服"
+            android:textColor="@color/colorTextGrey"
+            android:textSize="@dimen/text_size_18" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_60"
+            android:background="@drawable/line_grey"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp_10"
+            android:text="意见反馈"
+            android:textColor="@color/colorTextGrey"
+            android:textSize="@dimen/text_size_18" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_80"
+            android:background="@color/colorPageBg"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp_10"
+            android:text="帮助中心"
+            android:textColor="@color/colorTextGrey"
+            android:textSize="@dimen/text_size_18" />
+
+        <include
+            android:id="@+id/include_search"
+            layout="@layout/include_search"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginTop="@dimen/dp_10" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_60"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@drawable/line_grey"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp_10"
+            android:text="常见问题一"
+            android:textColor="@color/colorTextGrey"
+            android:textSize="@dimen/text_size_18" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_60"
+            android:background="@drawable/line_grey"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp_10"
+            android:text="常见问题二"
+            android:textColor="@color/colorTextGrey"
+            android:textSize="@dimen/text_size_18" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_60"
+            android:background="@drawable/line_grey"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp_10"
+            android:text="常见问题三"
+            android:textColor="@color/colorTextGrey"
+            android:textSize="@dimen/text_size_18" />
+    </LinearLayout>
+</layout>

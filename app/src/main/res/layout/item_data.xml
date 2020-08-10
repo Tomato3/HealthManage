@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="DataItem"
+            type="com.example.healthmanage.view.DataItem" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginBottom="@dimen/dp_5"
+        android:background="@drawable/fragment_business_my_team_blue">
+
+        <LinearLayout
+            android:layout_width="@dimen/dp_250"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/DataItemTxtStyle"
+                android:text="@{DataItem.name[0]}" />
+
+            <TextView
+                style="@style/DataItemTxtStyle"
+                android:text="@{DataItem.name[1]}" />
+
+            <TextView
+                style="@style/DataItemTxtStyle"
+                android:text="@{DataItem.name[2]}" />
+
+            <TextView
+                style="@style/DataItemTxtStyle"
+                android:text="@{DataItem.name[3]}" />
+
+            <TextView
+                style="@style/DataItemTxtStyle"
+                android:text="@{DataItem.name[4]}" />
+
+            <TextView
+                style="@style/DataItemTxtStyle"
+                android:text="@{DataItem.name[5]}" />
+
+            <TextView
+                style="@style/DataItemTxtStyle"
+                android:text="@{DataItem.name[6]}" />
+
+            <TextView
+                style="@style/DataItemTxtStyle"
+                android:text="@{DataItem.name[7]}" />
+
+            <TextView
+                style="@style/DataItemTxtStyle"
+                android:text="@{DataItem.name[8]}" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/DataItemTxtStyle"
+                android:text="@{DataItem.data.get(0)}" />
+
+            <TextView
+                style="@style/DataItemTxtStyle"
+                android:text="@{DataItem.data.get(1)}" />
+
+            <TextView
+                style="@style/DataItemTxtStyle"
+                android:text="@{DataItem.data.get(2)}" />
+
+            <TextView
+                style="@style/DataItemTxtStyle"
+                android:text="@{DataItem.data.get(3)}" />
+
+            <TextView
+                style="@style/DataItemTxtStyle"
+                android:text="@{DataItem.data.get(4)}" />
+
+            <TextView
+                style="@style/DataItemTxtStyle"
+                android:text="@{DataItem.data.get(5)}" />
+
+            <TextView
+                style="@style/DataItemTxtStyle"
+                android:text="@{DataItem.data.get(6)}" />
+
+            <TextView
+                style="@style/DataItemTxtStyle"
+                android:text="@{DataItem.data.get(7)}" />
+
+            <TextView
+                style="@style/DataItemTxtStyle"
+                android:layout_height="wrap_content"
+                android:text="@{DataItem.data.get(8)}" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>
