@@ -17,20 +17,16 @@ import com.example.healthmanage.BR;
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.databinding.ActivityMyStudioBinding;
+import com.example.healthmanage.utils.ToolUtil;
 import com.example.healthmanage.widget.TitleToolBar;
 
 import java.lang.reflect.Field;
-import java.util.Calendar;
 
 import static com.example.healthmanage.utils.Constants.HTAG;
 
 
 public class MyStudioActivity extends BaseActivity<ActivityMyStudioBinding, MyStudioViewModel> implements View.OnClickListener, TitleToolBar.OnTitleIconClickCallBack {
 
-
-    private int mYear; // 年
-    private int mMonth; // 月
-    private int mDay; // 日
     private DatePickerDialog datePickerDialog;
     TitleToolBar titleToolBar = new TitleToolBar();
 
@@ -50,24 +46,15 @@ public class MyStudioActivity extends BaseActivity<ActivityMyStudioBinding, MySt
     @Override
     public void initViewParameters() {
         super.initViewParameters();
-        Calendar calendar = Calendar.getInstance();
-        mYear = calendar.get(Calendar.YEAR);
-        mMonth = calendar.get(Calendar.MONTH);
-        mDay = calendar.get(Calendar.DAY_OF_MONTH);
 
         datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                mYear = year;
-                mMonth = month + 1;
-                mDay = dayOfMonth;
-                Log.d(HTAG, "onDateSet==========>: " + mYear + "===>" + mMonth + "===>" + mDay);
-                viewModel.date.setValue(mYear + "/" + mMonth + "/" + mDay
+                Log.d(HTAG, "onDateSet==========>: " + year + "===>" + month + "===>" + dayOfMonth);
+                viewModel.date.setValue(year + "/" + month + 1 + "/" + dayOfMonth
                 );
             }
-        }, mYear, mMonth, mDay);
-
-
+        }, ToolUtil.currentDate().get(0), ToolUtil.currentDate().get(1), ToolUtil.currentDate().get(2));
     }
 
     @Override

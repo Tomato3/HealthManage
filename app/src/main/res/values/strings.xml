@@ -52,5 +52,12 @@
     <string name="search">"搜索"</string>
     <string name="multiple_choice">"多选"</string>
     <string name="send">"发送"</string>
+    <string name="hint_input_member_phone">"请输入会员手机号"</string>
+    <string name="hint_input_member_name">"请输入会员昵称"</string>
+    <string name="hint_input_search">"搜索"</string>
+    <string name="my_comment">"我的评价"</string>
+    <string name="member_comment">"会员评价"</string>
+    <string name="tip_get_point">"如何赚取积分?"</string>
+
 
 </resources>

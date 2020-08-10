@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <data>
-
-        <variable
-            name="IncludeSearch"
-            type="com.example.healthmanage.view.IncludeSearch" />
-    </data>
-
-    <LinearLayout style="@style/IncludeSearchLayoutStyle">
+    <RelativeLayout style="@style/IncludeSearchLayoutStyle">
 
         <EditText
-            style="@style/IncludeSearchTxtStyle"
-            android:text="@{IncludeSearch.hint}" />
+            android:id="@+id/et_search"
+            style="@style/IncludeSearchTxtStyle" />
 
-        <Button
-            android:id="@+id/btn_search"
-            style="@style/IncludeSearchBtnStyle" />
+        <ImageView
+            android:id="@+id/iv_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:src="@drawable/clear"
+            android:visibility="gone" />
 
-    </LinearLayout>
+    </RelativeLayout>
 </layout>

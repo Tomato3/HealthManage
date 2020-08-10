@@ -18,10 +18,7 @@
 
         <TextView style="@style/ActivitySelectTaskReceiverTxtStyle.MultipleChoice" />
 
-<!--        <EditText-->
-<!--            style="@style/ActivitySelectTaskReceiverTxtStyle.Search"-->
-<!--            android:text="@={ViewModel.taskReceiverName}" />-->
-        <include layout="@layout/include_search"
+        <include android:id="@+id/include_search" layout="@layout/include_search"
             style="@style/ActivitySelectTaskReceiverIncludeStyle"
             />
 

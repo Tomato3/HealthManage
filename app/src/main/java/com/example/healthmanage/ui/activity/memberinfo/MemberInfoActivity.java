@@ -26,16 +26,6 @@ public class MemberInfoActivity extends BaseActivity<ActivityMemberInfoBinding, 
     }
 
     @Override
-    protected int initVariableId() {
-        return BR.ViewModel;
-    }
-
-    @Override
-    protected int setContentViewSrc(Bundle savedInstanceState) {
-        return R.layout.activity_member_info;
-    }
-
-    @Override
     public void onRightIconClick() {
 
     }
@@ -43,5 +33,15 @@ public class MemberInfoActivity extends BaseActivity<ActivityMemberInfoBinding, 
     @Override
     public void onBackIconClick() {
         finish();
+    }
+
+    @Override
+    protected int initVariableId() {
+        return BR.ViewModel;
+    }
+
+    @Override
+    protected int setContentViewSrc(Bundle savedInstanceState) {
+        return R.layout.activity_member_info;
     }
 }

@@ -1,8 +1,9 @@
 package com.example.healthmanage.ui.activity.searchMember;
 
+import android.text.TextUtils;
+
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.base.BaseViewModel;
 import com.example.healthmanage.bean.MyMemberResponse;
@@ -16,7 +17,6 @@ import java.util.List;
 
 public class SearchMemberViewModel extends BaseViewModel {
 
-    public MutableLiveData<String> search = new MutableLiveData<>("");
     UsersRemoteSource usersRemoteSource;
     public MutableLiveData<List<MyMemberRecyclerView>>
             myMemberMutableLiveData = new MutableLiveData<>();
@@ -26,48 +26,54 @@ public class SearchMemberViewModel extends BaseViewModel {
 
     private String memberRank = "";
 
-    public SearchMemberViewModel(){
+    public SearchMemberViewModel() {
         usersRemoteSource = new UsersRemoteSource();
     }
 
-public void search(){
-    usersRemoteSource.searchMemberByName(search.getValue(),
-            String.valueOf(BaseApplication.getUserInfoBean().getSysId()), new UsersInterface.LoadMyMembersCallback() {
-                @Override
-                public void loadSucceed(MyMemberResponse myMemberResponse) {
-                    myMemberRecyclerViewList = new ArrayList<>();
-                    for (int i = 0; i < myMemberResponse.getData().size(); i++) {
-                        switch (myMemberResponse.getData().get(i).getRank()) {
-                            case 0:
-                                memberRank = "普通会员";
-                                break;
-                            case 1:
-                                memberRank = "贵宾会员";
-                                break;
-                            case 2:
-                                memberRank = "SVIP会员";
-                                break;
+    public void search(String searchTxt) {
+        if (!TextUtils.isEmpty(searchTxt)) {
+            usersRemoteSource.searchMemberByName(searchTxt,
+                    String.valueOf(BaseApplication.getUserInfoBean().getSysId()), new UsersInterface.LoadMyMembersCallback() {
+                        @Override
+                        public void loadSucceed(MyMemberResponse myMemberResponse) {
+                            myMemberRecyclerViewList = new ArrayList<>();
+                            if (myMemberResponse.getData() != null) {
+                                for (int i = 0; i < myMemberResponse.getData().size(); i++) {
+                                    switch (myMemberResponse.getData().get(i).getRank()) {
+                                        case 0:
+                                            memberRank = "普通会员";
+                                            break;
+                                        case 1:
+                                            memberRank = "贵宾会员";
+                                            break;
+                                        case 2:
+                                            memberRank = "SVIP会员";
+                                            break;
+                                    }
+                                    myMemberRecyclerViewList.add(new MyMemberRecyclerView(
+                                            myMemberResponse.getData().get(i).getNickName(),
+                                            memberRank,
+                                            myMemberResponse.getData().get(i).getFollowStatus() == 0 ?
+                                                    false :
+                                                    true,
+                                            myMemberResponse.getData().get(i).getId()));
+                                }
+                                myMemberMutableLiveData.setValue(myMemberRecyclerViewList);
+                            }
                         }
-                        myMemberRecyclerViewList.add(new MyMemberRecyclerView(
-                                myMemberResponse.getData().get(i).getUserName(),
-                                memberRank,
-                                myMemberResponse.getData().get(i).getFollowStatus() == 0 ?
-                                        false :
-                                        true,
-                                myMemberResponse.getData().get(i).getId()));
-                    }
-                    myMemberMutableLiveData.setValue(myMemberRecyclerViewList);
-                }
 
-                @Override
-                public void loadFailed(String msg) {
+                        @Override
+                        public void loadFailed(String msg) {
+                            showToast(msg, 1);
+                        }
 
-                }
-
-                @Override
-                public void error(ExceptionHandle.ResponseException e) {
-
-                }
-            });
-}
+                        @Override
+                        public void error(ExceptionHandle.ResponseException e) {
+                            showToast(e.getMessage(), 1);
+                        }
+                    });
+        } else {
+            myMemberMutableLiveData.setValue(null);
+        }
+    }
 }

@@ -26,4 +26,5 @@
     <color name="colorStrokePurple">#C2BEEC</color>
     <color name="colorViewFlipper">#4E5458</color>
     <color name="colorSpinnerStroke">#EEEEEE</color>
+    <color name="colorRed">#FF2121</color>
 </resources>

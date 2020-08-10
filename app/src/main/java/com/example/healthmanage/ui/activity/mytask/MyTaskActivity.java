@@ -59,10 +59,6 @@ public class MyTaskActivity extends BaseActivity<ActivityMyTaskBinding, MyTaskVi
 
         if (myTaskAdapter != null) {
             myTaskAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
-                @Override
-                public void onItemLongClick(View view, int position) {
-
-                }
 
                 @Override
                 public void onItemClick(View view, int position) {

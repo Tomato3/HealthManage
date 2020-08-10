@@ -24,16 +24,17 @@ import static com.example.healthmanage.utils.Constants.HTAG;
 public class EditTextDialog extends Dialog implements View.OnClickListener {
 
     private Context context;
-    private TextView tvCreate, tvUpdate, tvSend, tvCancel;
-    private EditText etTitle, etComment;
+    private TextView tvCreate, tvUpdate, tvSend, tvCancel, tvTitle;
+    private EditText etComment;
     private int dialogLayout;
-    private String receiverName, receiverAvatar, taskContent;
+    private String receiverName, receiverAvatar, taskContent, memberName;
     private OnEditTextDialogClickListener onEditTextDialogClickListener;
 
-    public EditTextDialog(@NonNull Context context, @LayoutRes int dialogLayout) {
+    public EditTextDialog(@NonNull Context context, @LayoutRes int dialogLayout, String memberName) {
         super(context, R.style.EditTextDialogStyle);
         this.context = context;
         this.dialogLayout = dialogLayout;
+        this.memberName = memberName;
         initView();
 
         LiveEventBus.get("close", Boolean.class)
@@ -41,7 +42,6 @@ public class EditTextDialog extends Dialog implements View.OnClickListener {
                     @Override
                     public void onChanged(@Nullable Boolean s) {
                         dismiss();
-                        Log.d(HTAG, "onChanged==========>: ");
                     }
                 });
     }
@@ -68,7 +68,6 @@ public class EditTextDialog extends Dialog implements View.OnClickListener {
 
     public void initView() {
         View view = LayoutInflater.from(context).inflate(dialogLayout, null);
-        etTitle = view.findViewById(R.id.et_title);
         etComment = view.findViewById(R.id.et_comment);
         tvCancel = view.findViewById(R.id.tv_cancel);
         tvCancel.setOnClickListener(this::onClick);
@@ -76,13 +75,13 @@ public class EditTextDialog extends Dialog implements View.OnClickListener {
             case R.layout.dialog_create_task:
                 tvCreate = view.findViewById(R.id.tv_create);
                 tvCreate.setOnClickListener(this::onClick);
+                tvTitle = view.findViewById(R.id.tv_title);
+                if (memberName != null) {
+                    tvTitle.setText(memberName);
+                }
                 break;
             case R.layout.dialog_update_task:
                 tvUpdate = view.findViewById(R.id.tv_update);
-                tvUpdate.setOnClickListener(this::onClick);
-                break;
-            case R.layout.dialog_update_task_content:
-                tvUpdate = view.findViewById(R.id.tv_update_replay);
                 tvUpdate.setOnClickListener(this::onClick);
                 break;
             case R.layout.dialog_select_task_receiver:
@@ -104,10 +103,6 @@ public class EditTextDialog extends Dialog implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.tv_create:
             case R.id.tv_update:
-                onEditTextDialogClickListener.doCreate(etTitle.getText().toString(),
-                        etComment.getText().toString());
-                break;
-            case R.id.tv_update_replay:
                 onEditTextDialogClickListener.doCreate(etComment.getText().toString());
                 break;
             case R.id.tv_send:
@@ -121,9 +116,7 @@ public class EditTextDialog extends Dialog implements View.OnClickListener {
 
     public interface OnEditTextDialogClickListener {
 
-        void doCreate(String title, String content);
-
-        void doCreate(String doctorReplay);
+        void doCreate(String content);
 
         void doSend();
     }

@@ -64,14 +64,14 @@ public class BaseAdapter<T> extends RecyclerView.Adapter<BaseAdapter.ViewHolder>
                 });
             }
 
-            // item long click
-            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View view) {
-                    onItemClickListener.onItemLongClick(view, position);
-                    return true;
-                }
-            });
+//            // item long click
+//            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+//                @Override
+//                public boolean onLongClick(View view) {
+//                    onItemClickListener.onItemLongClick(view, position);
+//                    return true;
+//                }
+//            });
             holder.binding.setVariable(variableId, recyclerViewList.get(position));
             holder.binding.executePendingBindings();
         }
@@ -118,7 +118,7 @@ public class BaseAdapter<T> extends RecyclerView.Adapter<BaseAdapter.ViewHolder>
 
     public interface OnItemClickListener {
 
-        void onItemLongClick(View view, int position);
+//        void onItemLongClick(View view, int position);
 
         void onItemClick(View view, int position);
     }

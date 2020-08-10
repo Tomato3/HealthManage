@@ -5,17 +5,21 @@ import android.util.Log;
 import android.view.View;
 
 import androidx.lifecycle.Observer;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.healthmanage.BR;
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.base.BaseAdapter;
 import com.example.healthmanage.databinding.ActivityMyTaskDetailBinding;
+import com.example.healthmanage.ui.activity.abnormaldata.AbnormalDataActivity;
 import com.example.healthmanage.ui.activity.selectTaskReceiver.SelectTaskReceiverActivity;
 import com.example.healthmanage.utils.Constants;
 import com.example.healthmanage.view.EditTextDialog;
-import com.example.healthmanage.view.MyTaskRecyclerViewMenu;
+import com.example.healthmanage.view.MyTaskDetailRecyclerView;
 import com.example.healthmanage.widget.TitleToolBar;
+
+import java.util.List;
 
 import static com.example.healthmanage.utils.Constants.HTAG;
 
@@ -25,7 +29,10 @@ public class MyTaskDetailActivity extends BaseActivity<ActivityMyTaskDetailBindi
     TitleToolBar titleToolBar;
     EditTextDialog editTextDialog;
     int taskId;
-    String taskContent;
+    String taskTitle;
+    String taskCreateTime;
+    String dataDate;
+    String state;
     BaseAdapter taskContentAdapter;
 
     @Override
@@ -33,25 +40,30 @@ public class MyTaskDetailActivity extends BaseActivity<ActivityMyTaskDetailBindi
         titleToolBar = new TitleToolBar();
         bundle = this.getIntent().getExtras();
         taskId = bundle.getInt("taskId");
-        taskContent = bundle.getString("taskContent");
+        taskTitle = bundle.getString("taskTitle");
+        taskCreateTime = bundle.getString("taskCreateTime");
+        dataDate = bundle.getString("dataDate");
+        switch (bundle.getInt("state")) {
+            case 0:
+                state = "(未处理)";
+                break;
+            case 1:
+                state = "(处理中)";
+                break;
+            case 2:
+                state = "(已处理)";
+                break;
+            case 3:
+                state = "(无法处理)";
+                break;
+        }
         titleToolBar.setLeftIconVisible(true);
-        titleToolBar.setTitle("任务详情");
+        titleToolBar.setTitle("任务详情" + "\b" + state);
         titleToolBar.setOnClickCallBack(MyTaskDetailActivity.this);
         viewModel.setTitleToolBar(titleToolBar);
         viewModel.loadTaskDetail(taskId);
-        switch (bundle.getInt("state")) {
-            case 0:
-                new MyTaskRecyclerViewMenu(this, "未处理");
-                break;
-            case 1:
-                new MyTaskRecyclerViewMenu(this, "处理中");
-                break;
-            case 2:
-                new MyTaskRecyclerViewMenu(this, "已处理");
-                break;
-            case 3:
-                new MyTaskRecyclerViewMenu(this, "无法处理");
-                break;
+        if (Constants.ROLE_ID.equals("11")) {
+            dataBinding.ll.setVisibility(View.VISIBLE);
         }
 
     }
@@ -65,32 +77,28 @@ public class MyTaskDetailActivity extends BaseActivity<ActivityMyTaskDetailBindi
     protected void registerUIChangeEventObserver() {
         super.registerUIChangeEventObserver();
 
-//        dataBinding.recyclerViewMyTaskComments.setLayoutManager(new LinearLayoutManager(this));
         dataBinding.includeMenu.tvEdit.setOnClickListener(this::onClick);
         dataBinding.includeMenu.tvSend.setOnClickListener(this::onClick);
-        viewModel.refresh.observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                viewModel.loadTaskDetail(taskId);
-            }
-        });
+        dataBinding.includeMenu.tvView.setOnClickListener(this::onClick);
+//        viewModel.refresh.observe(this, new Observer<Boolean>() {
+//            @Override
+//            public void onChanged(Boolean aBoolean) {
+//                viewModel.loadTaskDetail(taskId);
+//            }
+//        });
 
         taskContentAdapter = new BaseAdapter(this, null, R.layout.recycler_view_item_my_task_detail
                 , BR.MyTaskDetailRecyclerView);
-//        dataBinding.recyclerViewMyTaskComments.setLayoutManager(new LinearLayoutManager(this));
-//        dataBinding.recyclerViewMyTaskComments.setAdapter(taskContentAdapter);
+        dataBinding.recyclerViewMyTaskComments.setLayoutManager(new LinearLayoutManager(this));
+        dataBinding.recyclerViewMyTaskComments.setAdapter(taskContentAdapter);
+        viewModel.myTaskDetailRecyclerViewList.observe(this, new Observer<List<MyTaskDetailRecyclerView>>() {
+            @Override
+            public void onChanged(List<MyTaskDetailRecyclerView> myTaskDetailRecyclerViews) {
+                taskContentAdapter.setRecyclerViewList(myTaskDetailRecyclerViews);
+                taskContentAdapter.notifyDataSetChanged();
+            }
+        });
 
-
-    }
-
-    @Override
-    protected int initVariableId() {
-        return BR.ViewModel;
-    }
-
-    @Override
-    protected int setContentViewSrc(Bundle savedInstanceState) {
-        return R.layout.activity_my_task_detail;
     }
 
     @Override
@@ -107,57 +115,54 @@ public class MyTaskDetailActivity extends BaseActivity<ActivityMyTaskDetailBindi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_edit:
-                Log.d(HTAG, "onClick==========>: "+Constants.ROLE_ID);
-                switch (Constants.ROLE_ID) {
-                    case "9":
-                        editTextDialog = new EditTextDialog(this, R.layout.dialog_update_task);
-                        editTextDialog.show();
-                        editTextDialog.setOnEditTextDialogClickListener(new EditTextDialog.OnEditTextDialogClickListener() {
-                            @Override
-                            public void doCreate(String title, String content) {
-                                viewModel.editTaskByManager(taskId, title, content);
-                            }
+                Log.d(HTAG, "onClick==========>: " + Constants.ROLE_ID);
+                editTextDialog = new EditTextDialog(this, R.layout.dialog_update_task, "");
+                editTextDialog.show();
+                editTextDialog.setOnEditTextDialogClickListener(new EditTextDialog.OnEditTextDialogClickListener() {
+                    @Override
+                    public void doCreate(String content) {
+                        switch (Constants.ROLE_ID) {
+                            case "9":
+                                viewModel.editTaskByManager(taskId, content);
+                                break;
+                            case "10":
+                            case "11":
+                                viewModel.editTaskByOthers(taskId, content);
+                                break;
+                        }
+                    }
 
-                            @Override
-                            public void doCreate(String doctorReplay) {
+                    @Override
+                    public void doSend() {
 
-                            }
-
-                            @Override
-                            public void doSend() {
-
-                            }
-                        });
-                        break;
-                    case "10":
-                    case "11":
-                        editTextDialog = new EditTextDialog(this, R.layout.dialog_update_task_content);
-                        editTextDialog.show();
-                        editTextDialog.setOnEditTextDialogClickListener(new EditTextDialog.OnEditTextDialogClickListener() {
-                            @Override
-                            public void doCreate(String title, String content) {
-                            }
-
-                            @Override
-                            public void doCreate(String doctorReplay) {
-                                viewModel.editTaskByOthers(Constants.ROLE_ID, doctorReplay);
-
-                            }
-
-                            @Override
-                            public void doSend() {
-
-                            }
-                        });
-                        break;
-                }
+                    }
+                });
                 break;
             case R.id.tv_send:
-                Bundle bundle = new Bundle();
+                bundle = new Bundle();
                 bundle.putInt("taskId", taskId);
-                bundle.putString("taskContent", taskContent);
+                bundle.putString("taskContent", taskTitle + "\n" + taskCreateTime);
                 startActivity(SelectTaskReceiverActivity.class, bundle);
                 break;
+            case R.id.tv_view:
+                bundle = new Bundle();
+                bundle.putInt("taskId", taskId);
+                bundle.putString("abnormalDataTitle", taskTitle + "\b" + taskCreateTime + "\b" +
+                        "异常数据");
+                bundle.putString("dataDate", dataDate);
+                startActivity(AbnormalDataActivity.class, bundle);
+                break;
         }
+
+    }
+
+    @Override
+    protected int initVariableId() {
+        return BR.ViewModel;
+    }
+
+    @Override
+    protected int setContentViewSrc(Bundle savedInstanceState) {
+        return R.layout.activity_my_task_detail;
     }
 }

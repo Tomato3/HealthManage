@@ -2,12 +2,13 @@ package com.example.healthmanage.bean;
 
 public class TaskDetailResponse {
 
+
     /**
      * requestId : null
      * errorLog : null
      * status : 0
      * message : 查询成功
-     * data : {"id":7,"userId":69,"title":"gg思密达","content":"呼呼呼","managerId":19,"doctorId":null,"doctorReply":null,"status":1,"createTime":"2020-07-14 11:21:15"}
+     * data : {"id":18,"userId":86,"title":"卡莉斯塔","content":"这是管理师填写内容","managerId":19,"doctorId":20,"doctorReply":"add","status":1,"createTime":"2020-07-31 15:49:58","doctorCreateTime":"2020-08-03 17:31:35","healthCreateTime":null,"mangerName":"于健康管理师","doctorName":"测试医生"}
      */
 
     private Object requestId;
@@ -58,15 +59,19 @@ public class TaskDetailResponse {
 
     public static class DataBean {
         /**
-         * id : 7
-         * userId : 69
-         * title : gg思密达
-         * content : 呼呼呼
+         * id : 18
+         * userId : 86
+         * title : 卡莉斯塔
+         * content : 这是管理师填写内容
          * managerId : 19
-         * doctorId : null
-         * doctorReply : null
+         * doctorId : 20
+         * doctorReply : add
          * status : 1
-         * createTime : 2020-07-14 11:21:15
+         * createTime : 2020-07-31 15:49:58
+         * doctorCreateTime : 2020-08-03 17:31:35
+         * healthCreateTime : null
+         * mangerName : 于健康管理师
+         * doctorName : 测试医生
          */
 
         private int id;
@@ -74,10 +79,14 @@ public class TaskDetailResponse {
         private String title;
         private String content;
         private int managerId;
-        private Object doctorId;
-        private Object doctorReply;
+        private int doctorId;
+        private String doctorReply;
         private int status;
         private String createTime;
+        private String doctorCreateTime;
+        private Object healthCreateTime;
+        private String mangerName;
+        private String doctorName;
 
         public int getId() {
             return id;
@@ -119,19 +128,19 @@ public class TaskDetailResponse {
             this.managerId = managerId;
         }
 
-        public Object getDoctorId() {
+        public int getDoctorId() {
             return doctorId;
         }
 
-        public void setDoctorId(Object doctorId) {
+        public void setDoctorId(int doctorId) {
             this.doctorId = doctorId;
         }
 
-        public Object getDoctorReply() {
+        public String getDoctorReply() {
             return doctorReply;
         }
 
-        public void setDoctorReply(Object doctorReply) {
+        public void setDoctorReply(String doctorReply) {
             this.doctorReply = doctorReply;
         }
 
@@ -149,6 +158,38 @@ public class TaskDetailResponse {
 
         public void setCreateTime(String createTime) {
             this.createTime = createTime;
+        }
+
+        public String getDoctorCreateTime() {
+            return doctorCreateTime;
+        }
+
+        public void setDoctorCreateTime(String doctorCreateTime) {
+            this.doctorCreateTime = doctorCreateTime;
+        }
+
+        public Object getHealthCreateTime() {
+            return healthCreateTime;
+        }
+
+        public void setHealthCreateTime(Object healthCreateTime) {
+            this.healthCreateTime = healthCreateTime;
+        }
+
+        public String getMangerName() {
+            return mangerName;
+        }
+
+        public void setMangerName(String mangerName) {
+            this.mangerName = mangerName;
+        }
+
+        public String getDoctorName() {
+            return doctorName;
+        }
+
+        public void setDoctorName(String doctorName) {
+            this.doctorName = doctorName;
         }
     }
 }

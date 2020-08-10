@@ -31,7 +31,7 @@
             <RadioButton
                 android:id="@+id/rb_ordinary_member"
                 style="@style/ActivityMemberListRadioGroupStyle.OrdinaryMember"
-                android:checked="@{ViewModel.selected}" />
+                android:checked="true" />
 
             <RadioButton
                 android:id="@+id/rb_vip_member"

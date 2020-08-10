@@ -35,7 +35,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.activity.invitingmembers.InvitingMembersActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -55,6 +54,14 @@
         <activity android:name=".ui.activity.selectTaskReceiver.SelectTaskReceiverActivity" />
         <activity android:name=".ui.activity.myinfo.MyInfoActivity" />
         <activity android:name=".ui.activity.memberinfo.MemberInfoActivity" />
+        <activity android:name=".ui.activity.abnormaldata.AbnormalDataActivity" />
+        <activity android:name=".ui.activity.historydata.HistoryDataActivity" />
+        <activity android:name=".ui.activity.mycomment.MyCommentActivity" />
+        <activity android:name=".ui.activity.commentdetail.CommentDetailActivity" />
+        <activity android:name=".ui.activity.mypoint.MyPointActivity" />
+        <activity android:name=".ui.activity.mywallet.MyWalletActivity" />
+        <activity android:name=".ui.activity.servicecenter.ServiceCenterActivity" />
+        <activity android:name=".ui.activity.getpoint.GetPointActivity" />
     </application>
 
 </manifest>

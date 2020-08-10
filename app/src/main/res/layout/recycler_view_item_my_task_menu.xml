@@ -3,20 +3,16 @@
 
     <data>
 
-        <variable
-            name="MyTaskRecyclerViewMenu"
-            type="com.example.healthmanage.view.MyTaskRecyclerViewMenu" />
     </data>
 
     <LinearLayout
-        android:layout_width="400dp"
-        android:layout_height="40dp"
-        android:background="@drawable/text_bg_grey_radius_5"
-        >
+        android:layout_width="@dimen/dp_600"
+        android:layout_height="@dimen/dp_40"
+        android:background="@drawable/text_bg_grey_radius_5">
 
         <TextView
             android:id="@+id/tv_edit"
-            android:layout_width="100dp"
+            android:layout_width="@dimen/dp_150"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawableLeft="@drawable/recycler_view_my_task_menu_edit"
@@ -27,7 +23,7 @@
 
         <TextView
             android:id="@+id/tv_send"
-            android:layout_width="100dp"
+            android:layout_width="@dimen/dp_150"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawableLeft="@drawable/recycler_view_my_task_menu_send"
@@ -38,7 +34,7 @@
 
         <TextView
             android:id="@+id/tv_share"
-            android:layout_width="100dp"
+            android:layout_width="@dimen/dp_150"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawableLeft="@drawable/recycler_view_my_task_menu_share"
@@ -48,13 +44,13 @@
             android:textSize="@dimen/text_size_16" />
 
         <TextView
-            android:id="@+id/tv_progress"
-            android:layout_width="100dp"
+            android:id="@+id/tv_view"
+            android:layout_width="@dimen/dp_150"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:drawableLeft="@drawable/recycler_view_my_task_menu_progress"
+            android:drawableLeft="@drawable/recycler_view_my_task_menu_view"
             android:gravity="center"
-            android:text="处理进度"
+            android:text="查看异常数据"
             android:textColor="@color/colorTextGrey"
             android:textSize="@dimen/text_size_16" />
     </LinearLayout>

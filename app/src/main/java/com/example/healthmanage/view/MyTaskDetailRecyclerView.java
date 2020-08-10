@@ -1,30 +1,18 @@
 package com.example.healthmanage.view;
 
-import com.example.healthmanage.R;
+import android.util.Log;
+
+import static com.example.healthmanage.utils.Constants.HTAG;
 
 public class MyTaskDetailRecyclerView {
 
-    public String postedBy;
-    public String description;
-    public String createTime;
-    public int color;
+    public String postedBy, description, createTime;
 
-    public MyTaskDetailRecyclerView(String postedBy, String description, String createTime,
-                                    int type) {
-        this.postedBy = postedBy;
+    public MyTaskDetailRecyclerView(String postedBy, String description, String createTime) {
+        Log.d(HTAG, "MyTaskDetailRecyclerView==========>: " + postedBy + "===>" + description +
+                "===>" + createTime);
+        this.postedBy = postedBy + ":";
         this.description = description;
         this.createTime = createTime;
-        switch (type) {
-            case 9:
-                color = R.color.colorAccent;
-                break;
-            case 10:
-                color = R.color.colorAccent;
-                break;
-            case 11:
-                color = R.color.colorAccent;
-                break;
-        }
     }
-
 }

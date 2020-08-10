@@ -8,7 +8,7 @@
             type="com.example.healthmanage.view.MyFocusRecyclerView" />
     </data>
 
-    <RelativeLayout style="@style/RecyclerViewMyFocusLayoutStyle">
+    <LinearLayout style="@style/RecyclerViewMyFocusLayoutStyle">
 
         <TextView
             style="@style/RecyclerViewMyFocusTextStyle.MemberName"
@@ -28,6 +28,6 @@
         <TextView
             style="@style/RecyclerViewMyFocusTextStyle.HealthManage"
             android:onClick="@{()->MyFocusRecyclerView.jumpHealthManage()}" />
-    </RelativeLayout>
+    </LinearLayout>
 </layout>
 

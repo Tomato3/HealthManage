@@ -66,16 +66,6 @@ public class MemberDetailActivity extends BaseActivity<ActivityMemberDetailBindi
     }
 
     @Override
-    protected int initVariableId() {
-        return BR.ViewModel;
-    }
-
-    @Override
-    protected int setContentViewSrc(Bundle savedInstanceState) {
-        return R.layout.activity_member_detail;
-    }
-
-    @Override
     public void initViewParameters() {
         super.initViewParameters();
     }
@@ -165,18 +155,13 @@ public class MemberDetailActivity extends BaseActivity<ActivityMemberDetailBindi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_create_task:
-                editTextDialog = new EditTextDialog(MemberDetailActivity.this, R.layout.dialog_create_task);
+                editTextDialog = new EditTextDialog(MemberDetailActivity.this,
+                        R.layout.dialog_create_task, memberName);
                 editTextDialog.show();
                 editTextDialog.setOnEditTextDialogClickListener(new EditTextDialog.OnEditTextDialogClickListener() {
                     @Override
-                    public void doCreate(String title, String content) {
-                        viewModel.createMyTask(userId, title,
-                                content);
-                    }
-
-                    @Override
-                    public void doCreate(String doctorReplay) {
-
+                    public void doCreate(String content) {
+                        viewModel.createMyTask(userId, memberName, content);
                     }
 
                     @Override
@@ -186,5 +171,15 @@ public class MemberDetailActivity extends BaseActivity<ActivityMemberDetailBindi
                 });
                 break;
         }
+    }
+
+    @Override
+    protected int initVariableId() {
+        return BR.ViewModel;
+    }
+
+    @Override
+    protected int setContentViewSrc(Bundle savedInstanceState) {
+        return R.layout.activity_member_detail;
     }
 }

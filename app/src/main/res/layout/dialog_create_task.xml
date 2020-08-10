@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/DialogCreateTaskLayoutStyle.Ll">
 
-    <EditText
-        android:id="@+id/et_title"
+    <TextView
+        android:id="@+id/tv_title"
         style="@style/DialogCreateTaskTxtStyle.TaskTitle" />
 
     <EditText

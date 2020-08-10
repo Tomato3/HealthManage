@@ -47,24 +47,26 @@ public class HomeViewModel extends BaseViewModel {
                 new UsersInterface.LoadMyMembersCallback() {
                     @Override
                     public void loadSucceed(MyMemberResponse myMemberResponse) {
-                        myFocusRecyclerViewList = new ArrayList<>();
-                        for (int i = 0; i < myMemberResponse.getData().size(); i++) {
-                            switch (myMemberResponse.getData().get(i).getRank()) {
-                                case 0:
-                                    memberRank = "普通会员";
-                                    break;
-                                case 1:
-                                    memberRank = "贵宾会员";
-                                    break;
-                                case 2:
-                                    memberRank = "SVIP会员";
-                                    break;
+                        if (myMemberResponse.getData() != null) {
+                            myFocusRecyclerViewList = new ArrayList<>();
+                            for (int i = 0; i < myMemberResponse.getData().size(); i++) {
+                                switch (myMemberResponse.getData().get(i).getRank()) {
+                                    case 0:
+                                        memberRank = "普通会员";
+                                        break;
+                                    case 1:
+                                        memberRank = "贵宾会员";
+                                        break;
+                                    case 2:
+                                        memberRank = "SVIP会员";
+                                        break;
+                                }
+                                myFocusRecyclerViewList.add(new MyFocusRecyclerView(
+                                        myMemberResponse.getData().get(i).getNickName(),
+                                        memberRank, myMemberResponse.getData().get(i).getId()));
                             }
-                            myFocusRecyclerViewList.add(new MyFocusRecyclerView(
-                                    myMemberResponse.getData().get(i).getUserName(),
-                                    memberRank));
+                            myFocusMutableLiveData.setValue(myFocusRecyclerViewList);
                         }
-                        myFocusMutableLiveData.setValue(myFocusRecyclerViewList);
                     }
 
                     @Override
@@ -85,37 +87,39 @@ public class HomeViewModel extends BaseViewModel {
             @Override
             public void loadSucceed(MyMemberResponse myMemberResponse) {
                 myMemberRecyclerViewList = new ArrayList<>();
-                for (int i = 0; i < myMemberResponse.getData().size(); i++) {
-                    switch (myMemberResponse.getData().get(i).getRank()) {
-                        case 0:
-                            memberRank = "普通会员";
-                            break;
-                        case 1:
-                            memberRank = "贵宾会员";
-                            break;
-                        case 2:
-                            memberRank = "SVIP会员";
-                            break;
+                if (myMemberResponse.getData() != null) {
+                    for (int i = 0; i < myMemberResponse.getData().size(); i++) {
+                        switch (myMemberResponse.getData().get(i).getRank()) {
+                            case 0:
+                                memberRank = "普通会员";
+                                break;
+                            case 1:
+                                memberRank = "贵宾会员";
+                                break;
+                            case 2:
+                                memberRank = "SVIP会员";
+                                break;
+                        }
+                        myMemberRecyclerViewList.add(new MyMemberRecyclerView(
+                                myMemberResponse.getData().get(i).getNickName(),
+                                memberRank,
+                                myMemberResponse.getData().get(i).getFollowStatus() == 0 ?
+                                        false :
+                                        true,
+                                myMemberResponse.getData().get(i).getId()));
                     }
-                    myMemberRecyclerViewList.add(new MyMemberRecyclerView(
-                            myMemberResponse.getData().get(i).getUserName(),
-                            memberRank,
-                            myMemberResponse.getData().get(i).getFollowStatus() == 0 ?
-                                    false :
-                                    true,
-                            myMemberResponse.getData().get(i).getId()));
+                    myMemberMutableLiveData.setValue(myMemberRecyclerViewList);
                 }
-                myMemberMutableLiveData.setValue(myMemberRecyclerViewList);
             }
 
             @Override
             public void loadFailed(String msg) {
-
+                getUiChangeEvent().getToastTxt().setValue(msg);
             }
 
             @Override
             public void error(ExceptionHandle.ResponseException e) {
-
+                getUiChangeEvent().getToastTxt().setValue(e.getMessage());
             }
         });
     }

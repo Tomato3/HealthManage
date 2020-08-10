@@ -17,21 +17,18 @@
             layout="@layout/toolbar_title"
             app:TitleToolBar="@{ViewModel.titleToolBar}" />
 
-        <EditText
-            android:id="@+id/et_phone"
-            style="@style/ActivityInvitingTextStyle.Phone"
-            android:text="@={ViewModel.phone}" />
-
-        <Button
-            android:id="@+id/btn_search"
-            style="@style/ActivityInvitingBtnStyle"
-            android:onClick="@{()->ViewModel.searchMember()}" />
+        <include
+            android:id="@+id/include_search"
+            layout="@layout/include_search"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginTop="@dimen/dp_70" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:layout_marginTop="150dp"
-            android:background="@color/colorPageBg"/>
+            android:layout_marginTop="@dimen/dp_130"
+            android:background="@color/colorPageBg" />
 
         <TextView
             android:id="@+id/tv_member_name"

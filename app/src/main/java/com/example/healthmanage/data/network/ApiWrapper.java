@@ -1,10 +1,13 @@
 package com.example.healthmanage.data.network;
 
 
+import com.example.healthmanage.bean.AbnormalDataResponse;
 import com.example.healthmanage.bean.DoctorListResponse;
 import com.example.healthmanage.bean.GeneralResponse;
 import com.example.healthmanage.bean.HealthDataResponse;
+import com.example.healthmanage.bean.HistoryDataResponse;
 import com.example.healthmanage.bean.LoginResponse;
+import com.example.healthmanage.bean.MemberInfoResponse;
 import com.example.healthmanage.bean.MyMemberResponse;
 import com.example.healthmanage.bean.RegisterResponse;
 import com.example.healthmanage.bean.SearchMemberResponse;
@@ -198,8 +201,8 @@ public class ApiWrapper extends RetrofitHttpUtils {
      * @return
      */
     public Observable<GeneralResponse> createMyTask(long userId, String title, String content,
-                                                    long managerId, String dataDate) {
-        return getApiServer().createMyTask(userId, title, content, managerId, dataDate);
+                                                    long managerId) {
+        return getApiServer().createMyTask(userId, title, content, managerId);
     }
 
     /**
@@ -226,13 +229,11 @@ public class ApiWrapper extends RetrofitHttpUtils {
      * 管理师更新异常任务
      *
      * @param taskId
-     * @param title
      * @param content
      * @return
      */
-    public Observable<GeneralResponse> updateMyTaskDetail(long taskId, String title,
-                                                          String content) {
-        return getApiServer().updateMyTaskDetail(taskId, title, content);
+    public Observable<GeneralResponse> updateMyTaskDetailByManager(long taskId, String content) {
+        return getApiServer().updateMyTaskDetailByManager(taskId, content);
     }
 
     /**
@@ -242,8 +243,8 @@ public class ApiWrapper extends RetrofitHttpUtils {
      * @param doctorReply
      * @return
      */
-    public Observable<GeneralResponse> updateMyTaskDetail(long taskId, String doctorReply) {
-        return getApiServer().updateMyTaskDetail(taskId, doctorReply);
+    public Observable<GeneralResponse> updateMyTaskDetailByDoctor(long taskId, String doctorReply) {
+        return getApiServer().updateMyTaskDetailByDoctor(taskId, doctorReply);
     }
 
     /**
@@ -277,5 +278,49 @@ public class ApiWrapper extends RetrofitHttpUtils {
         return getApiServer().sendMyTask(taskId, doctorId);
     }
 
+
+    /**
+     * 查找医生
+     *
+     * @param doctorName
+     * @return
+     */
+    public Observable<DoctorListResponse> searchDoctor(String doctorName) {
+        return getApiServer().searchDoctor(doctorName);
+    }
+
+    /**
+     * 获取异常数据
+     *
+     * @param taskId
+     * @param dataDate
+     * @return
+     */
+    public Observable<AbnormalDataResponse> getAbnormalDataResponse(long taskId, String dataDate) {
+        return getApiServer().getAbnormalDataResponse(taskId, dataDate);
+    }
+
+    /**
+     * 获取历史数据
+     *
+     * @param memberId
+     * @param beginTime
+     * @param endTime
+     * @return
+     */
+    public Observable<HistoryDataResponse> getHistoryData(long memberId, String beginTime,
+                                                          String endTime, int pageNum, int pageSize) {
+        return getApiServer().getHistoryData(memberId, beginTime, endTime, pageNum, pageSize);
+    }
+
+    /**
+     * 获取会员简介
+     *
+     * @param memberId
+     * @return
+     */
+    public Observable<MemberInfoResponse> getMemberInfo(long memberId) {
+        return getApiServer().getMemberInfo(memberId);
+    }
 
 }

@@ -129,9 +129,7 @@
 
             <TextView
                 android:id="@+id/tv_create_task"
-                style="@style/ActivityMemberDetailTextStyle.CreateTask"
-
-                />
+                style="@style/ActivityMemberDetailTextStyle.CreateTask" />
         </RelativeLayout>
     </LinearLayout>
 </layout>

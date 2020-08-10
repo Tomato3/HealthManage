@@ -39,7 +39,9 @@ public class MyTaskRecyclerView {
         Intent intent = new Intent(BaseApplication.getInstance(), MyTaskDetailActivity.class);
         Bundle bundle = new Bundle();
         bundle.putInt("taskId", taskId);
-        bundle.putString("taskContent", title + "\n" + createTime);
+        bundle.putString("taskTitle", title);
+        bundle.putString("taskCreateTime", createTime);
+        bundle.putString("dataDate", createTime.substring(0, 10));
         bundle.putInt("state", state);
         intent.putExtras(bundle);
         BaseApplication.getInstance().getApplicationContext().startActivity(intent);

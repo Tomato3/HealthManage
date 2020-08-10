@@ -68,7 +68,7 @@ public class MyMemberRecyclerView extends AndroidViewModel {
         BaseApplication.getInstance().getApplicationContext().startActivity(intent);
     }
 
-    //跳转会员详情页面
+    //跳转会员简介页面
     public void jumpMemberInfo() {
         Intent intent = new Intent(BaseApplication.getInstance(), MemberInfoActivity.class);
         Bundle bundle = new Bundle();

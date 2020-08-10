@@ -17,7 +17,6 @@ import java.util.List;
 public class MemberListViewModel extends BaseViewModel {
 
     public MutableLiveData<String> searchPhone = new MutableLiveData<>("");
-    public MutableLiveData<Boolean> selected = new MutableLiveData<>(true);
     public MutableLiveData<String> marginInTop = new MutableLiveData<>("110dp");
     private UsersRemoteSource usersRemoteSource;
     public MutableLiveData<List<MyMemberRecyclerView>>
@@ -56,7 +55,7 @@ public class MemberListViewModel extends BaseViewModel {
                                     break;
                             }
                             myMemberRecyclerViewList.add(new MyMemberRecyclerView(
-                                    myMemberResponse.getData().get(i).getUserName(),
+                                    myMemberResponse.getData().get(i).getNickName(),
                                     memberRank,
                                     myMemberResponse.getData().get(i).getFollowStatus() == 0 ?
                                             false :
@@ -85,7 +84,7 @@ public class MemberListViewModel extends BaseViewModel {
                             }
                             if (myMemberResponse.getData().get(i).getFollowStatus() == 1) {
                                 myMemberRecyclerViewList.add(new MyMemberRecyclerView(
-                                        myMemberResponse.getData().get(i).getUserName(),
+                                        myMemberResponse.getData().get(i).getNickName(),
                                         memberRank,
                                         myMemberResponse.getData().get(i).getFollowStatus() == 0 ?
                                                 false :

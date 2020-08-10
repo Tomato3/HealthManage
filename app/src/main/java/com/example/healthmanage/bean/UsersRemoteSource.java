@@ -588,12 +588,10 @@ public class UsersRemoteSource {
                              String title,
                              String content,
                              long managerId,
-                             String dataDate,
                              UsersInterface.CreateMyTaskCallback createMyTaskCallback) {
-        Log.d(HTAG,
-                "createMyTask==========>: " + "会员Id===>" + userId + "异常任务标题===>" + title +
-                        "异常任务描述===>" + content + "当前用户Id===>" + managerId);
-        ApiWrapper.getInstance().createMyTask(userId, title, content, managerId, dataDate)
+        Log.d(HTAG, "createMyTask==========>: " + "会员Id===>" + userId + "异常任务标题===>" + title +
+                "异常任务描述===>" + content + "当前用户Id===>" + managerId);
+        ApiWrapper.getInstance().createMyTask(userId, title, content, managerId)
                 .compose(RxHelper.to_mian())
                 .subscribe(new MyObserver<GeneralResponse>() {
                     @Override
@@ -700,16 +698,14 @@ public class UsersRemoteSource {
      * 管理师更新异常任务
      *
      * @param taskId
-     * @param title
      * @param content
      * @param updateMyTaskDetailCallback
      */
-    public void updateMyTaskDetail(long taskId,
-                                   String title,
-                                   String content,
-                                   UsersInterface.UpdateMyTaskDetailCallback updateMyTaskDetailCallback) {
+    public void updateMyTaskDetailByManager(long taskId,
+                                            String content,
+                                            UsersInterface.UpdateMyTaskDetailCallback updateMyTaskDetailCallback) {
         Log.d(HTAG, "updateMyTaskDetail==========>: " + "当前任务Id===>" + taskId);
-        ApiWrapper.getInstance().updateMyTaskDetail(taskId, title, content)
+        ApiWrapper.getInstance().updateMyTaskDetailByManager(taskId, content)
                 .compose(RxHelper.to_mian())
                 .subscribe(new MyObserver<GeneralResponse>() {
                     @Override
@@ -743,11 +739,11 @@ public class UsersRemoteSource {
      * @param doctorReply
      * @param updateMyTaskDetailCallback
      */
-    public void updateMyTaskDetail(long taskId,
-                                   String doctorReply,
-                                   UsersInterface.UpdateMyTaskDetailCallback updateMyTaskDetailCallback) {
+    public void updateMyTaskDetailByDoctor(long taskId,
+                                           String doctorReply,
+                                           UsersInterface.UpdateMyTaskDetailCallback updateMyTaskDetailCallback) {
         Log.d(HTAG, "updateMyTaskDetail==========>: " + "当前任务Id===>" + taskId);
-        ApiWrapper.getInstance().updateMyTaskDetail(taskId, doctorReply)
+        ApiWrapper.getInstance().updateMyTaskDetailByDoctor(taskId, doctorReply)
                 .compose(RxHelper.to_mian())
                 .subscribe(new MyObserver<GeneralResponse>() {
                     @Override
@@ -877,6 +873,124 @@ public class UsersRemoteSource {
                     @Override
                     public void onError(ExceptionHandle.ResponseException responseException) {
                         sendMyTaskCallback.error(responseException);
+                    }
+                });
+    }
+
+    /**
+     * 搜索医生
+     *
+     * @param doctorName
+     * @param searchDoctorCallback
+     */
+    public void searchDoctor(String doctorName,
+                             UsersInterface.SearchDoctorCallback searchDoctorCallback) {
+        Log.d(HTAG, "searchDoctor==========>: " + "医生名字:" + doctorName);
+        ApiWrapper.getInstance().searchDoctor(doctorName)
+                .compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<DoctorListResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(DoctorListResponse doctorListResponse) {
+                        if (doctorListResponse.getStatus() == 0) {
+                            searchDoctorCallback.searchSucceed(doctorListResponse);
+                        } else {
+                            searchDoctorCallback.searchFailed(doctorListResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+                    }
+
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        searchDoctorCallback.error(responseException);
+                    }
+                });
+    }
+
+    /**
+     * 获取异常数据
+     *
+     * @param taskId
+     * @param dataDate
+     * @param getAbnormalDataCallback
+     */
+    public void getAbnormalData(long taskId,
+                                String dataDate,
+                                UsersInterface.GetAbnormalDataCallback getAbnormalDataCallback) {
+        Log.d(HTAG, "getAbnormalData==========>: 任务id:" + taskId + "异常时间===>" + dataDate);
+        ApiWrapper.getInstance().getAbnormalDataResponse(taskId, dataDate)
+                .compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<AbnormalDataResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(AbnormalDataResponse abnormalDataResponse) {
+                        if (abnormalDataResponse.getStatus() == 0) {
+                            getAbnormalDataCallback.getSucceed(abnormalDataResponse);
+                        } else {
+                            getAbnormalDataCallback.getFailed(abnormalDataResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+                    }
+
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        getAbnormalDataCallback.error(responseException);
+                    }
+                });
+    }
+
+
+    /**
+     * 获取历史数据
+     *
+     * @param memberId
+     * @param beginTime
+     * @param endTime
+     * @param getHistoryDataCallback
+     */
+    public void getHistoryData(long memberId,
+                               String beginTime,
+                               String endTime,
+                               int pageNum,
+                               int pageSize,
+                               UsersInterface.GetHistoryDataCallback getHistoryDataCallback) {
+        Log.d(HTAG, "getHistoryData==========>: 会员id:" + memberId + "开始时间===>" + beginTime +
+                "结束时间===>" + endTime);
+        ApiWrapper.getInstance().getHistoryData(memberId, beginTime, endTime, pageNum, pageSize)
+                .compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<HistoryDataResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(HistoryDataResponse historyDataResponse) {
+                        if (historyDataResponse.getTotal() > 0) {
+                            getHistoryDataCallback.getSucceed(historyDataResponse);
+                        } else {
+                            getHistoryDataCallback.getFailed("historyDataResponse.getMessage()");
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+                    }
+
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        getHistoryDataCallback.error(responseException);
                     }
                 });
     }

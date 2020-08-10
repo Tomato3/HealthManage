@@ -97,7 +97,7 @@ public class MyMemberResponse {
 
         private int id;
         private String userName;
-        private Object nickName;
+        private String nickName;
         private String password;
         private int sex;
         private String phone;
@@ -144,11 +144,11 @@ public class MyMemberResponse {
             this.userName = userName;
         }
 
-        public Object getNickName() {
+        public String getNickName() {
             return nickName;
         }
 
-        public void setNickName(Object nickName) {
+        public void setNickName(String nickName) {
             this.nickName = nickName;
         }
 

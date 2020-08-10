@@ -148,4 +148,29 @@ public interface UsersInterface {
 
         void error(ExceptionHandle.ResponseException e);
     }
+
+    interface SearchDoctorCallback {
+        void searchSucceed(DoctorListResponse doctorListResponse);
+
+        void searchFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetAbnormalDataCallback {
+        void getSucceed(AbnormalDataResponse abnormalDataResponse);
+
+        void getFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetHistoryDataCallback {
+        void getSucceed(HistoryDataResponse historyDataResponse);
+
+        void getFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
 }

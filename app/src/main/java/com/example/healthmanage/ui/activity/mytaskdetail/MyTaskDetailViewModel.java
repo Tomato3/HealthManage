@@ -11,7 +11,9 @@ import com.example.healthmanage.bean.UsersInterface;
 import com.example.healthmanage.bean.UsersRemoteSource;
 import com.example.healthmanage.data.network.exception.ExceptionHandle;
 import com.example.healthmanage.view.MyTaskDetailRecyclerView;
+import com.jeremyliao.liveeventbus.LiveEventBus;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.healthmanage.utils.Constants.HTAG;
@@ -25,7 +27,7 @@ public class MyTaskDetailViewModel extends BaseViewModel {
     public MutableLiveData<List<MyTaskDetailRecyclerView>> myTaskDetailRecyclerViewList =
             new MutableLiveData<>();
 
-    private MyTaskDetailRecyclerView myTaskDetailRecyclerViews;
+    private List<MyTaskDetailRecyclerView> myTaskDetailRecyclerViews;
 
     UsersRemoteSource usersRemoteSource;
 
@@ -38,12 +40,18 @@ public class MyTaskDetailViewModel extends BaseViewModel {
         usersRemoteSource.loadMyTaskDetail(taskId, new UsersInterface.LoadMyTaskDetailCallback() {
             @Override
             public void loadSucceed(TaskDetailResponse taskDetailResponse) {
-                title.setValue("任务标题：" + "\n" + taskDetailResponse.getData().getTitle());
-                content.setValue("任务描述：" + "\n" + taskDetailResponse.getData().getContent());
+                title.setValue(taskDetailResponse.getData().getTitle());
+                myTaskDetailRecyclerViews = new ArrayList<>();
                 if (taskDetailResponse.getData().getContent() != null) {
-//                    myTaskDetailRecyclerViews =
-//                            new MyTaskDetailRecyclerView(taskDetailResponse.getData().get);
+                    myTaskDetailRecyclerViews.add(new MyTaskDetailRecyclerView(taskDetailResponse.getData().getMangerName(),
+                            taskDetailResponse.getData().getContent(),
+                            taskDetailResponse.getData().getCreateTime()));
+
+                    myTaskDetailRecyclerViews.add(new MyTaskDetailRecyclerView(taskDetailResponse.getData().getDoctorName(),
+                            taskDetailResponse.getData().getDoctorReply(),
+                            taskDetailResponse.getData().getDoctorCreateTime()));
                 }
+                myTaskDetailRecyclerViewList.setValue(myTaskDetailRecyclerViews);
             }
 
             @Override
@@ -52,49 +60,53 @@ public class MyTaskDetailViewModel extends BaseViewModel {
 
             @Override
             public void error(ExceptionHandle.ResponseException e) {
+                Log.d(HTAG, "error==========>: " + e.getMessage());
             }
         });
     }
 
-    public void editTaskByManager(long taskId, String title, String content) {
-        usersRemoteSource.updateMyTaskDetail(taskId, title, content,
+    public void editTaskByManager(long taskId, String content) {
+        usersRemoteSource.updateMyTaskDetailByManager(taskId, content,
                 new UsersInterface.UpdateMyTaskDetailCallback() {
                     @Override
                     public void updateSucceed(GeneralResponse generalResponse) {
                         Log.d(HTAG, "updateSucceed==========>: ");
                         refresh.setValue(true);
-                        getUiChangeEvent().getToastTxt().setValue("修改成功");
-                        getUiChangeEvent().getToastType().setValue(0);
+                        LiveEventBus.get("close").post(false);
+                        showToast("修改成功", 0);
                     }
 
                     @Override
                     public void updateFailed(String msg) {
-                        Log.d(HTAG, "updateFailed==========>: ");
+                        showToast(msg, 1);
                     }
 
                     @Override
                     public void error(ExceptionHandle.ResponseException e) {
-                        Log.d(HTAG, "error==========>: ");
+                        LiveEventBus.get("close").post(false);
+                        showToast(e.getMessage(), 1);
                     }
                 });
     }
 
-    public void editTaskByOthers(String roleId, String content) {
-        usersRemoteSource.updateMyTaskDetail(Long.parseLong(roleId), content, new UsersInterface.UpdateMyTaskDetailCallback() {
-            @Override
-            public void updateSucceed(GeneralResponse generalResponse) {
-                Log.d(HTAG, "updateSucceed==========>: ");
-            }
+    public void editTaskByOthers(long taskId, String content) {
+        usersRemoteSource.updateMyTaskDetailByDoctor(taskId, content,
+                new UsersInterface.UpdateMyTaskDetailCallback() {
+                    @Override
+                    public void updateSucceed(GeneralResponse generalResponse) {
+                        showToast(generalResponse.getMessage(), 0);
+                        LiveEventBus.get("close").post(true);
+                    }
 
-            @Override
-            public void updateFailed(String msg) {
-                Log.d(HTAG, "updateFailed==========>: ");
-            }
+                    @Override
+                    public void updateFailed(String msg) {
+                        showToast(msg, 1);
+                    }
 
-            @Override
-            public void error(ExceptionHandle.ResponseException e) {
-                Log.d(HTAG, "error==========>: ");
-            }
-        });
+                    @Override
+                    public void error(ExceptionHandle.ResponseException e) {
+                        showToast(e.getMessage(), 1);
+                    }
+                });
     }
 }

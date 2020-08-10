@@ -21,12 +21,11 @@ import java.util.List;
 public class MemberListActivity extends BaseActivity<ActivityMemberListBinding,
         MemberListViewModel> implements TitleToolBar.OnTitleIconClickCallBack, View.OnClickListener {
 
-    TitleToolBar titleToolBar = new TitleToolBar();
-    LinearLayoutManager linearLayoutManager;
-    BaseAdapter myMemberAdapter;
-    int rank;
-    Bundle bundle;
-    int type;
+    private TitleToolBar titleToolBar = new TitleToolBar();
+    private LinearLayoutManager linearLayoutManager;
+    private BaseAdapter myMemberAdapter;
+    private int rank, type;
+    private Bundle bundle;
 
     @Override
     protected void initData() {
@@ -35,14 +34,12 @@ public class MemberListActivity extends BaseActivity<ActivityMemberListBinding,
         bundle = this.getIntent().getExtras();
         type = bundle.getInt("focusOrMember");
         viewModel.loadDifferentLevelMember(type, 0);
-
     }
 
     @Override
     public void initViewListener() {
         super.initViewListener();
         titleToolBar.setOnClickCallBack(this);
-
     }
 
     @Override
@@ -73,17 +70,6 @@ public class MemberListActivity extends BaseActivity<ActivityMemberListBinding,
                 });
     }
 
-
-    @Override
-    protected int initVariableId() {
-        return BR.ViewModel;
-    }
-
-    @Override
-    protected int setContentViewSrc(Bundle savedInstanceState) {
-        return R.layout.activity_member_list;
-    }
-
     @Override
     public void onRightIconClick() {
 
@@ -110,5 +96,15 @@ public class MemberListActivity extends BaseActivity<ActivityMemberListBinding,
                 viewModel.loadDifferentLevelMember(type, rank);
                 break;
         }
+    }
+
+    @Override
+    protected int initVariableId() {
+        return BR.ViewModel;
+    }
+
+    @Override
+    protected int setContentViewSrc(Bundle savedInstanceState) {
+        return R.layout.activity_member_list;
     }
 }

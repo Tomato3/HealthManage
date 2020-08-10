@@ -38,10 +38,7 @@ public class MemberDetailViewModel extends BaseViewModel {
     public MutableLiveData<Boolean> currentFocusState = new MutableLiveData<>();
     private UsersRemoteSource usersRemoteSource;
 
-    String dataDate;
-
     public MemberDetailViewModel() {
-
         usersRemoteSource = new UsersRemoteSource();
         dataItemBodyHealth.setValue(new DataItem("运动：40", "睡眠：40", "饮食：40", "测评：40"));
         dataItemSpiritHealth.setValue(new DataItem("运动：40", "睡眠：40", "饮食：40", "测评：40"));
@@ -100,13 +97,12 @@ public class MemberDetailViewModel extends BaseViewModel {
                 if (weatherResponse.getData() == null) {
                     getUiChangeEvent().getToastTxt().setValue("暂无数据");
                 } else {
-                    getUiChangeEvent().getToastTxt().setValue("天气刷新成功");
-                }
-                dataItemTodayEnvironment.setValue(new DataItem("温度：" + weatherResponse.getData().getTemperature_current()
-                        , "湿度：" + weatherResponse.getData().getHumidity()
-                        , "PM2.5：" + weatherResponse.getData().getPm25()
-                        , "PM10：" + weatherResponse.getData().getPm10()));
+                    dataItemTodayEnvironment.setValue(new DataItem("温度：" + weatherResponse.getData().getTemperature_current()
+                            , "湿度：" + weatherResponse.getData().getHumidity()
+                            , "PM2.5：" + weatherResponse.getData().getPm25()
+                            , "PM10：" + weatherResponse.getData().getPm10()));
 
+                }
             }
 
             @Override
@@ -116,11 +112,15 @@ public class MemberDetailViewModel extends BaseViewModel {
 
             @Override
             public void error(ExceptionHandle.ResponseException e) {
-                Log.d("TAG", "Error: ===>" + e.getMessage());
+                getUiChangeEvent().getToastTxt().setValue(e.getMessage());
             }
         });
     }
 
+    /**
+     *
+     * @param userId
+     */
     public void getHealthDataList(String userId) {
         usersRemoteSource.getHealthList(userId, new UsersInterface.GetHealthListCallback() {
             @Override
@@ -128,9 +128,6 @@ public class MemberDetailViewModel extends BaseViewModel {
                 if (healthDataResponse.getData().getBloodSugarSendList() == null) {
                     getUiChangeEvent().getToastTxt().setValue("暂无健康数据");
                 } else {
-                    dataDate =
-                            healthDataResponse.getData().getBloodSugarSendList().get(0).getCreateTime();
-                    getUiChangeEvent().getToastTxt().setValue("刷新成功");
                     dataItemTodayHealth.setValue(new DataItem("脉搏：" + healthDataResponse.getData().getBloodSugarSendList().get(0).getHeartRate(),
                             "收缩压：" + healthDataResponse.getData().getBloodSugarSendList().get(0).getSmallBloodHighPressure() +
                                     "-" + healthDataResponse.getData().getBloodSugarSendList().get(0).getBigBloodHighPressure(),
@@ -144,23 +141,29 @@ public class MemberDetailViewModel extends BaseViewModel {
 
             @Override
             public void getFailed(String msg) {
-
+                getUiChangeEvent().getToastTxt().setValue(msg);
             }
 
             @Override
             public void error(ExceptionHandle.ResponseException e) {
-
+                getUiChangeEvent().getToastTxt().setValue(e.getMessage());
             }
         });
     }
 
+    /**
+     * 创建异常任务
+     *
+     * @param userId
+     * @param title
+     * @param content
+     */
     public void createMyTask(long userId, String title, String content) {
         if (!TextUtils.isEmpty(title) && !TextUtils.isEmpty(content)) {
             usersRemoteSource.createMyTask(userId,
                     title,
                     content,
                     BaseApplication.getUserInfoBean().getSysId(),
-                    dataDate,
                     new UsersInterface.CreateMyTaskCallback() {
                         @Override
                         public void createSucceed(GeneralResponse generalResponse) {

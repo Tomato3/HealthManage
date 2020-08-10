@@ -1,14 +1,14 @@
 package com.example.healthmanage.ui.activity.searchMember;
 
-import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.InputType;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -18,7 +18,6 @@ import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.base.BaseAdapter;
 import com.example.healthmanage.databinding.ActivitySearchMemberBinding;
 import com.example.healthmanage.view.MyMemberRecyclerView;
-import com.jeremyliao.liveeventbus.LiveEventBus;
 
 import java.util.List;
 
@@ -41,35 +40,46 @@ public class SearchMemberActivity extends BaseActivity<ActivitySearchMemberBindi
             @Override
             public void onChanged(List<MyMemberRecyclerView> myMemberRecyclerViewList) {
                 myMemberAdapter = new BaseAdapter(SearchMemberActivity.this,
-                        myMemberRecyclerViewList,R.layout.recycler_view_item_my_member,BR.MyMemberRecyclerView);
+                        myMemberRecyclerViewList, R.layout.recycler_view_item_my_member, BR.MyMemberRecyclerView);
                 dataBinding.recyclerViewSearchMember.setLayoutManager(linearLayoutManager);
                 dataBinding.recyclerViewSearchMember.setAdapter(myMemberAdapter);
             }
         });
 
         dataBinding.tvCancel.setOnClickListener(this::onClick);
-
-        dataBinding.etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        dataBinding.includeSearch.ivClear.setOnClickListener(this::onClick);
+        dataBinding.includeSearch.etSearch.setHint(R.string.hint_input_member_name);
+        dataBinding.includeSearch.etSearch.setInputType(InputType.TYPE_CLASS_TEXT);
+        dataBinding.includeSearch.etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_ACTION_UNSPECIFIED) {
-                    dataBinding.etSearch.setCursorVisible(false);
-                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(dataBinding.etSearch.getWindowToken(), 0);
-                    viewModel.search();
+                    viewModel.search(v.getText().toString());
                     return true;
                 }
                 return false;
             }
         });
+        dataBinding.includeSearch.etSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-        LiveEventBus.get("refresh", String.class)
-                .observe(this, new Observer<String>() {
-                    @Override
-                    public void onChanged(@Nullable String s) {
-                        viewModel.search();
-                    }
-                });
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.length() > 0) {
+                    dataBinding.includeSearch.ivClear.setVisibility(View.VISIBLE);
+                } else {
+                    dataBinding.includeSearch.ivClear.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     @Override
@@ -87,6 +97,10 @@ public class SearchMemberActivity extends BaseActivity<ActivitySearchMemberBindi
         switch (v.getId()) {
             case R.id.tv_cancel:
                 finish();
+                break;
+            case R.id.iv_clear:
+                dataBinding.includeSearch.etSearch.setText("");
+                viewModel.search("");
                 break;
         }
     }

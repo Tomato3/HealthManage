@@ -18,8 +18,11 @@ import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.base.BaseFragment;
 import com.example.healthmanage.databinding.FragmentMyBinding;
 import com.example.healthmanage.ui.activity.invitingmembers.InvitingMembersActivity;
+import com.example.healthmanage.ui.activity.mycomment.MyCommentActivity;
 import com.example.healthmanage.ui.activity.myinfo.MyInfoActivity;
+import com.example.healthmanage.ui.activity.mypoint.MyPointActivity;
 import com.example.healthmanage.ui.activity.mystudio.MyStudioActivity;
+import com.example.healthmanage.ui.activity.servicecenter.ServiceCenterActivity;
 
 import java.util.List;
 
@@ -66,6 +69,9 @@ public class MyFragment extends BaseFragment<FragmentMyBinding, MyViewModel> imp
         super.initDataBindingAndViewModel(savedInstanceState);
         dataBinding.tvInvitingMembers.setOnClickListener(this::onClick);
         dataBinding.tvMyStudio.setOnClickListener(this::onClick);
+        dataBinding.tvMyComment.setOnClickListener(this::onClick);
+        dataBinding.tvMyPoint.setOnClickListener(this::onClick);
+        dataBinding.tvServiceCenter.setOnClickListener(this::onClick);
 
 
     }
@@ -88,6 +94,15 @@ public class MyFragment extends BaseFragment<FragmentMyBinding, MyViewModel> imp
                 break;
             case R.id.tv_name:
                 startActivity(MyInfoActivity.class);
+                break;
+            case R.id.tv_my_comment:
+                startActivity(MyCommentActivity.class);
+                break;
+            case R.id.tv_my_point:
+                startActivity(MyPointActivity.class);
+                break;
+            case R.id.tv_service_center:
+                startActivity(ServiceCenterActivity.class);
                 break;
 
         }

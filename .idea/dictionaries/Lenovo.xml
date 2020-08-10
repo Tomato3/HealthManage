@@ -2,20 +2,26 @@
   <dictionary name="Lenovo">
     <words>
       <w>edittext</w>
+      <w>getpoint</w>
       <w>healthmanage</w>
+      <w>historydata</w>
       <w>htag</w>
       <w>infos</w>
       <w>invitingmembers</w>
       <w>memberdetail</w>
       <w>memberinfo</w>
       <w>memberlist</w>
+      <w>mycomment</w>
       <w>myinfo</w>
+      <w>mypoint</w>
       <w>mystudio</w>
       <w>mytask</w>
       <w>mytaskdetail</w>
+      <w>mywallet</w>
       <w>recyclerviews</w>
       <w>resetpassword</w>
       <w>rxbinding</w>
+      <w>servicecenter</w>
       <w>svip</w>
     </words>
   </dictionary>

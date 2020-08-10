@@ -16,6 +16,6 @@
     <item
         android:drawable="@drawable/dropdown_more_icon"
         android:gravity="end|center_vertical"
-        android:right="@dimen/dp_5"
+        android:right="@dimen/dp_10"
         />
 </layer-list>

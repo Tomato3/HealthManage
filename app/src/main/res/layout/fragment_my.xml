@@ -8,22 +8,27 @@
             type="com.example.healthmanage.ui.fragment.my.MyViewModel" />
     </data>
 
-    <RelativeLayout style="@style/FragmentMyLayoutStyle">
+    <LinearLayout style="@style/FragmentMyLayoutStyle">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/FragmentMyTextStyle.Bg"
+                android:text="@{ViewModel.name}" />
+
+            <ImageView
+                android:id="@+id/iv_avatar"
+                style="@style/FragmentMyViewStyle"
+                android:url="@{ViewModel.avatar}" />
+
+        </RelativeLayout>
 
         <TextView
-            android:id="@+id/tv_name"
-            style="@style/FragmentMyTextStyle.Bg"
-            android:text="@{ViewModel.name}" />
-
-        <ImageView
-            android:id="@+id/iv_avatar"
-            style="@style/FragmentMyViewStyle"
-            android:url="@{ViewModel.avatar}" />
-
-        <TextView
-            android:id="@+id/tv_my_score"
-            style="@style/FragmentMyTextStyle.MyScore"
-            android:onClick="@{()->ViewModel.empty()}" />
+            android:id="@+id/tv_my_point"
+            style="@style/FragmentMyTextStyle.MyScore" />
 
         <TextView
             android:id="@+id/tv_my_order"
@@ -36,8 +41,7 @@
 
         <TextView
             android:id="@+id/tv_my_comment"
-            style="@style/FragmentMyTextStyle.MyComment"
-            android:onClick="@{()->ViewModel.empty()}" />
+            style="@style/FragmentMyTextStyle.MyComment" />
 
         <TextView
             android:id="@+id/tv_inviting_members"
@@ -53,8 +57,7 @@
 
         <TextView
             android:id="@+id/tv_service_center"
-            style="@style/FragmentMyTextStyle.ServiceCenter"
-            android:onClick="@{()->ViewModel.empty()}" />
-    </RelativeLayout>
+            style="@style/FragmentMyTextStyle.ServiceCenter" />
+    </LinearLayout>
 
 </layout>

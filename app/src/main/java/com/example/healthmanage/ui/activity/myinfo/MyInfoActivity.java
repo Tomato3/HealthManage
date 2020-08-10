@@ -31,11 +31,14 @@ public class MyInfoActivity extends BaseActivity<ActivityMyInfoBinding, MyInfoVi
 
     TitleToolBar titleToolBar = new TitleToolBar();
     private BottomSheet.Builder builder = null;
-    private String permission = Manifest.permission.CAMERA;
+    private String[] permission = {Manifest.permission.CAMERA,
+            Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
     //打开系统相机的意图
     private static final Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
     //打开系统相机RequestCode
     private static final int REQCODEOPENCAMEARA = 0x01;
+    //打开系统相册RequestCode
+    private static final int REQCODEOPENPICK = 0x02;
 
     @Override
     protected void initData() {
@@ -52,13 +55,18 @@ public class MyInfoActivity extends BaseActivity<ActivityMyInfoBinding, MyInfoVi
                 .listener(((dialog, which) -> {
                     switch (which) {
                         case R.id.menu_take_picture:
-                            if (!EasyPermissions.hasPermissions(this, permission)) {
+                            if (!EasyPermissions.hasPermissions(this, permission[0])) {
                                 EasyPermissions.requestPermissions(this, "请求必要的权限,拒绝权限可能会无法使用app", 0, permission);
                             } else {
                                 openCamera();
                             }
                             break;
                         case R.id.menu_select_album:
+                            if (!EasyPermissions.hasPermissions(this, permission[1])) {
+                                EasyPermissions.requestPermissions(this, "请求必要的权限,拒绝权限可能会无法使用app", 0, permission);
+                            } else {
+                                choosePhoto();
+                            }
                             Log.d(HTAG, "initViewParameters==========>: ");
                             break;
                         case R.id.menu_cancel:
@@ -117,18 +125,39 @@ public class MyInfoActivity extends BaseActivity<ActivityMyInfoBinding, MyInfoVi
 
     @Override
     public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
-        openCamera();
+        switch (requestCode) {
+            case REQCODEOPENCAMEARA:
+                openCamera();
+                break;
+            case REQCODEOPENPICK:
+                choosePhoto();
+                break;
+        }
     }
 
     @Override
     public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
-        viewModel.getUiChangeEvent().getToastTxt().setValue("未获取相机权限!");
+        switch (requestCode) {
+            case REQCODEOPENCAMEARA:
+                viewModel.getUiChangeEvent().getToastTxt().setValue("未获取相机权限!");
+                break;
+            case REQCODEOPENPICK:
+                viewModel.getUiChangeEvent().getToastTxt().setValue("未获取存储权限!");
+                break;
+        }
     }
 
     private void openCamera() {
         if (takePhotoIntent.resolveActivity(getPackageManager()) != null) {//这句作用是如果没有相机则该应用不会闪退，要是不加这句则当系统没有相机应用的时候该应用会闪退
             startActivityForResult(takePhotoIntent, REQCODEOPENCAMEARA);//启动相机
         }
+    }
+
+    private void choosePhoto() {
+        Intent intentToPickPic = new Intent(Intent.ACTION_PICK, null);
+        // 如果限制上传到服务器的图片类型时可以直接写如："image/jpeg 、 image/png等的类型" 所有类型则写 "image/*"
+        intentToPickPic.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/jpeg");
+        startActivityForResult(intentToPickPic, REQCODEOPENPICK);
     }
 
     @Override

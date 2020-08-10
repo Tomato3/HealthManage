@@ -1,18 +1,25 @@
 package com.example.healthmanage.view;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 
+import com.example.healthmanage.base.BaseApplication;
+import com.example.healthmanage.ui.activity.historydata.HistoryDataActivity;
+
 /**
- *首页关注RecyclerView
+ * 首页关注RecyclerView
  */
 public class MyFocusRecyclerView {
 
     public String memberName;
     public String memberRank;
+    private int memberId;
 
-    public MyFocusRecyclerView(String memberName, String memberRank) {
+    public MyFocusRecyclerView(String memberName, String memberRank, int memberId) {
         this.memberName = memberName;
         this.memberRank = memberRank;
+        this.memberId = memberId;
     }
 
     public String getMemberName() {
@@ -35,8 +42,14 @@ public class MyFocusRecyclerView {
         Log.d("TAG", "jumpMemberInfos: ==================>");
     }
 
+    //跳转历史数据页面
     public void jumpHistoryData() {
-        Log.d("TAG", "jumpHistoryData: ==================>");
+        Intent intent = new Intent(BaseApplication.getInstance(), HistoryDataActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("memberName", memberName);
+        bundle.putInt("memberId", memberId);
+        intent.putExtras(bundle);
+        BaseApplication.getInstance().getApplicationContext().startActivity(intent);
     }
 
     public void jumpHealthManage() {

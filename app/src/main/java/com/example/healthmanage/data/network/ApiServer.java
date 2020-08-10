@@ -1,10 +1,13 @@
 package com.example.healthmanage.data.network;
 
 
+import com.example.healthmanage.bean.AbnormalDataResponse;
 import com.example.healthmanage.bean.DoctorListResponse;
 import com.example.healthmanage.bean.GeneralResponse;
 import com.example.healthmanage.bean.HealthDataResponse;
+import com.example.healthmanage.bean.HistoryDataResponse;
 import com.example.healthmanage.bean.LoginResponse;
+import com.example.healthmanage.bean.MemberInfoResponse;
 import com.example.healthmanage.bean.MyMemberResponse;
 import com.example.healthmanage.bean.RegisterResponse;
 import com.example.healthmanage.bean.SearchMemberResponse;
@@ -201,8 +204,7 @@ public interface ApiServer {
     Observable<GeneralResponse> createMyTask(@Field("userId") long userId,
                                              @Field("title") String title,
                                              @Field("content") String content,
-                                             @Field("managerId") long managerId,
-                                             @Field("date") String dataDate);
+                                             @Field("managerId") long managerId);
 
 
     /**
@@ -230,19 +232,17 @@ public interface ApiServer {
      * 管理师更新异常任务
      *
      * @param taskId
-     * @param title
      * @param content
      * @return
      */
     @FormUrlEncoded
     @POST("api/healthTask/updateTask")
-    Observable<GeneralResponse> updateMyTaskDetail(@Field("id") long taskId,
-                                                   @Field("title") String title,
-                                                   @Field("content") String content);
+    Observable<GeneralResponse> updateMyTaskDetailByManager(@Field("id") long taskId,
+                                                            @Field("content") String content);
 
 
     /**
-     * 其他角色更新异常任务
+     * 更新异常任务
      *
      * @param taskId
      * @param doctorReply
@@ -250,8 +250,8 @@ public interface ApiServer {
      */
     @FormUrlEncoded
     @POST("api/healthTask/updateTask")
-    Observable<GeneralResponse> updateMyTaskDetail(@Field("id") long taskId,
-                                                   @Field("doctorReply") String doctorReply);
+    Observable<GeneralResponse> updateMyTaskDetailByDoctor(@Field("id") long taskId,
+                                                           @Field("doctorReply") String doctorReply);
 
 
     /**
@@ -287,6 +287,54 @@ public interface ApiServer {
     @POST("api/healthTask/sendTask")
     Observable<GeneralResponse> sendMyTask(@Field("id") long taskId,
                                            @Field("doctorId") long doctorId);
+
+    /**
+     * 查找医生
+     *
+     * @param doctorName
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api/healthTask/getDoctorByName")
+    Observable<DoctorListResponse> searchDoctor(@Field("name") String doctorName);
+
+    /**
+     * 获取异常数据
+     *
+     * @param taskId
+     * @param dataDate
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api/healthTask/getTaskUserHealth")
+    Observable<AbnormalDataResponse> getAbnormalDataResponse(@Field("id") long taskId,
+                                                             @Field("date") String dataDate);
+
+    /**
+     * 查看历史数据
+     *
+     * @param memberId
+     * @param beginTime
+     * @param endTime
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api/health/historyDate")
+    Observable<HistoryDataResponse> getHistoryData(@Field("userId") long memberId,
+                                                   @Field("beginTime") String beginTime,
+                                                   @Field("endTime") String endTime,
+                                                   @Field("pageNum") int pageNum,
+                                                   @Field("pageSize") int pageSize);
+
+    /**
+     * 获取会员简介
+     *
+     * @param memberId
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("doctor/appSystemUser/userInfo")
+    Observable<MemberInfoResponse> getMemberInfo(@Field("userId") long memberId);
 
 
 }

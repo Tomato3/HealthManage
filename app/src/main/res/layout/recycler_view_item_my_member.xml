@@ -10,20 +10,24 @@
             type="com.example.healthmanage.view.MyMemberRecyclerView" />
     </data>
 
-    <RelativeLayout style="@style/RecyclerViewMyMemberLayoutStyle">
+    <LinearLayout style="@style/RecyclerViewMyMemberLayoutStyle">
 
         <TextView
+            android:layout_weight="0"
             style="@style/RecyclerViewMyMemberTextStyle.MemberName"
             android:text="@={MyMemberRecyclerView.memberName}"
             android:onClick="@{()->MyMemberRecyclerView.jumpMemberInfo()}"
             />
 
-        <ImageView style="@style/RecyclerViewMyMemberViewStyle.MemberRank" />
+        <ImageView
+            style="@style/RecyclerViewMyMemberViewStyle.MemberRank" />
 
         <TextView
             style="@style/RecyclerViewMyMemberTextStyle.MemberRank"
             android:text="@={MyMemberRecyclerView.memberRank}" />
+
         <ImageView
+            android:layout_weight="1"
             android:id="@+id/iv_focus"
             style="@style/RecyclerViewMyMemberViewStyle.MemberFocus"
             android:ImageSrc="@{MyMemberRecyclerView.drawable}"
@@ -33,5 +37,5 @@
             style="@style/RecyclerViewMyMemberViewStyle.MemberDetails"
             android:onClick="@{()->MyMemberRecyclerView.jumpMemberDetails()}" />
 
-    </RelativeLayout>
+    </LinearLayout>
 </layout>
