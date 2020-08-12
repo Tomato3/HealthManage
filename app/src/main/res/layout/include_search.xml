@@ -9,12 +9,7 @@
 
         <ImageView
             android:id="@+id/iv_clear"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="@dimen/dp_20"
-            android:src="@drawable/clear"
-            android:visibility="gone" />
+            style="@style/IncludeSearchViewStyle"  />
 
     </RelativeLayout>
 </layout>

@@ -1,6 +1,8 @@
 package com.example.healthmanage.ui.activity.getpoint;
 
+import android.content.ContentResolver;
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -19,6 +21,7 @@ import com.youth.banner.Transformer;
 import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.loader.ImageLoader;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.healthmanage.utils.Constants.HTAG;
@@ -44,12 +47,17 @@ public class GetPointActivity extends BaseActivity<ActivityGetPointBinding, GetP
     @Override
     protected void registerUIChangeEventObserver() {
         super.registerUIChangeEventObserver();
+
+        List<String> imgs = new ArrayList<>();
+        imgs.add(getStringFromDrawableRes(this, R.drawable.banner_img_one));
+        imgs.add(getStringFromDrawableRes(this, R.drawable.banner_img_two));
+        imgs.add(getStringFromDrawableRes(this, R.drawable.banner_img_three));
         viewModel.bannerMutableLiveData.observe(this, new Observer<List<Banner>>() {
             @Override
             public void onChanged(List<Banner> banners) {
                 dataBinding.bannerGetPoint.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)
                         .setImageLoader(new MyLoader())
-                        .setImages(banners.get(0).bannerUrl)
+                        .setImages(imgs)
                         .setBannerTitles(banners.get(0).bannerTitle)
                         .setBannerAnimation(Transformer.Default)
                         .setDelayTime(3000)
@@ -81,8 +89,18 @@ public class GetPointActivity extends BaseActivity<ActivityGetPointBinding, GetP
     private class MyLoader extends ImageLoader {
         @Override
         public void displayImage(Context context, Object path, ImageView imageView) {
-            Glide.with(context).load((String) path).into(imageView);
+            Glide.with(context).load(String.valueOf(path)).into(imageView);
         }
+    }
+
+    //drawable转path
+    public static String getStringFromDrawableRes(Context context, int id) {
+        Resources resources = context.getResources();
+        String path = ContentResolver.SCHEME_ANDROID_RESOURCE + "://"
+                + resources.getResourcePackageName(id) + "/"
+                + resources.getResourceTypeName(id) + "/"
+                + resources.getResourceEntryName(id);
+        return path;
     }
 
     @Override

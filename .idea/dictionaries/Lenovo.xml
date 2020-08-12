@@ -1,12 +1,15 @@
 <component name="ProjectDictionaryState">
   <dictionary name="Lenovo">
     <words>
+      <w>colorpagebg</w>
+      <w>colorspinnerstroke</w>
       <w>edittext</w>
       <w>getpoint</w>
       <w>healthmanage</w>
       <w>historydata</w>
       <w>htag</w>
       <w>infos</w>
+      <w>invitemember</w>
       <w>invitingmembers</w>
       <w>memberdetail</w>
       <w>memberinfo</w>
@@ -18,6 +21,7 @@
       <w>mytask</w>
       <w>mytaskdetail</w>
       <w>mywallet</w>
+      <w>popupmenu</w>
       <w>recyclerviews</w>
       <w>resetpassword</w>
       <w>rxbinding</w>

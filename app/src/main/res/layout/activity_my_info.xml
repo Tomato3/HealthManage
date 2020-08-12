@@ -28,7 +28,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_56"
-                android:background="@drawable/line_grey"
+                android:background="@drawable/layer_list_underline_arrow"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/dp_5"
                 android:text="头像"
@@ -51,7 +51,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_56"
-                android:background="@drawable/line_grey"
+                android:background="@drawable/layer_list_underline_arrow"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/dp_5"
                 android:text="昵称"
@@ -74,7 +74,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_56"
-                android:background="@drawable/line_grey"
+                android:background="@drawable/layer_list_underline_arrow"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/dp_5"
                 android:text="手机号"

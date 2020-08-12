@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -36,7 +35,6 @@
             <TextView
                 android:id="@+id/tv_my_task"
                 style="@style/FragmentHomeTextStyle.MyTask" />
-            <!--            <com.example.healthmanage.widget.BadgeButton style="@style/BadgeButtonStyle" />-->
         </LinearLayout>
 
         <include
@@ -47,8 +45,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_my_focus"
-            style="@style/FragmentHomeViewStyle.MyFocus"
-            tools:listitem="@layout/recycler_view_item_my_focus" />
+            style="@style/FragmentHomeViewStyle.MyFocus" />
 
         <include
             android:id="@+id/dropdown_bar_my_member"
@@ -58,8 +55,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_my_member"
-            style="@style/FragmentHomeViewStyle.MyMember"
-            tools:listitem="@layout/recycler_view_item_my_member" />
+            style="@style/FragmentHomeViewStyle.MyMember" />
 
         <include
             android:id="@+id/dropdown_bar_service_navigation"

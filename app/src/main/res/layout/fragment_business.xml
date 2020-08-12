@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
@@ -9,80 +8,81 @@
             type="com.example.healthmanage.ui.fragment.business.BusinessViewModel" />
     </data>
 
-    <RelativeLayout style="@style/FragmentBusinessServiceLayoutStyle">
+    <RelativeLayout style="@style/FragmentBusinessLayoutStyle">
 
         <ViewFlipper
             android:id="@+id/viewFlipper"
-            style="@style/FragmentBusinessServiceViewFlipperStyle" />
+            style="@style/FragmentBusinessViewFlipperStyle" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_45"
-            >
+            android:layout_marginTop="@dimen/dp_45">
 
-            <TextView style="@style/FragmentBusinessServiceTextStyle.BusinessService" />
+            <TextView style="@style/FragmentBusinessTxtStyle.BusinessProcess" />
 
-            <TextView style="@style/FragmentBusinessServiceTextStyle.PersonalRequest" />
+            <TextView style="@style/FragmentBusinessTxtStyle.PersonalRequest" />
 
-            <TextView style="@style/FragmentBusinessServiceTextStyle.InformationQuery" />
+            <TextView style="@style/FragmentBusinessTxtStyle.InformationQuery" />
 
-            <TextView style="@style/FragmentBusinessServiceTextStyle.internalDiscussion" />
+            <TextView style="@style/FragmentBusinessTxtStyle.InternalDiscussion" />
 
-            <TextView style="@style/FragmentBusinessServiceTextStyle.LearningTraining" />
+            <TextView style="@style/FragmentBusinessTxtStyle.LearningTraining" />
+
         </LinearLayout>
 
-        <TextView
+        <View
             android:layout_width="match_parent"
-            android:layout_height="260dp"
-            android:layout_marginTop="150dp"
-            android:background="@color/colorWhite"
-            android:paddingStart="10dp"
-            android:paddingTop="5dp"
-            android:text="我的团队"
-            android:textColor="@color/colorTextGrey"
-            android:textSize="@dimen/text_size_20" />
+            android:layout_height="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_150"
+            android:background="@color/colorPageBg" />
 
-        <TextView style="@style/FragmentBusinessServiceTextStyle.BusinessTeam" />
+        <TextView style="@style/FragmentBusinessTxtStyle.MyTeam" />
 
-        <TextView style="@style/FragmentBusinessServiceTextStyle.MemberTeam" />
+        <TextView style="@style/FragmentBusinessTxtStyle.BusinessTeam" />
 
-        <TextView style="@style/FragmentBusinessServiceTextStyle.InviteMember" />
+        <TextView style="@style/FragmentBusinessTxtStyle.MemberTeam" />
 
-        <TextView style="@style/FragmentBusinessServiceTextStyle.TaskRole" />
+        <TextView style="@style/FragmentBusinessTxtStyle.InviteMember" />
 
-        <TextView
+        <TextView style="@style/FragmentBusinessTxtStyle.TaskRole" />
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:layout_marginTop="430dp"
-            android:background="@color/colorWhite"
-            android:paddingStart="10dp"
-            android:paddingTop="5dp"
-            android:text="我的业务"
-            android:textColor="@color/colorTextGrey"
-            android:textSize="@dimen/text_size_20" />
+            android:layout_height="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_420"
+            android:background="@color/colorPageBg" />
 
-        <TextView style="@style/FragmentBusinessServiceTextStyle.Referral" />
+        <TextView style="@style/FragmentBusinessTxtStyle.MyBusiness" />
 
-        <TextView style="@style/FragmentBusinessServiceTextStyle.Consultation" />
-
-        <TextView style="@style/FragmentBusinessServiceTextStyle.Prescription" />
-
-        <TextView style="@style/FragmentBusinessServiceTextStyle.Answer" />
-
-        <TextView style="@style/FragmentBusinessServiceTextStyle.DelegatedBusiness" />
-
-        <include
-            layout="@layout/dropdown_bar"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="580dp"
-            app:DropdownBar="@{ViewModel.dropdownBar}" />
+            android:layout_height="@dimen/dp_140"
+            android:layout_marginTop="@dimen/dp_430">
 
-        <TextView style="@style/FragmentBusinessServiceTextStyle.DomesticServices" />
+            <TextView style="@style/FragmentBusinessTxtStyle.Referral" />
 
-        <TextView style="@style/FragmentBusinessServiceTextStyle.Housekeeping" />
+            <TextView style="@style/FragmentBusinessTxtStyle.Consultation" />
 
-        <TextView style="@style/FragmentBusinessServiceTextStyle.Pension" />
+            <TextView style="@style/FragmentBusinessTxtStyle.Prescription" />
+
+            <TextView style="@style/FragmentBusinessTxtStyle.Answer" />
+
+            <TextView style="@style/FragmentBusinessTxtStyle.DelegatedBusiness" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_580"
+            android:background="@color/colorPageBg" />
+
+        <TextView style="@style/FragmentBusinessTxtStyle.LeisureLife" />
+
+        <TextView style="@style/FragmentBusinessTxtStyle.DomesticService" />
+
+        <TextView style="@style/FragmentBusinessTxtStyle.Housekeeping" />
+
+        <TextView style="@style/FragmentBusinessTxtStyle.Pension" />
     </RelativeLayout>
 </layout>

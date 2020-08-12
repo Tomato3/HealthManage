@@ -8,26 +8,26 @@
             type="com.example.healthmanage.view.TaskReceiverRecyclerView" />
     </data>
 
-    <LinearLayout style="@style/RecyclerViewItemTaskReceiverLayoutStyle">
+    <LinearLayout style="@style/RecyclerViewTaskReceiverLayoutStyle">
 
         <ImageView
-            style="@style/RecyclerViewItemTaskReceiverViewStyle.Avatar"
+            style="@style/RecyclerViewTaskReceiverViewStyle.Avatar"
             android:url="@{TaskReceiverRecyclerView.avatarUrl}" />
 
         <TextView
-            style="@style/RecyclerViewItemTaskReceiverTxtStyle.Name"
+            style="@style/RecyclerViewTaskReceiverTxtStyle.Name"
             android:text="@={TaskReceiverRecyclerView.name}" />
 
         <TextView
-            style="@style/RecyclerViewItemTaskReceiverTxtStyle.Type"
+            style="@style/RecyclerViewTaskReceiverTxtStyle.Type"
             android:text="@={TaskReceiverRecyclerView.type}" />
 
         <TextView
-            style="@style/RecyclerViewItemTaskReceiverTxtStyle.ProfessionalTitle"
+            style="@style/RecyclerViewTaskReceiverTxtStyle.ProfessionalTitle"
             android:text="@={TaskReceiverRecyclerView.professionalTitle}" />
 
         <TextView
-            style="@style/RecyclerViewItemTaskReceiverTxtStyle.SittingPlace"
+            style="@style/RecyclerViewTaskReceiverTxtStyle.SittingPlace"
             android:text="@={TaskReceiverRecyclerView.sittingPlace}" />
     </LinearLayout>
 </layout>

@@ -45,7 +45,7 @@ public class ResetPasswordActivity extends BaseActivity<ActivityResetPasswordBin
                 } else {
                     dataBinding.etNewPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
                     dataBinding.etNewPassword.setSelection(dataBinding.etNewPassword.getText().length());
-                    dataBinding.ivEye.setImageResource(R.drawable.activity_login_password_close);
+                    dataBinding.ivEye.setImageResource(R.drawable.activity_login_password_closed);
                 }
             }
         });

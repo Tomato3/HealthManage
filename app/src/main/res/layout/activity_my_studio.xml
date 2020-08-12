@@ -9,9 +9,7 @@
             type="com.example.healthmanage.ui.activity.mystudio.MyStudioViewModel" />
     </data>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <RelativeLayout style="@style/ActivityMyStudioLayoutStyle">
 
         <include
             android:id="@+id/include_title"
@@ -28,21 +26,26 @@
 
         <View style="@style/ActivityMyStudioViewStyle" />
 
-        <Spinner
-            android:id="@+id/spinner_approval_status"
-            style="@style/ActivityMyStudioSpinnerStyle" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginTop="@dimen/dp_340">
 
-        <TextView
-            android:id="@+id/tv_date_picker"
-            style="@style/ActivityMyStudioDatePickerStyle"
-            android:text="@={ViewModel.date}" />
+            <Spinner
+                android:id="@+id/spinner_approval_status"
+                style="@style/ActivityMyStudioSpinnerStyle" />
 
-        <Button style="@style/ActivityMyStudioButtonStyle" />
+            <TextView
+                android:id="@+id/tv_date_picker"
+                style="@style/ActivityMyStudioDatePickerStyle"
+                android:text="@={ViewModel.date}" />
+
+            <Button style="@style/ActivityMyStudioButtonStyle" />
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="420dp" />
+            android:id="@+id/recycler_view_my_article"
+            style="@style/ActivityMyStudioRecyclerViewStyle" />
 
     </RelativeLayout>
 </layout>

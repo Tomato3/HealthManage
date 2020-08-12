@@ -35,7 +35,7 @@ public class BusinessFragment extends BaseFragment<FragmentBusinessBinding, Busi
     @Override
     protected void initView() {
         for (int i = 0; i < news.length; i++) {
-            View view = getLayoutInflater().inflate(R.layout.viewflipper, null);
+            View view = getLayoutInflater().inflate(R.layout.view_flipper, null);
             TextView textView = (TextView) view.findViewById(R.id.tv);
             textView.setText(news[i]);
             dataBinding.viewFlipper.addView(view);

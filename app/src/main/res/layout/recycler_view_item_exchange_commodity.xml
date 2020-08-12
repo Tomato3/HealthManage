@@ -8,34 +8,21 @@
             type="com.example.healthmanage.view.ExchangeCommodityRecyclerView" />
     </data>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_200"
-        android:background="@color/colorWhite"
-        >
+    <RelativeLayout style="@style/RecyclerViewExchangeCommodityLayoutStyle">
 
         <ImageView
             android:id="@+id/iv_product_icon"
-            android:layout_width="@dimen/dp_200"
-            android:layout_height="@dimen/dp_100"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="@dimen/dp_10"
-            android:layout_marginEnd="@dimen/dp_10"
-            android:background="@color/colorPageBg"
+            style="@style/RecyclerViewExchangeCommodityViewStyle"
             android:url="@{ExchangeCommodityRecyclerView.productIcon}" />
 
         <TextView
             android:id="@+id/tv_product_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_10"
+            style="@style/RecyclerViewExchangeCommodityTxtStyle"
             android:layout_below="@+id/iv_product_icon"
             android:text="@{ExchangeCommodityRecyclerView.productName}" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_10"
+            style="@style/RecyclerViewExchangeCommodityTxtStyle"
             android:layout_below="@+id/tv_product_name"
             android:text="@{ExchangeCommodityRecyclerView.productPoint}" />
     </RelativeLayout>

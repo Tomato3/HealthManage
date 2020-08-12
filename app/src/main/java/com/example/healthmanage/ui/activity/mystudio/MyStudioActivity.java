@@ -12,15 +12,20 @@ import android.widget.DatePicker;
 import android.widget.PopupMenu;
 
 import androidx.appcompat.view.menu.MenuPopupHelper;
+import androidx.lifecycle.Observer;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.healthmanage.BR;
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
+import com.example.healthmanage.base.BaseAdapter;
 import com.example.healthmanage.databinding.ActivityMyStudioBinding;
 import com.example.healthmanage.utils.ToolUtil;
+import com.example.healthmanage.view.ArticleRecyclerView;
 import com.example.healthmanage.widget.TitleToolBar;
 
 import java.lang.reflect.Field;
+import java.util.List;
 
 import static com.example.healthmanage.utils.Constants.HTAG;
 
@@ -28,19 +33,19 @@ import static com.example.healthmanage.utils.Constants.HTAG;
 public class MyStudioActivity extends BaseActivity<ActivityMyStudioBinding, MyStudioViewModel> implements View.OnClickListener, TitleToolBar.OnTitleIconClickCallBack {
 
     private DatePickerDialog datePickerDialog;
-    TitleToolBar titleToolBar = new TitleToolBar();
+    private TitleToolBar titleToolBar = new TitleToolBar();
+    private BaseAdapter articleAdapter;
 
     @Override
     protected void initData() {
         titleToolBar.setLeftIconVisible(true);
         titleToolBar.setTitle("我的工作室");
         titleToolBar.setRightIconVisible(true);
-        titleToolBar.setRightIconSrc(R.drawable.toolbar_title_add);
+        titleToolBar.setRightIconSrc(R.drawable.add);
         titleToolBar.setOnClickCallBack(this);
         viewModel.setTitleToolBar(titleToolBar);
 
-        registerUIChangeEventObserver();
-
+        viewModel.getArticleList();
     }
 
     @Override
@@ -71,6 +76,18 @@ public class MyStudioActivity extends BaseActivity<ActivityMyStudioBinding, MySt
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
+            }
+        });
+
+        articleAdapter = new BaseAdapter(this, null, R.layout.recycler_view_item_article,
+                BR.ArticleRecyclerView);
+        dataBinding.recyclerViewMyArticle.setLayoutManager(new LinearLayoutManager(this));
+        dataBinding.recyclerViewMyArticle.setAdapter(articleAdapter);
+        viewModel.articleMutableLiveData.observe(this, new Observer<List<ArticleRecyclerView>>() {
+            @Override
+            public void onChanged(List<ArticleRecyclerView> articleRecyclerViews) {
+                articleAdapter.setRecyclerViewList(articleRecyclerViews);
+                articleAdapter.notifyDataSetChanged();
             }
         });
 

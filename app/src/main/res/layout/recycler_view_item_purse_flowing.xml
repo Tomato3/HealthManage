@@ -8,37 +8,22 @@
             type="com.example.healthmanage.view.PurseFlowingRecyclerView" />
     </data>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_70">
+    <RelativeLayout style="@style/RecyclerViewPurseFlowingLayoutStyle">
 
         <ImageView
-            android:layout_width="@dimen/dp_50"
-            android:layout_height="@dimen/dp_50"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/dp_10"
+            style="@style/RecyclerViewPurseFlowingViewStyle"
             android:ImageSrc="@{PurseFlowingRecyclerView.typeIcon}" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_70"
-            android:layout_marginTop="@dimen/dp_10"
+            style="@style/RecyclerViewPurseFlowingTxtStyle.TypeName"
             android:text="@{PurseFlowingRecyclerView.typeName}" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_70"
-            android:layout_marginTop="@dimen/dp_30"
+            style="@style/RecyclerViewPurseFlowingTxtStyle.TypeTime"
             android:text="@{PurseFlowingRecyclerView.typeTime}" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/dp_10"
+            style="@style/RecyclerViewPurseFlowingTxtStyle.TypeNumber"
             android:text="@{PurseFlowingRecyclerView.typeNumber}" />
     </RelativeLayout>
 </layout>

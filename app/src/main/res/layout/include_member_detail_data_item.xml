@@ -8,26 +8,26 @@
             type="com.example.healthmanage.widget.DataItem" />
     </data>
 
-    <LinearLayout style="@style/ActivityMemberDetailDataItemLayoutStyle">
+    <LinearLayout style="@style/IncludeMemberDetailDataItemLayoutStyle">
 
         <TextView
-            style="@style/ActivityMemberDetailDataItemTextStyle.First"
+            style="@style/IncludeMemberDetailDataItemTextStyle.First"
             android:text="@={DataItem.firstTxt}" />
 
         <TextView
-            style="@style/ActivityMemberDetailDataItemTextStyle.Second"
+            style="@style/IncludeMemberDetailDataItemTextStyle.Second"
             android:text="@={DataItem.secondTxt}"
 
             />
 
         <TextView
-            style="@style/ActivityMemberDetailDataItemTextStyle.Third"
+            style="@style/IncludeMemberDetailDataItemTextStyle.Third"
             android:text="@={DataItem.thirdTxt}"
 
             />
 
         <TextView
-            style="@style/ActivityMemberDetailDataItemTextStyle.Four"
+            style="@style/IncludeMemberDetailDataItemTextStyle.Four"
             android:text="@={DataItem.fourthTxt}"
 
             />

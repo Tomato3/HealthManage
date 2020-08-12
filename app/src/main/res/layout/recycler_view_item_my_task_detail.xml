@@ -8,19 +8,19 @@
             type="com.example.healthmanage.view.MyTaskDetailRecyclerView" />
     </data>
 
-    <LinearLayout style="@style/RecyclerViewItemMyTaskDetailLayoutStyle">
+    <LinearLayout style="@style/RecyclerViewMyTaskDetailLayoutStyle">
 
         <TextView
-            style="@style/RecyclerViewItemMyTaskDetailTxtStyle.PostedBy"
+            style="@style/RecyclerViewMyTaskDetailTxtStyle.PostedBy"
             android:text="@{MyTaskDetailRecyclerView.postedBy}"
             />
 
         <TextView
-            style="@style/RecyclerViewItemMyTaskDetailTxtStyle.Description"
+            style="@style/RecyclerViewMyTaskDetailTxtStyle.Description"
             android:text="@{MyTaskDetailRecyclerView.description}" />
 
         <TextView
-            style="@style/RecyclerViewItemMyTaskDetailTxtStyle.CreateTime"
+            style="@style/RecyclerViewMyTaskDetailTxtStyle.CreateTime"
             android:text="@{MyTaskDetailRecyclerView.createTime}" />
     </LinearLayout>
 </layout>

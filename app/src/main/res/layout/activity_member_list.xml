@@ -20,10 +20,6 @@
             android:onClick="@{()->ViewModel.searchMember()}"
             android:text="@={ViewModel.searchPhone}" />
 
-        <Button
-            style="@style/ActivityMemberListButtonStyle"
-            android:onClick="@{()->ViewModel.searchMember()}" />
-
         <RadioGroup
             android:id="@+id/rg"
             style="@style/ActivityMemberListRadioGroupStyle">

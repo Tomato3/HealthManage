@@ -8,42 +8,30 @@
             type="com.example.healthmanage.view.MyTaskRecyclerView" />
     </data>
 
-    <LinearLayout style="@style/RecyclerViewItemMyTaskLayoutStyle">
+    <LinearLayout style="@style/RecyclerViewMyTaskLayoutStyle">
 
         <RelativeLayout
             android:id="@+id/rl_bg"
-            style="@style/RecyclerViewItemMyTaskLayoutStyle.Content"
+            style="@style/RecyclerViewMyTaskLayoutStyle.Content"
             android:onClick="@{()->MyTaskRecyclerView.change()}">
 
             <ImageView
-                style="@style/RecyclerViewItemMyTaskViewStyle"
+                style="@style/RecyclerViewMyTaskViewStyle"
                 android:ImageSrc="@{MyTaskRecyclerView.imageSrc}" />
 
             <TextView
-                style="@style/RecyclerViewItemMyTaskTxtStyle.Title"
+                style="@style/RecyclerViewMyTaskTxtStyle.Title"
                 android:text="@={MyTaskRecyclerView.title}" />
 
             <TextView
-                style="@style/RecyclerViewItemMyTaskTxtStyle.Description"
+                style="@style/RecyclerViewMyTaskTxtStyle.Description"
                 android:text="@={MyTaskRecyclerView.description}" />
 
             <TextView
-                style="@style/RecyclerViewItemMyTaskTxtStyle.CreateTime"
+                style="@style/RecyclerViewMyTaskTxtStyle.CreateTime"
                 android:text="@={MyTaskRecyclerView.createTime}" />
 
         </RelativeLayout>
-
-        <!--        <include-->
-        <!--            android:id="@+id/include_menu"-->
-        <!--            layout="@layout/recycler_view_item_my_task_menu"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_gravity="center"-->
-        <!--            android:visibility="gone" />-->
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
 
     </LinearLayout>
 </layout>

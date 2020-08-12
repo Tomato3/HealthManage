@@ -1,4 +1,4 @@
-package com.example.healthmanage.ui.activity.invitingmembers;
+package com.example.healthmanage.ui.activity.invitemember;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -14,12 +14,12 @@ import androidx.lifecycle.Observer;
 import com.example.healthmanage.BR;
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
-import com.example.healthmanage.databinding.ActivityInvitingMembersBinding;
+import com.example.healthmanage.databinding.ActivityInviteMemberBinding;
 import com.example.healthmanage.utils.ToolUtil;
 import com.example.healthmanage.widget.TitleToolBar;
 import com.jeremyliao.liveeventbus.LiveEventBus;
 
-public class InvitingMembersActivity extends BaseActivity<ActivityInvitingMembersBinding, InvitingMembersViewModel> implements TitleToolBar.OnTitleIconClickCallBack, View.OnClickListener {
+public class InviteMemberActivity extends BaseActivity<ActivityInviteMemberBinding, InviteMemberViewModel> implements TitleToolBar.OnTitleIconClickCallBack, View.OnClickListener {
 
     private TitleToolBar titleToolBar = new TitleToolBar();
 
@@ -110,7 +110,7 @@ public class InvitingMembersActivity extends BaseActivity<ActivityInvitingMember
 
     @Override
     protected int setContentViewSrc(Bundle savedInstanceState) {
-        return R.layout.activity_inviting_members;
+        return R.layout.activity_invite_member;
     }
 }
 

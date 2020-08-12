@@ -1,4 +1,4 @@
-package com.example.healthmanage.ui.activity.invitingmembers;
+package com.example.healthmanage.ui.activity.invitemember;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -14,7 +14,7 @@ import com.example.healthmanage.bean.UsersRemoteSource;
 import com.example.healthmanage.data.network.exception.ExceptionHandle;
 import com.jeremyliao.liveeventbus.LiveEventBus;
 
-public class InvitingMembersViewModel extends BaseViewModel {
+public class InviteMemberViewModel extends BaseViewModel {
 
     public MutableLiveData<String> name = new MutableLiveData<>("");
     public MutableLiveData<String> rank = new MutableLiveData<>("");
@@ -25,7 +25,7 @@ public class InvitingMembersViewModel extends BaseViewModel {
     private UsersRemoteSource usersRemoteSource;
     private int a;
 
-    public InvitingMembersViewModel() {
+    public InviteMemberViewModel() {
         usersRemoteSource = new UsersRemoteSource();
     }
 

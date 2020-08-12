@@ -14,7 +14,7 @@
 
         <TextView
             android:id="@+id/tv_title"
-            style="@style/DropdownBartTextStyle.TitleToolBar"
+            style="@style/DropdownBartTextStyle.Title"
             android:text="@{DropdownBar.title}" />
 
         <TextView

@@ -48,7 +48,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="@dimen/dp_100"
                 android:layout_marginTop="@dimen/dp_90"
-                android:background="@drawable/text_bg_white_radius_50" />
+                android:background="@drawable/shape_solid_white_radius_50" />
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_60"
-            android:background="@drawable/line_grey"
+            android:background="@drawable/layer_list_underline_arrow"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/dp_10"
             android:text="电话联系客服"
@@ -33,7 +33,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_60"
-            android:background="@drawable/line_grey"
+            android:background="@drawable/layer_list_underline_arrow"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/dp_10"
             android:text="在线联系客服"
@@ -43,7 +43,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_60"
-            android:background="@drawable/line_grey"
+            android:background="@drawable/layer_list_underline_arrow"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/dp_10"
             android:text="意见反馈"
@@ -71,7 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_60"
             android:layout_marginTop="@dimen/dp_10"
-            android:background="@drawable/line_grey"
+            android:background="@drawable/layer_list_underline_arrow"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/dp_10"
             android:text="常见问题一"
@@ -81,7 +81,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_60"
-            android:background="@drawable/line_grey"
+            android:background="@drawable/layer_list_underline_arrow"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/dp_10"
             android:text="常见问题二"
@@ -91,7 +91,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_60"
-            android:background="@drawable/line_grey"
+            android:background="@drawable/layer_list_underline_arrow"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/dp_10"
             android:text="常见问题三"

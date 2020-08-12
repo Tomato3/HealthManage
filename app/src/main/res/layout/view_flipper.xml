@@ -9,12 +9,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="@dimen/dp_20"
         android:ellipsize="end"
-        android:lines="1"
         android:maxLines="1"
         android:text="预防新冠病毒有妙招！"
         android:textColor="@color/colorWhite"
-        android:textSize="14sp" />
+        android:textSize="@dimen/text_size_14" />
 
 </LinearLayout>

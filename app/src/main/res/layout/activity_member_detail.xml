@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView style="@style/ActivityMemberDetailTextStyle.Right" />
+            <TextView style="@style/ActivityMemberDetailTextStyle.LocationTitle" />
 
             <TextView
                 style="@style/ActivityMemberDetailTextStyle.Location"
@@ -37,31 +37,39 @@
             android:orientation="vertical">
 
             <include
-                android:id="@+id/include_today_health"
+                android:id="@+id/include_today_environment"
                 style="@style/ActivityMemberDetailIncludeStyle.TodayEnvironment"
                 layout="@layout/dropdown_bar"
                 app:DropdownBar="@{ViewModel.dropdownBarLists.get(0)}" />
 
             <include
                 style="@style/ActivityMemberDetailIncludeStyle.TodayEnvironmentData"
-                layout="@layout/activity_member_detail_data_item"
+                layout="@layout/include_member_detail_data_item"
                 app:DataItem="@{ViewModel.dataItemTodayEnvironment}" />
 
             <include
-                android:id="@+id/include_today_health_data"
+                android:id="@+id/include_today_environment_data"
                 style="@style/ActivityMemberDetailIncludeStyle.TodayEnvironmentData"
-                layout="@layout/activity_member_detail_data_item"
+                layout="@layout/include_member_detail_data_item"
                 android:visibility="gone"
                 app:DataItem="@{ViewModel.dataItemTodayEnvironment}" />
 
             <include
+                android:id="@+id/include_today_health"
                 style="@style/ActivityMemberDetailIncludeStyle.TodayHealth"
                 layout="@layout/dropdown_bar"
                 app:DropdownBar="@{ViewModel.dropdownBarLists.get(1)}" />
 
             <include
                 style="@style/ActivityMemberDetailIncludeStyle.TodayHealthData"
-                layout="@layout/activity_member_detail_data_item"
+                layout="@layout/include_member_detail_data_item"
+                app:DataItem="@{ViewModel.dataItemTodayHealth}" />
+
+            <include
+                android:id="@+id/include_today_health_data"
+                style="@style/ActivityMemberDetailIncludeStyle.TodayHealthData"
+                layout="@layout/include_member_detail_data_item"
+                android:visibility="gone"
                 app:DataItem="@{ViewModel.dataItemTodayHealth}" />
 
             <include
@@ -71,7 +79,7 @@
 
             <include
                 style="@style/ActivityMemberDetailIncludeStyle.BodyHealthData"
-                layout="@layout/activity_member_detail_data_item"
+                layout="@layout/include_member_detail_data_item"
                 app:DataItem="@{ViewModel.dataItemBodyHealth}" />
 
             <include
@@ -81,7 +89,7 @@
 
             <include
                 style="@style/ActivityMemberDetailIncludeStyle.SpiritHealthData"
-                layout="@layout/activity_member_detail_data_item"
+                layout="@layout/include_member_detail_data_item"
                 app:DataItem="@{ViewModel.dataItemSpiritHealth}" />
         </LinearLayout>
 

@@ -8,25 +8,14 @@
             type="com.example.healthmanage.view.AbnormalDataRecyclerView" />
     </data>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <LinearLayout style="@style/RecyclerViewAbnormalDataLayoutStyle">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@{AbnormalDataRecyclerView.dataName}"
-            android:textColor="@color/colorTextGrey"
-            android:textSize="@dimen/text_size_16" />
+            style="@style/RecyclerViewAbnormalDataTxtStyle"
+            android:text="@{AbnormalDataRecyclerView.dataName}" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@{AbnormalDataRecyclerView.data}"
-            android:textColor="@color/colorTextGrey"
-            android:textSize="@dimen/text_size_16" />
-
+            style="@style/RecyclerViewAbnormalDataTxtStyle"
+            android:text="@{AbnormalDataRecyclerView.data}" />
     </LinearLayout>
 </layout>

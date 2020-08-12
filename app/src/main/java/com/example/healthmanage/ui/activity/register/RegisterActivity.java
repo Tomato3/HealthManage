@@ -36,7 +36,7 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding, Regi
                 } else {
                     dataBinding.etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
                     dataBinding.etPassword.setSelection(dataBinding.etPassword.getText().length());
-                    dataBinding.ivEye.setImageResource(R.drawable.activity_login_password_close);
+                    dataBinding.ivEye.setImageResource(R.drawable.activity_login_password_closed);
                 }
             }
         });

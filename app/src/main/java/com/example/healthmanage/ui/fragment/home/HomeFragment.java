@@ -23,14 +23,13 @@ import com.example.healthmanage.widget.DropdownBar;
 import java.util.ArrayList;
 import java.util.List;
 
-import static androidx.constraintlayout.widget.Constraints.TAG;
 import static com.example.healthmanage.utils.Constants.HTAG;
 
 public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewModel> implements View.OnClickListener {
 
-    private DropdownBar dropdownBarMyFocus;
+    private DropdownBar dropdownBarMyFocus, dropdownBarMyMember, dropdownBarServiceNavigation;
     private BaseAdapter myMemberAdapter, myFocusAdapter;
-    Bundle bundle;
+    private Bundle bundle;
 
     @Override
     protected void initData() {
@@ -44,19 +43,22 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
 
     @Override
     protected void initAdapter() {
+
         myMemberAdapter = new BaseAdapter(getActivity(), null,
                 R.layout.recycler_view_item_my_member, BR.MyMemberRecyclerView);
         myFocusAdapter = new BaseAdapter(getActivity(), null,
                 R.layout.recycler_view_item_my_focus, BR.MyFocusRecyclerView);
+
         dataBinding.recyclerviewMyMember.setLayoutManager(new LinearLayoutManager(getActivity()));
         dataBinding.recyclerviewMyFocus.setLayoutManager(new LinearLayoutManager(getActivity()));
-
+        dataBinding.recyclerviewMyMember.setAdapter(myMemberAdapter);
+        dataBinding.recyclerviewMyFocus.setAdapter(myFocusAdapter);
 
         viewModel.myFocusMutableLiveData.observe(this, new Observer<List<MyFocusRecyclerView>>() {
             @Override
             public void onChanged(List<MyFocusRecyclerView> myFocusRecyclerViews) {
                 myFocusAdapter.setRecyclerViewList(myFocusRecyclerViews);
-                dataBinding.recyclerviewMyFocus.setAdapter(myFocusAdapter);
+                myFocusAdapter.notifyDataSetChanged();
             }
         });
 
@@ -64,7 +66,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
             @Override
             public void onChanged(List<MyMemberRecyclerView> myMemberRecyclerViewList) {
                 myMemberAdapter.setRecyclerViewList(myMemberRecyclerViewList);
-                dataBinding.recyclerviewMyMember.setAdapter(myMemberAdapter);
+                myMemberAdapter.notifyDataSetChanged();
             }
         });
 
@@ -86,16 +88,12 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
             }
         });
 
-
         dataBinding.tvMyTask.setOnClickListener(this::onClick);
-
-
     }
 
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        Log.d(HTAG, "onHiddenChanged: ====>");
         viewModel.loadMyFocus();
         viewModel.loadMyMembers();
     }
@@ -103,8 +101,8 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
     @Override
     protected void initView() {
         dropdownBarMyFocus = new DropdownBar("我的关注", true, false, false);
-        DropdownBar dropdownBarMyMember = new DropdownBar("我的会员", true, false, false);
-        DropdownBar dropdownBarServiceNavigation = new DropdownBar("服务导航", false, false, false);
+        dropdownBarMyMember = new DropdownBar("我的会员", true, false, false);
+        dropdownBarServiceNavigation = new DropdownBar("服务导航", false, false, false);
         ArrayList<DropdownBar> dropdownBarArrayList = new ArrayList<>();
         dropdownBarArrayList.add(dropdownBarMyFocus);
         dropdownBarArrayList.add(dropdownBarMyMember);
@@ -115,29 +113,16 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
     @Override
     public void onResume() {
         super.onResume();
-        Log.d(TAG, "onResume: =====>");
         viewModel.loadMyFocus();
         viewModel.loadMyMembers();
     }
 
     @Override
     protected void initViewModel() {
-
     }
 
     @Override
     protected void initObserver() {
-
-    }
-
-    @Override
-    public int initContentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return R.layout.fragment_home;
-    }
-
-    @Override
-    protected int initVIewModelID() {
-        return BR.ViewModel;
     }
 
     @Override
@@ -147,5 +132,15 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
                 startActivity(MyTaskActivity.class);
                 break;
         }
+    }
+
+    @Override
+    protected int initVIewModelID() {
+        return BR.ViewModel;
+    }
+
+    @Override
+    public int initContentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return R.layout.fragment_home;
     }
 }

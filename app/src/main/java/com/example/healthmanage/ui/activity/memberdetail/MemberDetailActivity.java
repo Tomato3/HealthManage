@@ -1,5 +1,6 @@
 package com.example.healthmanage.ui.activity.memberdetail;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.example.healthmanage.BR;
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.databinding.ActivityMemberDetailBinding;
+import com.example.healthmanage.utils.LocationUtil;
 import com.example.healthmanage.view.EditTextDialog;
 import com.example.healthmanage.widget.DropdownBar;
 import com.example.healthmanage.widget.TitleToolBar;
@@ -19,17 +21,19 @@ import com.jeremyliao.liveeventbus.LiveEventBus;
 
 import java.util.ArrayList;
 
+import pub.devrel.easypermissions.EasyPermissions;
+
 import static com.example.healthmanage.utils.Constants.HTAG;
 
 public class MemberDetailActivity extends BaseActivity<ActivityMemberDetailBinding,
         MemberDetailViewModel> implements TitleToolBar.OnTitleIconClickCallBack, View.OnClickListener {
 
-    TitleToolBar titleToolBar = new TitleToolBar();
-    Bundle bundle;
-    boolean b;
-    int userId;
-    String memberName;
-    EditTextDialog editTextDialog;
+    private TitleToolBar titleToolBar = new TitleToolBar();
+    private Bundle bundle;
+    private boolean b;
+    private int userId;
+    private String memberName;
+    private EditTextDialog editTextDialog;
 
     @Override
     protected void initData() {
@@ -62,6 +66,17 @@ public class MemberDetailActivity extends BaseActivity<ActivityMemberDetailBindi
         viewModel.getWeather();
 
         viewModel.getHealthDataList(String.valueOf(userId));
+        if (EasyPermissions.hasPermissions(this, Manifest.permission.ACCESS_FINE_LOCATION) && EasyPermissions.hasPermissions(this, Manifest.permission.ACCESS_COARSE_LOCATION)) {
+
+        }else {
+            EasyPermissions.requestPermissions(this, "请求必要的权限,拒绝权限可能会无法使用app", 0,
+                    Manifest.permission.ACCESS_FINE_LOCATION);
+            EasyPermissions.requestPermissions(this, "请求必要的权限,拒绝权限可能会无法使用app", 0,
+                    Manifest.permission.ACCESS_COARSE_LOCATION);
+        }
+
+
+
 
     }
 
@@ -71,14 +86,8 @@ public class MemberDetailActivity extends BaseActivity<ActivityMemberDetailBindi
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
     protected void registerUIChangeEventObserver() {
         super.registerUIChangeEventObserver();
-
 
         viewModel.currentFocusState.observe(this, new Observer<Boolean>() {
             @Override
@@ -108,6 +117,24 @@ public class MemberDetailActivity extends BaseActivity<ActivityMemberDetailBindi
                 dataBinding.includeTodayHealth.tvExpand.setVisibility(View.VISIBLE);
                 dataBinding.includeTodayHealth.tvCollapse.setVisibility(View.GONE);
                 dataBinding.includeTodayHealthData.getRoot().setVisibility(View.GONE);
+            }
+        });
+
+        dataBinding.includeTodayEnvironment.tvExpand.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataBinding.includeTodayEnvironment.tvExpand.setVisibility(View.GONE);
+                dataBinding.includeTodayEnvironment.tvCollapse.setVisibility(View.VISIBLE);
+                dataBinding.includeTodayEnvironmentData.getRoot().setVisibility(View.VISIBLE);
+            }
+        });
+
+        dataBinding.includeTodayEnvironment.tvCollapse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataBinding.includeTodayEnvironment.tvExpand.setVisibility(View.VISIBLE);
+                dataBinding.includeTodayEnvironment.tvCollapse.setVisibility(View.GONE);
+                dataBinding.includeTodayEnvironmentData.getRoot().setVisibility(View.GONE);
             }
         });
 

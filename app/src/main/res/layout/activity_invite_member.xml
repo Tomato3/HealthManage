@@ -8,10 +8,10 @@
 
         <variable
             name="ViewModel"
-            type="com.example.healthmanage.ui.activity.invitingmembers.InvitingMembersViewModel" />
+            type="com.example.healthmanage.ui.activity.invitemember.InviteMemberViewModel" />
     </data>
 
-    <RelativeLayout style="@style/ActivityInvitingMembersLayoutStyle">
+    <RelativeLayout style="@style/ActivityInviteMemberLayoutStyle">
 
         <include
             layout="@layout/toolbar_title"
@@ -19,31 +19,25 @@
 
         <include
             android:id="@+id/include_search"
-            layout="@layout/include_search"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_40"
-            android:layout_marginTop="@dimen/dp_70" />
+            style="@style/ActivityInviteMemberIncludeStyle"
+            layout="@layout/include_search" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:layout_marginTop="@dimen/dp_130"
-            android:background="@color/colorPageBg" />
+        <View style="@style/ActivityInviteViewStyle" />
 
         <TextView
             android:id="@+id/tv_member_name"
-            style="@style/ActivityInvitingTextStyle.MemberName"
+            style="@style/ActivityInviteTextStyle.MemberName"
             android:text="@={ViewModel.name}"
             android:visibility="@{ViewModel.inviteBtnVisible?View.VISIBLE:View.GONE}" />
 
         <TextView
             android:id="@+id/tv_member_rank"
-            style="@style/ActivityInvitingTextStyle.MemberRank"
+            style="@style/ActivityInviteTextStyle.MemberRank"
             android:text="@={ViewModel.rank}" />
 
         <Button
             android:id="@+id/btn_invite"
-            style="@style/ActivityInvitingBtnStyle.Invite"
+            style="@style/ActivityInviteBtnStyle"
             android:onClick="@{()->ViewModel.inviteMember()}"
             android:visibility="@{ViewModel.inviteBtnVisible?View.VISIBLE:View.GONE}" />
 

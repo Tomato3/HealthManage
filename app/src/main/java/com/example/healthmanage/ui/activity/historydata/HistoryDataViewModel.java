@@ -74,7 +74,7 @@ public class HistoryDataViewModel extends BaseViewModel {
 
                     @Override
                     public void getFailed(String msg) {
-                        showToast(msg, 1);
+                        showToast("暂无历史记录", 1);
                     }
 
                     @Override

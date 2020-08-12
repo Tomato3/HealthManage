@@ -17,8 +17,7 @@
         <ImageView
             android:id="@+id/iv_logo"
             style="@style/ActivitySplashViewStyle"
-            android:ImageSrc="@{ViewModel.splashLogo}"
-            />
+            android:ImageSrc="@{ViewModel.splashLogo}" />
 
     </RelativeLayout>
 </layout>

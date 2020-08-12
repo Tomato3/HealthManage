@@ -36,7 +36,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity.invitingmembers.InvitingMembersActivity"
+            android:name=".ui.activity.invitemember.InviteMemberActivity"
             android:configChanges="orientation|keyboardHidden"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
         <activity android:name=".ui.activity.memberdetail.MemberDetailActivity" />

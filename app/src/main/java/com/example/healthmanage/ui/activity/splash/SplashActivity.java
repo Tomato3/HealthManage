@@ -51,7 +51,7 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding, SplashVi
         Intent intent = new Intent(context, LoginActivity.class);
         ActivityOptionsCompat options =
                 ActivityOptionsCompat.makeSceneTransitionAnimation(context, imageView,
-                        context.getString(R.string.transition_movie_img));
+                        context.getString(R.string.transition_logo_img));
         //与xml文件对应
         ActivityCompat.startActivity(context, intent, options.toBundle());
     }

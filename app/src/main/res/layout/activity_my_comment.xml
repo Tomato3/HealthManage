@@ -9,11 +9,7 @@
             type="com.example.healthmanage.ui.activity.mycomment.MyCommentViewModel" />
     </data>
 
-    <LinearLayout
-        style="@style/ActivityMyCommentLayoutStyle"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <LinearLayout style="@style/ActivityMyCommentLayoutStyle">
 
         <include
             layout="@layout/toolbar_title"

@@ -23,8 +23,7 @@ import java.util.List;
 
 public class SearchMemberActivity extends BaseActivity<ActivitySearchMemberBinding, SearchMemberViewModel> implements View.OnClickListener {
 
-    LinearLayoutManager linearLayoutManager;
-    BaseAdapter myMemberAdapter;
+    private BaseAdapter myMemberAdapter;
 
     @Override
     protected void initData() {
@@ -35,14 +34,15 @@ public class SearchMemberActivity extends BaseActivity<ActivitySearchMemberBindi
     protected void registerUIChangeEventObserver() {
         super.registerUIChangeEventObserver();
 
-        linearLayoutManager = new LinearLayoutManager(SearchMemberActivity.this);
+        myMemberAdapter = new BaseAdapter(SearchMemberActivity.this,
+                null, R.layout.recycler_view_item_my_member, BR.MyMemberRecyclerView);
+        dataBinding.recyclerViewSearchMember.setLayoutManager(new LinearLayoutManager(this));
+        dataBinding.recyclerViewSearchMember.setAdapter(myMemberAdapter);
         viewModel.myMemberMutableLiveData.observe(this, new Observer<List<MyMemberRecyclerView>>() {
             @Override
             public void onChanged(List<MyMemberRecyclerView> myMemberRecyclerViewList) {
-                myMemberAdapter = new BaseAdapter(SearchMemberActivity.this,
-                        myMemberRecyclerViewList, R.layout.recycler_view_item_my_member, BR.MyMemberRecyclerView);
-                dataBinding.recyclerViewSearchMember.setLayoutManager(linearLayoutManager);
-                dataBinding.recyclerViewSearchMember.setAdapter(myMemberAdapter);
+                myMemberAdapter.setRecyclerViewList(myMemberRecyclerViewList);
+                myMemberAdapter.notifyDataSetChanged();
             }
         });
 
@@ -60,6 +60,7 @@ public class SearchMemberActivity extends BaseActivity<ActivitySearchMemberBindi
                 return false;
             }
         });
+
         dataBinding.includeSearch.etSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
