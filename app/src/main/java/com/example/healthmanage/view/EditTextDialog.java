@@ -2,7 +2,7 @@ package com.example.healthmanage.view;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -11,23 +11,26 @@ import android.widget.TextView;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.Observer;
 
 import com.bumptech.glide.Glide;
 import com.example.healthmanage.R;
+import com.example.healthmanage.utils.LocationUtil;
+import com.example.healthmanage.utils.ToastUtil;
+import com.example.healthmanage.utils.ToolUtil;
 import com.jeremyliao.liveeventbus.LiveEventBus;
 
-import static com.example.healthmanage.utils.Constants.HTAG;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EditTextDialog extends Dialog implements View.OnClickListener {
 
     private Context context;
-    private TextView tvCreate, tvUpdate, tvSend, tvCancel, tvTitle;
-    private EditText etComment;
+    private TextView tvCreate, tvUpdate, tvSend, tvCancel, tvTitle, tvTime, tvLocation;
+    private EditText etComment, etResult;
     private int dialogLayout;
-    private String receiverName, receiverAvatar, taskContent, memberName;
+    private String receiverName, receiverAvatar, taskContent, memberName, serviceItem;
+    private List<String> contentList;
     private OnEditTextDialogClickListener onEditTextDialogClickListener;
 
     public EditTextDialog(@NonNull Context context, @LayoutRes int dialogLayout, String memberName) {
@@ -38,12 +41,20 @@ public class EditTextDialog extends Dialog implements View.OnClickListener {
         initView();
 
         LiveEventBus.get("close", Boolean.class)
-                .observe((LifecycleOwner) context, new Observer<Boolean>() {
-                    @Override
-                    public void onChanged(@Nullable Boolean s) {
-                        dismiss();
-                    }
-                });
+                .observe((LifecycleOwner) context, s -> dismiss());
+    }
+
+    public EditTextDialog(@NonNull Context context, @LayoutRes int dialogLayout,
+                          String memberName, String serviceItem) {
+        super(context, R.style.EditTextDialogStyle);
+        this.context = context;
+        this.dialogLayout = dialogLayout;
+        this.memberName = memberName;
+        this.serviceItem = serviceItem;
+        initView();
+
+        LiveEventBus.get("close", Boolean.class)
+                .observe((LifecycleOwner) context, s -> dismiss());
     }
 
     public EditTextDialog(@NonNull Context context, @LayoutRes int dialogLayout, String receiverName,
@@ -57,13 +68,7 @@ public class EditTextDialog extends Dialog implements View.OnClickListener {
         initView();
 
         LiveEventBus.get("close", Boolean.class)
-                .observe((LifecycleOwner) context, new Observer<Boolean>() {
-                    @Override
-                    public void onChanged(@Nullable Boolean s) {
-                        dismiss();
-                        Log.d(HTAG, "onChanged==========>: ");
-                    }
-                });
+                .observe((LifecycleOwner) context, s -> dismiss());
     }
 
     public void initView() {
@@ -94,6 +99,28 @@ public class EditTextDialog extends Dialog implements View.OnClickListener {
                 tvSend = view.findViewById(R.id.tv_send);
                 tvSend.setOnClickListener(this::onClick);
                 break;
+            case R.layout.dialog_upload_service_result:
+                TextView tvMember, tvItem, tvUpload;
+                tvMember = view.findViewById(R.id.tv_member);
+                tvTime = view.findViewById(R.id.tv_time);
+                tvLocation = view.findViewById(R.id.tv_location);
+                tvItem = view.findViewById(R.id.tv_item);
+                tvUpload = view.findViewById(R.id.tv_upload);
+                etResult = view.findViewById(R.id.et_result);
+                if (memberName != null) {
+                    tvMember.setText(memberName);
+                }
+                tvTime.setText("服务时间：点击获取当前时间");
+                tvLocation.setText("服务地点：点击获取当前地点");
+                tvItem.setText("服务项目：" + serviceItem);
+                tvTime.setOnClickListener(this::onClick);
+                tvLocation.setOnClickListener(this::onClick);
+                tvUpload.setOnClickListener(this::onClick);
+                break;
+            case R.layout.dialog_update_number:
+                TextView textView2 = view.findViewById(R.id.tv_update);
+                textView2.setOnClickListener(this::onClick);
+                break;
         }
         super.setContentView(view);
     }
@@ -103,10 +130,34 @@ public class EditTextDialog extends Dialog implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.tv_create:
             case R.id.tv_update:
-                onEditTextDialogClickListener.doCreate(etComment.getText().toString());
+                contentList = new ArrayList<>();
+                contentList.add(etComment.getText().toString());
+                onEditTextDialogClickListener.doCreate(contentList);
                 break;
             case R.id.tv_send:
                 onEditTextDialogClickListener.doSend();
+                break;
+            case R.id.tv_time:
+                if (tvTime != null) {
+                    tvTime.setText("服务时间：" + ToolUtil.getCurrentTime());
+                }
+                break;
+            case R.id.tv_location:
+                LocationUtil.getAddress(context);
+                if (tvLocation != null && LocationUtil.address.getValue() != null) {
+                    tvLocation.setText("服务地点：" + LocationUtil.address.getValue());
+                }
+                break;
+            case R.id.tv_upload:
+                if (TextUtils.isEmpty(etResult.getText())) {
+                    ToastUtil.showShort("请添加服务结果");
+                } else {
+                    contentList = new ArrayList<>();
+                    contentList.add(tvTime.getText().toString().substring(5));
+                    contentList.add(tvLocation.getText().toString().substring(5));
+                    contentList.add(etResult.getText().toString());
+                    onEditTextDialogClickListener.doCreate(contentList);
+                }
                 break;
             case R.id.tv_cancel:
                 this.dismiss();
@@ -116,9 +167,10 @@ public class EditTextDialog extends Dialog implements View.OnClickListener {
 
     public interface OnEditTextDialogClickListener {
 
-        void doCreate(String content);
+        void doCreate(List<String> content);
 
         void doSend();
+
     }
 
     public OnEditTextDialogClickListener getOnEditTextDialogClickListener() {

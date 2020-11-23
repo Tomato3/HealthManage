@@ -12,4 +12,13 @@
         <item>@string/activity_my_studio_approval_status_failure</item>
     </string-array>
 
+    <string-array name="activity_history_data">
+        <item>"运动"</item>
+        <item>"睡眠"</item>
+        <item>"饮食"</item>
+        <item>"体征"</item>
+        <item>"体检"</item>
+        <item>"护理"</item>
+    </string-array>
+
 </resources>

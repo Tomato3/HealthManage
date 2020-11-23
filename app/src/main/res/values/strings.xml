@@ -30,7 +30,7 @@
     <string name="dropdown_more">"更多"</string>
     <string name="fragment_home_warning">"健康异常"</string>
     <string name="fragment_home_message">"咨询信息"</string>
-    <string name="fragment_home_plan">"工作提醒"</string>
+    <string name="fragment_home_plan">"工作计划"</string>
     <string name="fragment_home_famous_doctors">"名医堂"</string>
     <string name="fragment_home_health_club">"健康荟"</string>
     <string name="fragment_home_service_provider">"服务商"</string>
@@ -49,6 +49,7 @@
     <string name="cancel">"取消"</string>
     <string name="create">"创建"</string>
     <string name="update">"修改"</string>
+    <string name="upload">"上传"</string>
     <string name="search">"搜索"</string>
     <string name="multiple_choice">"多选"</string>
     <string name="send">"发送"</string>

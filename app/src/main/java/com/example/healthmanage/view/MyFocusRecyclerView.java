@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.healthmanage.base.BaseApplication;
+import com.example.healthmanage.ui.activity.healthmanage.HealthManageActivity;
 import com.example.healthmanage.ui.activity.historydata.HistoryDataActivity;
 
 /**
@@ -53,7 +54,12 @@ public class MyFocusRecyclerView {
     }
 
     public void jumpHealthManage() {
-        Log.d("TAG", "jumpHistoryData: ==================>");
+        Intent intent = new Intent(BaseApplication.getInstance(), HealthManageActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("memberName", memberName);
+        bundle.putInt("memberId", memberId);
+        intent.putExtras(bundle);
+        BaseApplication.getInstance().getApplicationContext().startActivity(intent);
     }
 
 

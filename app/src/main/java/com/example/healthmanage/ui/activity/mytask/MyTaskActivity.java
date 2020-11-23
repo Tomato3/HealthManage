@@ -3,7 +3,9 @@ package com.example.healthmanage.ui.activity.mytask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.RadioGroup;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -14,6 +16,8 @@ import com.example.healthmanage.base.BaseAdapter;
 import com.example.healthmanage.databinding.ActivityMyTaskBinding;
 import com.example.healthmanage.view.MyTaskRecyclerView;
 import com.example.healthmanage.widget.TitleToolBar;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
 import java.util.List;
 
@@ -29,13 +33,9 @@ public class MyTaskActivity extends BaseActivity<ActivityMyTaskBinding, MyTaskVi
         titleToolBar.setLeftIconVisible(true);
         titleToolBar.setTitle("我的任务");
         viewModel.setTitleToolBar(titleToolBar);
+        viewModel.loadMyTask(true, 0);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        viewModel.loadMyTask();
-    }
 
     @Override
     public void initViewListener() {
@@ -63,10 +63,56 @@ public class MyTaskActivity extends BaseActivity<ActivityMyTaskBinding, MyTaskVi
                 @Override
                 public void onItemClick(View view, int position) {
                     Log.d(HTAG,
-                            "onItemClick==========>: "+myTaskAdapter.getRecyclerViewList().get(position));
+                            "onItemClick==========>: " + myTaskAdapter.getRecyclerViewList().get(position));
                 }
             });
         }
+
+        dataBinding.rgTitle.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.rb_untreated:
+                        viewModel.loadMyTask(viewModel.isSucceed.getValue(), 0);
+                        break;
+                    case R.id.rb_processing:
+                        viewModel.loadMyTask(viewModel.isSucceed.getValue(), 1);
+                        break;
+                    case R.id.rb_processed:
+                        viewModel.loadMyTask(viewModel.isSucceed.getValue(), 2);
+                        break;
+                }
+            }
+        });
+
+
+        dataBinding.smartRefreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                viewModel.loadMyTask(false, viewModel.status.getValue());
+                viewModel.isSucceed.observe(MyTaskActivity.this, new Observer<Boolean>() {
+                    @Override
+                    public void onChanged(Boolean aBoolean) {
+                        if (aBoolean) {
+                            dataBinding.smartRefreshLayout.finishLoadMore(aBoolean);
+                        }
+                    }
+                });
+            }
+
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                viewModel.loadMyTask(true, viewModel.status.getValue());
+                viewModel.isSucceed.observe(MyTaskActivity.this, new Observer<Boolean>() {
+                    @Override
+                    public void onChanged(Boolean aBoolean) {
+                        if (aBoolean) {
+                            dataBinding.smartRefreshLayout.finishRefresh(aBoolean);
+                        }
+                    }
+                });
+            }
+        });
 
 
     }

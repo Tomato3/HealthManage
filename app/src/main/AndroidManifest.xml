@@ -2,14 +2,37 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.healthmanage">
 
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!--获取运营商信息，用于支持提供运营商信息相关的接口-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--用于访问wifi网络信息，wifi信息会用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!--这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <!-- 请求网络 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 更改设置 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <!--用于进行网络定位-->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 可以提高室内定位的精确度 -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <!-- 可以提高室内定位的精确度 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <!--用于访问GPS定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!--用于提高GPS定位速度-->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <!--写入扩展存储，向扩展卡写入数据，用于写入缓存定位数据-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--读取缓存数据-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--用于读取手机当前的状态-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
+        android:networkSecurityConfig="@xml/network_security_config"
         android:name=".base.BaseApplication"
         android:allowBackup="true"
         android:icon="@drawable/activity_login_logo"
@@ -50,18 +73,38 @@
         <activity android:name=".ui.activity.mystudio.MyStudioActivity" />
         <activity android:name=".ui.activity.searchMember.SearchMemberActivity" />
         <activity android:name=".ui.activity.mytask.MyTaskActivity" />
-        <activity android:name=".ui.activity.mytaskdetail.MyTaskDetailActivity" />
-        <activity android:name=".ui.activity.selectTaskReceiver.SelectTaskReceiverActivity" />
+        <activity android:name=".ui.activity.mytask.mytaskdetail.MyTaskDetailActivity" />
+        <activity android:name=".ui.activity.mytask.mytaskdetail.selectTaskReceiver.SelectTaskReceiverActivity" />
         <activity android:name=".ui.activity.myinfo.MyInfoActivity" />
         <activity android:name=".ui.activity.memberinfo.MemberInfoActivity" />
-        <activity android:name=".ui.activity.abnormaldata.AbnormalDataActivity" />
+        <activity android:name=".ui.activity.mytask.mytaskdetail.abnormaldata.AbnormalDataActivity" />
         <activity android:name=".ui.activity.historydata.HistoryDataActivity" />
         <activity android:name=".ui.activity.mycomment.MyCommentActivity" />
-        <activity android:name=".ui.activity.commentdetail.CommentDetailActivity" />
+        <activity android:name=".ui.activity.mycomment.commentdetail.CommentDetailActivity" />
         <activity android:name=".ui.activity.mypoint.MyPointActivity" />
-        <activity android:name=".ui.activity.mywallet.MyWalletActivity" />
+        <activity android:name=".ui.activity.mypoint.mywallet.MyWalletActivity" />
         <activity android:name=".ui.activity.servicecenter.ServiceCenterActivity" />
-        <activity android:name=".ui.activity.getpoint.GetPointActivity" />
+        <activity android:name=".ui.activity.mypoint.getpoint.GetPointActivity" />
+        <activity android:name=".ui.activity.serviceplan.ServicePlanActivity" />
+        <activity android:name=".ui.activity.healthmanage.HealthManageActivity" />
+        <activity android:name=".ui.activity.serviceplan.serviceplandetail.ServicePlanDetailActivity" />
+        <activity android:name=".ui.activity.healthmanage.sport.SportActivity" />
+        <activity android:name=".ui.activity.legaladvice.LegalAdviceActivity" />
+        <activity android:name=".ui.activity.doctorhall.DoctorHallActivity" />
+        <activity android:name=".ui.activity.test.TestActivity" />
+        <activity android:name=".ui.activity.qualification.QualificationActivity" />
+        <activity android:name=".ui.activity.doctorhall.doctordetail.DoctorDetailActivity" />
+        <activity android:name=".ui.activity.doctorhall.doctordetail.appointmentregistration.AppointmentRegistrationActivity" />
+        <activity android:name=".ui.activity.consultationinfo.ConsultationInfoActivity" />
+        <activity android:name=".ui.activity.consultation.ConsultationActivity" />
+
+        <!--设置key-->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="d0ed306fda341a9e51d8b7a17b013b84" />
+
+        <!--声明定位service-->
+        <service android:name="com.amap.api.location.APSService"></service>
     </application>
 
 </manifest>

@@ -9,7 +9,7 @@
             type="com.example.healthmanage.ui.activity.mystudio.MyStudioViewModel" />
     </data>
 
-    <RelativeLayout style="@style/ActivityMyStudioLayoutStyle">
+    <RelativeLayout style="@style/AllMatchWhiteLayoutStyle">
 
         <include
             android:id="@+id/include_title"

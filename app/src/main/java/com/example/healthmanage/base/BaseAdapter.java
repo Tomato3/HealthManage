@@ -66,7 +66,7 @@ public class BaseAdapter<T> extends RecyclerView.Adapter<BaseAdapter.ViewHolder>
 
 //            // item long click
 //            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-//                @Override
+//                @OverriRecyclerViewde
 //                public boolean onLongClick(View view) {
 //                    onItemClickListener.onItemLongClick(view, position);
 //                    return true;

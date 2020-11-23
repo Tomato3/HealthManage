@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="ConsultationInformationRecyclerView"
+            type="com.example.healthmanage.view.ConsultationInformationRecyclerView" />
+    </data>
+
+    <RelativeLayout style="@style/RecyclerViewServicePlanLayoutStyle">
+
+        <ImageView
+            style="@style/RecyclerViewServicePlanViewStyle"
+            android:ImageSrc="@{ConsultationInformationRecyclerView.statusImg}" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:id="@+id/tv_consultant"
+                style="@style/RecyclerViewConsultationInfoTxtStyle"
+                android:text="@{ConsultationInformationRecyclerView.consultant}" />
+
+            <TextView
+                android:id="@+id/tv_item"
+                style="@style/RecyclerViewConsultationInfoTxtStyle"
+                android:layout_below="@+id/tv_consultant"
+                android:text="@{ConsultationInformationRecyclerView.consultingContent}" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                style="@style/RecyclerViewConsultationInfoTxtStyle"
+                android:layout_below="@+id/tv_item"
+                android:text="@{ConsultationInformationRecyclerView.consultingTime}" />
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

@@ -8,29 +8,65 @@
             type="com.example.healthmanage.widget.DataItem" />
     </data>
 
-    <LinearLayout style="@style/IncludeMemberDetailDataItemLayoutStyle">
+    <RelativeLayout
+        style="@style/IncludeMemberDetailDataItemLayoutStyle"
+        android:layout_height="@dimen/dp_100">
 
         <TextView
-            style="@style/IncludeMemberDetailDataItemTextStyle.First"
-            android:text="@={DataItem.firstTxt}" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dp_20"
+            android:gravity="center"
+            android:text="@{DataItem.title}"
+            android:textColor="@color/colorTextGrey"
+            android:textSize="@dimen/text_size_16" />
 
-        <TextView
-            style="@style/IncludeMemberDetailDataItemTextStyle.Second"
-            android:text="@={DataItem.secondTxt}"
+        <LinearLayout
+            style="@style/IncludeMemberDetailDataItemLayoutStyle"
+            android:layout_height="@dimen/dp_100"
+            android:layout_marginStart="@dimen/dp_110"
+            android:orientation="vertical">
 
-            />
+            <LinearLayout style="@style/IncludeMemberDetailDataItemLayoutStyle">
 
-        <TextView
-            style="@style/IncludeMemberDetailDataItemTextStyle.Third"
-            android:text="@={DataItem.thirdTxt}"
+                <TextView
+                    style="@style/IncludeMemberDetailDataItemTextStyle"
+                    android:text="@{DataItem.data.get(0)}" />
 
-            />
+                <TextView
+                    style="@style/IncludeMemberDetailDataItemTextStyle"
+                    android:text="@{DataItem.data.get(1)}" />
 
-        <TextView
-            style="@style/IncludeMemberDetailDataItemTextStyle.Four"
-            android:text="@={DataItem.fourthTxt}"
+                <TextView
+                    style="@style/IncludeMemberDetailDataItemTextStyle"
+                    android:text="@{DataItem.data.get(2)}" />
 
-            />
+                <TextView
+                    style="@style/IncludeMemberDetailDataItemTextStyle.Four"
+                    android:text="@{DataItem.data.get(3)}" />
 
-    </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout style="@style/IncludeMemberDetailDataItemLayoutStyle">
+
+                <TextView
+                    style="@style/IncludeMemberDetailDataItemTextStyle"
+                    android:text="@{DataItem.data.get(4)}" />
+
+                <TextView
+                    style="@style/IncludeMemberDetailDataItemTextStyle"
+                    android:text="@{DataItem.data.get(5)}" />
+
+                <TextView
+                    style="@style/IncludeMemberDetailDataItemTextStyle"
+                    android:text="@{DataItem.data.get(6)}" />
+
+                <TextView
+                    style="@style/IncludeMemberDetailDataItemTextStyle.Four"
+                    android:text="@{DataItem.data.get(7)}" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
 </layout>

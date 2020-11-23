@@ -28,14 +28,11 @@ import java.util.List;
 
 public class MyFragment extends BaseFragment<FragmentMyBinding, MyViewModel> implements View.OnClickListener {
 
-    private static String TAG = "MyFragment";
 
-    private static String baseImgUrl = "http://b-ssl.duitang.com/uploads/item/201803/02/20180302222228_v3JdH.jpeg";
     private List<Fragment> mFragments;
 
     @Override
     protected void initData() {
-        Log.d(TAG, "initData: ===>" + BaseApplication.getUserInfoBean().getSysId());
 
     }
 
@@ -108,15 +105,6 @@ public class MyFragment extends BaseFragment<FragmentMyBinding, MyViewModel> imp
         }
     }
 
-
-    @BindingAdapter("android:url")
-    public static void setUrl(ImageView view, String imgUrl) {
-        if (imgUrl != null && !"".equals(imgUrl)) {
-            Glide.with(view.getContext()).asBitmap().load(imgUrl).apply(RequestOptions.circleCropTransform()).into(view);
-        } else {
-            Glide.with(view.getContext()).asBitmap().load(baseImgUrl).apply(RequestOptions.circleCropTransform()).into(view);
-        }
-    }
 
     @Override
     public int initContentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

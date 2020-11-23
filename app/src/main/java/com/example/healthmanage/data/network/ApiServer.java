@@ -2,15 +2,22 @@ package com.example.healthmanage.data.network;
 
 
 import com.example.healthmanage.bean.AbnormalDataResponse;
+import com.example.healthmanage.bean.AirResponse;
+import com.example.healthmanage.bean.ConsultationRecordResponse;
+import com.example.healthmanage.bean.ConsultationResponse;
+import com.example.healthmanage.bean.DoctorDetailResponse;
 import com.example.healthmanage.bean.DoctorListResponse;
 import com.example.healthmanage.bean.GeneralResponse;
 import com.example.healthmanage.bean.HealthDataResponse;
 import com.example.healthmanage.bean.HistoryDataResponse;
 import com.example.healthmanage.bean.LoginResponse;
 import com.example.healthmanage.bean.MemberInfoResponse;
+import com.example.healthmanage.bean.MyDoctorResponse;
 import com.example.healthmanage.bean.MyMemberResponse;
+import com.example.healthmanage.bean.NursingResponse;
 import com.example.healthmanage.bean.RegisterResponse;
 import com.example.healthmanage.bean.SearchMemberResponse;
+import com.example.healthmanage.bean.ServicePlanResponse;
 import com.example.healthmanage.bean.TaskDetailResponse;
 import com.example.healthmanage.bean.TaskResponse;
 import com.example.healthmanage.bean.WeatherResponse;
@@ -91,6 +98,7 @@ public interface ApiServer {
     @POST("doctor/appSystemUser/searchUser")
     Observable<SearchMemberResponse> searchMembers(@Field("phone") String phone);
 
+
     /**
      * 邀请会员
      *
@@ -113,6 +121,7 @@ public interface ApiServer {
     @POST("doctor/appSystemUser/doctorFollow")
     Observable<MyMemberResponse> loadMyFocus(@Field("sysId") String sysId);
 
+
     /**
      * 我的会员
      *
@@ -122,6 +131,7 @@ public interface ApiServer {
     @FormUrlEncoded
     @POST("doctor/appSystemUser/doctorMember")
     Observable<MyMemberResponse> loadMyMembers(@Field("sysId") String sysId);
+
 
     /**
      * 获取不同等级会员
@@ -157,6 +167,7 @@ public interface ApiServer {
     @POST("doctor/appSystemUser/deleteFollow")
     Observable<GeneralResponse> deleteFocus(@Field("userId") String userId);
 
+
     /**
      * 获取当前天气
      *
@@ -177,6 +188,7 @@ public interface ApiServer {
     @FormUrlEncoded
     @POST("api/health/healthList")
     Observable<HealthDataResponse> getHealthList(@Field("userId") String userId);
+
 
     /**
      * 按名字搜索会员
@@ -215,7 +227,10 @@ public interface ApiServer {
      */
     @FormUrlEncoded
     @POST("api/healthTask/getTaskList")
-    Observable<TaskResponse> loadMyTaskList(@Field("id") long sysId);
+    Observable<TaskResponse> loadMyTaskList(@Field("id") long sysId,
+                                            @Field("pageNum") int pageNum,
+                                            @Field("pageSize") int pageSize);
+
 
     /**
      * 加载任务详情
@@ -288,6 +303,7 @@ public interface ApiServer {
     Observable<GeneralResponse> sendMyTask(@Field("id") long taskId,
                                            @Field("doctorId") long doctorId);
 
+
     /**
      * 查找医生
      *
@@ -297,6 +313,7 @@ public interface ApiServer {
     @FormUrlEncoded
     @POST("api/healthTask/getDoctorByName")
     Observable<DoctorListResponse> searchDoctor(@Field("name") String doctorName);
+
 
     /**
      * 获取异常数据
@@ -309,6 +326,7 @@ public interface ApiServer {
     @POST("api/healthTask/getTaskUserHealth")
     Observable<AbnormalDataResponse> getAbnormalDataResponse(@Field("id") long taskId,
                                                              @Field("date") String dataDate);
+
 
     /**
      * 查看历史数据
@@ -326,6 +344,7 @@ public interface ApiServer {
                                                    @Field("pageNum") int pageNum,
                                                    @Field("pageSize") int pageSize);
 
+
     /**
      * 获取会员简介
      *
@@ -334,8 +353,160 @@ public interface ApiServer {
      */
     @FormUrlEncoded
     @POST("doctor/appSystemUser/userInfo")
-    Observable<MemberInfoResponse> getMemberInfo(@Field("userId") long memberId);
+    Observable<MemberInfoResponse> getMemberInfo(@Field("userId") long memberId,
+                                                 @Field("token") String token);
 
 
+    /**
+     * 获取服务计划列表
+     *
+     * @param token
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api/serviceplan/plan")
+    Observable<ServicePlanResponse> getServicePlanList(@Field("token") String token,
+                                                       @Field("pageNum") int pageNum,
+                                                       @Field("pageSize") int pageSize);
+
+
+    /**
+     * 上传服务结果
+     *
+     * @param token
+     * @param serviceTime
+     * @param servicePlace
+     * @param serviceResult
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api/serviceplan/result")
+    Observable<GeneralResponse> uploadServiceResult(@Field("token") String token,
+                                                    @Field("servicePlanId") long servicePlanId,
+                                                    @Field("svctm") String serviceTime,
+                                                    @Field("servicePlace") String servicePlace,
+                                                    @Field("serviceResult") String serviceResult);
+
+
+    /**
+     * 空气检测仪数据
+     *
+     * @param memberId
+     * @param sceneId
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api/appIAQ/getARIList")
+    Observable<AirResponse> getAirList(@Field("userId") String memberId,
+                                       @Field("sceneId") String sceneId);
+
+
+    /**
+     * 生成邀请码
+     *
+     * @param token
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api/generate/code")
+    Observable<GeneralResponse> getInviteCode(@Field("token") String token);
+
+
+    /**
+     * 获取护理仪数据
+     *
+     * @param token
+     * @param memberId
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api/health/huLiYiData")
+    Observable<NursingResponse> getNursingData(@Field("token") String token,
+                                               @Field("userId") long memberId);
+
+
+    /**
+     * 填写邀请码
+     *
+     * @param token
+     * @param inviteCode
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api/appSystemUser/bindingDoctor")
+    Observable<GeneralResponse> writeInviteCode(@Field("token") String token,
+                                                @Field("code") String inviteCode);
+
+
+    /**
+     * 获取绑定医生
+     *
+     * @param token
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api/appSystemUser/doctorList")
+    Observable<MyDoctorResponse> getMyDoctor(@Field("token") String token,
+                                             @Field("pageNum") int pageNum,
+                                             @Field("pageSize") int pageSize);
+
+
+    /**
+     * 我的医生详情
+     *
+     * @param token
+     * @param doctorId
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api/appSystemUser/doctorInfo")
+    Observable<DoctorDetailResponse> getMyDoctorDetail(@Field("token") String token,
+                                                       @Field("sysId") long doctorId);
+
+    /**
+     * 咨询问题列表
+     *
+     * @param token
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api/questionAnswer/consultList")
+    Observable<ConsultationResponse> getConsultationList(@Field("token") String token,
+                                                         @Field("pageNum") int pageNum,
+                                                         @Field("pageSize") int pageSize);
+
+    /**
+     * 回复咨询信息
+     *
+     * @param token
+     * @param consultationId
+     * @param content
+     * @param userName
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api/questionAnswer/replyUser")
+    Observable<GeneralResponse> replayConsultation(@Field("token") String token,
+                                                   @Field("questionId") long consultationId,
+                                                   @Field("content") String content,
+                                                   @Field("fromName") String userName);
+
+    /**
+     * 咨询回复记录
+     *
+     * @param token
+     * @param questionId
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api/questionAnswer/records")
+    Observable<ConsultationRecordResponse> getConsultationRecord(@Field("token") String token,
+                                                                 @Field("questionId") long questionId);
 }
 

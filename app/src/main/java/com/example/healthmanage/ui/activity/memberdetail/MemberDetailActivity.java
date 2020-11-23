@@ -1,13 +1,11 @@
 package com.example.healthmanage.ui.activity.memberdetail;
 
-import android.Manifest;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import androidx.databinding.BindingAdapter;
-import androidx.lifecycle.Observer;
 
 import com.example.healthmanage.BR;
 import com.example.healthmanage.R;
@@ -20,8 +18,7 @@ import com.example.healthmanage.widget.TitleToolBar;
 import com.jeremyliao.liveeventbus.LiveEventBus;
 
 import java.util.ArrayList;
-
-import pub.devrel.easypermissions.EasyPermissions;
+import java.util.List;
 
 import static com.example.healthmanage.utils.Constants.HTAG;
 
@@ -31,27 +28,44 @@ public class MemberDetailActivity extends BaseActivity<ActivityMemberDetailBindi
     private TitleToolBar titleToolBar = new TitleToolBar();
     private Bundle bundle;
     private boolean b;
-    private int userId;
+    private int memberId;
     private String memberName;
     private EditTextDialog editTextDialog;
+
+    DropdownBar dropdownBarTodayEnvironment;
 
     @Override
     protected void initData() {
         bundle = this.getIntent().getExtras();
         memberName = bundle.getString("MemberName");
-        userId = bundle.getInt("UserId");
+        memberId = bundle.getInt("MemberId");
         b = bundle.getBoolean("FocusState");
         titleToolBar.setTitle(memberName + "会员详情");
         titleToolBar.setLeftIconVisible(true);
         titleToolBar.setRightIconVisible(true);
         showFocus(b);
         viewModel.setTitleToolBar(titleToolBar);
+        LocationUtil.getAddress(this);
 
+        LocationUtil.city.observe(this, String -> {
+            if (String != null) {
+                viewModel.location.setValue(LocationUtil.city.getValue().substring(0, 2));
+                viewModel.getWeather();
+                LocationUtil.stopLocation();
+            }
+        });
 
-        DropdownBar dropdownBarTodayEnvironment = new DropdownBar("今日环境", false, true, false);
-        DropdownBar dropdownBarTodayHealth = new DropdownBar("今日健康", false, true, false);
-        DropdownBar dropdownBarBodyHealth = new DropdownBar("身体健康", true, false, false);
-        DropdownBar dropdownBarSpiritHealth = new DropdownBar("精神健康", true, false, false);
+        viewModel.getHealthDataList(String.valueOf(memberId));
+
+        viewModel.getAirList(String.valueOf(memberId));
+
+        viewModel.getNursingData(85);
+
+        dropdownBarTodayEnvironment = new DropdownBar("今日环境", false,
+                viewModel.todayEnvironmentVisible.getValue(), false);
+        DropdownBar dropdownBarTodayHealth = new DropdownBar("今日健康", false, false, false);
+        DropdownBar dropdownBarBodyHealth = new DropdownBar("身体健康", false, false, false);
+        DropdownBar dropdownBarSpiritHealth = new DropdownBar("精神健康", false, false, false);
         DropdownBar dropdownBarHealthDataAnalyse = new DropdownBar("健康数据分析", false, false, false);
         DropdownBar dropdownBarInspectionQuantity = new DropdownBar("定期服务", false, false, false);
         ArrayList<DropdownBar> dropdownBarArrayList = new ArrayList<>();
@@ -62,21 +76,6 @@ public class MemberDetailActivity extends BaseActivity<ActivityMemberDetailBindi
         dropdownBarArrayList.add(dropdownBarHealthDataAnalyse);
         dropdownBarArrayList.add(dropdownBarInspectionQuantity);
         viewModel.dropdownBarLists.setValue(dropdownBarArrayList);
-
-        viewModel.getWeather();
-
-        viewModel.getHealthDataList(String.valueOf(userId));
-        if (EasyPermissions.hasPermissions(this, Manifest.permission.ACCESS_FINE_LOCATION) && EasyPermissions.hasPermissions(this, Manifest.permission.ACCESS_COARSE_LOCATION)) {
-
-        }else {
-            EasyPermissions.requestPermissions(this, "请求必要的权限,拒绝权限可能会无法使用app", 0,
-                    Manifest.permission.ACCESS_FINE_LOCATION);
-            EasyPermissions.requestPermissions(this, "请求必要的权限,拒绝权限可能会无法使用app", 0,
-                    Manifest.permission.ACCESS_COARSE_LOCATION);
-        }
-
-
-
 
     }
 
@@ -89,53 +88,57 @@ public class MemberDetailActivity extends BaseActivity<ActivityMemberDetailBindi
     protected void registerUIChangeEventObserver() {
         super.registerUIChangeEventObserver();
 
-        viewModel.currentFocusState.observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                LiveEventBus.get("refresh").post("value");
-                b = aBoolean;
-                if (aBoolean) {
-                    dataBinding.includeTitle.ivRight.setImageResource(R.drawable.fragment_main_my_member_focus_selected);
-                } else {
-                    dataBinding.includeTitle.ivRight.setImageResource(R.drawable.fragment_main_my_member_focus_normal);
-                }
+        viewModel.currentFocusState.observe(this, aBoolean -> {
+            LiveEventBus.get("refresh").post("value");
+            b = aBoolean;
+            if (aBoolean) {
+                dataBinding.includeTitle.ivRight.setImageResource(R.drawable.fragment_main_my_member_focus_selected);
+            } else {
+                dataBinding.includeTitle.ivRight.setImageResource(R.drawable.fragment_main_my_member_focus_normal);
             }
         });
 
-        dataBinding.includeTodayHealth.tvExpand.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dataBinding.includeTodayHealth.tvExpand.setVisibility(View.GONE);
-                dataBinding.includeTodayHealth.tvCollapse.setVisibility(View.VISIBLE);
-                dataBinding.includeTodayHealthData.getRoot().setVisibility(View.VISIBLE);
-            }
-        });
 
-        dataBinding.includeTodayHealth.tvCollapse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dataBinding.includeTodayHealth.tvExpand.setVisibility(View.VISIBLE);
-                dataBinding.includeTodayHealth.tvCollapse.setVisibility(View.GONE);
-                dataBinding.includeTodayHealthData.getRoot().setVisibility(View.GONE);
-            }
-        });
-
-        dataBinding.includeTodayEnvironment.tvExpand.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dataBinding.includeTodayEnvironment.tvExpand.setVisibility(View.GONE);
-                dataBinding.includeTodayEnvironment.tvCollapse.setVisibility(View.VISIBLE);
-                dataBinding.includeTodayEnvironmentData.getRoot().setVisibility(View.VISIBLE);
-            }
-        });
-
-        dataBinding.includeTodayEnvironment.tvCollapse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        viewModel.todayEnvironmentVisible.observe(this, aBoolean -> {
+            if (aBoolean) {
                 dataBinding.includeTodayEnvironment.tvExpand.setVisibility(View.VISIBLE);
-                dataBinding.includeTodayEnvironment.tvCollapse.setVisibility(View.GONE);
-                dataBinding.includeTodayEnvironmentData.getRoot().setVisibility(View.GONE);
+                dataBinding.includeTodayEnvironmentNull.setVisibility(View.VISIBLE);
+            } else {
+                dataBinding.includeTodayEnvironment.tvExpand.setVisibility(View.GONE);
+                dataBinding.includeTodayEnvironmentNull.setVisibility(View.GONE);
             }
+        });
+
+        viewModel.todayHealthVisible.observe(this, aBoolean -> {
+            if (aBoolean) {
+                dataBinding.includeTodayHealthNull.setVisibility(View.VISIBLE);
+            } else {
+                dataBinding.includeTodayHealthNull.setVisibility(View.GONE);
+            }
+        });
+
+        dataBinding.includeTodayHealth.tvExpand.setOnClickListener(v -> {
+            dataBinding.includeTodayHealth.tvExpand.setVisibility(View.GONE);
+            dataBinding.includeTodayHealth.tvCollapse.setVisibility(View.VISIBLE);
+            dataBinding.includeTodayHealthData.getRoot().setVisibility(View.VISIBLE);
+        });
+
+        dataBinding.includeTodayHealth.tvCollapse.setOnClickListener(v -> {
+            dataBinding.includeTodayHealth.tvExpand.setVisibility(View.VISIBLE);
+            dataBinding.includeTodayHealth.tvCollapse.setVisibility(View.GONE);
+            dataBinding.includeTodayHealthData.getRoot().setVisibility(View.GONE);
+        });
+
+        dataBinding.includeTodayEnvironment.tvExpand.setOnClickListener(v -> {
+            dataBinding.includeTodayEnvironment.tvExpand.setVisibility(View.GONE);
+            dataBinding.includeTodayEnvironment.tvCollapse.setVisibility(View.VISIBLE);
+            dataBinding.includeTodayEnvironmentDataDevice.getRoot().setVisibility(View.VISIBLE);
+        });
+
+        dataBinding.includeTodayEnvironment.tvCollapse.setOnClickListener(v -> {
+            dataBinding.includeTodayEnvironment.tvExpand.setVisibility(View.VISIBLE);
+            dataBinding.includeTodayEnvironment.tvCollapse.setVisibility(View.GONE);
+            dataBinding.includeTodayEnvironmentDataDevice.getRoot().setVisibility(View.GONE);
         });
 
         dataBinding.tvCreateTask.setOnClickListener(this::onClick);
@@ -149,7 +152,7 @@ public class MemberDetailActivity extends BaseActivity<ActivityMemberDetailBindi
 
     @Override
     public void onRightIconClick() {
-        viewModel.changeFocus(String.valueOf(userId), b);
+        viewModel.changeFocus(String.valueOf(memberId), b);
     }
 
     @Override
@@ -167,11 +170,6 @@ public class MemberDetailActivity extends BaseActivity<ActivityMemberDetailBindi
         }
     }
 
-    private String getLocation() {
-
-        return "";
-    }
-
 
     @BindingAdapter("android:ImageSrc")
     public static void setImageResource(ImageView imageView, int resource) {
@@ -187,8 +185,8 @@ public class MemberDetailActivity extends BaseActivity<ActivityMemberDetailBindi
                 editTextDialog.show();
                 editTextDialog.setOnEditTextDialogClickListener(new EditTextDialog.OnEditTextDialogClickListener() {
                     @Override
-                    public void doCreate(String content) {
-                        viewModel.createMyTask(userId, memberName, content);
+                    public void doCreate(List<String> content) {
+                        viewModel.createMyTask(memberId, memberName, content.get(0));
                     }
 
                     @Override

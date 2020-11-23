@@ -11,14 +11,18 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
 
 import com.cocosw.bottomsheet.BottomSheet;
 import com.example.healthmanage.BR;
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.AppManager;
 import com.example.healthmanage.base.BaseActivity;
+import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.databinding.ActivityMyInfoBinding;
 import com.example.healthmanage.ui.activity.login.LoginActivity;
+import com.example.healthmanage.ui.activity.qualification.QualificationActivity;
+import com.example.healthmanage.view.EditTextDialog;
 import com.example.healthmanage.widget.TitleToolBar;
 
 import java.util.List;
@@ -40,11 +44,21 @@ public class MyInfoActivity extends BaseActivity<ActivityMyInfoBinding, MyInfoVi
     //打开系统相册RequestCode
     private static final int REQCODEOPENPICK = 0x02;
 
+    EditTextDialog editTextDialog;
+
     @Override
     protected void initData() {
         titleToolBar.setLeftIconVisible(true);
         titleToolBar.setTitle("账户信息");
         viewModel.setTitleToolBar(titleToolBar);
+
+        Log.d(HTAG, "initData==========>: " + BaseApplication.getUserInfoBean().getInvitationCode());
+        if (BaseApplication.getUserInfoBean().getInvitationCode() == null || BaseApplication.getUserInfoBean().getInvitationCode() == "") {
+            viewModel.inviteCodeTip.setValue("生成邀请码");
+        } else {
+            viewModel.inviteCode.setValue(BaseApplication.getUserInfoBean().getInvitationCode());
+            viewModel.inviteCodeTip.setValue("复制邀请码");
+        }
     }
 
     @Override
@@ -94,6 +108,10 @@ public class MyInfoActivity extends BaseActivity<ActivityMyInfoBinding, MyInfoVi
         super.registerUIChangeEventObserver();
         dataBinding.tvFinish.setOnClickListener(this::onClick);
         dataBinding.rlAvatar.setOnClickListener(this::onClick);
+        dataBinding.tvLicenseRegistrationNumber.setOnClickListener(this::onClick);
+        dataBinding.tvInviteCode.setOnClickListener(this::onClick);
+        dataBinding.tvTest.setOnClickListener(this::onClick);
+        dataBinding.tvBindInviteCode.setOnClickListener(this::onClick);
     }
 
 
@@ -119,6 +137,47 @@ public class MyInfoActivity extends BaseActivity<ActivityMyInfoBinding, MyInfoVi
                 if (builder != null) {
                     builder.show();
                 }
+                break;
+            case R.id.tv_license_registration_number:
+                editTextDialog = new EditTextDialog(this,
+                        R.layout.dialog_write_invite_code, "");
+                editTextDialog.show();
+                break;
+            case R.id.tv_test:
+                startActivity(QualificationActivity.class);
+                break;
+            case R.id.tv_invite_code:
+                viewModel.inviteCodeTip.observe(this, new Observer<String>() {
+                    @Override
+                    public void onChanged(String s) {
+                        Log.d(HTAG, "onChanged==========>: " + s);
+                    }
+                });
+                Log.d(HTAG, "onClick==========>: " + viewModel.inviteCodeTip.getValue());
+                if (viewModel.inviteCodeTip.getValue().equals("生成邀请码")) {
+                    viewModel.getInviteCode();
+                } else {
+                    Intent sendIntent = new Intent();
+                    sendIntent.setAction(Intent.ACTION_SEND);
+                    sendIntent.putExtra(Intent.EXTRA_TEXT, viewModel.inviteCode.getValue());
+                    sendIntent.setType("text/plain");
+                    startActivity(Intent.createChooser(sendIntent, "Send to ..."));
+                }
+                break;
+            case R.id.tv_bind_invite_code:
+                editTextDialog = new EditTextDialog(this, R.layout.dialog_write_invite_code, "");
+                editTextDialog.show();
+                editTextDialog.setOnEditTextDialogClickListener(new EditTextDialog.OnEditTextDialogClickListener() {
+                    @Override
+                    public void doCreate(List<String> content) {
+                        viewModel.writeInviteCode(content.get(0));
+                    }
+
+                    @Override
+                    public void doSend() {
+
+                    }
+                });
                 break;
         }
     }

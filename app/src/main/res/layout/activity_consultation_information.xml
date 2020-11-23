@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.consultationinfo.ConsultationInfoViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+
+        <RadioGroup
+            android:id="@+id/rg_title"
+            style="@style/ActivityConsultationInformationRadioGroupStyle">
+
+            <RadioButton
+                android:id="@+id/rb_untreated"
+                style="@style/ActivityMemberListRadioGroupStyle.OrdinaryMember"
+                android:checked="true"
+                android:text="未处理" />
+
+            <RadioButton
+                android:id="@+id/rb_processing"
+                style="@style/ActivityMemberListRadioGroupStyle.VipMember"
+                android:text="处理中" />
+
+            <RadioButton
+                android:id="@+id/rb_processed"
+                style="@style/ActivityMemberListRadioGroupStyle.SVipMember"
+                android:text="已处理" />
+        </RadioGroup>
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/smart_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.scwang.smartrefresh.layout.header.ClassicsHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_consultation_information"
+                style="@style/ActivityMyTaskRecyclerViewStyle" />
+
+            <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    </LinearLayout>
+</layout>

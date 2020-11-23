@@ -18,13 +18,13 @@ public class MyMemberRecyclerView extends AndroidViewModel {
     public String memberName;
     public String memberRank;
     public boolean focusState;
-    public int drawable, userId;
+    public int drawable, memberId;
 
-    public MyMemberRecyclerView(String memberName, String memberRank, boolean focusState, int userId) {
+    public MyMemberRecyclerView(String memberName, String memberRank, boolean focusState, int memberId) {
         super(BaseApplication.getInstance());
         this.memberName = memberName;
         this.memberRank = memberRank;
-        this.userId = userId;
+        this.memberId = memberId;
         this.focusState = focusState;
         if (focusState == false) {
             drawable = R.drawable.fragment_main_my_member_focus_normal;
@@ -62,7 +62,7 @@ public class MyMemberRecyclerView extends AndroidViewModel {
         Intent intent = new Intent(BaseApplication.getInstance(), MemberDetailActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("MemberName", memberName);
-        bundle.putInt("UserId", userId);
+        bundle.putInt("MemberId", memberId);
         bundle.putBoolean("FocusState", focusState);
         intent.putExtras(bundle);
         BaseApplication.getInstance().getApplicationContext().startActivity(intent);
@@ -73,7 +73,7 @@ public class MyMemberRecyclerView extends AndroidViewModel {
         Intent intent = new Intent(BaseApplication.getInstance(), MemberInfoActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("MemberName", memberName);
-        bundle.putInt("UserId", userId);
+        bundle.putInt("MemberId", memberId);
         bundle.putBoolean("FocusState", focusState);
         intent.putExtras(bundle);
         BaseApplication.getInstance().getApplicationContext().startActivity(intent);

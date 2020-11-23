@@ -11,6 +11,7 @@ import com.bumptech.glide.request.target.ViewTarget;
 import com.example.healthmanage.R;
 import com.example.healthmanage.bean.LoginResponse;
 import com.example.healthmanage.utils.Utils;
+import com.hdl.CrashExceptioner;
 import com.jeremyliao.liveeventbus.LiveEventBus;
 
 import static com.example.healthmanage.utils.Constants.HTAG;
@@ -25,7 +26,7 @@ public class BaseApplication extends Application {
     private static LoginResponse.DataBean.UserInfoBean userInfoBean;
 
     public static String getToken() {
-        return token;
+        return token == null ? "token is null" : token;
     }
 
     public static void setToken(String token) {
@@ -43,13 +44,20 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
         setApplication(this);
+
+        //LiveEventBus配置
         LiveEventBus
                 .config()
                 .autoClear(true)
                 .lifecycleObserverAlwaysActive(true);
 
+        //glide报错缺失
         ViewTarget.setTagId(R.id.glide_tag);
+
+        //奔溃页面
+        CrashExceptioner.init(this);
 
     }
 
@@ -64,7 +72,6 @@ public class BaseApplication extends Application {
         Utils.init(application);
         //注册监听每个activity的生命周期,便于堆栈式管理
         application.registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
-
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
                 AppManager.getAppManager().addActivity(activity);

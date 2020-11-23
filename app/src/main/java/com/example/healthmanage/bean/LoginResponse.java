@@ -7,7 +7,7 @@ public class LoginResponse {
      * errorLog : null
      * status : 200
      * message : 成功
-     * data : {"userInfo":{"sysId":19,"sysNickName":null,"sysUserName":null,"sysInitPwd":"123456","sysPwd":"89d440a24aca5ccf7761d034126d30c5","token":null,"isLocked":0,"isDeleted":0,"createTime":null,"updateTime":null,"createUserId":null,"lastLoginTime":null,"roleId":9,"groupId":null,"groupName":null,"groupParentId":null,"groupParentPath":null,"groupPath":null,"departmentId":null,"departmentName":null,"phone":"13584869132"},"expires_in":86400,"token":"d38337e04d8e4613887355d5b2447c8c1592278036275"}
+     * data : {"userInfo":{"sysId":19,"sysNickName":"测试健康管理师","sysUserName":"王姓健康管理师","sysInitPwd":"564321","sysPwd":"bbf125918ac66d4ab6fac2c767b213df","token":null,"isLocked":0,"isDeleted":0,"createTime":null,"updateTime":null,"createUserId":null,"lastLoginTime":null,"roleId":9,"groupId":null,"groupName":null,"groupParentId":null,"groupParentPath":null,"groupPath":null,"departmentId":null,"departmentName":null,"phone":"13584869132","invitationCode":null},"expires_in":86400,"token":"3b2bd03a1cc742338714df1f1022232f1598000529772"}
      */
 
     private Object requestId;
@@ -58,9 +58,9 @@ public class LoginResponse {
 
     public static class DataBean {
         /**
-         * userInfo : {"sysId":19,"sysNickName":null,"sysUserName":null,"sysInitPwd":"123456","sysPwd":"89d440a24aca5ccf7761d034126d30c5","token":null,"isLocked":0,"isDeleted":0,"createTime":null,"updateTime":null,"createUserId":null,"lastLoginTime":null,"roleId":9,"groupId":null,"groupName":null,"groupParentId":null,"groupParentPath":null,"groupPath":null,"departmentId":null,"departmentName":null,"phone":"13584869132"}
+         * userInfo : {"sysId":19,"sysNickName":"测试健康管理师","sysUserName":"王姓健康管理师","sysInitPwd":"564321","sysPwd":"bbf125918ac66d4ab6fac2c767b213df","token":null,"isLocked":0,"isDeleted":0,"createTime":null,"updateTime":null,"createUserId":null,"lastLoginTime":null,"roleId":9,"groupId":null,"groupName":null,"groupParentId":null,"groupParentPath":null,"groupPath":null,"departmentId":null,"departmentName":null,"phone":"13584869132","invitationCode":null}
          * expires_in : 86400
-         * token : d38337e04d8e4613887355d5b2447c8c1592278036275
+         * token : 3b2bd03a1cc742338714df1f1022232f1598000529772
          */
 
         private UserInfoBean userInfo;
@@ -94,10 +94,10 @@ public class LoginResponse {
         public static class UserInfoBean {
             /**
              * sysId : 19
-             * sysNickName : null
-             * sysUserName : null
-             * sysInitPwd : 123456
-             * sysPwd : 89d440a24aca5ccf7761d034126d30c5
+             * sysNickName : 测试健康管理师
+             * sysUserName : 王姓健康管理师
+             * sysInitPwd : 564321
+             * sysPwd : bbf125918ac66d4ab6fac2c767b213df
              * token : null
              * isLocked : 0
              * isDeleted : 0
@@ -114,11 +114,12 @@ public class LoginResponse {
              * departmentId : null
              * departmentName : null
              * phone : 13584869132
+             * invitationCode : null
              */
 
             private int sysId;
             private String sysNickName;
-            private Object sysUserName;
+            private String sysUserName;
             private String sysInitPwd;
             private String sysPwd;
             private Object token;
@@ -137,6 +138,7 @@ public class LoginResponse {
             private Object departmentId;
             private Object departmentName;
             private String phone;
+            private String invitationCode;
 
             public int getSysId() {
                 return sysId;
@@ -154,11 +156,11 @@ public class LoginResponse {
                 this.sysNickName = sysNickName;
             }
 
-            public Object getSysUserName() {
+            public String getSysUserName() {
                 return sysUserName;
             }
 
-            public void setSysUserName(Object sysUserName) {
+            public void setSysUserName(String sysUserName) {
                 this.sysUserName = sysUserName;
             }
 
@@ -304,6 +306,14 @@ public class LoginResponse {
 
             public void setPhone(String phone) {
                 this.phone = phone;
+            }
+
+            public String getInvitationCode() {
+                return invitationCode;
+            }
+
+            public void setInvitationCode(String invitationCode) {
+                this.invitationCode = invitationCode;
             }
         }
     }

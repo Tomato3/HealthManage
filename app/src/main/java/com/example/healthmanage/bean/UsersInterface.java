@@ -173,4 +173,100 @@ public interface UsersInterface {
         void error(ExceptionHandle.ResponseException e);
     }
 
+    interface GetMemberInfoCallback {
+        void getSucceed(MemberInfoResponse memberInfoResponse);
+
+        void getFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetServicePlanListCallback {
+        void getSucceed(ServicePlanResponse servicePlanResponse);
+
+        void getFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface UploadServiceResultCallback {
+        void uploadSucceed(GeneralResponse generalResponse);
+
+        void uploadFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetAirListCallback {
+        void getSucceed(AirResponse airResponse);
+
+        void getFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetInviteCodeCallback {
+        void getSucceed(GeneralResponse generalResponse);
+
+        void getFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetNursingDataCallback {
+        void getSucceed(NursingResponse nursingResponse);
+
+        void getFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface WriteInviteCodeCallback {
+        void writeSucceed(GeneralResponse generalResponse);
+
+        void writeFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetMyDoctorCallback {
+        void getSucceed(MyDoctorResponse myDoctorResponse);
+
+        void getFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetMyDoctorDetailCallback {
+        void getSucceed(DoctorDetailResponse doctorDetailResponse);
+
+        void getFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetConsultationListCallback {
+        void getSucceed(ConsultationResponse consultationResponse);
+
+        void getFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface ReplayConsultationCallback {
+        void replaySucceed(GeneralResponse generalResponse);
+
+        void replayFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetConsultationRecordCallback {
+        void getSucceed(ConsultationRecordResponse consultationRecordResponse);
+
+        void getFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
 }

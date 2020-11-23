@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>LiveEventBus
+
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.serviceplan.serviceplandetail.ServicePlanDetailViewModel" />
+    </data>
+
+    <LinearLayout
+        style="@style/AllMatchWhiteLayoutStyle"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+
+        <TextView
+            style="@style/ActivityServicePlanDetailTxtStyle.Member"
+            android:text="@{ViewModel.servicePlanRecyclerView.serviceMember}" />
+
+        <TextView
+            style="@style/ActivityServicePlanDetailTxtStyle.Member"
+            android:text="服务项目：" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_service_item"
+            style="@style/ActivityServicePlanDetailRecyclerViewStyle" />
+
+        <TextView
+            style="@style/ActivityServicePlanDetailTxtStyle.Time"
+            android:text="@{ViewModel.servicePlanRecyclerView.serviceTime}" />
+
+        <TextView
+            style="@style/ActivityServicePlanDetailTxtStyle.Location"
+            android:text="@{ViewModel.servicePlanRecyclerView.serviceLocation}" />
+    </LinearLayout>
+</layout>

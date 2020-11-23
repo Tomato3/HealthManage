@@ -8,17 +8,77 @@
             type="com.example.healthmanage.ui.fragment.education.EducationViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
+        <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/under_do"
-            android:textColor="@color/colorTextGrey"
-            android:textSize="@dimen/text_size_26" />
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <RadioGroup
+                android:id="@+id/rg_title"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_recommend"
+                    style="@style/FragmentBusinessRBStyle"
+                    android:checked="true"
+                    android:text="推荐" />
+
+                <RadioButton
+                    android:id="@+id/rb_health_care"
+                    style="@style/FragmentBusinessRBStyle"
+                    android:text="《保健医苑》" />
+
+                <RadioButton
+                    android:id="@+id/rb_professional_magazine"
+                    style="@style/FragmentBusinessRBStyle"
+                    android:text="《专业杂志》" />
+
+                <RadioButton
+                    android:id="@+id/rb_forum"
+                    style="@style/FragmentBusinessRBStyle"
+                    android:text="《论坛》" />
+
+                <RadioButton
+                    android:id="@+id/rb_meeting"
+                    style="@style/FragmentBusinessRBStyle"
+                    android:text="会议" />
+
+                <RadioButton
+                    android:id="@+id/rb_on_the_job_education"
+                    style="@style/FragmentBusinessRBStyle"
+                    android:text="在职教育" />
+
+                <RadioButton
+                    android:id="@+id/rb_diploma_education"
+                    style="@style/FragmentBusinessRBStyle"
+                    android:text="学历证书教育" />
+
+                <RadioButton
+                    android:id="@+id/rb_expert_lecture"
+                    style="@style/FragmentBusinessRBStyle"
+                    android:text="专家讲座" />
+
+                <RadioButton
+                    android:id="@+id/rb_learning_integral"
+                    style="@style/FragmentBusinessRBStyle"
+                    android:text="学习积分" />
+
+
+            </RadioGroup>
+        </HorizontalScrollView>
+
+            <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_education_content"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0"
+                android:layout_marginTop="@dimen/dp_5"
+            android:layout_weight="1" />
+    </LinearLayout>
 </layout>

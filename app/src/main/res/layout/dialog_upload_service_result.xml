@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="@dimen/dp_400"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:focusable="false"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll"
+            android:layout_width="@dimen/dp_400"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_member"
+                style="@style/DialogUploadServiceResultTxtStyle.Member" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                style="@style/DialogUploadServiceResultTxtStyle.Time" />
+
+            <TextView
+                android:id="@+id/tv_location"
+                style="@style/DialogUploadServiceResultTxtStyle.Location" />
+
+            <TextView
+                android:id="@+id/tv_item"
+                style="@style/DialogUploadServiceResultTxtStyle.Item" />
+
+            <EditText
+                android:id="@+id/et_result"
+                style="@style/DialogUploadServiceResultTxtStyle.Result" />
+        </LinearLayout>
+
+        <RelativeLayout
+            style="@style/DialogCreateTaskLayoutStyle.Rl"
+            android:layout_below="@+id/ll">
+
+            <View style="@style/DialogCreateTaskViewStyle.LineTwo" />
+
+            <TextView
+                android:id="@+id/tv_cancel"
+                style="@style/DialogCreateTaskTxtStyle.Cancel" />
+
+            <TextView
+                android:id="@+id/tv_upload"
+                style="@style/DialogCreateTaskTxtStyle.Upload" />
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

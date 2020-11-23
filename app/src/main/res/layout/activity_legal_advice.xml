@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.legaladvice.LegalAdviceViewModel" />
+    </data>
+
+    <LinearLayout
+        style="@style/AllMatchWhiteLayoutStyle"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_70"
+            android:background="@color/colorPageBg"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/dp_10"
+            android:text="咨询动态"
+            android:textColor="@color/colorTextGrey"
+            android:textSize="@dimen/text_size_20" />
+
+        <TextView
+            style="@style/ActivityServiceCenterTxtStyle"
+            android:text="咨询动态一" />
+
+        <TextView
+            style="@style/ActivityServiceCenterTxtStyle"
+            android:text="咨询动态二" />
+
+        <TextView
+            style="@style/ActivityServiceCenterTxtStyle"
+            android:text="咨询动态三" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_60"
+                android:layout_marginStart="@dimen/dp_30"
+                android:layout_weight="1"
+                android:background="@drawable/shape_solid_blue_radius_5"
+                android:gravity="center"
+                android:text="律师在线，点击咨询"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/text_size_18" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_60"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginEnd="@dimen/dp_30"
+                android:layout_weight="1"
+                android:background="@drawable/shape_solid_blue_radius_5"
+                android:gravity="center"
+                android:text="留言咨询"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/text_size_18" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

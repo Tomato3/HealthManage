@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.doctorhall.DoctorHallViewModel" />
+    </data>
+
+    <LinearLayout
+        style="@style/AllMatchWhiteLayoutStyle"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+
+        <RadioGroup
+            android:id="@+id/rg_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_my_doctor"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/selector_item_blue_item_white"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="我绑定的医生"
+                android:textColor="@color/activity_member_list_radio_button_bg_selector" />
+
+            <RadioButton
+                android:id="@+id/rb_doctor_hall"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/selector_item_blue_item_white"
+                android:button="@null"
+                android:gravity="center"
+                android:text="全部医生"
+                android:textColor="@color/activity_member_list_radio_button_bg_selector" />
+        </RadioGroup>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_doctor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</layout>

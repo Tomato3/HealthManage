@@ -6,7 +6,7 @@
 
         <variable
             name="ViewModel"
-            type="com.example.healthmanage.ui.activity.commentdetail.CommentDetailViewModel" />
+            type="com.example.healthmanage.ui.activity.mycomment.commentdetail.CommentDetailViewModel" />
     </data>
 
     <LinearLayout

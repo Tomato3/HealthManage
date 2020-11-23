@@ -9,12 +9,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-
 import com.example.healthmanage.R;
 
 import java.lang.ref.WeakReference;
-
-
 
 /**
  * 盛装Fragment的一个容器(代理)Activity

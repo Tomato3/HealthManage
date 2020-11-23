@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.doctorhall.doctordetail.DoctorDetailViewModel" />
+
+    </data>
+
+    <LinearLayout
+        style="@style/AllMatchWhiteLayoutStyle"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_200"
+            android:background="@color/colorBlue">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="@{ViewModel.doctorName}"
+                android:textSize="@dimen/text_size_18" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_toRightOf="@+id/tv_name"
+                android:paddingStart="@dimen/dp_5"
+                android:text="@{ViewModel.doctorProfessionalTitle}"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_40"
+                android:text="@{ViewModel.doctorSittingPlace}"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_70"
+                android:text="@{ViewModel.doctorSpeciality}"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_100"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:text="@{ViewModel.doctorExperience}"
+                android:textSize="@dimen/text_size_16" />
+
+
+            <ImageView
+                android:id="@+id/iv_avatar"
+                style="@style/FragmentMyViewStyle"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/dp_20"
+                android:url="@{ViewModel.avatar}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/dp_5">
+
+                <TextView
+                    android:id="@+id/tv_appointment_registration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="预约挂号"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/text_size_16" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="课堂预约"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/text_size_16" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="会诊预约"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/text_size_16" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="预约挂号"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/text_size_16" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</layout>

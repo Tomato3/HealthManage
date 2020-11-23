@@ -6,7 +6,7 @@
 
         <variable
             name="ViewModel"
-            type="com.example.healthmanage.ui.activity.abnormaldata.AbnormalDataViewModel" />
+            type="com.example.healthmanage.ui.activity.mytask.mytaskdetail.abnormaldata.AbnormalDataViewModel" />
     </data>
 
     <LinearLayout

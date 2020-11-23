@@ -6,7 +6,7 @@
 
         <variable
             name="ViewModel"
-            type="com.example.healthmanage.ui.activity.mytaskdetail.MyTaskDetailViewModel" />
+            type="com.example.healthmanage.ui.activity.mytask.mytaskdetail.MyTaskDetailViewModel" />
     </data>
 
     <LinearLayout style="@style/ActivityMyTaskDetailLayoutStyle">

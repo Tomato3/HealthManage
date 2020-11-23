@@ -8,10 +8,16 @@ android {
         applicationId "com.example.healthmanage"
         minSdkVersion 24
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "1.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        //高德地图配置
+        ndk {
+            //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+        }
     }
 
     dataBinding {
@@ -43,6 +49,7 @@ dependencies {
     implementation 'com.android.support:design:28.0.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation project(path: ':crashexcptioner')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -91,5 +98,14 @@ dependencies {
 
     //banner 轮播图
     implementation 'com.youth.banner:banner:1.4.10'
+
+    //SmartFreshLayout
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
+
+    //MPAndroidChart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    implementation 'com.github.wildma:IDCardCamera:1.1.1'
+
 
 }

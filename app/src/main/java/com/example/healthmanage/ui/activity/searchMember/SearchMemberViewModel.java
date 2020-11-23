@@ -69,7 +69,6 @@ public class SearchMemberViewModel extends BaseViewModel {
 
                         @Override
                         public void error(ExceptionHandle.ResponseException e) {
-                            showToast(e.getMessage(), 1);
                         }
                     });
         } else {

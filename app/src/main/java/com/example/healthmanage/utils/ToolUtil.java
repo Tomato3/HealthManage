@@ -1,10 +1,20 @@
 package com.example.healthmanage.utils;
 
+import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.databinding.BindingAdapter;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseApplication;
 
 import java.text.ParseException;
@@ -14,12 +24,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import static com.example.healthmanage.utils.Constants.HTAG;
-
 /**
  * 其他工具类
  */
 public class ToolUtil {
+
+    private static String baseImgUrl = "http://b-ssl.duitang.com/uploads/item/201803/02/20180302222228_v3JdH.jpeg";
 
     //根据手机的分辨率从px(像素)的单位转成为dp
     public static int px2dip(Context context, float pxValue) {
@@ -29,7 +39,7 @@ public class ToolUtil {
 
     //获取当前时间 格式：yyyy年MM月dd日 HH:mm:ss
     public static String getCurrentTime() {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date(System.currentTimeMillis());
         return simpleDateFormat.format(date);
     }
@@ -52,7 +62,6 @@ public class ToolUtil {
         c.add(Calendar.DATE, -7);
         Date d = c.getTime();
         String day = format.format(d);
-        Log.d(HTAG, "initData==========>: " + day);
         return day;
     }
 
@@ -95,5 +104,56 @@ public class ToolUtil {
             isBigger = false;
         }
         return isBigger;
+    }
+
+    //将时间戳转成日期格式
+    public static String timeStamp2Date(String seconds, String format) {
+        if (seconds == null || seconds.isEmpty() || seconds.equals("null")) {
+            return "";
+        }
+        if (format == null || format.isEmpty()) {
+            format = "yyyy-MM-dd HH:mm:ss";
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        return sdf.format(new Date(Long.valueOf(seconds)));//毫秒需加000
+    }
+
+    //判断是否为null
+    public static String isNull(Object content) {
+        if (content == null) {
+            return "暂无数据";
+        } else {
+            return String.valueOf(content);
+        }
+    }
+
+    //
+    @BindingAdapter("android:url")
+    public static void setUrl(ImageView view, String imgUrl) {
+        if (imgUrl != null && !"".equals(imgUrl)) {
+            Glide.with(view.getContext()).asBitmap().load(imgUrl).apply(RequestOptions.circleCropTransform()).into(view);
+        } else {
+            Glide.with(view.getContext()).asBitmap().load(baseImgUrl).apply(RequestOptions.circleCropTransform()).into(view);
+        }
+    }
+
+    /**
+     * 带动画的跳转
+     *
+     * @param context
+     * @param toActivity
+     * @param imageView
+     */
+    public static void startActivityWithTransition(Activity context, Class toActivity,
+                                                   ImageView imageView, Bundle bundle) {
+        Intent intent = new Intent(context, toActivity);
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
+        ActivityOptionsCompat options =
+                ActivityOptionsCompat.makeSceneTransitionAnimation(context, imageView,
+                        context.getString(R.string.transition_logo_img));
+        //与xml文件对应
+        ActivityCompat.startActivity(context, intent, options.toBundle());
     }
 }

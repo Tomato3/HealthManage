@@ -6,7 +6,7 @@
 
         <variable
             name="ViewModel"
-            type="com.example.healthmanage.ui.activity.mywallet.MyWalletViewModel" />
+            type="com.example.healthmanage.ui.activity.mypoint.mywallet.MyWalletViewModel" />
     </data>
 
     <LinearLayout

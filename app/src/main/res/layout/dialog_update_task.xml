@@ -11,8 +11,11 @@
         <EditText
             android:id="@+id/et_comment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp_40"
             android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:background="@drawable/shape_solid_white_radius_5"
             android:hint="@string/task_description" />
 
         <RelativeLayout style="@style/DialogCreateTaskLayoutStyle.Rl">

@@ -18,6 +18,14 @@
     </style>
 
 
+    <!-- All -->
+    <style name="AllMatchWhiteLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/colorWhite</item>
+    </style>
+
+
     <!-- popupMenu的背景色 -->
     <style name="popupmenu_bg_style">
         <item name="android:popupBackground">@drawable/layer_list_date_picker</item>
@@ -57,7 +65,7 @@
 
     <style name="ToolbarTitleViewStyle.Right">
         <item name="android:layout_alignParentRight">true</item>
-        <item name="android:src">@drawable/add</item>
+        <item name="android:layout_marginEnd">@dimen/dp_5</item>
     </style>
 
 
@@ -446,12 +454,6 @@
 
 
     <!-- HomeFragment -->
-    <style name="FragmentHomeLayoutStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:background">@color/colorWhite</item>
-    </style>
-
     <style name="FragmentHomeTextStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -631,10 +633,17 @@
         <item name="android:text">@string/service_center</item>
     </style>
 
+    <style name="FragmentMyTextStyle.LifeHelp">
+        <item name="android:drawableLeft">@drawable/fragment_my_service_center</item>
+        <item name="android:paddingRight">@dimen/dp_20</item>
+        <item name="android:text">"生活求助"</item>
+    </style>
+
     <style name="FragmentMyViewStyle">
         <item name="android:layout_width">@dimen/dp_100</item>
         <item name="android:layout_height">@dimen/dp_100</item>
         <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:transitionName">@string/transition_logo_img</item>
     </style>
 
 
@@ -960,34 +969,25 @@
     </style>
 
     <style name="IncludeMemberDetailDataItemTextStyle">
-        <item name="android:layout_width">@dimen/dp_160</item>
+        <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
         <item name="android:gravity">center_vertical|left</item>
-        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:textSize">@dimen/text_size_14</item>
         <item name="android:textColor">@color/colorTextGrey</item>
-        <item name="android:drawableRight">@drawable/activity_member_detail_data_item_spacer</item>
+        <item name="android:drawableRight">@drawable/vertical_line</item>
     </style>
-
-    <style name="IncludeMemberDetailDataItemTextStyle.First">
-        <item name="android:layout_marginStart">@dimen/dp_20</item>
-    </style>
-
-    <style name="IncludeMemberDetailDataItemTextStyle.Second"></style>
-
-    <style name="IncludeMemberDetailDataItemTextStyle.Third"></style>
 
     <style name="IncludeMemberDetailDataItemTextStyle.Four">
         <item name="android:drawableRight">@null</item>
     </style>
 
-
-    <!-- BusinessFragment -->
-    <style name="FragmentBusinessLayoutStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:background">@color/colorWhite</item>
+    <style name="IncludeMemberDetailDataItemTextStyle.None">
+        <item name="android:drawableRight">@null</item>
     </style>
 
+
+    <!-- BusinessFragment -->
     <style name="FragmentBusinessTxtStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -1206,12 +1206,6 @@
 
 
     <!-- MyStudioActivity -->
-    <style name="ActivityMyStudioLayoutStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:background">@color/colorWhite</item>
-    </style>
-
     <style name="ActivityMyStudioTxtStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/dp_64</item>
@@ -1369,12 +1363,6 @@
 
 
     <!-- MemberListActivity -->
-    <style name="ActivityMemberListLayoutStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:background">@color/colorWhite</item>
-    </style>
-
     <style name="ActivityMemberListTxtStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -1460,12 +1448,6 @@
 
 
     <!-- SearchMemberActivity -->
-    <style name="ActivitySearchMemberLayoutStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:background">@color/colorWhite</item>
-    </style>
-
     <style name="ActivitySearchMemberIncludeStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">@dimen/dp_40</item>
@@ -1506,12 +1488,6 @@
 
 
     <!-- MyTaskActivity -->
-    <style name="ActivityMyTaskLayoutStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:background">@color/colorWhite</item>
-    </style>
-
     <style name="ActivityMyTaskViewStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/dp_200</item>
@@ -1522,22 +1498,16 @@
     <style name="ActivityMyTaskRecyclerViewStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_marginTop">@dimen/dp_120</item>
     </style>
 
 
     <!-- MyTaskRecyclerView -->
     <style name="RecyclerViewMyTaskLayoutStyle">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginBottom">@dimen/dp_20</item>
-        <item name="android:orientation">vertical</item>
-    </style>
-
-    <style name="RecyclerViewMyTaskLayoutStyle.Content">
-        <item name="android:layout_width">@dimen/dp_550</item>
         <item name="android:layout_height">@dimen/dp_130</item>
-        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginStart">@dimen/dp_50</item>
+        <item name="android:layout_marginEnd">@dimen/dp_50</item>
+        <item name="android:layout_marginBottom">@dimen/dp_20</item>
         <item name="android:singleLine">true</item>
         <item name="android:background">
             @drawable/shape_solid_white_stroke_colorspinnerstroke_radius_5
@@ -1731,6 +1701,7 @@
     <style name="RecyclerViewTaskReceiverViewStyle.Avatar">
         <item name="android:layout_marginStart">@dimen/dp_10</item>
         <item name="android:layout_marginTop">@dimen/dp_10</item>
+        <item name="android:transitionName">@string/transition_logo_img</item>
     </style>
 
 
@@ -1850,7 +1821,11 @@
     </style>
 
     <style name="DialogCreateTaskTxtStyle.TaskComment">
+        <item name="android:layout_height">@dimen/dp_40</item>
         <item name="android:layout_marginTop">@dimen/dp_20</item>
+        <item name="android:layout_marginStart">@dimen/dp_10</item>
+        <item name="android:layout_marginEnd">@dimen/dp_10</item>
+        <item name="android:background">@drawable/shape_solid_white_radius_5</item>
         <item name="android:hint">@string/task_description</item>
     </style>
 
@@ -1868,13 +1843,14 @@
     <style name="DialogCreateTaskViewStyle.LineTwo">
         <item name="android:layout_width">@dimen/dp_0.1</item>
         <item name="android:layout_height">@dimen/dp_36</item>
-        <item name="android:layout_marginTop">@dimen/dp_10</item>
+        <item name="android:layout_centerVertical">true</item>
         <item name="android:layout_marginStart">@dimen/dp_200</item>
     </style>
 
     <style name="DialogCreateTaskTxtStyle.Cancel">
         <item name="android:layout_width">@dimen/dp_200</item>
         <item name="android:layout_height">@dimen/dp_56</item>
+        <item name="android:layout_centerVertical">true</item>
         <item name="android:gravity">center</item>
         <item name="android:text">@string/cancel</item>
         <item name="android:textColor">@color/colorTextGrey</item>
@@ -1897,6 +1873,16 @@
         <item name="android:layout_marginStart">@dimen/dp_200</item>
         <item name="android:gravity">center</item>
         <item name="android:text">@string/update</item>
+        <item name="android:textColor">@color/colorBlue</item>
+        <item name="android:textSize">@dimen/text_size_20</item>
+    </style>
+
+    <style name="DialogCreateTaskTxtStyle.Upload">
+        <item name="android:layout_width">@dimen/dp_200</item>
+        <item name="android:layout_height">@dimen/dp_56</item>
+        <item name="android:layout_marginStart">@dimen/dp_200</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">@string/upload</item>
         <item name="android:textColor">@color/colorBlue</item>
         <item name="android:textSize">@dimen/text_size_20</item>
     </style>
@@ -2116,6 +2102,8 @@
         <item name="android:layout_marginEnd">@dimen/dp_10</item>
     </style>
 
+
+    <!-- TipToast -->
     <style name="ToastTipLayoutStyle">
         <item name="android:layout_width">@dimen/dp_100</item>
         <item name="android:layout_height">@dimen/dp_160</item>
@@ -2139,6 +2127,215 @@
         <item name="android:layout_marginBottom">@dimen/dp_10</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+
+    <!-- ServiceCenterActivity -->
+    <style name="ActivityServiceCenterLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="ActivityServiceCenterTxtStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_60</item>
+        <item name="android:background">@drawable/layer_list_underline_arrow</item>
+        <item name="android:paddingLeft">@dimen/dp_10</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textSize">@dimen/text_size_16</item>
+    </style>
+
+    <style name="ActivityServiceCenterIncludeStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/dp_40</item>
+        <item name="android:layout_marginTop">@dimen/dp_10</item>
+    </style>
+
+
+    <!-- ServicePlanActivity -->
+    <style name="ActivityServicePlanLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/colorWhite</item>
+    </style>
+
+    <style name="ActivityServicePlanRecyclerViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="ActivityServicePlanViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_200</item>
+        <item name="android:layout_marginTop">@dimen/dp_56</item>
+        <item name="android:background">@color/colorBlue</item>
+    </style>
+
+
+    <!-- ServicePlanRecyclerView -->
+    <style name="RecyclerViewServicePlanLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_150</item>
+        <item name="android:layout_marginStart">@dimen/dp_50</item>
+        <item name="android:layout_marginEnd">@dimen/dp_50</item>
+        <item name="android:layout_marginBottom">@dimen/dp_20</item>
+        <item name="android:background">
+            @drawable/shape_solid_white_stroke_colorspinnerstroke_radius_5
+        </item>
+    </style>
+
+    <style name="RecyclerViewServicePlanViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="RecyclerViewServicePlanTxtStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/dp_15</item>
+        <item name="android:paddingBottom">@dimen/dp_5</item>
+        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:lineSpacingExtra">@dimen/dp_2</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+
+    <style name="RecyclerViewServicePlanTxtStyle.ServiceMember">
+        <item name="android:layout_marginTop">@dimen/dp_10</item>
+    </style>
+
+    <style name="RecyclerViewServicePlanTxtStyle.ServiceItem">
+        <item name="android:singleLine">false</item>
+    </style>
+
+    <style name="RecyclerViewServicePlanTxtStyle.ServiceTime">
+
+    </style>
+
+    <style name="RecyclerViewServicePlanTxtStyle.ServiceLocation"></style>
+
+
+    <!-- ServicePlanDetailActivity -->
+    <style name="ActivityServicePlanDetailTxtStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:layout_marginStart">@dimen/dp_10</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="ActivityServicePlanDetailTxtStyle.Member">
+        <item name="android:layout_marginTop">@dimen/dp_10</item>
+    </style>
+
+    <style name="ActivityServicePlanDetailTxtStyle.Item"></style>
+
+    <style name="ActivityServicePlanDetailTxtStyle.Time">
+        <item name="android:layout_marginTop">@dimen/dp_10</item>
+    </style>
+
+    <style name="ActivityServicePlanDetailTxtStyle.Location">
+        <item name="android:layout_marginTop">@dimen/dp_10</item>
+    </style>
+
+    <style name="ActivityServicePlanDetailRecyclerViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/dp_10</item>
+        <item name="android:layout_marginStart">@dimen/dp_20</item>
+    </style>
+
+    <style name="RecyclerViewServiceItemCheckedTxtStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/dp_10</item>
+        <item name="android:layout_marginStart">@dimen/dp_10</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:checkMark">?android:attr/listChoiceIndicatorSingle</item>
+        <item name="android:focusableInTouchMode">true</item>
+    </style>
+
+
+    <!-- UploadServiceResultDialog -->
+    <style name="DialogUploadServiceResultTxtStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textSize">@dimen/text_size_14</item>
+        <item name="android:layout_marginStart">@dimen/dp_10</item>
+    </style>
+
+    <style name="DialogUploadServiceResultTxtStyle.Member">
+        <item name="android:layout_marginTop">@dimen/dp_20</item>
+    </style>
+
+    <style name="DialogUploadServiceResultTxtStyle.Time">
+        <item name="android:layout_marginTop">@dimen/dp_20</item>
+    </style>
+
+    <style name="DialogUploadServiceResultTxtStyle.Location">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginTop">@dimen/dp_20</item>
+        <item name="android:layout_marginEnd">@dimen/dp_10</item>
+    </style>
+
+    <style name="DialogUploadServiceResultTxtStyle.Item">
+        <item name="android:layout_marginTop">@dimen/dp_20</item>
+    </style>
+
+    <style name="DialogUploadServiceResultTxtStyle.Result">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_60</item>
+        <item name="android:layout_marginTop">@dimen/dp_20</item>
+        <item name="android:layout_marginEnd">@dimen/dp_10</item>
+        <item name="android:background">@drawable/shape_solid_white_radius_5</item>
+        <item name="android:hint">"添加服务结果"</item>
+    </style>
+
+    <style name="FragmentBusinessRBStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginStart">@dimen/dp_10</item>
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:gravity">center</item>
+        <item name="android:button">@null</item>
+        <item name="android:textColor">@color/activity_member_list_radio_button_bg_selector</item>
+        <item name="android:background">@drawable/selector_item_blue_item_white
+        </item>
+    </style>
+
+
+    <style name="ActivityConsultationInformationRadioGroupStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_40</item>
+        <item name="android:gravity">center</item>
+        <item name="android:button">@null</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+
+    <style name="RecyclerViewConsultationInfoTxtStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/dp_15</item>
+        <item name="android:paddingBottom">@dimen/dp_5</item>
+        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:lineSpacingExtra">@dimen/dp_2</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center_vertical</item>
     </style>
 
 

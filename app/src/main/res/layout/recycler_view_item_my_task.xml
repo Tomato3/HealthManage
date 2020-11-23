@@ -8,30 +8,27 @@
             type="com.example.healthmanage.view.MyTaskRecyclerView" />
     </data>
 
-    <LinearLayout style="@style/RecyclerViewMyTaskLayoutStyle">
+    <RelativeLayout
+        android:id="@+id/rl_bg"
+        style="@style/RecyclerViewMyTaskLayoutStyle"
+        android:onClick="@{()->MyTaskRecyclerView.change()}">
 
-        <RelativeLayout
-            android:id="@+id/rl_bg"
-            style="@style/RecyclerViewMyTaskLayoutStyle.Content"
-            android:onClick="@{()->MyTaskRecyclerView.change()}">
+        <ImageView
+            style="@style/RecyclerViewMyTaskViewStyle"
+            android:ImageSrc="@{MyTaskRecyclerView.imageSrc}" />
 
-            <ImageView
-                style="@style/RecyclerViewMyTaskViewStyle"
-                android:ImageSrc="@{MyTaskRecyclerView.imageSrc}" />
+        <TextView
+            style="@style/RecyclerViewMyTaskTxtStyle.Title"
+            android:text="@={MyTaskRecyclerView.title}" />
 
-            <TextView
-                style="@style/RecyclerViewMyTaskTxtStyle.Title"
-                android:text="@={MyTaskRecyclerView.title}" />
+        <TextView
+            style="@style/RecyclerViewMyTaskTxtStyle.Description"
+            android:text="@={MyTaskRecyclerView.description}" />
 
-            <TextView
-                style="@style/RecyclerViewMyTaskTxtStyle.Description"
-                android:text="@={MyTaskRecyclerView.description}" />
+        <TextView
+            style="@style/RecyclerViewMyTaskTxtStyle.CreateTime"
+            android:text="@={MyTaskRecyclerView.createTime}" />
 
-            <TextView
-                style="@style/RecyclerViewMyTaskTxtStyle.CreateTime"
-                android:text="@={MyTaskRecyclerView.createTime}" />
+    </RelativeLayout>
 
-        </RelativeLayout>
-
-    </LinearLayout>
 </layout>

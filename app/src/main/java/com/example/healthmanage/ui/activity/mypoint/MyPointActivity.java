@@ -11,8 +11,8 @@ import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.base.BaseAdapter;
 import com.example.healthmanage.databinding.ActivityMyPointBinding;
-import com.example.healthmanage.ui.activity.getpoint.GetPointActivity;
-import com.example.healthmanage.ui.activity.mywallet.MyWalletActivity;
+import com.example.healthmanage.ui.activity.mypoint.getpoint.GetPointActivity;
+import com.example.healthmanage.ui.activity.mypoint.mywallet.MyWalletActivity;
 import com.example.healthmanage.view.ExchangeCommodityRecyclerView;
 import com.example.healthmanage.widget.TitleToolBar;
 

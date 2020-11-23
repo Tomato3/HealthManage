@@ -1,7 +1,6 @@
 package com.example.healthmanage.ui.fragment.home;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,16 +13,18 @@ import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseAdapter;
 import com.example.healthmanage.base.BaseFragment;
 import com.example.healthmanage.databinding.FragmentHomeBinding;
+import com.example.healthmanage.ui.activity.consultationinfo.ConsultationInfoActivity;
+import com.example.healthmanage.ui.activity.doctorhall.DoctorHallActivity;
 import com.example.healthmanage.ui.activity.memberlist.MemberListActivity;
 import com.example.healthmanage.ui.activity.mytask.MyTaskActivity;
+import com.example.healthmanage.ui.activity.serviceplan.ServicePlanActivity;
 import com.example.healthmanage.view.MyFocusRecyclerView;
 import com.example.healthmanage.view.MyMemberRecyclerView;
 import com.example.healthmanage.widget.DropdownBar;
+import com.jeremyliao.liveeventbus.LiveEventBus;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.example.healthmanage.utils.Constants.HTAG;
 
 public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewModel> implements View.OnClickListener {
 
@@ -34,6 +35,8 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
     @Override
     protected void initData() {
 
+        viewModel.loadMyFocus();
+        viewModel.loadMyMembers();
     }
 
     @Override
@@ -88,15 +91,20 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
             }
         });
 
+        LiveEventBus.get("Refresh", Boolean.class).observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean o) {
+                viewModel.loadMyMembers();
+                viewModel.loadMyFocus();
+            }
+        });
+
         dataBinding.tvMyTask.setOnClickListener(this::onClick);
+        dataBinding.tvPlan.setOnClickListener(this::onClick);
+        dataBinding.tvFamousDoctors.setOnClickListener(this::onClick);
+        dataBinding.tvMessage.setOnClickListener(this::onClick);
     }
 
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        viewModel.loadMyFocus();
-        viewModel.loadMyMembers();
-    }
 
     @Override
     protected void initView() {
@@ -108,13 +116,6 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
         dropdownBarArrayList.add(dropdownBarMyMember);
         dropdownBarArrayList.add(dropdownBarServiceNavigation);
         viewModel.dropdownBarLists.setValue(dropdownBarArrayList);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        viewModel.loadMyFocus();
-        viewModel.loadMyMembers();
     }
 
     @Override
@@ -130,6 +131,15 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
         switch (v.getId()) {
             case R.id.tv_my_task:
                 startActivity(MyTaskActivity.class);
+                break;
+            case R.id.tv_plan:
+                startActivity(ServicePlanActivity.class);
+                break;
+            case R.id.tv_famous_doctors:
+                startActivity(DoctorHallActivity.class);
+                break;
+            case R.id.tv_message:
+                startActivity(ConsultationInfoActivity.class);
                 break;
         }
     }

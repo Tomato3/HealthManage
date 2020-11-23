@@ -11,7 +11,7 @@ import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.base.BaseAdapter;
 import com.example.healthmanage.databinding.ActivityMyCommentBinding;
-import com.example.healthmanage.ui.activity.commentdetail.CommentDetailActivity;
+import com.example.healthmanage.ui.activity.mycomment.commentdetail.CommentDetailActivity;
 import com.example.healthmanage.view.MyCommentRecyclerView;
 import com.example.healthmanage.widget.TitleToolBar;
 

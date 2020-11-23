@@ -1,52 +1,30 @@
 package com.example.healthmanage.widget;
 
+import android.util.Log;
+
+import java.util.List;
+
+import static com.example.healthmanage.utils.Constants.HTAG;
+
 /**
  * 会员详情数据展示Item
  */
 public class DataItem {
 
-    public String firstTxt;
-    public String secondTxt;
-    public String thirdTxt;
-    public String fourthTxt;
-
-    public DataItem(String firstTxt, String secondTxt, String thirdTxt, String fourthTxt) {
-        this.firstTxt = firstTxt;
-        this.secondTxt = secondTxt;
-        this.thirdTxt = thirdTxt;
-        this.fourthTxt = fourthTxt;
+    public String getTitle() {
+        return title;
     }
 
-    public String getFirstTxt() {
-        return firstTxt;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setFirstTxt(String firstTxt) {
-        this.firstTxt = firstTxt;
-    }
+    public String title;
+    public List<String> data;
 
-    public String getSecondTxt() {
-        return secondTxt;
+    public DataItem(String title, List<String> data) {
+        Log.d(HTAG, "DataItem==========>: "+title);
+        this.title = title;
+        this.data = data;
     }
-
-    public void setSecondTxt(String secondTxt) {
-        this.secondTxt = secondTxt;
-    }
-
-    public String getThirdTxt() {
-        return thirdTxt;
-    }
-
-    public void setThirdTxt(String thirdTxt) {
-        this.thirdTxt = thirdTxt;
-    }
-
-    public String getFourthTxt() {
-        return fourthTxt;
-    }
-
-    public void setFourthTxt(String fourthTxt) {
-        this.fourthTxt = fourthTxt;
-    }
-
 }

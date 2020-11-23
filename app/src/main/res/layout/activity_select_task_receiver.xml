@@ -5,7 +5,7 @@
 
         <variable
             name="ViewModel"
-            type="com.example.healthmanage.ui.activity.selectTaskReceiver.SelectTaskReceiverViewModel" />
+            type="com.example.healthmanage.ui.activity.mytask.mytaskdetail.selectTaskReceiver.SelectTaskReceiverViewModel" />
     </data>
 
     <RelativeLayout style="@style/ActivitySelectTaskReceiverLayoutStyle">
@@ -18,9 +18,10 @@
 
         <TextView style="@style/ActivitySelectTaskReceiverTxtStyle.MultipleChoice" />
 
-        <include android:id="@+id/include_search" layout="@layout/include_search"
+        <include
+            android:id="@+id/include_search"
             style="@style/ActivitySelectTaskReceiverIncludeStyle"
-            />
+            layout="@layout/include_search" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_task_receiver"

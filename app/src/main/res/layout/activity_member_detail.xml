@@ -4,140 +4,162 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="ViewModel"
             type="com.example.healthmanage.ui.activity.memberdetail.MemberDetailViewModel" />
     </data>
 
-    <LinearLayout style="@style/ActivityMemberDetailLayoutStyle">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_20">
 
-        <include
-            android:id="@+id/include_title"
-            layout="@layout/toolbar_title"
-            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+        <LinearLayout style="@style/ActivityMemberDetailLayoutStyle">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            <include
+                android:id="@+id/include_title"
+                layout="@layout/toolbar_title"
+                app:TitleToolBar="@{ViewModel.titleToolBar}" />
 
-            <TextView style="@style/ActivityMemberDetailTextStyle.LocationTitle" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                style="@style/ActivityMemberDetailTextStyle.Location"
-                android:text="@={ViewModel.location}" />
+                <TextView style="@style/ActivityMemberDetailTextStyle.LocationTitle" />
 
-            <TextView
-                style="@style/ActivityMemberDetailTextStyle.WeatherReminder"
-                android:text="@={ViewModel.weatherReminder}" />
+                <TextView
+                    style="@style/ActivityMemberDetailTextStyle.Location"
+                    android:text="@={ViewModel.location}" />
+
+                <TextView
+                    style="@style/ActivityMemberDetailTextStyle.WeatherReminder"
+                    android:text="@={ViewModel.weatherReminder}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/include_today_environment"
+                    layout="@layout/dropdown_bar"
+                    app:DropdownBar="@{ViewModel.dropdownBarLists.get(0)}" />
+
+                <include
+                    android:id="@+id/include_today_environment_outdoor"
+                    layout="@layout/include_member_detail_data_item"
+                    app:DataItem="@{ViewModel.dataItemTodayEnvironment}" />
+
+                <include
+                    android:id="@+id/include_today_environment_data_device"
+                    layout="@layout/include_member_detail_data_item"
+                    android:visibility="gone"
+                    app:DataItem="@{ViewModel.dataItemAir}" />
+
+                <include
+                    android:id="@+id/include_today_environment_null"
+                    layout="@layout/include_member_detail_item_data_null"
+                    android:visibility="@{ViewModel.todayEnvironmentVisible?View.GONE:View.VISIBLE}" />
+
+                <include
+                    android:id="@+id/include_today_health"
+                    layout="@layout/dropdown_bar"
+                    app:DropdownBar="@{ViewModel.dropdownBarLists.get(1)}" />
+
+                <include
+                    style="@style/ActivityMemberDetailIncludeStyle.TodayHealthData"
+                    layout="@layout/include_member_detail_data_item"
+                    android:visibility="@{ViewModel.dataItemTodayHealth ==null?View.GONE:View.VISIBLE}"
+                    app:DataItem="@{ViewModel.dataItemTodayHealth}" />
+
+                <include
+                    android:id="@+id/include_today_health_null"
+                    layout="@layout/include_member_detail_item_data_null" />
+
+                <include
+                    android:id="@+id/include_today_health_data"
+                    layout="@layout/include_member_detail_data_item"
+                    android:visibility="gone"
+                    app:DataItem="@{ViewModel.dataItemTodayHealth}" />
+
+                <include
+                    layout="@layout/dropdown_bar"
+                    app:DropdownBar="@{ViewModel.dropdownBarLists.get(2)}" />
+
+                <include
+                    layout="@layout/include_member_detail_data_item"
+                    android:visibility="@{ViewModel.dataItemBodyHealth ==null?View.GONE:View.VISIBLE}"
+                    app:DataItem="@{ViewModel.dataItemBodyHealth}" />
+
+                <include
+                    android:id="@+id/include_body_health_null"
+                    layout="@layout/include_member_detail_item_data_null"
+                    android:visibility="@{ViewModel.dataItemBodyHealth ==null?View.VISIBLE:View.GONE}" />
+
+                <include
+                    layout="@layout/dropdown_bar"
+                    app:DropdownBar="@{ViewModel.dropdownBarLists.get(3)}" />
+
+                <include
+                    layout="@layout/include_member_detail_data_item"
+                    android:visibility="@{ViewModel.dataItemSpiritHealth ==null?View.GONE:View.VISIBLE}"
+                    app:DataItem="@{ViewModel.dataItemSpiritHealth}" />
+
+                <include
+                    android:id="@+id/include_spirit_health_null"
+                    layout="@layout/include_member_detail_item_data_null"
+                    android:visibility="@{ViewModel.dataItemSpiritHealth ==null?View.VISIBLE:View.GONE}" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <include
+                    style="@style/ActivityMemberDetailIncludeStyle.HealthDataAnalysis"
+                    layout="@layout/dropdown_bar"
+                    app:DropdownBar="@{ViewModel.dropdownBarLists.get(4)}" />
+
+                <TextView
+                    android:id="@+id/tv_history_data"
+                    style="@style/ActivityMemberDetailTextStyle.HistoryData" />
+
+                <TextView
+                    android:id="@+id/tv_data_compare"
+                    style="@style/ActivityMemberDetailTextStyle.DataCompare" />
+
+                <TextView
+                    android:id="@+id/tv_data_analyse"
+                    style="@style/ActivityMemberDetailTextStyle.DataAnalyse" />
+
+                <include
+                    style="@style/ActivityMemberDetailIncludeStyle.RegularService"
+                    layout="@layout/dropdown_bar"
+                    app:DropdownBar="@{ViewModel.dropdownBarLists.get(5)}" />
+
+                <TextView
+                    android:id="@+id/tv_inspection_quantity"
+                    style="@style/ActivityMemberDetailTextStyle.InspectionQuantity" />
+
+                <TextView
+                    android:id="@+id/tv_data_report"
+                    style="@style/ActivityMemberDetailTextStyle.DataReport" />
+
+                <TextView
+                    android:id="@+id/tv_health_abnormal"
+                    style="@style/ActivityMemberDetailTextStyle.HealthAbnormal" />
+
+                <TextView
+                    android:id="@+id/tv_key_member"
+                    style="@style/ActivityMemberDetailTextStyle.KeyMember" />
+
+                <TextView
+                    android:id="@+id/tv_create_task"
+                    style="@style/ActivityMemberDetailTextStyle.CreateTask" />
+            </RelativeLayout>
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <include
-                android:id="@+id/include_today_environment"
-                style="@style/ActivityMemberDetailIncludeStyle.TodayEnvironment"
-                layout="@layout/dropdown_bar"
-                app:DropdownBar="@{ViewModel.dropdownBarLists.get(0)}" />
-
-            <include
-                style="@style/ActivityMemberDetailIncludeStyle.TodayEnvironmentData"
-                layout="@layout/include_member_detail_data_item"
-                app:DataItem="@{ViewModel.dataItemTodayEnvironment}" />
-
-            <include
-                android:id="@+id/include_today_environment_data"
-                style="@style/ActivityMemberDetailIncludeStyle.TodayEnvironmentData"
-                layout="@layout/include_member_detail_data_item"
-                android:visibility="gone"
-                app:DataItem="@{ViewModel.dataItemTodayEnvironment}" />
-
-            <include
-                android:id="@+id/include_today_health"
-                style="@style/ActivityMemberDetailIncludeStyle.TodayHealth"
-                layout="@layout/dropdown_bar"
-                app:DropdownBar="@{ViewModel.dropdownBarLists.get(1)}" />
-
-            <include
-                style="@style/ActivityMemberDetailIncludeStyle.TodayHealthData"
-                layout="@layout/include_member_detail_data_item"
-                app:DataItem="@{ViewModel.dataItemTodayHealth}" />
-
-            <include
-                android:id="@+id/include_today_health_data"
-                style="@style/ActivityMemberDetailIncludeStyle.TodayHealthData"
-                layout="@layout/include_member_detail_data_item"
-                android:visibility="gone"
-                app:DataItem="@{ViewModel.dataItemTodayHealth}" />
-
-            <include
-                style="@style/ActivityMemberDetailIncludeStyle.BodyHealth"
-                layout="@layout/dropdown_bar"
-                app:DropdownBar="@{ViewModel.dropdownBarLists.get(2)}" />
-
-            <include
-                style="@style/ActivityMemberDetailIncludeStyle.BodyHealthData"
-                layout="@layout/include_member_detail_data_item"
-                app:DataItem="@{ViewModel.dataItemBodyHealth}" />
-
-            <include
-                style="@style/ActivityMemberDetailIncludeStyle.SpiritHealth"
-                layout="@layout/dropdown_bar"
-                app:DropdownBar="@{ViewModel.dropdownBarLists.get(3)}" />
-
-            <include
-                style="@style/ActivityMemberDetailIncludeStyle.SpiritHealthData"
-                layout="@layout/include_member_detail_data_item"
-                app:DataItem="@{ViewModel.dataItemSpiritHealth}" />
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <include
-                style="@style/ActivityMemberDetailIncludeStyle.HealthDataAnalysis"
-                layout="@layout/dropdown_bar"
-                app:DropdownBar="@{ViewModel.dropdownBarLists.get(4)}" />
-
-            <TextView
-                android:id="@+id/tv_history_data"
-                style="@style/ActivityMemberDetailTextStyle.HistoryData" />
-
-            <TextView
-                android:id="@+id/tv_data_compare"
-                style="@style/ActivityMemberDetailTextStyle.DataCompare" />
-
-            <TextView
-                android:id="@+id/tv_data_analyse"
-                style="@style/ActivityMemberDetailTextStyle.DataAnalyse" />
-
-            <include
-                style="@style/ActivityMemberDetailIncludeStyle.RegularService"
-                layout="@layout/dropdown_bar"
-                app:DropdownBar="@{ViewModel.dropdownBarLists.get(5)}" />
-
-            <TextView
-                android:id="@+id/tv_inspection_quantity"
-                style="@style/ActivityMemberDetailTextStyle.InspectionQuantity" />
-
-            <TextView
-                android:id="@+id/tv_data_report"
-                style="@style/ActivityMemberDetailTextStyle.DataReport" />
-
-            <TextView
-                android:id="@+id/tv_health_abnormal"
-                style="@style/ActivityMemberDetailTextStyle.HealthAbnormal" />
-
-            <TextView
-                android:id="@+id/tv_key_member"
-                style="@style/ActivityMemberDetailTextStyle.KeyMember" />
-
-            <TextView
-                android:id="@+id/tv_create_task"
-                style="@style/ActivityMemberDetailTextStyle.CreateTask" />
-        </RelativeLayout>
-    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>

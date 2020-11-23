@@ -11,6 +11,7 @@
     <LinearLayout style="@style/RecyclerViewTaskReceiverLayoutStyle">
 
         <ImageView
+            android:id="@+id/iv_avatar"
             style="@style/RecyclerViewTaskReceiverViewStyle.Avatar"
             android:url="@{TaskReceiverRecyclerView.avatarUrl}" />
 

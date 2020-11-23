@@ -68,12 +68,14 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
             }
         });
 
+        //角色验证失败疑似Bug.1
         if (!SPUtil.getAutoLogin(this)) {
             //职业下拉框选择监听
             dataBinding.spinnerProfession.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     Constants.ROLE_ID = String.valueOf(position + 9);
+                    Log.d(HTAG, "onItemSelected==========>: " + Constants.ROLE_ID);
                 }
 
                 @Override

@@ -8,7 +8,7 @@
             type="com.example.healthmanage.ui.fragment.business.BusinessViewModel" />
     </data>
 
-    <RelativeLayout style="@style/FragmentBusinessLayoutStyle">
+    <RelativeLayout style="@style/AllMatchWhiteLayoutStyle">
 
         <ViewFlipper
             android:id="@+id/viewFlipper"

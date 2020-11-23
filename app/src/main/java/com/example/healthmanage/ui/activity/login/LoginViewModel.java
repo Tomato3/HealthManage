@@ -49,7 +49,6 @@ public class LoginViewModel extends BaseViewModel {
 
                     @Override
                     public void error(ExceptionHandle.ResponseException e) {
-                        getUiChangeEvent().getToastTxt().setValue(e.getMessage());
                     }
                 });
     }

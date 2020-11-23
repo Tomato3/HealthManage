@@ -1,7 +1,5 @@
 package com.example.healthmanage.ui.activity.historydata;
 
-import android.text.TextUtils;
-
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.healthmanage.base.BaseViewModel;
@@ -9,6 +7,7 @@ import com.example.healthmanage.bean.HistoryDataResponse;
 import com.example.healthmanage.bean.UsersInterface;
 import com.example.healthmanage.bean.UsersRemoteSource;
 import com.example.healthmanage.data.network.exception.ExceptionHandle;
+import com.example.healthmanage.utils.ToolUtil;
 import com.example.healthmanage.view.DataItem;
 
 import java.util.ArrayList;
@@ -23,6 +22,10 @@ public class HistoryDataViewModel extends BaseViewModel {
     public MutableLiveData<List<DataItem>> dataItemMutableLiveData = new MutableLiveData<>();
     private List<DataItem> dataItemList;
     private List<String> data;
+    String[] name = {"测量时间：", "血糖（小数）mmol/L：", "低压mmHg：",
+            "高压mmHg：", "血粘（小数）mPa.s：", "血液循环：",
+            "心率次/分钟 （脉搏）：", "体温/度：", "疲劳预估："};
+
 
     public HistoryDataViewModel() {
         usersRemoteSource = new UsersRemoteSource();
@@ -34,42 +37,38 @@ public class HistoryDataViewModel extends BaseViewModel {
                     @Override
                     public void getSucceed(HistoryDataResponse historyDataResponse) {
                         dataItemList = new ArrayList<>();
-                        if (historyDataResponse.getTotal() > 0) {
-                            if (historyDataResponse.getTotal() > 10) {
-                                for (int i = 0; i < 10; i++) {
-                                    data = new ArrayList<>();
-                                    data.add(test(historyDataResponse.getRows().get(i).getCreateTime()));
-                                    data.add(test(historyDataResponse.getRows().get(i).getBloodSugar()));
-                                    data.add(test(historyDataResponse.getRows().get(i).getBloodLowPressure()));
-                                    data.add(test(historyDataResponse.getRows().get(i).getBloodHighPressure()));
-                                    data.add(test(historyDataResponse.getRows().get(i).getBloodStick()));
-                                    data.add(test(historyDataResponse.getRows().get(i).getBloodLoop()));
-                                    data.add(test(historyDataResponse.getRows().get(i).getHeartRate()));
-                                    data.add(test(historyDataResponse.getRows().get(i).getTemperature()));
-                                    data.add(test(historyDataResponse.getRows().get(i).getFatiguePredict()));
-                                    dataItemList.add(new DataItem(data));
-                                }
-                                dataItemMutableLiveData.postValue(dataItemList);
-                            } else {
-                                for (int i = 0; i < historyDataResponse.getTotal(); i++) {
-                                    data = new ArrayList<>();
-                                    data.add(test(historyDataResponse.getRows().get(i).getCreateTime()));
-                                    data.add(test(historyDataResponse.getRows().get(i).getBloodSugar()));
-                                    data.add(test(historyDataResponse.getRows().get(i).getBloodLowPressure()));
-                                    data.add(test(historyDataResponse.getRows().get(i).getBloodHighPressure()));
-                                    data.add(test(historyDataResponse.getRows().get(i).getBloodStick()));
-                                    data.add(test(historyDataResponse.getRows().get(i).getBloodLoop()));
-                                    data.add(test(historyDataResponse.getRows().get(i).getHeartRate()));
-                                    data.add(test(historyDataResponse.getRows().get(i).getTemperature()));
-                                    data.add(test(historyDataResponse.getRows().get(i).getFatiguePredict()));
-                                    dataItemList.add(new DataItem(data));
-                                }
-                                dataItemMutableLiveData.postValue(dataItemList);
+                        if (historyDataResponse.getData().getTotal() > 10) {
+                            for (int i = 0; i < 10; i++) {
+                                data = new ArrayList<>();
+                                data.add(ToolUtil.isNull(historyDataResponse.getData().getRows().get(i).getCreateTime()));
+                                data.add(ToolUtil.isNull(historyDataResponse.getData().getRows().get(i).getBloodSugar()));
+                                data.add(ToolUtil.isNull(historyDataResponse.getData().getRows().get(i).getBloodLowPressure()));
+                                data.add(ToolUtil.isNull(historyDataResponse.getData().getRows().get(i).getBloodHighPressure()));
+                                data.add(ToolUtil.isNull(historyDataResponse.getData().getRows().get(i).getBloodStick()));
+                                data.add(ToolUtil.isNull(historyDataResponse.getData().getRows().get(i).getBloodLoop()));
+                                data.add(ToolUtil.isNull(historyDataResponse.getData().getRows().get(i).getHeartRate()));
+                                data.add(ToolUtil.isNull(historyDataResponse.getData().getRows().get(i).getTemperature()));
+                                data.add(ToolUtil.isNull(historyDataResponse.getData().getRows().get(i).getFatiguePredict()));
+                                dataItemList.add(new DataItem(name, data));
                             }
-                            showToast("加载成功", 0);
+                            dataItemMutableLiveData.postValue(dataItemList);
                         } else {
-                            getUiChangeEvent().getToastTxt().setValue("暂无历史数据");
+                            for (int i = 0; i < historyDataResponse.getData().getTotal(); i++) {
+                                data = new ArrayList<>();
+                                data.add(ToolUtil.isNull(historyDataResponse.getData().getRows().get(i).getCreateTime()));
+                                data.add(ToolUtil.isNull(historyDataResponse.getData().getRows().get(i).getBloodSugar()));
+                                data.add(ToolUtil.isNull(historyDataResponse.getData().getRows().get(i).getBloodLowPressure()));
+                                data.add(ToolUtil.isNull(historyDataResponse.getData().getRows().get(i).getBloodHighPressure()));
+                                data.add(ToolUtil.isNull(historyDataResponse.getData().getRows().get(i).getBloodStick()));
+                                data.add(ToolUtil.isNull(historyDataResponse.getData().getRows().get(i).getBloodLoop()));
+                                data.add(ToolUtil.isNull(historyDataResponse.getData().getRows().get(i).getHeartRate()));
+                                data.add(ToolUtil.isNull(historyDataResponse.getData().getRows().get(i).getTemperature()));
+                                data.add(ToolUtil.isNull(historyDataResponse.getData().getRows().get(i).getFatiguePredict()));
+                                dataItemList.add(new DataItem(name, data));
+                            }
+                            dataItemMutableLiveData.postValue(dataItemList);
                         }
+                        showToast("加载成功", 0);
                     }
 
                     @Override
@@ -79,12 +78,9 @@ public class HistoryDataViewModel extends BaseViewModel {
 
                     @Override
                     public void error(ExceptionHandle.ResponseException e) {
-                        showToast(e.getMessage(), 1);
                     }
                 });
     }
 
-    private String test(Object test) {
-        return TextUtils.isEmpty(String.valueOf(test)) ? "null" : String.valueOf(test);
-    }
+
 }

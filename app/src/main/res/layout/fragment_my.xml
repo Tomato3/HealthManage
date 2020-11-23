@@ -58,6 +58,10 @@
         <TextView
             android:id="@+id/tv_service_center"
             style="@style/FragmentMyTextStyle.ServiceCenter" />
+
+        <TextView
+            android:id="@+id/tv_life_help"
+            style="@style/FragmentMyTextStyle.LifeHelp" />
     </LinearLayout>
 
 </layout>

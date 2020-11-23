@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <data>
+
+        <variable
+            name="EditTextDialog"
+            type="com.example.healthmanage.view.EditTextDialog" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="@dimen/dp_400"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="false"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_comment"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:background="@drawable/shape_solid_white_radius_5"
+            android:hint="请输入执业证登记号" />
+
+        <RelativeLayout style="@style/DialogCreateTaskLayoutStyle.Rl">
+
+            <View style="@style/DialogCreateTaskViewStyle.LineTwo" />
+
+            <TextView
+                android:id="@+id/tv_cancel"
+                style="@style/DialogCreateTaskTxtStyle.Cancel" />
+
+            <TextView
+                android:id="@+id/tv_update"
+                style="@style/DialogCreateTaskTxtStyle.Update" />
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

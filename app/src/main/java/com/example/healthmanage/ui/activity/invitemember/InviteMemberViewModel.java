@@ -74,7 +74,6 @@ public class InviteMemberViewModel extends BaseViewModel {
                         public void error(ExceptionHandle.ResponseException e) {
                             name.setValue(null);
                             rank.setValue(null);
-                            getUiChangeEvent().getToastTxt().setValue(e.getMessage());
                         }
                     });
         } else {
@@ -93,6 +92,7 @@ public class InviteMemberViewModel extends BaseViewModel {
                     @Override
                     public void inviteSucceed(String msg) {
                         getUiChangeEvent().getToastTxt().setValue(msg);
+                        LiveEventBus.get("Refresh").post(true);
                     }
 
                     @Override

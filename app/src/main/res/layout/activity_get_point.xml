@@ -6,7 +6,7 @@
 
         <variable
             name="ViewModel"
-            type="com.example.healthmanage.ui.activity.getpoint.GetPointViewModel" />
+            type="com.example.healthmanage.ui.activity.mypoint.getpoint.GetPointViewModel" />
     </data>
 
     <LinearLayout
@@ -23,19 +23,9 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_200" />
 
-        <RelativeLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_get_point"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_70">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <TextView
-                android:id="@+id/tv_get"
-                android:layout_width="@dimen/dp_64"
-                android:layout_height="@dimen/dp_40"
-                android:background="@drawable/shape_solid_blue_radius_5" />
-        </RelativeLayout>
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </layout>

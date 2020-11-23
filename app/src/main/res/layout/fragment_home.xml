@@ -14,7 +14,7 @@
 
     </data>
 
-    <RelativeLayout style="@style/FragmentHomeLayoutStyle">
+    <RelativeLayout style="@style/AllMatchWhiteLayoutStyle">
 
         <LinearLayout
             android:layout_width="match_parent"

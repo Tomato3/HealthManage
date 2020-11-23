@@ -19,6 +19,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <Spinner
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dp_5"
+                android:layout_marginTop="@dimen/dp_5"
+                android:textAlignment="center"
+                android:background="@drawable/shape_solid_white_radius_5"
+                android:dropDownVerticalOffset="@dimen/dp_50"
+                android:entries="@array/activity_history_data"
+                android:spinnerMode="dropdown" />
+
             <TextView
                 android:id="@+id/tv_date_picker_start"
                 style="@style/ActivityHistoryDataDatePickerStyle"

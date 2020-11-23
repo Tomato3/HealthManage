@@ -4,19 +4,20 @@ import java.util.List;
 
 public class TaskResponse {
 
+
     /**
      * requestId : null
      * errorLog : null
      * status : 0
      * message : 健康异常任务查询成功
-     * data : [{"id":7,"userId":69,"title":"gg思密达","content":"呼呼呼","managerId":19,"doctorId":null,"doctorReply":null,"status":0,"createTime":"2020-07-14 11:21:15"},{"id":8,"userId":69,"title":"异常任务一","content":"时间就是就是就是","managerId":19,"doctorId":null,"doctorReply":null,"status":0,"createTime":"2020-07-14 11:27:52"}]
+     * data : {"total":7,"rows":[{"id":24,"userId":28,"title":"范总","content":"第一次测量","managerId":19,"doctorId":null,"doctorReply":null,"status":0,"createTime":"2020-08-27 14:28:59","doctorCreateTime":null,"mangerName":null,"doctorName":null},{"id":23,"userId":92,"title":"王斌","content":"发发发","managerId":19,"doctorId":null,"doctorReply":null,"status":0,"createTime":"2020-08-12 18:21:59","doctorCreateTime":null,"mangerName":null,"doctorName":null}]}
      */
 
     private Object requestId;
     private Object errorLog;
     private int status;
     private String message;
-    private List<DataBean> data;
+    private DataBean data;
 
     public Object getRequestId() {
         return requestId;
@@ -50,107 +51,163 @@ public class TaskResponse {
         this.message = message;
     }
 
-    public List<DataBean> getData() {
+    public DataBean getData() {
         return data;
     }
 
-    public void setData(List<DataBean> data) {
+    public void setData(DataBean data) {
         this.data = data;
     }
 
     public static class DataBean {
         /**
-         * id : 7
-         * userId : 69
-         * title : gg思密达
-         * content : 呼呼呼
-         * managerId : 19
-         * doctorId : null
-         * doctorReply : null
-         * status : 0
-         * createTime : 2020-07-14 11:21:15
+         * total : 7
+         * rows : [{"id":24,"userId":28,"title":"范总","content":"第一次测量","managerId":19,"doctorId":null,"doctorReply":null,"status":0,"createTime":"2020-08-27 14:28:59","doctorCreateTime":null,"mangerName":null,"doctorName":null},{"id":23,"userId":92,"title":"王斌","content":"发发发","managerId":19,"doctorId":null,"doctorReply":null,"status":0,"createTime":"2020-08-12 18:21:59","doctorCreateTime":null,"mangerName":null,"doctorName":null}]
          */
 
-        private int id;
-        private int userId;
-        private String title;
-        private String content;
-        private int managerId;
-        private Object doctorId;
-        private Object doctorReply;
-        private int status;
-        private String createTime;
+        private int total;
+        private List<RowsBean> rows;
 
-        public int getId() {
-            return id;
+        public int getTotal() {
+            return total;
         }
 
-        public void setId(int id) {
-            this.id = id;
+        public void setTotal(int total) {
+            this.total = total;
         }
 
-        public int getUserId() {
-            return userId;
+        public List<RowsBean> getRows() {
+            return rows;
         }
 
-        public void setUserId(int userId) {
-            this.userId = userId;
+        public void setRows(List<RowsBean> rows) {
+            this.rows = rows;
         }
 
-        public String getTitle() {
-            return title;
-        }
+        public static class RowsBean {
+            /**
+             * id : 24
+             * userId : 28
+             * title : 范总
+             * content : 第一次测量
+             * managerId : 19
+             * doctorId : null
+             * doctorReply : null
+             * status : 0
+             * createTime : 2020-08-27 14:28:59
+             * doctorCreateTime : null
+             * mangerName : null
+             * doctorName : null
+             */
 
-        public void setTitle(String title) {
-            this.title = title;
-        }
+            private int id;
+            private int userId;
+            private String title;
+            private String content;
+            private int managerId;
+            private Object doctorId;
+            private Object doctorReply;
+            private int status;
+            private String createTime;
+            private Object doctorCreateTime;
+            private Object mangerName;
+            private Object doctorName;
 
-        public String getContent() {
-            return content;
-        }
+            public int getId() {
+                return id;
+            }
 
-        public void setContent(String content) {
-            this.content = content;
-        }
+            public void setId(int id) {
+                this.id = id;
+            }
 
-        public int getManagerId() {
-            return managerId;
-        }
+            public int getUserId() {
+                return userId;
+            }
 
-        public void setManagerId(int managerId) {
-            this.managerId = managerId;
-        }
+            public void setUserId(int userId) {
+                this.userId = userId;
+            }
 
-        public Object getDoctorId() {
-            return doctorId;
-        }
+            public String getTitle() {
+                return title;
+            }
 
-        public void setDoctorId(Object doctorId) {
-            this.doctorId = doctorId;
-        }
+            public void setTitle(String title) {
+                this.title = title;
+            }
 
-        public Object getDoctorReply() {
-            return doctorReply;
-        }
+            public String getContent() {
+                return content;
+            }
 
-        public void setDoctorReply(Object doctorReply) {
-            this.doctorReply = doctorReply;
-        }
+            public void setContent(String content) {
+                this.content = content;
+            }
 
-        public int getStatus() {
-            return status;
-        }
+            public int getManagerId() {
+                return managerId;
+            }
 
-        public void setStatus(int status) {
-            this.status = status;
-        }
+            public void setManagerId(int managerId) {
+                this.managerId = managerId;
+            }
 
-        public String getCreateTime() {
-            return createTime;
-        }
+            public Object getDoctorId() {
+                return doctorId;
+            }
 
-        public void setCreateTime(String createTime) {
-            this.createTime = createTime;
+            public void setDoctorId(Object doctorId) {
+                this.doctorId = doctorId;
+            }
+
+            public Object getDoctorReply() {
+                return doctorReply;
+            }
+
+            public void setDoctorReply(Object doctorReply) {
+                this.doctorReply = doctorReply;
+            }
+
+            public int getStatus() {
+                return status;
+            }
+
+            public void setStatus(int status) {
+                this.status = status;
+            }
+
+            public String getCreateTime() {
+                return createTime;
+            }
+
+            public void setCreateTime(String createTime) {
+                this.createTime = createTime;
+            }
+
+            public Object getDoctorCreateTime() {
+                return doctorCreateTime;
+            }
+
+            public void setDoctorCreateTime(Object doctorCreateTime) {
+                this.doctorCreateTime = doctorCreateTime;
+            }
+
+            public Object getMangerName() {
+                return mangerName;
+            }
+
+            public void setMangerName(Object mangerName) {
+                this.mangerName = mangerName;
+            }
+
+            public Object getDoctorName() {
+                return doctorName;
+            }
+
+            public void setDoctorName(Object doctorName) {
+                this.doctorName = doctorName;
+            }
         }
     }
 }

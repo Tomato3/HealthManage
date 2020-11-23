@@ -2,15 +2,22 @@ package com.example.healthmanage.data.network;
 
 
 import com.example.healthmanage.bean.AbnormalDataResponse;
+import com.example.healthmanage.bean.AirResponse;
+import com.example.healthmanage.bean.ConsultationRecordResponse;
+import com.example.healthmanage.bean.ConsultationResponse;
+import com.example.healthmanage.bean.DoctorDetailResponse;
 import com.example.healthmanage.bean.DoctorListResponse;
 import com.example.healthmanage.bean.GeneralResponse;
 import com.example.healthmanage.bean.HealthDataResponse;
 import com.example.healthmanage.bean.HistoryDataResponse;
 import com.example.healthmanage.bean.LoginResponse;
 import com.example.healthmanage.bean.MemberInfoResponse;
+import com.example.healthmanage.bean.MyDoctorResponse;
 import com.example.healthmanage.bean.MyMemberResponse;
+import com.example.healthmanage.bean.NursingResponse;
 import com.example.healthmanage.bean.RegisterResponse;
 import com.example.healthmanage.bean.SearchMemberResponse;
+import com.example.healthmanage.bean.ServicePlanResponse;
 import com.example.healthmanage.bean.TaskDetailResponse;
 import com.example.healthmanage.bean.TaskResponse;
 import com.example.healthmanage.bean.WeatherResponse;
@@ -211,8 +218,8 @@ public class ApiWrapper extends RetrofitHttpUtils {
      * @param sysId
      * @return
      */
-    public Observable<TaskResponse> loadMyTaskList(long sysId) {
-        return getApiServer().loadMyTaskList(sysId);
+    public Observable<TaskResponse> loadMyTaskList(long sysId, int pageNum, int pageSize) {
+        return getApiServer().loadMyTaskList(sysId, pageNum, pageSize);
     }
 
     /**
@@ -319,8 +326,142 @@ public class ApiWrapper extends RetrofitHttpUtils {
      * @param memberId
      * @return
      */
-    public Observable<MemberInfoResponse> getMemberInfo(long memberId) {
-        return getApiServer().getMemberInfo(memberId);
+    public Observable<MemberInfoResponse> getMemberInfo(long memberId, String token) {
+        return getApiServer().getMemberInfo(memberId, token);
+    }
+
+    /**
+     * 获取服务计划列表
+     *
+     * @param token
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    public Observable<ServicePlanResponse> getServicePlanList(String token, int pageNum,
+                                                              int pageSize) {
+        return getApiServer().getServicePlanList(token, pageNum, pageSize);
+    }
+
+    /**
+     * 上传服务结果
+     *
+     * @param token
+     * @param serviceTime
+     * @param servicePlace
+     * @param serviceResult
+     * @return
+     */
+    public Observable<GeneralResponse> uploadServiceResult(String token,
+                                                           long servicePlanId, String serviceTime,
+                                                           String servicePlace, String serviceResult) {
+        return getApiServer().uploadServiceResult(token, servicePlanId, serviceTime, servicePlace, serviceResult);
+    }
+
+    /**
+     * 空气检测仪数据
+     *
+     * @param memberId
+     * @param sceneId
+     * @return
+     */
+    public Observable<AirResponse> getAirList(String memberId, String sceneId) {
+        return getApiServer().getAirList(memberId, sceneId);
+    }
+
+    /**
+     * 生成邀请码
+     *
+     * @param token
+     * @return
+     */
+    public Observable<GeneralResponse> getInviteCode(String token) {
+        return getApiServer().getInviteCode(token);
+    }
+
+    /**
+     * 获取护理仪数据
+     *
+     * @param token
+     * @param memberId
+     * @return
+     */
+    public Observable<NursingResponse> getNursingData(String token, long memberId) {
+        return getApiServer().getNursingData(token, memberId);
+    }
+
+    /**
+     * 填写邀请码
+     *
+     * @param token
+     * @param inviteCode
+     * @return
+     */
+    public Observable<GeneralResponse> writeInviteCode(String token, String inviteCode) {
+        return getApiServer().writeInviteCode(token, inviteCode);
+    }
+
+    /**
+     * 获取绑定医生
+     *
+     * @param token
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    public Observable<MyDoctorResponse> getMyDoctor(String token, int pageNum,
+                                                    int pageSize) {
+        return getApiServer().getMyDoctor(token, pageNum, pageSize);
+    }
+
+    /**
+     * 我的医生详情
+     *
+     * @param token
+     * @param doctorId
+     * @return
+     */
+    public Observable<DoctorDetailResponse> getMyDoctorDetail(String token, long doctorId) {
+        return getApiServer().getMyDoctorDetail(token, doctorId);
+    }
+
+
+    /**
+     * 咨询问题列表
+     *
+     * @param token
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    public Observable<ConsultationResponse> getConsultationList(String token, int pageNum, int pageSize) {
+        return getApiServer().getConsultationList(token, pageNum, pageSize);
+    }
+
+
+    /**
+     * 回复咨询信息
+     *
+     * @param token
+     * @param questionId
+     * @param content
+     * @param userName
+     * @return
+     */
+    public Observable<GeneralResponse> replayConsultation(String token, long questionId, String content, String userName) {
+        return getApiServer().replayConsultation(token, questionId, content, userName);
+    }
+
+
+    /**
+     * 咨询回复记录
+     *
+     * @param token
+     * @param questionId
+     * @return
+     */
+    public Observable<ConsultationRecordResponse> getConsultationRecord(String token, long questionId) {
+        return getApiServer().getConsultationRecord(token, questionId);
     }
 
 }

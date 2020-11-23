@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.healthmanage.sport.SportViewModel" />
+    </data>
+
+    <LinearLayout
+        style="@style/AllMatchWhiteLayoutStyle"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_20"
+            android:text="睡眠评分：78"
+            android:textColor="@color/colorTextGrey"
+            android:textSize="@dimen/text_size_20" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/shape_solid_white_radius_5"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tv_sleep"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/activity_sport_sleep"
+                    android:drawablePadding="@dimen/dp_10"
+                    android:gravity="center_vertical"
+                    android:text="睡眠：188"
+                    android:textSize="@dimen/text_size_16" />
+
+                <TextView
+                    android:id="@+id/breath"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/activity_sport_heart_rate"
+                    android:drawablePadding="@dimen/dp_10"
+                    android:gravity="center_vertical"
+                    android:text="心率：188"
+                    android:textSize="@dimen/text_size_16" />
+
+                <TextView
+                    android:id="@+id/snore"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/activity_sport_blood_sugar"
+                    android:drawablePadding="@dimen/dp_10"
+                    android:gravity="center_vertical"
+                    android:text="血糖：5.1"
+                    android:textSize="@dimen/text_size_16" />
+            </TableRow>
+
+
+            <TableRow android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/turnover"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/activity_sport_sport"
+                    android:drawablePadding="@dimen/dp_10"
+                    android:gravity="center_vertical"
+                    android:text="运动：1888步"
+                    android:textSize="@dimen/text_size_16" />
+
+                <TextView
+                    android:id="@+id/leavebed"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/activity_sport_blood_pressure"
+                    android:drawablePadding="@dimen/dp_10"
+                    android:gravity="center_vertical"
+                    android:text="血压：188"
+                    android:textSize="@dimen/text_size_16" />
+
+                <TextView
+                    android:id="@+id/bloodoxygen"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/activity_sport_sleep"
+                    android:drawablePadding="@dimen/dp_10"
+                    android:gravity="center_vertical"
+                    android:text="血氧：98"
+                    android:textSize="@dimen/text_size_16" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="心率/次"
+            android:textColor="@color/colorTextGrey"
+            android:textSize="@dimen/text_size_18" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/line_chart_heart_rate"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_200" />
+
+    </LinearLayout>
+</layout>

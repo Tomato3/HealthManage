@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseApplication;
-import com.example.healthmanage.ui.activity.mytaskdetail.MyTaskDetailActivity;
+import com.example.healthmanage.ui.activity.mytask.mytaskdetail.MyTaskDetailActivity;
 
 public class MyTaskRecyclerView {
 
