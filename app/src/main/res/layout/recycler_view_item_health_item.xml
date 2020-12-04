@@ -5,7 +5,7 @@
 
         <variable
             name="HealthItemRecycleView"
-            type="com.example.healthmanage.view.HealthItemRecycleView" />
+            type="com.example.healthmanage.bean.recyclerview.HealthItemRecycleView" />
     </data>
 
     <LinearLayout
@@ -30,7 +30,7 @@
             android:layout_marginTop="@dimen/dp_5"
             android:gravity="center"
             android:text="@{HealthItemRecycleView.b}"
-            android:textColor="@color/colorTextGrey"
+            android:textColor="@color/colorTxtGrey"
             android:textSize="@dimen/text_size_16" />
 
     </LinearLayout>

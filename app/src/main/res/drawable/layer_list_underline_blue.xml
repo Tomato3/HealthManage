@@ -13,7 +13,7 @@
     <!-- 第二层的颜色，也就是最上面的一层，因为第二层相对于
     View的底部上移两个dp所以第一层会露出一个dp的黑色所以
          给人一种只有底部边框的假象 -->
-    <item android:bottom="2dp" >
+    <item android:bottom="2dp">
         <shape>
             <solid android:color="@color/colorWhite" />
         </shape>

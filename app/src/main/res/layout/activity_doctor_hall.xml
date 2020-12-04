@@ -10,7 +10,7 @@
     </data>
 
     <LinearLayout
-        style="@style/AllMatchWhiteLayoutStyle"
+        style="@style/CommonMatchLinearLayoutStyle"
         android:orientation="vertical">
 
         <include
@@ -33,7 +33,7 @@
                 android:checked="true"
                 android:gravity="center"
                 android:text="我绑定的医生"
-                android:textColor="@color/activity_member_list_radio_button_bg_selector" />
+                android:textColor="@color/color_grey_blue" />
 
             <RadioButton
                 android:id="@+id/rb_doctor_hall"
@@ -44,7 +44,7 @@
                 android:button="@null"
                 android:gravity="center"
                 android:text="全部医生"
-                android:textColor="@color/activity_member_list_radio_button_bg_selector" />
+                android:textColor="@color/color_grey_blue" />
         </RadioGroup>
 
         <androidx.recyclerview.widget.RecyclerView

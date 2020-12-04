@@ -3,24 +3,18 @@ package com.example.healthmanage.ui.activity.login;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterView;
-
-import androidx.lifecycle.Observer;
+import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 
 import com.example.healthmanage.BR;
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.base.BaseApplication;
-import com.example.healthmanage.bean.LoginResponse;
+import com.example.healthmanage.bean.network.response.LoginResponse;
 import com.example.healthmanage.databinding.ActivityLoginBinding;
 import com.example.healthmanage.utils.Constants;
 import com.example.healthmanage.utils.SPUtil;
-import com.example.healthmanage.utils.ToolUtil;
-
-import static com.example.healthmanage.utils.Constants.HTAG;
 
 /**
  * 登录
@@ -48,62 +42,66 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
         return R.layout.activity_login;
     }
 
+    int state = 0;
+
     @Override
     protected void registerUIChangeEventObserver() {
         super.registerUIChangeEventObserver();
 
-        //密码可见切换
-        viewModel.eyeState.observe(this, new Observer<Boolean>() {
+        dataBinding.rgLogin.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onChanged(Boolean aBoolean) {
-                if (viewModel.eyeState.getValue()) {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.rb_code:
+                        if (state != 0) {
+                            state = 0;
+                            dataBinding.linearLayoutCode.setVisibility(View.VISIBLE);
+                            dataBinding.linearLayoutPassword.setVisibility(View.GONE);
+                        }
+                        break;
+                    case R.id.rb_password:
+                        if (state != 1) {
+                            state = 1;
+                            dataBinding.linearLayoutCode.setVisibility(View.GONE);
+                            dataBinding.linearLayoutPassword.setVisibility(View.VISIBLE);
+                        }
+                        break;
+                }
+            }
+        });
+
+        dataBinding.cbRemember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+            }
+        });
+
+        //密码可见切换
+        dataBinding.cbEye.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
                     dataBinding.etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    dataBinding.etPassword.setSelection(dataBinding.etPassword.getText().length());
-                    dataBinding.ivEye.setImageResource(R.drawable.activity_login_password_open);
                 } else {
                     dataBinding.etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    dataBinding.etPassword.setSelection(dataBinding.etPassword.getText().length());
-                    dataBinding.ivEye.setImageResource(R.drawable.activity_login_password_closed);
                 }
+                dataBinding.etPassword.setSelection(dataBinding.etPassword.getText().length());
             }
         });
 
-        //角色验证失败疑似Bug.1
-        if (!SPUtil.getAutoLogin(this)) {
-            //职业下拉框选择监听
-            dataBinding.spinnerProfession.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    Constants.ROLE_ID = String.valueOf(position + 9);
-                    Log.d(HTAG, "onItemSelected==========>: " + Constants.ROLE_ID);
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-                }
-            });
-        }
-
-        dataBinding.spinnerProfession.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                ToolUtil.hideKeyboard(dataBinding.etPassword);
-                ToolUtil.hideKeyboard(dataBinding.etPhone);
-                return false;
-            }
-        });
+        viewModel.setCallback(this);
     }
 
     @Override
     public void initViewListener() {
         super.initViewListener();
-        viewModel.setCallback(this);
     }
 
     @Override
     public void loginSucceed(String phone, String password, boolean autoLogin, LoginResponse loginResponse) {
         if (!SPUtil.getAutoLogin(this)) {
-            saveLoginInfo(phone, password, Constants.ROLE_ID, autoLogin);
+            saveLoginInfo(phone, password, autoLogin);
         }
         //保存数据
         ((BaseApplication) getApplication()).setToken(loginResponse.getData().getToken());
@@ -117,15 +115,13 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
      *
      * @param phone
      * @param password
-     * @param roleId
      * @param autoLogin
      */
-    public void saveLoginInfo(String phone, String password, String roleId, boolean autoLogin) {
-        Log.d(HTAG, "saveLoginInfo==========>: " + autoLogin);
+    public void saveLoginInfo(String phone, String password, boolean autoLogin) {
         SPUtil.savePhone(phone, this);
         SPUtil.savePassword(password, this);
         SPUtil.saveAutoLogin(autoLogin, this);
-        SPUtil.saveRoleId(roleId, this);
+//        SPUtil.saveRoleId(roleId, this);
     }
 
     /**

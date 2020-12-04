@@ -3,7 +3,7 @@ package com.example.healthmanage.ui.activity.mypoint;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.healthmanage.base.BaseViewModel;
-import com.example.healthmanage.view.ExchangeCommodityRecyclerView;
+import com.example.healthmanage.bean.recyclerview.ExchangeCommodityRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;

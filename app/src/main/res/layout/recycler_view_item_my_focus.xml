@@ -5,7 +5,7 @@
 
         <variable
             name="MyFocusRecyclerView"
-            type="com.example.healthmanage.view.MyFocusRecyclerView" />
+            type="com.example.healthmanage.bean.recyclerview.MyFocusRecyclerView" />
     </data>
 
     <LinearLayout style="@style/RecyclerViewMyFocusLayoutStyle">

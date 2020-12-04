@@ -21,7 +21,7 @@ import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.base.BaseAdapter;
 import com.example.healthmanage.databinding.ActivityMyStudioBinding;
 import com.example.healthmanage.utils.ToolUtil;
-import com.example.healthmanage.view.ArticleRecyclerView;
+import com.example.healthmanage.bean.recyclerview.ArticleRecyclerView;
 import com.example.healthmanage.widget.TitleToolBar;
 
 import java.lang.reflect.Field;

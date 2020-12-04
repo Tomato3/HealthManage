@@ -5,7 +5,7 @@
 
         <variable
             name="TaskReceiverRecyclerView"
-            type="com.example.healthmanage.view.TaskReceiverRecyclerView" />
+            type="com.example.healthmanage.bean.recyclerview.TaskReceiverRecyclerView" />
     </data>
 
     <LinearLayout style="@style/RecyclerViewTaskReceiverLayoutStyle">

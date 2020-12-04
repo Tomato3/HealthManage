@@ -11,7 +11,7 @@ import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.base.BaseAdapter;
 import com.example.healthmanage.databinding.ActivityHealthManageBinding;
 import com.example.healthmanage.ui.activity.healthmanage.sport.SportActivity;
-import com.example.healthmanage.view.HealthItemRecycleView;
+import com.example.healthmanage.bean.recyclerview.HealthItemRecycleView;
 import com.example.healthmanage.widget.TitleToolBar;
 
 import java.util.ArrayList;

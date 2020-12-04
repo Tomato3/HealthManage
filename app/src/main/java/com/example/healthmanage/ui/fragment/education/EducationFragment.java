@@ -14,7 +14,7 @@ import com.example.healthmanage.base.BaseFragment;
 import com.example.healthmanage.databinding.FragmentEducationBinding;
 import com.example.healthmanage.ui.fragment.home.HomeFragment;
 import com.example.healthmanage.ui.fragment.my.MyFragment;
-import com.example.healthmanage.view.ArticleRecyclerView;
+import com.example.healthmanage.bean.recyclerview.ArticleRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;

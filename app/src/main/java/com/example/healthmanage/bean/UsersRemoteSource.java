@@ -2,6 +2,26 @@ package com.example.healthmanage.bean;
 
 import android.util.Log;
 
+import com.example.healthmanage.bean.network.response.AbnormalDataResponse;
+import com.example.healthmanage.bean.network.response.AirResponse;
+import com.example.healthmanage.bean.network.response.ConsultationRecordResponse;
+import com.example.healthmanage.bean.network.response.ConsultationResponse;
+import com.example.healthmanage.bean.network.response.DoctorDetailResponse;
+import com.example.healthmanage.bean.network.response.DoctorListResponse;
+import com.example.healthmanage.bean.network.response.GeneralResponse;
+import com.example.healthmanage.bean.network.response.HealthDataResponse;
+import com.example.healthmanage.bean.network.response.HistoryDataResponse;
+import com.example.healthmanage.bean.network.response.LoginResponse;
+import com.example.healthmanage.bean.network.response.MemberInfoResponse;
+import com.example.healthmanage.bean.network.response.MyDoctorResponse;
+import com.example.healthmanage.bean.network.response.MyMemberResponse;
+import com.example.healthmanage.bean.network.response.NursingResponse;
+import com.example.healthmanage.bean.network.response.SearchMemberResponse;
+import com.example.healthmanage.bean.network.response.ServicePlanResponse;
+import com.example.healthmanage.bean.network.response.SmsCodeResponse;
+import com.example.healthmanage.bean.network.response.TaskDetailResponse;
+import com.example.healthmanage.bean.network.response.TaskResponse;
+import com.example.healthmanage.bean.network.response.WeatherResponse;
 import com.example.healthmanage.data.network.ApiWrapper;
 import com.example.healthmanage.data.network.MyObserver;
 import com.example.healthmanage.data.network.RxHelper;
@@ -64,23 +84,23 @@ public class UsersRemoteSource {
      * 发验证码
      *
      * @param phone
-     * @param sendSmsMessageCallback
+     * @param getSmsCodeCallback
      */
-    public void sendSmsMessage(String phone,
-                               UsersInterface.SendSmsMessageCallback sendSmsMessageCallback) {
-        Log.d(HTAG, "sendSmsMessage==========>: " + "手机号===>" + phone);
-        ApiWrapper.getInstance().sendSmsMessage(phone).compose(RxHelper.to_mian())
-                .subscribe(new MyObserver<RegisterResponse>() {
+    public void getSmsCode(String phone,
+                           UsersInterface.getSmsCodeCallback getSmsCodeCallback) {
+        Log.d(HTAG, "getSmsCode==========>: " + "手机号===>" + phone);
+        ApiWrapper.getInstance().getSmsCode(phone).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<SmsCodeResponse>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                     }
 
                     @Override
-                    public void onNext(RegisterResponse registerResponse) {
-                        if (registerResponse.getStatus() == 200) {//获取成功
-                            sendSmsMessageCallback.sendSucceed(registerResponse);//发送时返回的代码
+                    public void onNext(SmsCodeResponse smsCodeResponse) {
+                        if (smsCodeResponse.getStatus() == 200) {//获取成功
+                            getSmsCodeCallback.sendSucceed(smsCodeResponse);//发送时返回的代码
                         } else {//获取失败
-                            sendSmsMessageCallback.sendFailed(registerResponse.getMessage());
+                            getSmsCodeCallback.sendFailed(smsCodeResponse.getMessage());
                         }
                     }
 
@@ -91,7 +111,7 @@ public class UsersRemoteSource {
 
                     @Override
                     public void onError(ExceptionHandle.ResponseException responseException) {
-                        sendSmsMessageCallback.error(responseException);
+                        getSmsCodeCallback.error(responseException);
                     }
                 });
     }
@@ -105,15 +125,15 @@ public class UsersRemoteSource {
      * @param smsIdentity
      * @param updatePasswordCallback
      */
-    public void updatePassword(String phone,
+    public void forgetPassword(String phone,
                                String newPassword,
                                String smsCode,
                                String smsIdentity,
-                               UsersInterface.UpdatePasswordCallback updatePasswordCallback) {
+                               UsersInterface.ForgetPasswordCallback updatePasswordCallback) {
         Log.d(HTAG,
-                "updatePassword==========>: " + "手机号===>" + phone + "新密码===>" + newPassword +
+                "forgetPassword==========>: " + "手机号===>" + phone + "新密码===>" + newPassword +
                         "验证码===>" + smsCode + "验证码标识===>" + smsIdentity);
-        ApiWrapper.getInstance().updatePassword(phone, newPassword, smsCode, smsIdentity).compose(RxHelper.to_mian())
+        ApiWrapper.getInstance().forgetPassword(phone, newPassword, smsCode, smsIdentity).compose(RxHelper.to_mian())
                 .subscribe(new MyObserver<GeneralResponse>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -124,10 +144,10 @@ public class UsersRemoteSource {
                     public void onNext(GeneralResponse generalResponse) {
                         if (generalResponse.getStatus() == 0) {
                             //重置密码成功
-                            updatePasswordCallback.updateSucceed(generalResponse);
+                            updatePasswordCallback.forgetSucceed(generalResponse);
                         } else {
                             //重置失败
-                            updatePasswordCallback.updateFailed(generalResponse.getMessage());
+                            updatePasswordCallback.forgetFailed(generalResponse.getMessage());
                         }
                     }
 
@@ -1457,6 +1477,5 @@ public class UsersRemoteSource {
                     }
                 });
     }
-
 
 }

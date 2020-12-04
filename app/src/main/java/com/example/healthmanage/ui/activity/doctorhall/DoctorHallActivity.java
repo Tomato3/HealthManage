@@ -15,7 +15,7 @@ import com.example.healthmanage.base.BaseAdapter;
 import com.example.healthmanage.databinding.ActivityDoctorHallBinding;
 import com.example.healthmanage.ui.activity.doctorhall.doctordetail.DoctorDetailActivity;
 import com.example.healthmanage.utils.ToolUtil;
-import com.example.healthmanage.view.TaskReceiverRecyclerView;
+import com.example.healthmanage.bean.recyclerview.TaskReceiverRecyclerView;
 import com.example.healthmanage.widget.TitleToolBar;
 
 import java.util.List;

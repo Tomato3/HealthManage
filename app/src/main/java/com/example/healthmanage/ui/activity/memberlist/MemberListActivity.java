@@ -12,7 +12,7 @@ import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.base.BaseAdapter;
 import com.example.healthmanage.databinding.ActivityMemberListBinding;
-import com.example.healthmanage.view.MyMemberRecyclerView;
+import com.example.healthmanage.bean.recyclerview.MyMemberRecyclerView;
 import com.example.healthmanage.widget.TitleToolBar;
 import com.jeremyliao.liveeventbus.LiveEventBus;
 

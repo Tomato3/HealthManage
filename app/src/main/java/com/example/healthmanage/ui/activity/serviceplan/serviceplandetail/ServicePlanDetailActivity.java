@@ -11,9 +11,9 @@ import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.base.BaseAdapter;
 import com.example.healthmanage.databinding.ActivityServicePlanDetailBinding;
-import com.example.healthmanage.view.EditTextDialog;
-import com.example.healthmanage.view.ServiceItemRecyclerView;
-import com.example.healthmanage.view.ServicePlanRecyclerView;
+import com.example.healthmanage.dialog.EditTextDialog;
+import com.example.healthmanage.bean.recyclerview.ServiceItemRecyclerView;
+import com.example.healthmanage.bean.recyclerview.ServicePlanRecyclerView;
 import com.example.healthmanage.widget.TitleToolBar;
 
 import java.util.ArrayList;
@@ -72,7 +72,7 @@ public class ServicePlanDetailActivity extends BaseActivity<ActivityServicePlanD
             public void onItemClick(View view, int position) {
                 now = view.findViewById(R.id.checked);
                 if (last != null) {
-                    last.setTextColor(getColor(R.color.colorTextGrey));
+                    last.setTextColor(getColor(R.color.colorTxtGrey));
                     last.setBackgroundResource(R.drawable.layer_list_activity_service_plan_detail_item_unselected);
                 }
                 last = now;

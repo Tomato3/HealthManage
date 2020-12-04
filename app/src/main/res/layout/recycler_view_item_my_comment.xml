@@ -5,7 +5,7 @@
 
         <variable
             name="MyCommentRecyclerView"
-            type="com.example.healthmanage.view.MyCommentRecyclerView" />
+            type="com.example.healthmanage.bean.recyclerview.MyCommentRecyclerView" />
     </data>
 
     <RelativeLayout style="@style/RecyclerViewMyCommentLayoutStyle">

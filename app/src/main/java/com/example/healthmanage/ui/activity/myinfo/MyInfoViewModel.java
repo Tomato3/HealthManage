@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.base.BaseViewModel;
-import com.example.healthmanage.bean.GeneralResponse;
+import com.example.healthmanage.bean.network.response.GeneralResponse;
 import com.example.healthmanage.bean.UsersInterface;
 import com.example.healthmanage.bean.UsersRemoteSource;
 import com.example.healthmanage.data.network.exception.ExceptionHandle;

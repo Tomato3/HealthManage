@@ -17,7 +17,7 @@ import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.base.BaseAdapter;
 import com.example.healthmanage.bean.Banner;
 import com.example.healthmanage.databinding.ActivityGetPointBinding;
-import com.example.healthmanage.view.GetPointRecyclerView;
+import com.example.healthmanage.bean.recyclerview.GetPointRecyclerView;
 import com.example.healthmanage.widget.TitleToolBar;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;

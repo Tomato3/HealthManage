@@ -6,7 +6,7 @@
 
         <variable
             name="EditTextDialog"
-            type="com.example.healthmanage.view.EditTextDialog" />
+            type="com.example.healthmanage.dialog.EditTextDialog" />
     </data>
 
     <LinearLayout

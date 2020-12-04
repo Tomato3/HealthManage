@@ -98,7 +98,7 @@
                 android:gravity="center"
                 android:paddingLeft="@dimen/dp_10"
                 android:text="积分兑换"
-                android:textColor="@color/colorTextGrey"
+                android:textColor="@color/colorTxtGrey"
                 android:textSize="@dimen/text_size_18" />
 
 
@@ -108,11 +108,11 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="@dimen/dp_10"
-                android:drawableRight="@drawable/dropdown_more_icon"
+                android:drawableRight="@drawable/more_icon"
                 android:gravity="center"
                 android:paddingLeft="@dimen/dp_10"
                 android:text="更多"
-                android:textColor="@color/colorTextGrey"
+                android:textColor="@color/colorTxtGrey"
                 android:textSize="@dimen/text_size_16" />
         </RelativeLayout>
 

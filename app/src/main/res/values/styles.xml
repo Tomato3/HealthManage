@@ -11,20 +11,89 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowContentTransitions">true</item>
         <item name="contentInsetStartWithNavigation">@dimen/dp_0</item>
+
         <!-- popupMenu的样式 -->
         <item name="android:popupMenuStyle">@style/popupmenu_bg_style</item>
         <item name="textAppearanceSmallPopupMenu">@style/popupmenu_text_style</item>
         <item name="textAppearanceLargePopupMenu">@style/popupmenu_text_style</item>
     </style>
 
+    <!--Dialog的样式-->
+    <style name="Dialog" parent="android:style/Theme.Dialog">
+        <item name="android:background">#002a2a2a</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
 
-    <!-- All -->
-    <style name="AllMatchWhiteLayoutStyle">
+
+    <!-- Common -->
+    <style name="CommonMatchLinearLayoutStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:orientation">vertical</item>
         <item name="android:background">@color/colorWhite</item>
     </style>
 
+    <style name="CommonWrapHorizontalLinearLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@color/colorWhite</item>
+    </style>
+
+
+    <style name="CommonWrapLinearLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="CommonImageViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="CommonRadioGroupStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_35</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="CommonRadioButtonStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:button">@null</item>
+        <item name="android:textColor">@color/color_grey_blue</item>
+        <item name="android:textSize">@dimen/text_size_17</item>
+        <item name="android:background">@drawable/selector_item_blue_item_white</item>
+    </style>
+
+    <style name="CommonEditTextStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_40</item>
+        <item name="android:textSize">@dimen/text_size_17</item>
+        <item name="android:background">@color/colorWhite</item>
+    </style>
+
+    <style name="CommonTextViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textColor">@color/colorTxtBlack</item>
+        <item name="android:textSize">@dimen/text_size_17</item>
+    </style>
+
+    <style name="CommonButtonStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/text_size_17</item>
+    </style>
 
     <!-- popupMenu的背景色 -->
     <style name="popupmenu_bg_style">
@@ -34,7 +103,7 @@
     <!-- popupMenu的文本样式 -->
     <style name="popupmenu_text_style">
         <item name="android:paddingStart">@dimen/dp_50</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
         <item name="android:textSize">@dimen/text_size_16</item>
     </style>
 
@@ -79,7 +148,7 @@
     <style name="DropdownBartTextStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
         <item name="android:gravity">center</item>
     </style>
 
@@ -92,7 +161,7 @@
 
     <style name="DropdownBartTextStyle.More">
         <item name="android:layout_marginRight">@dimen/dp_20</item>
-        <item name="android:drawableRight">@drawable/dropdown_more_icon</item>
+        <item name="android:drawableRight">@drawable/more_icon</item>
         <item name="android:text">@string/dropdown_more</item>
         <item name="android:textSize">@dimen/text_size_16</item>
     </style>
@@ -109,6 +178,45 @@
         <item name="android:drawableRight">@drawable/dropdown_collapse_icon</item>
         <item name="android:text">@string/collapse</item>
         <item name="android:textSize">@dimen/text_size_16</item>
+    </style>
+
+
+    <!-- QualificationInputItem -->
+    <style name="ItemQualificationInputLinearLayoutStyle" parent="CommonWrapLinearLayoutStyle">
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="ItemQualificationInputLinearLayoutStyle.Text">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_height">@dimen/dp_30</item>
+        <item name="android:layout_marginTop">@dimen/dp_30</item>
+    </style>
+
+    <style name="ItemQualificationInputTextViewStyle" parent="CommonTextViewStyle">
+        <item name="android:layout_marginLeft">@dimen/dp_40</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/color_75</item>
+    </style>
+
+    <style name="ItemQualificationInputEditTextStyle" parent="CommonEditTextStyle">
+        <item name="android:layout_width">@dimen/dp_0</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginLeft">@dimen/dp_65</item>
+    </style>
+
+    <style name="ItemQualificationInputImageViewStyle" parent="CommonImageViewStyle">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:src">@drawable/more_icon</item>
+        <item name="android:layout_marginRight">@dimen/dp_46</item>
+    </style>
+
+    <style name="ItemQualificationInputViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_1</item>
+        <item name="android:background">#E9E9E9</item>
+        <item name="android:layout_marginLeft">@dimen/dp_40</item>
+        <item name="android:layout_marginRight">@dimen/dp_40</item>
+        <item name="android:layout_marginTop">@dimen/dp_10</item>
     </style>
 
 
@@ -166,274 +274,398 @@
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:layout_margin">@dimen/dp_60</item>
         <item name="android:gravity">center</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
         <item name="android:textSize">@dimen/text_size_16</item>
         <item name="android:background">@drawable/shape_solid_colorpagebg_size_3030</item>
     </style>
 
 
     <!-- LoginActivity -->
-    <style name="ActivityLoginLayoutStyle">
+    <style name="ActivityLoginInputLayoutStyle">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:focusable">false</item>
-        <item name="android:focusableInTouchMode">true</item>
-        <item name="android:background">@color/colorPageBg</item>
+        <item name="android:layout_height">@dimen/dp_40</item>
+        <item name="android:layout_marginLeft">@dimen/dp_70</item>
+        <item name="android:layout_marginTop">@dimen/dp_50</item>
+        <item name="android:layout_marginRight">@dimen/dp_70</item>
     </style>
 
-    <style name="ActivityLoginViewStyle">
+    <style name="ActivityLoginInputLayoutStyle.Tip">
+        <item name="android:layout_height">@dimen/dp_30</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/dp_25</item>
+    </style>
+
+    <style name="ActivityLoginInputLayoutStyle.Other">
+        <item name="android:layout_height">@dimen/dp_30</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="ActivityLoginInputLayoutStyle.Register">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">@dimen/dp_30</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:gravity">center</item>
     </style>
 
-    <style name="ActivityLoginViewStyle.Logo">
-        <item name="android:layout_marginTop">@dimen/dp_200</item>
-        <item name="android:layout_centerHorizontal">true</item>
-        <item name="android:src">@drawable/activity_login_logo</item>
+    <style name="ActivityLoginImageViewStyle" parent="CommonImageViewStyle" />
+
+    <style name="ActivityLoginImageViewStyle.Logo">
+        <item name="android:layout_marginTop">@dimen/dp_68</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:src">@drawable/logo</item>
         <item name="android:transitionName">@string/transition_logo_img</item>
     </style>
 
-    <style name="ActivityLoginViewStyle.Eye">
-        <item name="android:layout_marginTop">@dimen/dp_490</item>
-        <item name="android:layout_marginStart">@dimen/dp_450</item>
-        <item name="android:src">@drawable/activity_login_password_closed</item>
+    <style name="ActivityLoginImageViewStyle.Tip">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:text">@string/activity_login_remember_password</item>
     </style>
 
-    <style name="ActivityLoginTextStyle">
-        <item name="android:layout_width">@dimen/dp_400</item>
-        <item name="android:layout_height">@dimen/dp_70</item>
-        <item name="android:layout_centerHorizontal">true</item>
-        <item name="android:singleLine">true</item>
-        <item name="android:background">@color/colorWhite</item>
+    <style name="ActivityLoginImageViewStyle.WeChat">
+        <item name="android:src">@drawable/wechat</item>
+        <item name="android:layout_marginTop">@dimen/dp_30</item>
+        <item name="android:layout_gravity">center_horizontal</item>
     </style>
 
-    <style name="ActivityLoginTextStyle.Phone">
-        <item name="android:layout_marginTop">@dimen/dp_400</item>
+    <style name="ActivityLoginRadioGroupStyle" parent="CommonRadioGroupStyle">
+        <item name="android:layout_marginTop">@dimen/dp_56</item>
+    </style>
+
+    <style name="ActivityLoginRadioButtonStyle" parent="CommonRadioButtonStyle" />
+
+    <style name="ActivityLoginRadioButtonStyle.Code">
+        <item name="android:text">@string/activity_login_code</item>
+        <item name="android:checked">true</item>
+    </style>
+
+    <style name="ActivityLoginRadioButtonStyle.Password">
+        <item name="android:layout_marginLeft">@dimen/dp_100</item>
+        <item name="android:text">@string/activity_login_password</item>
+    </style>
+
+    <style name="ActivityLoginEditTextStyle" parent="CommonEditTextStyle" />
+
+    <style name="ActivityLoginEditTextStyle.Phone">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:hint">@string/activity_login_phone_hint</item>
+        <item name="android:inputType">phone</item>
+        <item name="android:layout_marginLeft">@dimen/dp_8</item>
+        <item name="android:maxLength">11</item>
+    </style>
+
+    <style name="ActivityLoginEditTextStyle.Code">
+        <item name="android:layout_marginLeft">@dimen/dp_70</item>
+        <item name="android:layout_marginRight">@dimen/dp_70</item>
+        <item name="android:layout_marginTop">@dimen/dp_56</item>
+        <item name="android:hint">@string/activity_register_verification_code</item>
+        <item name="android:inputType">number</item>
+        <item name="android:maxLength">6</item>
+    </style>
+
+    <style name="ActivityLoginEditTextStyle.Phone1">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginLeft">@dimen/dp_70</item>
+        <item name="android:layout_marginRight">@dimen/dp_70</item>
+        <item name="android:layout_marginTop">@dimen/dp_56</item>
         <item name="android:hint">@string/activity_login_phone_hint</item>
         <item name="android:inputType">phone</item>
         <item name="android:maxLength">11</item>
-        <item name="android:drawableLeft">@drawable/selector_activity_login_phone</item>
+    </style>
+
+    <style name="ActivityLoginEditTextStyle.Password">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:hint">@string/activity_login_password_hint</item>
+        <item name="android:inputType">textPassword</item>
+    </style>
+
+    <style name="ActivityLoginViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginLeft">@dimen/dp_70</item>
+        <item name="android:layout_marginRight">@dimen/dp_70</item>
+        <item name="android:layout_marginTop">@dimen/dp_9</item>
+        <item name="android:background">@color/colorLineGrey</item>
+    </style>
+
+    <style name="ActivityLoginViewStyle.Tip">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginLeft">@dimen/dp_0</item>
+        <item name="android:layout_marginRight">@dimen/dp_0</item>
+        <item name="android:layout_marginTop">@dimen/dp_0</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:background">@color/colorLineBlack</item>
+    </style>
+
+    <style name="ActivityLoginTextStyle" parent="CommonTextViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginLeft">@dimen/dp_5</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ActivityLoginTextStyle.AreaCode">
+        <item name="android:text">@string/activity_login_area_code</item>
     </style>
 
     <style name="ActivityLoginTextStyle.Password">
-        <item name="android:layout_marginTop">@dimen/dp_480</item>
-        <item name="android:hint">@string/activity_login_password_hint</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">@dimen/dp_40</item>
+        <item name="android:hint">@string/activity_register_verification_code</item>
         <item name="android:inputType">textPassword</item>
-        <item name="android:drawableLeft">@drawable/selector_activity_login_password</item>
-    </style>
-
-    <style name="ActivityLoginTextStyle.Profession">
-        <item name="android:layout_marginTop">@dimen/dp_560</item>
-        <item name="android:entries">@array/activity_login_profession</item>
-        <item name="android:textAlignment">center</item>
-        <item name="android:spinnerMode">dropdown</item>
-        <item name="android:drawSelectorOnTop">false</item>
     </style>
 
     <style name="ActivityLoginTextStyle.Forget">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">@dimen/dp_48</item>
-        <item name="android:layout_marginStart">@dimen/dp_420</item>
-        <item name="android:layout_marginTop">@dimen/dp_640</item>
-        <item name="android:layout_centerHorizontal">false</item>
-        <item name="android:gravity">center</item>
         <item name="android:text">@string/activity_login_forget</item>
-        <item name="android:textSize">@dimen/text_size_18</item>
-        <item name="android:textColor">@color/colorBlue</item>
-        <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
+    </style>
 
+    <style name="ActivityLoginTextStyle.RegisterTip">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">@string/no_account</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
+        <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
     </style>
 
     <style name="ActivityLoginTextStyle.Register">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">@dimen/dp_780</item>
-        <item name="android:layout_centerHorizontal">true</item>
         <item name="android:gravity">center</item>
+        <item name="android:layout_marginLeft">@dimen/dp_5</item>
         <item name="android:text">@string/activity_login_register</item>
-        <item name="android:textSize">@dimen/text_size_20</item>
-        <item name="android:textColor">@color/colorBlue</item>
+        <item name="android:textColor">@color/colorTxtBlue</item>
         <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
     </style>
 
-    <style name="ActivityLoginTextStyle.Auto">
+    <style name="ActivityLoginTextStyle.Tip">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">@dimen/dp_48</item>
-        <item name="android:layout_marginStart">@dimen/dp_150</item>
-        <item name="android:layout_marginTop">@dimen/dp_640</item>
-        <item name="android:layout_centerHorizontal">false</item>
-        <item name="android:gravity">center</item>
-        <item name="android:text">@string/activity_login_auto</item>
-        <item name="android:textSize">@dimen/text_size_18</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
-        <item name="android:background">@null</item>
-    </style>
-
-    <style name="ActivityLoginRadioButtonStyle">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">@dimen/dp_110</item>
-        <item name="android:layout_marginTop">@dimen/dp_640</item>
-        <item name="android:button">@null</item>
-        <item name="android:background">@drawable/selector_activity_login_auto_login</item>
-    </style>
-
-    <style name="ActivityLoginButtonStyle">
-        <item name="android:layout_width">@dimen/dp_400</item>
-        <item name="android:layout_height">@dimen/dp_70</item>
-        <item name="android:layout_marginTop">@dimen/dp_700</item>
         <item name="android:layout_centerHorizontal">true</item>
-        <item name="android:text">@string/activity_login_login</item>
-        <item name="android:textSize">@dimen/text_size_22</item>
-        <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:foreground">?android:attr/selectableItemBackgroundBorderless</item>
-        <item name="android:background">@color/colorBlue</item>
-    </style>
-
-
-    <!-- RegisterActivity -->
-    <style name="ActivityRegisterLayoutStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:focusable">true</item>
-        <item name="android:focusableInTouchMode">true</item>
-        <item name="android:background">@color/colorPageBg</item>
-    </style>
-
-    <style name="ActivityRegisterTextStyle">
-        <item name="android:layout_width">@dimen/dp_500</item>
-        <item name="android:layout_height">@dimen/dp_70</item>
-        <item name="android:paddingStart">@dimen/dp_5</item>
-        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:paddingLeft">@dimen/dp_5</item>
+        <item name="android:paddingRight">@dimen/dp_5</item>
+        <item name="android:text">@string/activity_login_other</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
         <item name="android:background">@color/colorWhite</item>
     </style>
 
-    <style name="ActivityRegisterTextStyle.Phone">
-        <item name="android:layout_marginTop">@dimen/dp_100</item>
-        <item name="android:hint">@string/activity_register_phone</item>
+    <style name="ActivityLoginCheckBoxStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/text_size_17</item>
+        <item name="android:button">@drawable/selector_activity_login_remember_password</item>
+        <item name="android:text">@string/activity_login_remember_password</item>
+    </style>
+
+    <style name="ActivityLoginCheckBoxStyle.Eye">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:text"></item>
+        <item name="android:button">@drawable/selector_activity_login_eye</item>
+    </style>
+
+    <style name="ActivityLoginButtonStyle" parent="CommonButtonStyle" />
+
+    <style name="ActivityLoginButtonStyle.GetCode">
+        <item name="android:layout_width">@dimen/dp_140</item>
+        <item name="android:layout_height">@dimen/dp_40</item>
+        <item name="android:text">@string/get_code</item>
+        <item name="android:textColor">@color/colorTxtBlue</item>
+        <item name="android:background">@drawable/shape_solid_white_stroke_blue_radius_5</item>
+    </style>
+
+    <style name="ActivityLoginButtonStyle.Login">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_50</item>
+        <item name="android:layout_marginLeft">@dimen/dp_70</item>
+        <item name="android:layout_marginRight">@dimen/dp_70</item>
+        <item name="android:layout_marginTop">@dimen/dp_68</item>
+        <item name="android:text">@string/activity_login_login</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:background">@drawable/shape_solid_blue_radius_5</item>
+    </style>
+
+
+    <!-- RegisterOrForgetActivity -->
+    <style name="ActivityRegisterOrForgetInputLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_40</item>
+        <item name="android:layout_marginLeft">@dimen/dp_70</item>
+        <item name="android:layout_marginTop">@dimen/dp_50</item>
+        <item name="android:layout_marginRight">@dimen/dp_70</item>
+    </style>
+
+    <style name="ActivityRegisterOrForgetInputLayoutStyle.Tip">
+        <item name="android:layout_height">@dimen/dp_30</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/dp_25</item>
+    </style>
+
+    <style name="ActivityRegisterOrForgetTextStyle" parent="CommonTextViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginLeft">@dimen/dp_5</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ActivityRegisterOrForgetTextStyle.AreaCode">
+        <item name="android:text">@string/activity_login_area_code</item>
+    </style>
+
+    <style name="ActivityRegisterOrForgetTextStyle.Title">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/dp_70</item>
+        <item name="android:layout_marginLeft">@dimen/dp_70</item>
+        <item name="android:text">@string/activity_register_title</item>
+        <item name="android:textSize">@dimen/text_size_26</item>
+    </style>
+
+    <style name="ActivityRegisterOrForgetEditTextStyle" parent="CommonEditTextStyle" />
+
+    <style name="ActivityRegisterOrForgetEditTextStyle.Phone">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:hint">@string/activity_login_phone_hint</item>
         <item name="android:inputType">phone</item>
+        <item name="android:layout_marginLeft">@dimen/dp_8</item>
         <item name="android:maxLength">11</item>
     </style>
 
-    <style name="ActivityRegisterTextStyle.Password">
-        <item name="android:layout_marginTop">@dimen/dp_180</item>
+    <style name="ActivityRegisterOrForgetEditTextStyle.Code">
+        <item name="android:layout_marginLeft">@dimen/dp_70</item>
+        <item name="android:layout_marginRight">@dimen/dp_70</item>
+        <item name="android:layout_marginTop">@dimen/dp_56</item>
+        <item name="android:hint">@string/activity_register_verification_code</item>
+        <item name="android:inputType">number</item>
+        <item name="android:maxLength">6</item>
+    </style>
+
+    <style name="ActivityRegisterOrForgetEditTextStyle.Password">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
         <item name="android:hint">@string/activity_register_password</item>
         <item name="android:inputType">textPassword</item>
+        <item name="android:maxLength">20</item>
     </style>
 
-    <style name="ActivityRegisterTextStyle.VerificationCode">
-        <item name="android:layout_width">@dimen/dp_350</item>
-        <item name="android:layout_centerHorizontal">false</item>
-        <item name="android:layout_marginStart">@dimen/dp_70</item>
-        <item name="android:layout_marginTop">@dimen/dp_260</item>
-        <item name="android:hint">@string/activity_register_verification_code</item>
-        <item name="android:inputType">number</item>
+    <style name="ActivityRegisterOrForgetButtonStyle" parent="CommonButtonStyle" />
+
+    <style name="ActivityRegisterOrForgetButtonStyle.GetCode">
+        <item name="android:layout_width">@dimen/dp_140</item>
+        <item name="android:layout_height">@dimen/dp_40</item>
+        <item name="android:text">@string/get_code</item>
+        <item name="android:textColor">@color/colorTxtBlue</item>
+        <item name="android:background">@drawable/shape_solid_white_stroke_blue_radius_5</item>
     </style>
 
-    <style name="ActivityRegisterTextStyle.Countdown">
-        <item name="android:layout_width">@dimen/dp_150</item>
-        <item name="android:layout_marginStart">@dimen/dp_420</item>
-        <item name="android:layout_marginTop">@dimen/dp_260</item>
-        <item name="android:layout_centerHorizontal">false</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textSize">@dimen/text_size_20</item>
-        <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:foreground">?android:attr/selectableItemBackgroundBorderless</item>
-        <item name="android:background">@color/colorBlue</item>
-    </style>
-
-    <style name="ActivityRegisterViewStyle">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">@dimen/dp_70</item>
-        <item name="android:layout_marginTop">@dimen/dp_180</item>
-        <item name="android:layout_marginStart">@dimen/dp_500</item>
-        <item name="android:src">@drawable/activity_login_password_closed</item>
-    </style>
-
-    <style name="ActivityRegisterButtonStyle">
-        <item name="android:layout_width">@dimen/dp_500</item>
-        <item name="android:layout_height">@dimen/dp_70</item>
-        <item name="android:layout_marginTop">@dimen/dp_400</item>
-        <item name="android:layout_centerHorizontal">true</item>
-        <item name="android:text">@string/activity_register_register</item>
-        <item name="android:textSize">@dimen/text_size_22</item>
-        <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:foreground">?android:attr/selectableItemBackgroundBorderless</item>
-        <item name="android:background">@color/colorBlue</item>
-    </style>
-
-
-    <!-- ResetPasswordActivity -->
-    <style name="ActivityResetPasswordLayoutStyle">
+    <style name="ActivityRegisterOrForgetButtonStyle.Register">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:focusable">true</item>
-        <item name="android:focusableInTouchMode">true</item>
-        <item name="android:background">@color/colorPageBg</item>
+        <item name="android:layout_height">@dimen/dp_50</item>
+        <item name="android:layout_marginLeft">@dimen/dp_70</item>
+        <item name="android:layout_marginRight">@dimen/dp_70</item>
+        <item name="android:layout_marginTop">@dimen/dp_68</item>
+        <item name="android:text">@string/activity_register_register</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:background">@drawable/shape_solid_blue_radius_5</item>
     </style>
 
-    <style name="ActivityResetPasswordTextStyle">
-        <item name="android:layout_width">@dimen/dp_500</item>
-        <item name="android:layout_height">@dimen/dp_70</item>
-        <item name="android:paddingStart">@dimen/dp_5</item>
-        <item name="android:layout_centerHorizontal">true</item>
-        <item name="android:background">@color/colorWhite</item>
+    <style name="ActivityRegisterOrForgetViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginLeft">@dimen/dp_70</item>
+        <item name="android:layout_marginRight">@dimen/dp_70</item>
+        <item name="android:layout_marginTop">@dimen/dp_9</item>
+        <item name="android:background">@color/colorLineGrey</item>
     </style>
 
-    <style name="ActivityResetPasswordViewStyle">
+    <style name="ActivityRegisterOrForgetCheckBoxStyle">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">@dimen/dp_70</item>
-        <item name="android:layout_marginTop">@dimen/dp_260</item>
-        <item name="android:layout_marginStart">@dimen/dp_500</item>
-        <item name="android:src">@drawable/activity_login_password_closed</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:button">@drawable/selector_activity_login_eye</item>
     </style>
 
-    <style name="ActivityResetPasswordButtonStyle">
-        <item name="android:layout_width">@dimen/dp_500</item>
-        <item name="android:layout_height">@dimen/dp_70</item>
-        <item name="android:layout_centerHorizontal">true</item>
-        <item name="android:layout_marginTop">@dimen/dp_400</item>
-        <item name="android:text">@string/activity_reset_password_confirm</item>
+    <style name="ActivityRegisterOrForgetImageViewStyle" parent="CommonImageViewStyle" />
+
+    <style name="ActivityRegisterOrForgetImageViewStyle.Back">
+        <item name="android:layout_margin">@dimen/dp_10</item>
+        <item name="android:src">@drawable/src_back</item>
+    </style>
+
+    <style name="ActivityRegisterOrForgetImageViewStyle.Tip">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:text">@string/activity_login_remember_password</item>
+    </style>
+
+
+    <!-- QualificationActivity -->
+    <style name="ActivityQualificationImageViewStyle" parent="CommonImageViewStyle" />
+
+    <style name="ActivityQualificationImageViewStyle.Back">
+        <item name="android:layout_margin">@dimen/dp_10</item>
+        <item name="android:src">@drawable/src_back</item>
+    </style>
+
+    <style name="ActivityQualificationTextViewStyle" parent="CommonTextViewStyle" />
+
+    <style name="ActivityQualificationTextViewStyle.Title">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/dp_30</item>
+        <item name="android:layout_marginLeft">@dimen/dp_40</item>
+        <item name="android:textSize">@dimen/text_size_26</item>
+    </style>
+
+    <style name="ActivityQualificationTextViewStyle.Tip">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/dp_15</item>
+        <item name="android:layout_marginLeft">@dimen/dp_40</item>
+        <item name="android:text">@string/activity_qualification_tip</item>
+    </style>
+
+    <style name="ActivityQualificationTextViewStyle.ProfessionTip">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
+        <item name="android:text">@string/activity_qualification_profession_tip</item>
+    </style>
+
+    <style name="ActivityQualificationButtonStyle" parent="CommonButtonStyle">
+        <item name="android:layout_height">@dimen/dp_80</item>
+        <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textSize">@dimen/text_size_22</item>
-        <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:foreground">?android:attr/selectableItemBackgroundBorderless</item>
-        <item name="android:background">@color/colorBlue</item>
     </style>
 
-    <style name="ActivityResetPasswordTextStyle.Phone">
-        <item name="android:layout_marginTop">@dimen/dp_100</item>
-        <item name="android:hint">@string/activity_register_phone</item>
-        <item name="android:inputType">phone</item>
-        <item name="android:maxLength">11</item>
-    </style>
-
-    <style name="ActivityResetPasswordTextStyle.VerificationCode">
-        <item name="android:layout_width">@dimen/dp_350</item>
-        <item name="android:layout_marginTop">@dimen/dp_180</item>
-        <item name="android:layout_marginStart">@dimen/dp_70</item>
-        <item name="android:layout_centerHorizontal">false</item>
-        <item name="android:hint">@string/activity_register_verification_code</item>
-        <item name="android:inputType">number</item>
-    </style>
-
-    <style name="ActivityResetPasswordTextStyle.NewPassword">
-        <item name="android:layout_marginTop">@dimen/dp_260</item>
-        <item name="android:hint">@string/activity_reset_password_new_password</item>
-        <item name="android:inputType">textPassword</item>
-    </style>
-
-    <style name="ActivityResetPasswordTextStyle.Countdown">
+    <style name="ActivityQualificationButtonStyle.Step">
         <item name="android:layout_width">@dimen/dp_150</item>
-        <item name="android:layout_marginStart">@dimen/dp_420</item>
-        <item name="android:layout_marginTop">@dimen/dp_180</item>
-        <item name="android:layout_centerHorizontal">false</item>
-        <item name="android:textSize">@dimen/text_size_20</item>
-        <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:gravity">center</item>
-        <item name="android:foreground">?android:attr/selectableItemBackgroundBorderless</item>
-        <item name="android:background">@color/colorBlue</item>
+        <item name="android:layout_marginRight">@dimen/dp_20</item>
+        <item name="android:background">@drawable/shape_solid_white_radius_5</item>
+
     </style>
 
+    <style name="ActivityQualificationButtonStyle.Operation">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/shape_solid_blue_radius_5</item>
+
+    </style>
+
+
+    <style name="ActivityQualificationStepViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">@dimen/dp_65</item>
+        <item name="android:paddingRight">@dimen/dp_65</item>
+        <item name="android:layout_marginTop">@dimen/dp_35</item>
+
+    </style>
+
+
+    <style name="Animation">
+        <item name="android:windowEnterAnimation">@anim/popup_enter</item>
+        <item name="android:windowExitAnimation">@anim/popup_out</item>
+    </style>
 
     <!-- MainActivity -->
     <style name="ActivityMainLayoutStyle">
@@ -531,7 +763,7 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:textSize">@dimen/text_size_18</item>
         <item name="android:drawableLeft">@drawable/fragment_home_famous_doctors</item>
-        <item name="android:drawableRight">@drawable/dropdown_more_icon</item>
+        <item name="android:drawableRight">@drawable/more_icon</item>
     </style>
 
     <style name="FragmentHomeViewStyle.HealthClub">
@@ -543,7 +775,7 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:textSize">@dimen/text_size_18</item>
         <item name="android:drawableLeft">@drawable/fragment_home_health_club</item>
-        <item name="android:drawableRight">@drawable/dropdown_more_icon</item>
+        <item name="android:drawableRight">@drawable/more_icon</item>
     </style>
 
     <style name="FragmentHomeViewStyle.ServiceProvider">
@@ -555,7 +787,7 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:textSize">@dimen/text_size_18</item>
         <item name="android:drawableLeft">@drawable/fragment_home_service_provider</item>
-        <item name="android:drawableRight">@drawable/dropdown_more_icon</item>
+        <item name="android:drawableRight">@drawable/more_icon</item>
     </style>
 
 
@@ -664,7 +896,7 @@
     <style name="ActivityInviteTextStyle">
         <item name="android:layout_height">@dimen/dp_60</item>
         <item name="android:layout_marginTop">@dimen/dp_140</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
     </style>
 
     <style name="ActivityInviteViewStyle">
@@ -730,7 +962,7 @@
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:textSize">@dimen/text_size_18</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
     </style>
 
     <style name="RecyclerViewMyFocusTextStyle.MemberName">
@@ -774,7 +1006,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/text_size_18</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
     </style>
 
     <style name="RecyclerViewMyMemberTextStyle.MemberName">
@@ -807,7 +1039,7 @@
     <style name="RecyclerViewMyMemberViewStyle.MemberDetails">
         <item name="android:layout_marginEnd">@dimen/dp_20</item>
         <item name="android:layout_gravity">end|center_vertical</item>
-        <item name="android:src">@drawable/dropdown_more_icon</item>
+        <item name="android:src">@drawable/more_icon</item>
     </style>
 
 
@@ -824,7 +1056,7 @@
         <item name="android:layout_height">@dimen/dp_50</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/text_size_18</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
     </style>
 
     <style name="ActivityMemberDetailTextStyle.LocationTitle">
@@ -974,7 +1206,7 @@
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">center_vertical|left</item>
         <item name="android:textSize">@dimen/text_size_14</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
         <item name="android:drawableRight">@drawable/vertical_line</item>
     </style>
 
@@ -992,7 +1224,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/text_size_16</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
         <item name="android:gravity">bottom|center_horizontal</item>
     </style>
 
@@ -1174,7 +1406,7 @@
         <item name="android:text">@string/life_service</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:drawableLeft">@drawable/fragment_business_domestic_service</item>
-        <item name="android:drawableRight">@drawable/dropdown_more_icon</item>
+        <item name="android:drawableRight">@drawable/more_icon</item>
         <item name="android:background">@color/colorWhite</item>
     </style>
 
@@ -1187,7 +1419,7 @@
         <item name="android:text">@string/housekeeping</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:drawableLeft">@drawable/fragment_business_pension</item>
-        <item name="android:drawableRight">@drawable/dropdown_more_icon</item>
+        <item name="android:drawableRight">@drawable/more_icon</item>
         <item name="android:background">@color/colorWhite</item>
     </style>
 
@@ -1200,7 +1432,7 @@
         <item name="android:text">@string/pension</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:drawableLeft">@drawable/fragment_business_house_keeping</item>
-        <item name="android:drawableRight">@drawable/dropdown_more_icon</item>
+        <item name="android:drawableRight">@drawable/more_icon</item>
         <item name="android:background">@color/colorWhite</item>
     </style>
 
@@ -1213,7 +1445,7 @@
         <item name="android:background">@drawable/layer_list_underline_arrow</item>
         <item name="android:paddingRight">@dimen/dp_20</item>
         <item name="android:textSize">@dimen/text_size_18</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
     </style>
 
     <style name="ActivityMyStudioTxtStyle.MyLectureHall">
@@ -1266,7 +1498,7 @@
         <item name="android:paddingLeft">@dimen/dp_10</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:hint">@string/by_date</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
         <item name="android:textSize">@dimen/text_size_18</item>
         <item name="android:background">@drawable/layer_list_date_picker</item>
     </style>
@@ -1305,7 +1537,7 @@
     <style name="RecyclerViewArticleTxtStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
     </style>
 
     <style name="RecyclerViewArticleViewStyle">
@@ -1366,7 +1598,7 @@
     <style name="ActivityMemberListTxtStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
         <item name="android:textSize">@dimen/text_size_20</item>
     </style>
 
@@ -1412,7 +1644,7 @@
         <item name="android:layout_marginTop">@dimen/dp_0</item>
         <item name="android:text">"普通会员"</item>
         <item name="android:textSize">@dimen/text_size_18</item>
-        <item name="android:textColor">@color/activity_member_list_radio_button_bg_selector</item>
+        <item name="android:textColor">@color/color_grey_blue</item>
         <item name="android:background">@drawable/selector_item_blue_item_white
         </item>
     </style>
@@ -1423,7 +1655,7 @@
         <item name="android:layout_marginTop">@dimen/dp_0</item>
         <item name="android:text">"贵宾会员"</item>
         <item name="android:textSize">@dimen/text_size_18</item>
-        <item name="android:textColor">@color/activity_member_list_radio_button_bg_selector</item>
+        <item name="android:textColor">@color/color_grey_blue</item>
         <item name="android:background">@drawable/selector_item_blue_item_white
         </item>
     </style>
@@ -1434,7 +1666,7 @@
         <item name="android:layout_marginTop">@dimen/dp_0</item>
         <item name="android:text">"SVIP会员"</item>
         <item name="android:textSize">@dimen/text_size_18</item>
-        <item name="android:textColor">@color/activity_member_list_radio_button_bg_selector</item>
+        <item name="android:textColor">@color/color_grey_blue</item>
         <item name="android:background">@drawable/selector_item_blue_item_white
         </item>
     </style>
@@ -1517,7 +1749,7 @@
     <style name="RecyclerViewMyTaskTxtStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
         <item name="android:gravity">center_vertical</item>
     </style>
 
@@ -1559,7 +1791,7 @@
     <style name="ActivityMyTaskDetailTxtStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
     </style>
 
     <style name="ActivityMyTaskDetailTxtStyle.Title">
@@ -1579,7 +1811,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">left|center_vertical</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
         <item name="android:textSize">@dimen/text_size_16</item>
     </style>
 
@@ -1615,7 +1847,7 @@
     <style name="ActivitySelectTaskReceiverTxtStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
         <item name="android:gravity">center</item>
     </style>
 
@@ -1674,7 +1906,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:textSize">@dimen/text_size_18</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
     </style>
 
     <style name="RecyclerViewTaskReceiverTxtStyle.Name">
@@ -1714,7 +1946,7 @@
     <style name="DialogSelectTaskReceiverTxtStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
     </style>
 
     <style name="DialogSelectTaskReceiverTxtStyle.Title">
@@ -1754,7 +1986,7 @@
         <item name="android:gravity">center</item>
         <item name="android:text">@string/cancel</item>
         <item name="android:textSize">@dimen/text_size_20</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
     </style>
 
     <style name="DialogSelectTaskReceiverTxtStyle.Send">
@@ -1777,12 +2009,12 @@
 
     <style name="DialogSelectTaskReceiverViewStyle.LineOne">
         <item name="android:layout_marginTop">@dimen/dp_100</item>
-        <item name="android:background">@color/colorTextGrey</item>
+        <item name="android:background">@color/colorTxtGrey</item>
     </style>
 
     <style name="DialogSelectTaskReceiverViewStyle.LineTwo">
         <item name="android:layout_marginTop">@dimen/dp_200</item>
-        <item name="android:background">@color/colorTextGrey</item>
+        <item name="android:background">@color/colorTxtGrey</item>
     </style>
 
     <style name="DialogSelectTaskReceiverViewStyle.LineThree">
@@ -1790,7 +2022,7 @@
         <item name="android:layout_height">@dimen/dp_56</item>
         <item name="android:layout_marginTop">@dimen/dp_200</item>
         <item name="android:layout_marginStart">@dimen/dp_200</item>
-        <item name="android:background">@color/colorTextGrey</item>
+        <item name="android:background">@color/colorTxtGrey</item>
     </style>
 
 
@@ -1817,7 +2049,7 @@
     <style name="DialogCreateTaskTxtStyle.TaskTitle">
         <item name="android:layout_marginTop">@dimen/dp_20</item>
         <item name="android:textSize">@dimen/dp_20</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
     </style>
 
     <style name="DialogCreateTaskTxtStyle.TaskComment">
@@ -1853,7 +2085,7 @@
         <item name="android:layout_centerVertical">true</item>
         <item name="android:gravity">center</item>
         <item name="android:text">@string/cancel</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
         <item name="android:textSize">@dimen/text_size_20</item>
     </style>
 
@@ -1921,7 +2153,7 @@
     <!-- MyInfoMenu -->
     <style name="MenuMyInfoStyle" parent="BottomSheet.Dialog">
         <item name="android:gravity">center</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
     </style>
 
 
@@ -1966,7 +2198,7 @@
         <item name="android:layout_marginTop">@dimen/dp_5</item>
         <item name="android:layout_marginStart">@dimen/dp_5</item>
         <item name="android:gravity">center</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
         <item name="android:textSize">@dimen/text_size_18</item>
         <item name="android:background">@drawable/layer_list_date_picker</item>
     </style>
@@ -1980,7 +2212,7 @@
         <item name="android:scrollHorizontally">true</item>
         <item name="android:gravity">left|center_vertical</item>
         <item name="android:textSize">@dimen/text_size_18</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
     </style>
 
 
@@ -1990,7 +2222,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
         <item name="android:button">@null</item>
-        <item name="android:textColor">@color/activity_member_list_radio_button_bg_selector</item>
+        <item name="android:textColor">@color/color_grey_blue</item>
         <item name="android:textSize">@dimen/text_size_18</item>
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/selector_item_blue_item_white
@@ -2014,7 +2246,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
         <item name="android:textSize">@dimen/text_size_16</item>
     </style>
 
@@ -2145,7 +2377,7 @@
         <item name="android:background">@drawable/layer_list_underline_arrow</item>
         <item name="android:paddingLeft">@dimen/dp_10</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
         <item name="android:textSize">@dimen/text_size_16</item>
     </style>
 
@@ -2199,7 +2431,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">@dimen/dp_15</item>
         <item name="android:paddingBottom">@dimen/dp_5</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
         <item name="android:textSize">@dimen/text_size_16</item>
         <item name="android:lineSpacingExtra">@dimen/dp_2</item>
         <item name="android:singleLine">true</item>
@@ -2226,7 +2458,7 @@
     <style name="ActivityServicePlanDetailTxtStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
         <item name="android:textSize">@dimen/text_size_16</item>
         <item name="android:layout_marginStart">@dimen/dp_10</item>
         <item name="android:singleLine">true</item>
@@ -2260,7 +2492,7 @@
         <item name="android:layout_marginTop">@dimen/dp_10</item>
         <item name="android:layout_marginStart">@dimen/dp_10</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
         <item name="android:textSize">@dimen/text_size_16</item>
         <item name="android:checkMark">?android:attr/listChoiceIndicatorSingle</item>
         <item name="android:focusableInTouchMode">true</item>
@@ -2272,7 +2504,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
         <item name="android:textSize">@dimen/text_size_14</item>
         <item name="android:layout_marginStart">@dimen/dp_10</item>
     </style>
@@ -2311,7 +2543,7 @@
         <item name="android:textSize">@dimen/text_size_18</item>
         <item name="android:gravity">center</item>
         <item name="android:button">@null</item>
-        <item name="android:textColor">@color/activity_member_list_radio_button_bg_selector</item>
+        <item name="android:textColor">@color/color_grey_blue</item>
         <item name="android:background">@drawable/selector_item_blue_item_white
         </item>
     </style>
@@ -2331,7 +2563,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">@dimen/dp_15</item>
         <item name="android:paddingBottom">@dimen/dp_5</item>
-        <item name="android:textColor">@color/colorTextGrey</item>
+        <item name="android:textColor">@color/colorTxtGrey</item>
         <item name="android:textSize">@dimen/text_size_16</item>
         <item name="android:lineSpacingExtra">@dimen/dp_2</item>
         <item name="android:singleLine">true</item>

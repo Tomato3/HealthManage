@@ -18,7 +18,7 @@
             android:drawableLeft="@drawable/recycler_view_my_task_menu_edit"
             android:gravity="center"
             android:text="编辑"
-            android:textColor="@color/colorTextGrey"
+            android:textColor="@color/colorTxtGrey"
             android:textSize="@dimen/text_size_16" />
 
         <TextView
@@ -29,7 +29,7 @@
             android:drawableLeft="@drawable/recycler_view_my_task_menu_send"
             android:gravity="center"
             android:text="发送"
-            android:textColor="@color/colorTextGrey"
+            android:textColor="@color/colorTxtGrey"
             android:textSize="@dimen/text_size_16" />
 
         <TextView
@@ -40,7 +40,7 @@
             android:drawableLeft="@drawable/recycler_view_my_task_menu_share"
             android:gravity="center"
             android:text="分享"
-            android:textColor="@color/colorTextGrey"
+            android:textColor="@color/colorTxtGrey"
             android:textSize="@dimen/text_size_16" />
 
         <TextView
@@ -51,7 +51,7 @@
             android:drawableLeft="@drawable/recycler_view_my_task_menu_view"
             android:gravity="center"
             android:text="查看异常数据"
-            android:textColor="@color/colorTextGrey"
+            android:textColor="@color/colorTxtGrey"
             android:textSize="@dimen/text_size_16" />
     </LinearLayout>
 </layout>

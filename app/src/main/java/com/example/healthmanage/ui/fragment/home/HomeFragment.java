@@ -18,8 +18,8 @@ import com.example.healthmanage.ui.activity.doctorhall.DoctorHallActivity;
 import com.example.healthmanage.ui.activity.memberlist.MemberListActivity;
 import com.example.healthmanage.ui.activity.mytask.MyTaskActivity;
 import com.example.healthmanage.ui.activity.serviceplan.ServicePlanActivity;
-import com.example.healthmanage.view.MyFocusRecyclerView;
-import com.example.healthmanage.view.MyMemberRecyclerView;
+import com.example.healthmanage.bean.recyclerview.MyFocusRecyclerView;
+import com.example.healthmanage.bean.recyclerview.MyMemberRecyclerView;
 import com.example.healthmanage.widget.DropdownBar;
 import com.jeremyliao.liveeventbus.LiveEventBus;
 

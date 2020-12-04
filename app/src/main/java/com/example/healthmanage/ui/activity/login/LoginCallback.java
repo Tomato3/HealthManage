@@ -1,6 +1,6 @@
 package com.example.healthmanage.ui.activity.login;
 
-import com.example.healthmanage.bean.LoginResponse;
+import com.example.healthmanage.bean.network.response.LoginResponse;
 
 public interface LoginCallback {
 

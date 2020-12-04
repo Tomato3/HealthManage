@@ -11,7 +11,7 @@
     </data>
 
     <LinearLayout
-        style="@style/AllMatchWhiteLayoutStyle"
+        style="@style/CommonMatchLinearLayoutStyle"
         android:orientation="vertical">
 
         <include

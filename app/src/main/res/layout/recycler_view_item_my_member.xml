@@ -7,7 +7,7 @@
 
         <variable
             name="MyMemberRecyclerView"
-            type="com.example.healthmanage.view.MyMemberRecyclerView" />
+            type="com.example.healthmanage.bean.recyclerview.MyMemberRecyclerView" />
     </data>
 
     <LinearLayout style="@style/RecyclerViewMyMemberLayoutStyle">

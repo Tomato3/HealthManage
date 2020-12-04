@@ -5,7 +5,7 @@
 
         <variable
             name="ExchangeCommodityRecyclerView"
-            type="com.example.healthmanage.view.ExchangeCommodityRecyclerView" />
+            type="com.example.healthmanage.bean.recyclerview.ExchangeCommodityRecyclerView" />
     </data>
 
     <RelativeLayout style="@style/RecyclerViewExchangeCommodityLayoutStyle">

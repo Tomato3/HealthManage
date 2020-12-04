@@ -1,26 +1,26 @@
 package com.example.healthmanage.data.network;
 
 
-import com.example.healthmanage.bean.AbnormalDataResponse;
-import com.example.healthmanage.bean.AirResponse;
-import com.example.healthmanage.bean.ConsultationRecordResponse;
-import com.example.healthmanage.bean.ConsultationResponse;
-import com.example.healthmanage.bean.DoctorDetailResponse;
-import com.example.healthmanage.bean.DoctorListResponse;
-import com.example.healthmanage.bean.GeneralResponse;
-import com.example.healthmanage.bean.HealthDataResponse;
-import com.example.healthmanage.bean.HistoryDataResponse;
-import com.example.healthmanage.bean.LoginResponse;
-import com.example.healthmanage.bean.MemberInfoResponse;
-import com.example.healthmanage.bean.MyDoctorResponse;
-import com.example.healthmanage.bean.MyMemberResponse;
-import com.example.healthmanage.bean.NursingResponse;
-import com.example.healthmanage.bean.RegisterResponse;
-import com.example.healthmanage.bean.SearchMemberResponse;
-import com.example.healthmanage.bean.ServicePlanResponse;
-import com.example.healthmanage.bean.TaskDetailResponse;
-import com.example.healthmanage.bean.TaskResponse;
-import com.example.healthmanage.bean.WeatherResponse;
+import com.example.healthmanage.bean.network.response.AbnormalDataResponse;
+import com.example.healthmanage.bean.network.response.AirResponse;
+import com.example.healthmanage.bean.network.response.ConsultationRecordResponse;
+import com.example.healthmanage.bean.network.response.ConsultationResponse;
+import com.example.healthmanage.bean.network.response.DoctorDetailResponse;
+import com.example.healthmanage.bean.network.response.DoctorListResponse;
+import com.example.healthmanage.bean.network.response.GeneralResponse;
+import com.example.healthmanage.bean.network.response.HealthDataResponse;
+import com.example.healthmanage.bean.network.response.HistoryDataResponse;
+import com.example.healthmanage.bean.network.response.LoginResponse;
+import com.example.healthmanage.bean.network.response.MemberInfoResponse;
+import com.example.healthmanage.bean.network.response.MyDoctorResponse;
+import com.example.healthmanage.bean.network.response.MyMemberResponse;
+import com.example.healthmanage.bean.network.response.NursingResponse;
+import com.example.healthmanage.bean.network.response.SearchMemberResponse;
+import com.example.healthmanage.bean.network.response.ServicePlanResponse;
+import com.example.healthmanage.bean.network.response.SmsCodeResponse;
+import com.example.healthmanage.bean.network.response.TaskDetailResponse;
+import com.example.healthmanage.bean.network.response.TaskResponse;
+import com.example.healthmanage.bean.network.response.WeatherResponse;
 
 import io.reactivex.Observable;
 
@@ -63,8 +63,8 @@ public class ApiWrapper extends RetrofitHttpUtils {
      * @param phone 接收验证码的手机号码
      * @return Register
      */
-    public Observable<RegisterResponse> sendSmsMessage(String phone) {
-        return getApiServer().sendSmsMessage(phone);
+    public Observable<SmsCodeResponse> getSmsCode(String phone) {
+        return getApiServer().getSmsCode(phone);
     }
 
 
@@ -77,9 +77,9 @@ public class ApiWrapper extends RetrofitHttpUtils {
      * @param smsIdentity
      * @return
      */
-    public Observable<GeneralResponse> updatePassword(String phone, String newPassword, String smsCode,
+    public Observable<GeneralResponse> forgetPassword(String phone, String newPassword, String smsCode,
                                                       String smsIdentity) {
-        return getApiServer().updatePassword(phone, newPassword, smsCode, smsIdentity);
+        return getApiServer().forgetPassword(phone, newPassword, smsCode, smsIdentity);
     }
 
     /**
@@ -463,5 +463,7 @@ public class ApiWrapper extends RetrofitHttpUtils {
     public Observable<ConsultationRecordResponse> getConsultationRecord(String token, long questionId) {
         return getApiServer().getConsultationRecord(token, questionId);
     }
+
+
 
 }

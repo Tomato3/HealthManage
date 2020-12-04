@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseViewModel;
-import com.example.healthmanage.view.PurseFlowingRecyclerView;
+import com.example.healthmanage.bean.recyclerview.PurseFlowingRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;

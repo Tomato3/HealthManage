@@ -8,48 +8,125 @@
             type="com.example.healthmanage.ui.activity.login.LoginViewModel" />
     </data>
 
-    <RelativeLayout style="@style/ActivityLoginLayoutStyle">
+    <LinearLayout style="@style/CommonMatchLinearLayoutStyle">
 
         <ImageView
             android:id="@+id/iv_logo"
-            style="@style/ActivityLoginViewStyle.Logo" />
+            style="@style/ActivityLoginImageViewStyle.Logo" />
 
-        <EditText
-            android:id="@+id/et_phone"
-            style="@style/ActivityLoginTextStyle.Phone"
-            android:text="@={ViewModel.phone}" />
+        <RadioGroup
+            android:id="@+id/rg_login"
+            style="@style/ActivityLoginRadioGroupStyle">
 
-        <EditText
-            android:id="@+id/et_password"
-            style="@style/ActivityLoginTextStyle.Password"
-            android:text="@={ViewModel.password}" />
+            <RadioButton
+                android:id="@+id/rb_code"
+                style="@style/ActivityLoginRadioButtonStyle.Code" />
 
-        <ImageView
-            android:id="@+id/iv_eye"
-            style="@style/ActivityLoginViewStyle.Eye"
-            android:onClick="@{()->ViewModel.changePasswordEye()}" />
+            <RadioButton
+                android:id="@+id/rb_password"
+                style="@style/ActivityLoginRadioButtonStyle.Password" />
+        </RadioGroup>
 
-        <Spinner
-            android:id="@+id/spinner_profession"
-            style="@style/ActivityLoginTextStyle.Profession" />
+        <LinearLayout
+            android:id="@+id/linear_layout_code"
+            style="@style/CommonWrapLinearLayoutStyle">
 
-        <CheckBox
-            style="@style/ActivityLoginRadioButtonStyle"
-            android:onClick="@{()->ViewModel.changeAutoLogin()}" />
+            <LinearLayout style="@style/ActivityLoginInputLayoutStyle">
 
-        <TextView style="@style/ActivityLoginTextStyle.Auto" />
+                <TextView style="@style/ActivityLoginTextStyle.AreaCode" />
 
-        <TextView
-            style="@style/ActivityLoginTextStyle.Forget"
-            android:onClick="@{()->ViewModel.jumpToResentPasswordActivity()}" />
+                <EditText
+                    style="@style/ActivityLoginEditTextStyle.Phone"
+                    android:text="@={ViewModel.phone}" />
 
-        <TextView
-            style="@style/ActivityLoginTextStyle.Register"
-            android:onClick="@{()->ViewModel.jumpToRegisterActivity()}" />
+                <Button
+                    style="@style/ActivityLoginButtonStyle.GetCode"
+                    android:onClick="@{()->ViewModel.getSmsCode()}" />
+
+            </LinearLayout>
+
+            <View style="@style/ActivityLoginViewStyle" />
+
+            <EditText
+                style="@style/ActivityLoginEditTextStyle.Code"
+                android:text="@={ViewModel.code}" />
+
+            <View style="@style/ActivityLoginViewStyle" />
+
+            <LinearLayout style="@style/ActivityLoginInputLayoutStyle.Tip">
+
+                <ImageView
+                    style="@style/ActivityLoginImageViewStyle.Tip"
+                    android:ImageSrc="@{ViewModel.tipImg}" />
+
+                <TextView
+                    style="@style/ActivityLoginTextStyle"
+                    android:text="@{ViewModel.tip}"
+                    android:textColor="@{ViewModel.tipColor ? @color/colorTxtBlack : @color/colorTxtRed}" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_layout_password"
+            style="@style/CommonWrapLinearLayoutStyle"
+            android:visibility="gone">
+
+            <EditText
+                style="@style/ActivityLoginEditTextStyle.Phone1"
+                android:text="@={ViewModel.phone}" />
+
+            <View style="@style/ActivityLoginViewStyle" />
+
+            <LinearLayout style="@style/ActivityLoginInputLayoutStyle">
+
+                <EditText
+                    android:id="@+id/et_password"
+                    style="@style/ActivityLoginEditTextStyle.Password"
+                    android:text="@={ViewModel.password}" />
+
+                <CheckBox
+                    android:id="@+id/cb_eye"
+                    style="@style/ActivityLoginCheckBoxStyle.Eye" />
+            </LinearLayout>
+
+
+            <View style="@style/ActivityLoginViewStyle" />
+
+            <LinearLayout style="@style/ActivityLoginInputLayoutStyle.Tip">
+
+                <CheckBox
+                    android:id="@+id/cb_remember"
+                    style="@style/ActivityLoginCheckBoxStyle" />
+
+                <TextView
+                    style="@style/ActivityLoginTextStyle.Forget"
+                    android:onClick="@{()->ViewModel.jumpToRegisterOrForgetActivity(2)}" />
+            </LinearLayout>
+        </LinearLayout>
 
         <Button
-            style="@style/ActivityLoginButtonStyle"
+            style="@style/ActivityLoginButtonStyle.Login"
             android:onClick="@{()->ViewModel.jumpToMainActivity()}" />
 
-    </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/linear_layout_register"
+            style="@style/ActivityLoginInputLayoutStyle.Register">
+
+            <TextView style="@style/ActivityLoginTextStyle.RegisterTip" />
+
+            <TextView
+                style="@style/ActivityLoginTextStyle.Register"
+                android:onClick="@{()->ViewModel.jumpToRegisterOrForgetActivity(1)}" />
+        </LinearLayout>
+
+        <RelativeLayout style="@style/ActivityLoginInputLayoutStyle.Other">
+
+            <View style="@style/ActivityLoginViewStyle.Tip" />
+
+            <TextView style="@style/ActivityLoginTextStyle.Tip" />
+        </RelativeLayout>
+
+        <ImageView style="@style/ActivityLoginImageViewStyle.WeChat" />
+    </LinearLayout>
 </layout>

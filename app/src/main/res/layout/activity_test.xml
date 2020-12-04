@@ -9,7 +9,7 @@
     </data>
 
     <LinearLayout
-        style="@style/AllMatchWhiteLayoutStyle"
+        style="@style/CommonMatchLinearLayoutStyle"
         android:orientation="vertical">
 
 
@@ -21,7 +21,7 @@
             android:layout_marginTop="@dimen/dp_10"
             android:gravity="center"
             android:text="测试"
-            android:textColor="@color/colorTextGrey"
+            android:textColor="@color/colorTxtGrey"
             android:textSize="@dimen/text_size_18" />
 
     </LinearLayout>

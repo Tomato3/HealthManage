@@ -2,15 +2,19 @@
 <resources>
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#CCCCCC</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">#2979FF</color>
     <color name="colorWhite">#FFFFFF</color>
-    <color name="colorBlack">#000000</color>FrameLayout
+    <color name="colorBlack">#000000</color>
     <color name="colorPageBg">#F1F1F1</color>
-    <color name="colorBlue">#00A2FF</color>
+    <color name="colorBlue">#2979FF</color>
+    <color name="colorTxtBlue">#007AFF</color>
+    <color name="colorLineGrey">#E9E9E9</color>
+    <color name="colorLineBlack">#BDBDBD</color>
     <color name="colorBottomText">#6C6C6C</color>
     <color name="colorDropdownBg">#E5F6FF</color>
     <color name="colorHistoryData">#B6E2FC</color>
-    <color name="colorTextGrey">#424242</color>
+    <color name="colorTxtGrey">#9E9E9E</color>
+    <color name="colorTxtBlack">#101010</color>
     <color name="colorOrange">#FBCD9B</color>
     <color name="colorPink">#F9A2C9</color>
     <color name="colorYellow">#F9E783</color>
@@ -26,5 +30,6 @@
     <color name="colorStrokePurple">#C2BEEC</color>
     <color name="colorViewFlipper">#4E5458</color>
     <color name="colorSpinnerStroke">#EEEEEE</color>
-    <color name="colorRed">#FF2121</color>
+    <color name="colorTxtRed">#FF3A30</color>
+    <color name="color_75">#757575</color>
 </resources>

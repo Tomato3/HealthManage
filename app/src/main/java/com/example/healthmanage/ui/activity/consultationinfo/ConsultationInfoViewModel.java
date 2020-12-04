@@ -6,13 +6,12 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.base.BaseViewModel;
-import com.example.healthmanage.bean.ConsultationResponse;
+import com.example.healthmanage.bean.network.response.ConsultationResponse;
 import com.example.healthmanage.bean.UsersInterface;
 import com.example.healthmanage.bean.UsersRemoteSource;
 import com.example.healthmanage.data.network.exception.ExceptionHandle;
-import com.example.healthmanage.view.ConsultationInformationRecyclerView;
+import com.example.healthmanage.bean.recyclerview.ConsultationInformationRecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.healthmanage.utils.Constants.HTAG;

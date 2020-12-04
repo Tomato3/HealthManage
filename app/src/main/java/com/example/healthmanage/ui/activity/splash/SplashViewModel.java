@@ -2,7 +2,6 @@ package com.example.healthmanage.ui.activity.splash;
 
 import android.util.Log;
 
-import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.healthmanage.R;
@@ -18,7 +17,7 @@ import static com.example.healthmanage.utils.Constants.HTAG;
 public class SplashViewModel extends BaseViewModel {
     private static final int time = 3;
 
-    public MutableLiveData<Integer> splashLogo = new MutableLiveData<>(R.drawable.activity_login_logo);
+    public MutableLiveData<Integer> splashLogo = new MutableLiveData<>(R.drawable.logo);
     public MutableLiveData<String> countdown = new MutableLiveData<>("3s");
 
     public void checkToken() {

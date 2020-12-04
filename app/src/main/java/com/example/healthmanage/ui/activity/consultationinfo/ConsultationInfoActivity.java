@@ -11,7 +11,7 @@ import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.base.BaseAdapter;
 import com.example.healthmanage.databinding.ActivityConsultationInformationBinding;
-import com.example.healthmanage.view.ConsultationInformationRecyclerView;
+import com.example.healthmanage.bean.recyclerview.ConsultationInformationRecyclerView;
 import com.example.healthmanage.widget.TitleToolBar;
 
 import java.util.List;

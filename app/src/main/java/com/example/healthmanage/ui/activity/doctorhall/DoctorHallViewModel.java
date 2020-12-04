@@ -6,12 +6,12 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.base.BaseViewModel;
-import com.example.healthmanage.bean.DoctorListResponse;
-import com.example.healthmanage.bean.MyDoctorResponse;
+import com.example.healthmanage.bean.network.response.DoctorListResponse;
+import com.example.healthmanage.bean.network.response.MyDoctorResponse;
 import com.example.healthmanage.bean.UsersInterface;
 import com.example.healthmanage.bean.UsersRemoteSource;
 import com.example.healthmanage.data.network.exception.ExceptionHandle;
-import com.example.healthmanage.view.TaskReceiverRecyclerView;
+import com.example.healthmanage.bean.recyclerview.TaskReceiverRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;

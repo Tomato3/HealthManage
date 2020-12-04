@@ -5,7 +5,7 @@
 
         <variable
             name="ServicePlanRecyclerView"
-            type="com.example.healthmanage.view.ServicePlanRecyclerView" />
+            type="com.example.healthmanage.bean.recyclerview.ServicePlanRecyclerView" />
     </data>
 
     <RelativeLayout style="@style/RecyclerViewServicePlanLayoutStyle">

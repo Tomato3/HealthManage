@@ -12,7 +12,7 @@ import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.databinding.ActivityMemberDetailBinding;
 import com.example.healthmanage.utils.LocationUtil;
-import com.example.healthmanage.view.EditTextDialog;
+import com.example.healthmanage.dialog.EditTextDialog;
 import com.example.healthmanage.widget.DropdownBar;
 import com.example.healthmanage.widget.TitleToolBar;
 import com.jeremyliao.liveeventbus.LiveEventBus;

@@ -17,7 +17,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/under_do"
-            android:textColor="@color/colorTextGrey"
+            android:textColor="@color/colorTxtGrey"
             android:textSize="@dimen/text_size_26" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

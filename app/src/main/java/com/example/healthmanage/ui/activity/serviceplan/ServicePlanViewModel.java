@@ -4,11 +4,11 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.base.BaseViewModel;
-import com.example.healthmanage.bean.ServicePlanResponse;
+import com.example.healthmanage.bean.network.response.ServicePlanResponse;
 import com.example.healthmanage.bean.UsersInterface;
 import com.example.healthmanage.bean.UsersRemoteSource;
 import com.example.healthmanage.data.network.exception.ExceptionHandle;
-import com.example.healthmanage.view.ServicePlanRecyclerView;
+import com.example.healthmanage.bean.recyclerview.ServicePlanRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;

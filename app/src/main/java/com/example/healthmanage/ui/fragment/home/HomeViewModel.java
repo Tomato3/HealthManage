@@ -4,12 +4,12 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.base.BaseViewModel;
-import com.example.healthmanage.bean.MyMemberResponse;
+import com.example.healthmanage.bean.network.response.MyMemberResponse;
 import com.example.healthmanage.bean.UsersInterface;
 import com.example.healthmanage.bean.UsersRemoteSource;
 import com.example.healthmanage.data.network.exception.ExceptionHandle;
-import com.example.healthmanage.view.MyFocusRecyclerView;
-import com.example.healthmanage.view.MyMemberRecyclerView;
+import com.example.healthmanage.bean.recyclerview.MyFocusRecyclerView;
+import com.example.healthmanage.bean.recyclerview.MyMemberRecyclerView;
 import com.example.healthmanage.widget.DropdownBar;
 
 import java.util.ArrayList;

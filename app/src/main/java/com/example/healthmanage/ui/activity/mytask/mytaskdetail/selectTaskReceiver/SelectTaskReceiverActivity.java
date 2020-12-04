@@ -18,8 +18,8 @@ import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.base.BaseAdapter;
 import com.example.healthmanage.databinding.ActivitySelectTaskReceiverBinding;
 import com.example.healthmanage.utils.ToolUtil;
-import com.example.healthmanage.view.EditTextDialog;
-import com.example.healthmanage.view.TaskReceiverRecyclerView;
+import com.example.healthmanage.dialog.EditTextDialog;
+import com.example.healthmanage.bean.recyclerview.TaskReceiverRecyclerView;
 import com.jeremyliao.liveeventbus.LiveEventBus;
 
 import java.util.List;

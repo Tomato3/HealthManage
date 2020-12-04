@@ -5,11 +5,11 @@ import android.util.Log;
 
 import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.base.BaseViewModel;
-import com.example.healthmanage.bean.GeneralResponse;
+import com.example.healthmanage.bean.network.response.GeneralResponse;
 import com.example.healthmanage.bean.UsersInterface;
 import com.example.healthmanage.bean.UsersRemoteSource;
 import com.example.healthmanage.data.network.exception.ExceptionHandle;
-import com.example.healthmanage.view.ServicePlanRecyclerView;
+import com.example.healthmanage.bean.recyclerview.ServicePlanRecyclerView;
 import com.jeremyliao.liveeventbus.LiveEventBus;
 
 import static com.example.healthmanage.utils.Constants.HTAG;

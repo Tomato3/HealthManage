@@ -9,7 +9,7 @@
             type="com.example.healthmanage.ui.activity.memberlist.MemberListViewModel" />
     </data>
 
-    <RelativeLayout style="@style/AllMatchWhiteLayoutStyle">
+    <RelativeLayout style="@style/CommonMatchLinearLayoutStyle">
 
         <include
             layout="@layout/toolbar_title"

@@ -11,7 +11,7 @@ import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.base.BaseAdapter;
 import com.example.healthmanage.databinding.ActivityMyWalletBinding;
-import com.example.healthmanage.view.PurseFlowingRecyclerView;
+import com.example.healthmanage.bean.recyclerview.PurseFlowingRecyclerView;
 import com.example.healthmanage.widget.TitleToolBar;
 
 import java.util.List;

@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 
 import com.bumptech.glide.request.target.ViewTarget;
 import com.example.healthmanage.R;
-import com.example.healthmanage.bean.LoginResponse;
+import com.example.healthmanage.bean.network.response.LoginResponse;
 import com.example.healthmanage.utils.Utils;
 import com.hdl.CrashExceptioner;
 import com.jeremyliao.liveeventbus.LiveEventBus;

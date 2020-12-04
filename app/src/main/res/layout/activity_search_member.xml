@@ -8,7 +8,7 @@
             type="com.example.healthmanage.ui.activity.searchMember.SearchMemberViewModel" />
     </data>
 
-    <RelativeLayout style="@style/AllMatchWhiteLayoutStyle">
+    <RelativeLayout style="@style/CommonMatchLinearLayoutStyle">
 
         <include
             android:id="@+id/include_search"

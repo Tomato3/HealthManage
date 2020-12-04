@@ -10,7 +10,7 @@
     </data>
 
     <LinearLayout
-        style="@style/AllMatchWhiteLayoutStyle"
+        style="@style/CommonMatchLinearLayoutStyle"
         android:orientation="vertical">
 
         <include
@@ -24,7 +24,7 @@
             android:gravity="center_vertical"
             android:paddingStart="@dimen/dp_10"
             android:text="咨询动态"
-            android:textColor="@color/colorTextGrey"
+            android:textColor="@color/colorTxtGrey"
             android:textSize="@dimen/text_size_20" />
 
         <TextView

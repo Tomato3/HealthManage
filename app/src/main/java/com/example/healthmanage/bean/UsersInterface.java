@@ -1,5 +1,25 @@
 package com.example.healthmanage.bean;
 
+import com.example.healthmanage.bean.network.response.AbnormalDataResponse;
+import com.example.healthmanage.bean.network.response.AirResponse;
+import com.example.healthmanage.bean.network.response.ConsultationRecordResponse;
+import com.example.healthmanage.bean.network.response.ConsultationResponse;
+import com.example.healthmanage.bean.network.response.DoctorDetailResponse;
+import com.example.healthmanage.bean.network.response.DoctorListResponse;
+import com.example.healthmanage.bean.network.response.GeneralResponse;
+import com.example.healthmanage.bean.network.response.HealthDataResponse;
+import com.example.healthmanage.bean.network.response.HistoryDataResponse;
+import com.example.healthmanage.bean.network.response.LoginResponse;
+import com.example.healthmanage.bean.network.response.MemberInfoResponse;
+import com.example.healthmanage.bean.network.response.MyDoctorResponse;
+import com.example.healthmanage.bean.network.response.MyMemberResponse;
+import com.example.healthmanage.bean.network.response.NursingResponse;
+import com.example.healthmanage.bean.network.response.SmsCodeResponse;
+import com.example.healthmanage.bean.network.response.SearchMemberResponse;
+import com.example.healthmanage.bean.network.response.ServicePlanResponse;
+import com.example.healthmanage.bean.network.response.TaskDetailResponse;
+import com.example.healthmanage.bean.network.response.TaskResponse;
+import com.example.healthmanage.bean.network.response.WeatherResponse;
 import com.example.healthmanage.data.network.exception.ExceptionHandle;
 
 public interface UsersInterface {
@@ -12,8 +32,8 @@ public interface UsersInterface {
         void error(ExceptionHandle.ResponseException e);
     }
 
-    interface SendSmsMessageCallback {
-        void sendSucceed(RegisterResponse registerResponse);
+    interface getSmsCodeCallback {
+        void sendSucceed(SmsCodeResponse smsCodeResponse);
 
         void sendFailed(String msg);
 
@@ -28,10 +48,10 @@ public interface UsersInterface {
         void error(ExceptionHandle.ResponseException e);
     }
 
-    interface UpdatePasswordCallback {
-        void updateSucceed(GeneralResponse generalResponse);
+    interface ForgetPasswordCallback {
+        void forgetSucceed(GeneralResponse generalResponse);
 
-        void updateFailed(String msg);
+        void forgetFailed(String msg);
 
         void error(ExceptionHandle.ResponseException e);
     }

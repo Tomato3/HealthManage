@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.fragment.qualification.FirstStepViewModel" />
+    </data>
+
+    <LinearLayout style="@style/CommonMatchLinearLayoutStyle">
+
+        <include
+            android:id="@+id/include_name"
+            layout="@layout/qualification_input_item"
+            app:QualificationInputItem="@{ViewModel.qualificationInputItemListMutableLiveData.get(0)}" />
+
+        <include
+            android:id="@+id/include_idCard"
+            layout="@layout/qualification_input_item"
+            app:QualificationInputItem="@{ViewModel.qualificationInputItemListMutableLiveData.get(1)}" />
+
+
+        <LinearLayout style="@style/ItemQualificationInputLinearLayoutStyle">
+
+            <LinearLayout style="@style/ItemQualificationInputLinearLayoutStyle.Text">
+
+                <TextView
+                    style="@style/ItemQualificationInputTextViewStyle"
+                    android:text="@string/activity_qualification_title_profession" />
+
+                <TextView
+                    android:id="@+id/tv_select_profession"
+                    style="@style/ItemQualificationInputTextViewStyle"
+                    android:layout_marginLeft="@dimen/dp_65"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@{ViewModel.profession}"
+                    android:textColor="@color/colorTxtGrey" />
+
+                <ImageView style="@style/ItemQualificationInputImageViewStyle" />
+            </LinearLayout>
+
+            <View style="@style/ItemQualificationInputViewStyle" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_layout_doctor"
+            style="@style/CommonWrapLinearLayoutStyle"
+            android:visibility="gone">
+
+            <include
+                android:id="@+id/include_department"
+                layout="@layout/qualification_input_item"
+                app:QualificationInputItem="@{ViewModel.qualificationInputItemListMutableLiveData.get(2)}" />
+
+            <include
+                android:id="@+id/include_title"
+                layout="@layout/qualification_input_item"
+                app:QualificationInputItem="@{ViewModel.qualificationInputItemListMutableLiveData.get(3)}" />
+
+            <include
+                android:id="@+id/include_hospital"
+                layout="@layout/qualification_input_item"
+                app:QualificationInputItem="@{ViewModel.qualificationInputItemListMutableLiveData.get(4)}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_layout_tip"
+            style="@style/CommonWrapHorizontalLinearLayoutStyle"
+            android:layout_marginLeft="@dimen/dp_40"
+            android:layout_marginTop="@dimen/dp_30"
+            android:layout_marginRight="@dimen/dp_40">
+
+            <ImageView
+                style="@style/CommonImageViewStyle"
+                android:layout_marginTop="@dimen/dp_2"
+                android:src="@drawable/warning" />
+
+            <TextView style="@style/ActivityQualificationTextViewStyle.ProfessionTip" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            style="@style/CommonWrapLinearLayoutStyle"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_40"
+            android:gravity="bottom">
+
+            <LinearLayout style="@style/CommonWrapHorizontalLinearLayoutStyle">
+
+                <CheckBox
+                    android:id="@+id/cb_agree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/selector_activity_login_remember_password" />
+
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/CommonWrapHorizontalLinearLayoutStyle"
+                android:layout_marginTop="@dimen/dp_30"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_marginBottom="@dimen/dp_15">
+
+                <Button
+                    style="@style/ActivityQualificationButtonStyle.Step"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/btn_operation"
+                    style="@style/ActivityQualificationButtonStyle.Operation"
+                    android:text="下一步" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

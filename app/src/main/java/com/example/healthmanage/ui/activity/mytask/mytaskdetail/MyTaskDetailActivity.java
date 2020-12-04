@@ -15,8 +15,8 @@ import com.example.healthmanage.databinding.ActivityMyTaskDetailBinding;
 import com.example.healthmanage.ui.activity.mytask.mytaskdetail.abnormaldata.AbnormalDataActivity;
 import com.example.healthmanage.ui.activity.mytask.mytaskdetail.selectTaskReceiver.SelectTaskReceiverActivity;
 import com.example.healthmanage.utils.Constants;
-import com.example.healthmanage.view.EditTextDialog;
-import com.example.healthmanage.view.MyTaskDetailRecyclerView;
+import com.example.healthmanage.dialog.EditTextDialog;
+import com.example.healthmanage.bean.recyclerview.MyTaskDetailRecyclerView;
 import com.example.healthmanage.widget.TitleToolBar;
 
 import java.util.List;

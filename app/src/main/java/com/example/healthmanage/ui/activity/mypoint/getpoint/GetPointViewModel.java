@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseViewModel;
 import com.example.healthmanage.bean.Banner;
-import com.example.healthmanage.view.GetPointRecyclerView;
+import com.example.healthmanage.bean.recyclerview.GetPointRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -16,7 +16,7 @@ import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.base.BaseAdapter;
 import com.example.healthmanage.databinding.ActivityHistoryDataBinding;
 import com.example.healthmanage.utils.ToolUtil;
-import com.example.healthmanage.view.DataItem;
+import com.example.healthmanage.bean.recyclerview.DataItem;
 import com.example.healthmanage.widget.TitleToolBar;
 
 import java.util.List;

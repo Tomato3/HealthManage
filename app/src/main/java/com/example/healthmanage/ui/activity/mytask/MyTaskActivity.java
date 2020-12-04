@@ -14,7 +14,7 @@ import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.base.BaseAdapter;
 import com.example.healthmanage.databinding.ActivityMyTaskBinding;
-import com.example.healthmanage.view.MyTaskRecyclerView;
+import com.example.healthmanage.bean.recyclerview.MyTaskRecyclerView;
 import com.example.healthmanage.widget.TitleToolBar;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;

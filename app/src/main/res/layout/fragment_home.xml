@@ -14,7 +14,7 @@
 
     </data>
 
-    <RelativeLayout style="@style/AllMatchWhiteLayoutStyle">
+    <RelativeLayout style="@style/CommonMatchLinearLayoutStyle">
 
         <LinearLayout
             android:layout_width="match_parent"

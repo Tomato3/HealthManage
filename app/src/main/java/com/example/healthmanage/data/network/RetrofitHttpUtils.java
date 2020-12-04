@@ -28,8 +28,8 @@ public class RetrofitHttpUtils {
     private void initRetrofit() {
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(BaseUrl)
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create()) //配合Rxjava
+                .addConverterFactory(GsonConverterFactory.create()) //Gson 转换器
                 .client(okHttpClient);
         retrofit = builder.build();
     }
@@ -48,6 +48,7 @@ public class RetrofitHttpUtils {
         okHttpClient = builder.build();
     }
 
+    //获取接口实例
     private void initApiServer() {
         apiServer = retrofit.create(ApiServer.class);
     }

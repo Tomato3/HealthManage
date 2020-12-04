@@ -9,7 +9,7 @@ public class Constants {
     public static final String HTAG = "HTAG";
     //接口URL
     public static final String BASE_URL = "http://119.23.187.176:8083/YskApi/";
-    //    public static final String BASE_URL = "http://192.168.1.97:8080/YskApi/";
+    //    public static final String BASE_URL = "http://119.23.187.176:8081/";
     //角色Id
     public static String ROLE_ID = "0";
 

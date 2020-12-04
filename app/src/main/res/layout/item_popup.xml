@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/item_popup_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50">
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:text="取消"
+            android:textSize="@dimen/text_size_17" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="选择您的职业"
+            android:textColor="@color/colorTxtBlack"
+            android:textSize="@dimen/text_size_17" />
+
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:text="确认"
+            android:textColor="@color/colorTxtBlue"
+            android:textSize="@dimen/text_size_17" />
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/rg_select_profession"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rb_doctor"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:background="@drawable/selector_activity_qualification_select_profession"
+            android:button="@null"
+            android:gravity="center"
+            android:text="医师"
+            android:textColor="@color/color_grey_blue"
+            android:textSize="@dimen/text_size_17" />
+
+        <RadioButton
+            android:id="@+id/rb_manager"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:background="@drawable/selector_activity_qualification_select_profession"
+            android:button="@null"
+            android:gravity="center"
+            android:text="健康管理师"
+            android:textColor="@color/color_grey_blue"
+            android:textSize="@dimen/text_size_17" />
+
+        <RadioButton
+            android:id="@+id/rb_dietitian"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:background="@drawable/selector_activity_qualification_select_profession"
+            android:button="@null"
+            android:gravity="center"
+            android:text="健康营养师"
+            android:textColor="@color/color_grey_blue"
+            android:textSize="@dimen/text_size_17" />
+
+        <RadioButton
+            android:id="@+id/rb_nurse"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:background="@drawable/selector_activity_qualification_select_profession"
+            android:button="@null"
+            android:gravity="center"
+            android:text="健康护理师"
+            android:textColor="@color/color_grey_blue"
+            android:textSize="@dimen/text_size_17" />
+    </RadioGroup>
+</LinearLayout>

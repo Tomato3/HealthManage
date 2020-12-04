@@ -16,7 +16,7 @@ import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.base.BaseAdapter;
 import com.example.healthmanage.databinding.ActivityServicePlanBinding;
 import com.example.healthmanage.ui.activity.serviceplan.serviceplandetail.ServicePlanDetailActivity;
-import com.example.healthmanage.view.ServicePlanRecyclerView;
+import com.example.healthmanage.bean.recyclerview.ServicePlanRecyclerView;
 import com.example.healthmanage.widget.TitleToolBar;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;

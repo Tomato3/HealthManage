@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.registerorforget.RegisterOrForgetViewModel" />
+    </data>
+
+    <LinearLayout style="@style/CommonMatchLinearLayoutStyle">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            style="@style/ActivityRegisterOrForgetImageViewStyle.Back" />
+
+        <TextView
+            style="@style/ActivityRegisterOrForgetTextStyle.Title"
+            android:text="@{ViewModel.title}" />
+
+        <LinearLayout style="@style/ActivityRegisterOrForgetInputLayoutStyle">
+
+            <TextView style="@style/ActivityRegisterOrForgetTextStyle.AreaCode" />
+
+            <EditText
+                style="@style/ActivityRegisterOrForgetEditTextStyle.Phone"
+                android:text="@={ViewModel.phone}" />
+
+            <Button
+                style="@style/ActivityRegisterOrForgetButtonStyle.GetCode"
+                android:onClick="@{()->ViewModel.getSmsCode()}" />
+
+        </LinearLayout>
+
+        <View style="@style/ActivityRegisterOrForgetViewStyle" />
+
+        <EditText
+            style="@style/ActivityRegisterOrForgetEditTextStyle.Code"
+            android:text="@={ViewModel.verificationCode}" />
+
+        <View style="@style/ActivityRegisterOrForgetViewStyle" />
+
+        <LinearLayout style="@style/ActivityRegisterOrForgetInputLayoutStyle">
+
+            <EditText
+                android:id="@+id/et_password"
+                style="@style/ActivityRegisterOrForgetEditTextStyle.Password"
+                android:text="@={ViewModel.password}" />
+
+            <CheckBox
+                android:id="@+id/cb_eye"
+                style="@style/ActivityRegisterOrForgetCheckBoxStyle" />
+        </LinearLayout>
+
+
+        <View style="@style/ActivityRegisterOrForgetViewStyle" />
+
+        <LinearLayout style="@style/ActivityRegisterOrForgetInputLayoutStyle.Tip">
+
+            <ImageView
+                style="@style/ActivityRegisterOrForgetImageViewStyle.Tip"
+                android:ImageSrc="@{ViewModel.tipImg}" />
+
+            <TextView
+                style="@style/ActivityRegisterOrForgetTextStyle"
+                android:text="@{ViewModel.tip}"
+                android:textColor="@{ViewModel.tipColor ? @color/colorTxtBlack : @color/colorTxtRed}" />
+        </LinearLayout>
+
+        <Button
+            style="@style/ActivityRegisterOrForgetButtonStyle.Register"
+            android:onClick="@{()->ViewModel.register()}"
+            android:text="@{ViewModel.operationTxt}" />
+
+    </LinearLayout>
+</layout>

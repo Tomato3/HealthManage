@@ -22,7 +22,7 @@ import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.databinding.ActivityMyInfoBinding;
 import com.example.healthmanage.ui.activity.login.LoginActivity;
 import com.example.healthmanage.ui.activity.qualification.QualificationActivity;
-import com.example.healthmanage.view.EditTextDialog;
+import com.example.healthmanage.dialog.EditTextDialog;
 import com.example.healthmanage.widget.TitleToolBar;
 
 import java.util.List;

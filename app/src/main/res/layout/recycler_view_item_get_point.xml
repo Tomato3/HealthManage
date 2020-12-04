@@ -5,7 +5,7 @@
 
         <variable
             name="GetPointRecyclerView"
-            type="com.example.healthmanage.view.GetPointRecyclerView" />
+            type="com.example.healthmanage.bean.recyclerview.GetPointRecyclerView" />
     </data>
 
     <RelativeLayout
@@ -27,7 +27,7 @@
             android:layout_marginStart="@dimen/dp_60"
             android:layout_marginTop="@dimen/dp_5"
             android:text="@{GetPointRecyclerView.title}"
-            android:textColor="@color/colorTextGrey"
+            android:textColor="@color/colorTxtGrey"
             android:textSize="@dimen/text_size_18" />
 
         <TextView
@@ -36,7 +36,7 @@
             android:layout_marginStart="@dimen/dp_60"
             android:layout_marginTop="@dimen/dp_30"
             android:text="@{GetPointRecyclerView.description}"
-            android:textColor="@color/colorTextGrey"
+            android:textColor="@color/colorTxtGrey"
             android:textSize="@dimen/text_size_16" />
 
         <ProgressBar

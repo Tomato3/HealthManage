@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="@string/null_data"
-        android:textColor="@color/colorTextGrey"
+        android:textColor="@color/colorTxtGrey"
         android:textSize="@dimen/text_size_22" />
 
 </LinearLayout>

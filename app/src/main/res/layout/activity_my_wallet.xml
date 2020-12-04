@@ -77,7 +77,7 @@
                 android:checked="true"
                 android:gravity="center"
                 android:text="全部"
-                android:textColor="@color/activity_member_list_radio_button_bg_selector" />
+                android:textColor="@color/color_grey_blue" />
 
             <RadioButton
                 android:id="@+id/rb_income"
@@ -88,7 +88,7 @@
                 android:button="@null"
                 android:gravity="center"
                 android:text="收入"
-                android:textColor="@color/activity_member_list_radio_button_bg_selector" />
+                android:textColor="@color/color_grey_blue" />
 
             <RadioButton
                 android:id="@+id/rb_expenditure"
@@ -99,7 +99,7 @@
                 android:button="@null"
                 android:gravity="center"
                 android:text="支出"
-                android:textColor="@color/activity_member_list_radio_button_bg_selector" />
+                android:textColor="@color/color_grey_blue" />
         </RadioGroup>
 
         <View
