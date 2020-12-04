@@ -2,6 +2,5 @@
 <resources>
     <string name="transition_logo_img">transition_logo_img</string>
     <string name="transition_news_img">transition_doctor_avatar</string>
-    <string name="transition_book_img">transition_book_img</string>
 
 </resources>
