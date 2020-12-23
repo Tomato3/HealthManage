@@ -86,7 +86,7 @@
         <LinearLayout
             style="@style/CommonWrapLinearLayoutStyle"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/dp_30"
             android:gravity="bottom">
 
             <LinearLayout style="@style/CommonWrapHorizontalLinearLayoutStyle">
@@ -106,15 +106,12 @@
             <LinearLayout
                 style="@style/CommonWrapHorizontalLinearLayoutStyle"
                 android:layout_marginTop="@dimen/dp_30"
-                android:layout_marginRight="@dimen/dp_20"
+                android:layout_marginRight="@dimen/dp_30"
                 android:layout_marginBottom="@dimen/dp_15">
 
                 <Button
-                    style="@style/ActivityQualificationButtonStyle.Step"
-                    android:visibility="gone" />
-
-                <Button
-                    android:id="@+id/btn_operation"
+                    android:id="@+id/btn_next"
+                    android:onClick="onClick"
                     style="@style/ActivityQualificationButtonStyle.Operation"
                     android:text="下一步" />
 

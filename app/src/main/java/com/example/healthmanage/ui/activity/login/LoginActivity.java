@@ -5,7 +5,6 @@ import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.CompoundButton;
-import android.widget.RadioGroup;
 
 import com.example.healthmanage.BR;
 import com.example.healthmanage.R;
@@ -15,11 +14,12 @@ import com.example.healthmanage.bean.network.response.LoginResponse;
 import com.example.healthmanage.databinding.ActivityLoginBinding;
 import com.example.healthmanage.utils.Constants;
 import com.example.healthmanage.utils.SPUtil;
+import com.example.healthmanage.utils.ToastUtil;
 
 /**
  * 登录
  */
-public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewModel> implements LoginCallback {
+public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewModel> implements LoginCallback, View.OnClickListener {
 
 
     @Override
@@ -48,27 +48,27 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
     protected void registerUIChangeEventObserver() {
         super.registerUIChangeEventObserver();
 
-        dataBinding.rgLogin.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.rb_code:
-                        if (state != 0) {
-                            state = 0;
-                            dataBinding.linearLayoutCode.setVisibility(View.VISIBLE);
-                            dataBinding.linearLayoutPassword.setVisibility(View.GONE);
-                        }
-                        break;
-                    case R.id.rb_password:
-                        if (state != 1) {
-                            state = 1;
-                            dataBinding.linearLayoutCode.setVisibility(View.GONE);
-                            dataBinding.linearLayoutPassword.setVisibility(View.VISIBLE);
-                        }
-                        break;
-                }
-            }
-        });
+//        dataBinding.rgLogin.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, int checkedId) {
+//                switch (checkedId) {
+//                    case R.id.rb_code:
+//                        if (state != 0) {
+//                            state = 0;
+//                            dataBinding.linearLayoutCode.setVisibility(View.VISIBLE);
+//                            dataBinding.linearLayoutPassword.setVisibility(View.GONE);
+//                        }
+//                        break;
+//                    case R.id.rb_password:
+//                        if (state != 1) {
+//                            state = 1;
+//                            dataBinding.linearLayoutCode.setVisibility(View.GONE);
+//                            dataBinding.linearLayoutPassword.setVisibility(View.VISIBLE);
+//                        }
+//                        break;
+//                }
+//            }
+//        });
 
         dataBinding.cbRemember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -141,4 +141,12 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
     }
 
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_wechat:
+                ToastUtil.showShort("正在开发中...");
+                break;
+        }
+    }
 }

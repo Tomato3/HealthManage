@@ -2,6 +2,7 @@ package com.example.healthmanage.ui.activity.qualification;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -15,13 +16,16 @@ import com.example.healthmanage.databinding.ActivityQualificationBinding;
 import com.example.healthmanage.ui.fragment.qualification.FirstStepFragment;
 import com.example.healthmanage.ui.fragment.qualification.SecondStepFragment;
 import com.example.healthmanage.ui.fragment.qualification.ThirdStepFragment;
+import com.example.healthmanage.utils.Constants;
+import com.example.healthmanage.utils.SPUtil;
 import com.jeremyliao.liveeventbus.LiveEventBus;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class QualificationActivity extends BaseActivity<ActivityQualificationBinding, QualificationViewModel> {
+public class QualificationActivity extends BaseActivity<ActivityQualificationBinding,
+        QualificationViewModel> implements View.OnClickListener {
 
     private List<Fragment> mFragments;
 
@@ -89,6 +93,7 @@ public class QualificationActivity extends BaseActivity<ActivityQualificationBin
             @Override
             public void onChanged(Integer integer) {
                 changeFragment(integer);
+                dataBinding.stepView.setPosition(integer);
             }
         });
     }
@@ -107,5 +112,23 @@ public class QualificationActivity extends BaseActivity<ActivityQualificationBin
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_back:
+                finish();
+                break;
+            case R.id.btn_to_main:
+                String phone = SPUtil.getPhone(this);
+                String password = SPUtil.getPassword(this);
+                Constants.ROLE_ID = SPUtil.getRoleId(this);
+                viewModel.toMain(phone, password, Constants.ROLE_ID);
+                break;
+            case R.id.btn_commit:
+                LiveEventBus.get("ChangeFragment").post(2);
+                break;
+        }
     }
 }

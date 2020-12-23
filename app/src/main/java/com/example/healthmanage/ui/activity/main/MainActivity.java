@@ -64,6 +64,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
                 .addItem(newItem(tabIconsNormal[3], tabIconsSelected[3], tabTexts[3]))
                 .addItem(newItem(tabIconsNormal[4], tabIconsSelected[4], tabTexts[4]))
                 .build();
+//        navigationController.setMessageNumber(0,20);
         //底部tab选择监听
         navigationController.addTabItemSelectedListener(new OnTabItemSelectedListener() {
             @Override

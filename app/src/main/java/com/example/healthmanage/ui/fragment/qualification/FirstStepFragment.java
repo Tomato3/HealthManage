@@ -6,6 +6,7 @@ import android.text.Html;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,8 @@ import com.jeremyliao.liveeventbus.LiveEventBus;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.healthmanage.utils.Constants.HTAG;
 
 /**
  * Description:
@@ -72,7 +75,7 @@ public class FirstStepFragment extends BaseFragment<FragmentStepFirstBinding, Fi
 
     @Override
     protected void initListener() {
-        dataBinding.btnOperation.setOnClickListener(this::onClick);
+        dataBinding.btnNext.setOnClickListener(this::onClick);
         dataBinding.tvSelectProfession.setOnClickListener(this::onClick);
         dataBinding.text.setMovementMethod(LinkMovementMethod.getInstance());
     }
@@ -130,12 +133,12 @@ public class FirstStepFragment extends BaseFragment<FragmentStepFirstBinding, Fi
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_operation:
+            case R.id.btn_next:
                 if (TextUtils.isEmpty(dataBinding.includeName.etInput.getText())) {
                     ToastUtil.showShort("姓名不能为空");
                 } else if (TextUtils.isEmpty(dataBinding.includeIdCard.etInput.getText())) {
                     ToastUtil.showShort("身份证号不能为空");
-                } else if (viewModel.profession.equals("请选择您的职业")) {
+                } else if (viewModel.profession.getValue().equals("请选择您的职业")) {
                     ToastUtil.showShort("职业不能为空");
                 } else if (!dataBinding.cbAgree.isChecked()) {
                     ToastUtil.showShort("请先勾选同意协议");

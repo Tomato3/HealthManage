@@ -81,9 +81,9 @@ public interface ApiServer {
      * @return
      */
     @FormUrlEncoded
-    @POST("doctor/appSystemUser/forgetPassword")
+    @POST("doctor/appSystemUser/updatePassword")
     Observable<GeneralResponse> forgetPassword(@Field("phone") String phone,
-                                               @Field("password") String newPassword,
+                                               @Field("newPassword") String newPassword,
                                                @Field("smsCode") String smsCode,
                                                @Field("smsIdentity") String smsIdentity);
 

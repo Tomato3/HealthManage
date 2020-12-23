@@ -2,6 +2,7 @@ package com.example.healthmanage.ui.fragment.qualification;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.healthmanage.R;
@@ -15,7 +16,8 @@ import me.tatarka.bindingcollectionadapter2.BR;
  * Author:bwang
  * Date:2020/12/2 16:56
  */
-public class SecondStepFragment extends BaseFragment<FragmentStepSecondBinding, SecondStepViewModel> {
+public class SecondStepFragment extends BaseFragment<FragmentStepSecondBinding,
+        SecondStepViewModel> {
     @Override
     protected void initData() {
 
@@ -55,4 +57,6 @@ public class SecondStepFragment extends BaseFragment<FragmentStepSecondBinding, 
     protected int initVIewModelID() {
         return BR.ViewModel;
     }
+
+
 }

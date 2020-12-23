@@ -13,7 +13,6 @@ import com.example.healthmanage.bean.UsersRemoteSource;
 import com.example.healthmanage.bean.network.response.GeneralResponse;
 import com.example.healthmanage.bean.network.response.SmsCodeResponse;
 import com.example.healthmanage.data.network.exception.ExceptionHandle;
-import com.example.healthmanage.ui.activity.login.LoginActivity;
 import com.example.healthmanage.ui.activity.qualification.QualificationActivity;
 import com.example.healthmanage.utils.ToolUtil;
 import com.example.healthmanage.widget.TitleToolBar;
@@ -47,18 +46,19 @@ public class RegisterOrForgetViewModel extends BaseViewModel {
 
 
     public void register() {
+        startActivity(QualificationActivity.class);
         if (type.getValue() == 1) {
             startActivity(QualificationActivity.class);
             usersRemoteSource.register(phone.getValue(), password.getValue(),
                     verificationCode.getValue(), smsIdentity, new UsersInterface.RegisterCallback() {
                         @Override
                         public void registerSucceed() {
-                            startActivity(LoginActivity.class);
+                            startActivity(QualificationActivity.class);
                         }
 
                         @Override
                         public void registerFailed(String msg) {
-                            getUiChangeEvent().getToastTxt().setValue(msg);
+                            showToast(msg, 1);
                         }
 
                         @Override
@@ -76,7 +76,7 @@ public class RegisterOrForgetViewModel extends BaseViewModel {
 
                         @Override
                         public void forgetFailed(String msg) {
-
+                            showToast(msg, 1);
                         }
 
                         @Override
@@ -85,7 +85,6 @@ public class RegisterOrForgetViewModel extends BaseViewModel {
                         }
                     });
         }
-
     }
 
 
@@ -106,7 +105,6 @@ public class RegisterOrForgetViewModel extends BaseViewModel {
                     tip.setValue("验证码已发送，请耐心等待");
                     tipColor.setValue(true);
                     smsIdentity = smsCodeResponse.getData();
-                    getUiChangeEvent().getToastTxt().setValue(smsCodeResponse.getMessage());
                     new CountDownTimer(60 * 1000, 1 * 1000) {
 
                         @Override

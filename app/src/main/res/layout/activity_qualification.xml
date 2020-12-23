@@ -15,7 +15,8 @@
 
         <ImageView
             android:id="@+id/iv_back"
-            style="@style/ActivityQualificationImageViewStyle.Back" />
+            style="@style/ActivityQualificationImageViewStyle.Back"
+            android:onClick="onClick" />
 
         <TextView
             style="@style/ActivityQualificationTextViewStyle.Title"
@@ -23,7 +24,9 @@
 
         <TextView style="@style/ActivityQualificationTextViewStyle.Tip" />
 
-        <com.example.healthmanage.view.StepView style="@style/ActivityQualificationStepViewStyle" />
+        <com.example.healthmanage.view.StepView
+            android:id="@+id/step_view"
+            style="@style/ActivityQualificationStepViewStyle" />
 
         <FrameLayout
             android:id="@+id/frameLayout"

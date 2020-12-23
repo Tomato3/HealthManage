@@ -6,10 +6,10 @@
         <EditText
             android:id="@+id/et_search"
             style="@style/IncludeSearchTxtStyle" />
-
+        dataBinding.includeSearch.etSearch.addT
         <ImageView
             android:id="@+id/iv_clear"
-            style="@style/IncludeSearchViewStyle"  />
+            style="@style/IncludeSearchViewStyle" />
 
     </RelativeLayout>
 </layout>

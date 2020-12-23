@@ -14,63 +14,64 @@
             android:id="@+id/iv_logo"
             style="@style/ActivityLoginImageViewStyle.Logo" />
 
-        <RadioGroup
-            android:id="@+id/rg_login"
-            style="@style/ActivityLoginRadioGroupStyle">
+        <!--        <RadioGroup-->
+        <!--            android:id="@+id/rg_login"-->
+        <!--            style="@style/ActivityLoginRadioGroupStyle">-->
 
-            <RadioButton
-                android:id="@+id/rb_code"
-                style="@style/ActivityLoginRadioButtonStyle.Code" />
+        <!--            <RadioButton-->
+        <!--                android:id="@+id/rb_code"-->
+        <!--                style="@style/ActivityLoginRadioButtonStyle.Code" />-->
 
-            <RadioButton
-                android:id="@+id/rb_password"
-                style="@style/ActivityLoginRadioButtonStyle.Password" />
-        </RadioGroup>
+        <!--            <RadioButton-->
+        <!--                android:id="@+id/rb_password"-->
+        <!--                style="@style/ActivityLoginRadioButtonStyle.Password" />-->
+        <!--        </RadioGroup>-->
 
-        <LinearLayout
-            android:id="@+id/linear_layout_code"
-            style="@style/CommonWrapLinearLayoutStyle">
+        <!--        <LinearLayout-->
+        <!--            android:id="@+id/linear_layout_code"-->
+        <!--            android:layout_marginTop="@dimen/dp_80"-->
+        <!--            style="@style/CommonWrapLinearLayoutStyle">-->
 
-            <LinearLayout style="@style/ActivityLoginInputLayoutStyle">
+        <!--            <LinearLayout style="@style/ActivityLoginInputLayoutStyle">-->
 
-                <TextView style="@style/ActivityLoginTextStyle.AreaCode" />
+        <!--                <TextView style="@style/ActivityLoginTextStyle.AreaCode" />-->
 
-                <EditText
-                    style="@style/ActivityLoginEditTextStyle.Phone"
-                    android:text="@={ViewModel.phone}" />
+        <!--                <EditText-->
+        <!--                    style="@style/ActivityLoginEditTextStyle.Phone"-->
+        <!--                    android:text="@={ViewModel.phone}" />-->
 
-                <Button
-                    style="@style/ActivityLoginButtonStyle.GetCode"
-                    android:onClick="@{()->ViewModel.getSmsCode()}" />
+        <!--                <Button-->
+        <!--                    style="@style/ActivityLoginButtonStyle.GetCode"-->
+        <!--                    android:onClick="@{()->ViewModel.getSmsCode()}" />-->
 
-            </LinearLayout>
+        <!--            </LinearLayout>-->
 
-            <View style="@style/ActivityLoginViewStyle" />
+        <!--            <View style="@style/ActivityLoginViewStyle" />-->
 
-            <EditText
-                style="@style/ActivityLoginEditTextStyle.Code"
-                android:text="@={ViewModel.code}" />
+        <!--            <EditText-->
+        <!--                style="@style/ActivityLoginEditTextStyle.Code"-->
+        <!--                android:text="@={ViewModel.code}" />-->
 
-            <View style="@style/ActivityLoginViewStyle" />
+        <!--            <View style="@style/ActivityLoginViewStyle" />-->
 
-            <LinearLayout style="@style/ActivityLoginInputLayoutStyle.Tip">
+        <!--            <LinearLayout style="@style/ActivityLoginInputLayoutStyle.Tip">-->
 
-                <ImageView
-                    style="@style/ActivityLoginImageViewStyle.Tip"
-                    android:ImageSrc="@{ViewModel.tipImg}" />
+        <!--                <ImageView-->
+        <!--                    style="@style/ActivityLoginImageViewStyle.Tip"-->
+        <!--                    android:ImageSrc="@{ViewModel.tipImg}" />-->
 
-                <TextView
-                    style="@style/ActivityLoginTextStyle"
-                    android:text="@{ViewModel.tip}"
-                    android:textColor="@{ViewModel.tipColor ? @color/colorTxtBlack : @color/colorTxtRed}" />
-            </LinearLayout>
+        <!--                <TextView-->
+        <!--                    style="@style/ActivityLoginTextStyle"-->
+        <!--                    android:text="@{ViewModel.tip}"-->
+        <!--                    android:textColor="@{ViewModel.tipColor ? @color/colorTxtBlack : @color/colorTxtRed}" />-->
+        <!--            </LinearLayout>-->
 
-        </LinearLayout>
+        <!--        </LinearLayout>-->
 
         <LinearLayout
             android:id="@+id/linear_layout_password"
             style="@style/CommonWrapLinearLayoutStyle"
-            android:visibility="gone">
+            android:layout_marginTop="@dimen/dp_80">
 
             <EditText
                 style="@style/ActivityLoginEditTextStyle.Phone1"
@@ -127,6 +128,9 @@
             <TextView style="@style/ActivityLoginTextStyle.Tip" />
         </RelativeLayout>
 
-        <ImageView style="@style/ActivityLoginImageViewStyle.WeChat" />
+        <ImageView
+            android:id="@+id/iv_wechat"
+            style="@style/ActivityLoginImageViewStyle.WeChat"
+            android:onClick="onClick" />
     </LinearLayout>
 </layout>
