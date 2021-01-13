@@ -3,9 +3,12 @@ package com.example.healthmanage.base;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.annotation.LayoutRes;
@@ -34,7 +37,6 @@ public abstract class BaseActivity<DB extends ViewDataBinding, VM extends BaseVi
     protected DB dataBinding;
     protected VM viewModel;
     protected int viewModelId;
-
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

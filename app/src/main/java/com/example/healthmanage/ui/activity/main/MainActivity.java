@@ -2,6 +2,7 @@ package com.example.healthmanage.ui.activity.main;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -14,8 +15,10 @@ import com.example.healthmanage.databinding.ActivityMainBinding;
 import com.example.healthmanage.ui.fragment.business.BusinessFragment;
 import com.example.healthmanage.ui.fragment.education.EducationFragment;
 import com.example.healthmanage.ui.fragment.home.HomeFragment;
+import com.example.healthmanage.ui.fragment.home.NewHomeFragment;
 import com.example.healthmanage.ui.fragment.mall.MallFragment;
 import com.example.healthmanage.ui.fragment.my.MyFragment;
+import com.example.healthmanage.utils.StatusBarUitils;
 import com.example.healthmanage.widget.TitleToolBar;
 
 import java.util.ArrayList;
@@ -50,6 +53,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
 
         initFragment();
         initBottomTab();
+
+//        StatusBarUitils.setStatusBar(R.color.colorBlue, false, this);
     }
 
     /**
@@ -89,27 +94,37 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         TitleToolBar titleToolBar = new TitleToolBar();
         switch (index) {
             case 0:
-                titleToolBar.setTitle("首页");
-                titleToolBar.setRightIconVisible(true);
+                titleToolBar.setTitle("");
+                titleToolBar.setRightIconVisible(false);
                 titleToolBar.setRightIconSrc(R.drawable.activity_main_title_news);
                 viewModel.setTitleToolBar(titleToolBar);
-                dataBinding.toolbar.tvTitle.setText("首页");
-                dataBinding.toolbar.ivRight.setVisibility(View.VISIBLE);
+                dataBinding.toolbar.tvTitle.setText("");
+                dataBinding.toolbar.ivRight.setVisibility(View.INVISIBLE);
                 dataBinding.toolbar.ivRight.setImageResource(R.drawable.activity_main_title_news);
+
+                dataBinding.toolbar.toolbarTitle.setVisibility(View.GONE);
                 break;
             case 1:
+                dataBinding.toolbar.toolbarTitle.setVisibility(View.VISIBLE);
+
                 dataBinding.toolbar.ivRight.setVisibility(View.GONE);
                 dataBinding.toolbar.tvTitle.setText("业务服务");
                 break;
             case 2:
+                dataBinding.toolbar.toolbarTitle.setVisibility(View.VISIBLE);
+
                 dataBinding.toolbar.ivRight.setVisibility(View.GONE);
                 dataBinding.toolbar.tvTitle.setText("教育培训");
                 break;
             case 3:
+                dataBinding.toolbar.toolbarTitle.setVisibility(View.VISIBLE);
+
                 dataBinding.toolbar.ivRight.setVisibility(View.GONE);
                 dataBinding.toolbar.tvTitle.setText("商城");
                 break;
             case 4:
+                dataBinding.toolbar.toolbarTitle.setVisibility(View.VISIBLE);
+
                 dataBinding.toolbar.tvTitle.setText("");
                 dataBinding.toolbar.ivRight.setVisibility(View.GONE);
                 break;
@@ -137,7 +152,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
      */
     private void initFragment() {
         mFragments = new ArrayList<>();
-        mFragments.add(new HomeFragment());
+        mFragments.add(new NewHomeFragment());
         mFragments.add(new BusinessFragment());
         mFragments.add(new EducationFragment());
         mFragments.add(new MallFragment());

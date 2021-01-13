@@ -89,7 +89,6 @@
     <dimen name="dp_780">780dp</dimen>
 
 
-
     <dimen name="dp_26">26dp</dimen>
     <dimen name="dp_8">8dp</dimen>
     <dimen name="dp_13">13dp</dimen>
@@ -99,5 +98,6 @@
     <dimen name="dp_25">25dp</dimen>
     <dimen name="dp_9">9dp</dimen>
     <dimen name="dp_65">65dp</dimen>
-
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="home_normal_size">16sp</dimen>
 </resources>
