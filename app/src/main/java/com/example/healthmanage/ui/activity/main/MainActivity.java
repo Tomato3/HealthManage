@@ -13,7 +13,9 @@ import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.databinding.ActivityMainBinding;
 import com.example.healthmanage.ui.fragment.business.BusinessFragment;
+import com.example.healthmanage.ui.fragment.business.NewBusinessFragment;
 import com.example.healthmanage.ui.fragment.education.EducationFragment;
+import com.example.healthmanage.ui.fragment.education.NewEducationFragment;
 import com.example.healthmanage.ui.fragment.home.HomeFragment;
 import com.example.healthmanage.ui.fragment.home.NewHomeFragment;
 import com.example.healthmanage.ui.fragment.mall.MallFragment;
@@ -54,7 +56,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         initFragment();
         initBottomTab();
 
-//        StatusBarUitils.setStatusBar(R.color.colorBlue, false, this);
+        StatusBarUitils.setStatusBar(R.color.colorBlue, true, this);
     }
 
     /**
@@ -153,8 +155,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     private void initFragment() {
         mFragments = new ArrayList<>();
         mFragments.add(new NewHomeFragment());
-        mFragments.add(new BusinessFragment());
-        mFragments.add(new EducationFragment());
+        mFragments.add(new NewBusinessFragment());
+        mFragments.add(new NewEducationFragment());
         mFragments.add(new MallFragment());
         mFragments.add(new MyFragment());
 

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
@@ -18,9 +19,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.healthmanage.BR;
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseAdapter;
+import com.example.healthmanage.base.BaseFragment;
 import com.example.healthmanage.bean.test.HomeVipBean;
+import com.example.healthmanage.databinding.FragmentNewHomeBinding;
 import com.youth.banner.Banner;
 import com.youth.banner.loader.ImageLoader;
 
@@ -28,32 +32,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public
-class NewHomeFragment extends Fragment {
+class NewHomeFragment extends BaseFragment<FragmentNewHomeBinding, NewHomeFragmentViewModel> {
     private View includeVVip;
     private RecyclerView mRecyclerView;
     private Banner mBanner;
     private ImageView ava;
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-
-
-        return inflater.inflate(R.layout.fragment_new_home, container, false);
-    }
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+    }
+    @Override
+    protected void initListener() {
+        dataBinding.includeHomeChoose.findViewById(R.id.huiyuanguanli).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(activity, "hha", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         includeVVip = (View) getActivity().findViewById(R.id.include_vvip);
+
         mRecyclerView = includeVVip.findViewById(R.id.recyler_view);
         mBanner = getActivity().findViewById(R.id.banner_home);
         ava = getActivity().findViewById(R.id.avatar_img);
@@ -63,6 +66,8 @@ class NewHomeFragment extends Fragment {
                 .load("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1629493508,3312904397&fm=26&gp=0.jpg")
                 .apply(new RequestOptions().circleCrop())
                 .into(ava);
+
+        initListener();
     }
 
     private void initRV() {
@@ -107,5 +112,40 @@ class NewHomeFragment extends Fragment {
                     .apply(RequestOptions.bitmapTransform(new RoundedCorners(20)))
                     .into(imageView);
         }
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void initAdapter() {
+
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initViewModel() {
+
+    }
+
+    @Override
+    protected void initObserver() {
+
+    }
+
+    @Override
+    public int initContentView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return R.layout.fragment_new_home;
+    }
+
+    @Override
+    protected int initVIewModelID() {
+        return BR.ViewModel;
     }
 }

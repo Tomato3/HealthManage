@@ -6,7 +6,7 @@
     android:background="#F5F5F5">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/huiyuanguanli"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -40,11 +40,11 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintBottom_toBottomOf="@+id/huiyuanguanli"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout">
+        app:layout_constraintStart_toEndOf="@+id/huiyuanguanli"
+        app:layout_constraintTop_toTopOf="@+id/huiyuanguanli">
 
         <ImageView
             android:layout_width="wrap_content"

@@ -162,7 +162,7 @@
             android:layout_height="wrap_content"
             android:drawableRight="@drawable/arrow"
             android:drawablePadding="20dp"
-            android:text="工作计划"
+            android:text="我的任务"
             android:textColor="@color/colorBlue"
             android:textSize="@dimen/home_normal_size"
             app:layout_constraintStart_toStartOf="parent"

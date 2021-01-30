@@ -2573,4 +2573,18 @@
     <style name="HomeTextNormalSize">
         <item name="android:textSize">16sp</item>
     </style>
+
+    <!--    meterial  tablayout 属性设置-->
+    <style name="myTablayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">#FFFFFF</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabBackground">?attr/selectableItemBackground</item>
+        <item name="tabSelectedTextColor">#FFFFFF</item>
+        <item name="tabTextAppearance">@style/tablayouttextsize</item>
+    </style>
+
+    <style name="tablayouttextsize">
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>

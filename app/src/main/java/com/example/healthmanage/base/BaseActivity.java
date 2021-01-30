@@ -37,6 +37,7 @@ public abstract class BaseActivity<DB extends ViewDataBinding, VM extends BaseVi
     protected DB dataBinding;
     protected VM viewModel;
     protected int viewModelId;
+
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

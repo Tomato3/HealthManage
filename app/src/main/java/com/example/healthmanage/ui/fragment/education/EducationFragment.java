@@ -3,6 +3,7 @@ package com.example.healthmanage.ui.fragment.education;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.RadioGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,7 +33,12 @@ public class EducationFragment extends BaseFragment<FragmentEducationBinding, Ed
 
     @Override
     protected void initListener() {
-
+        dataBinding.rgTitle.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                
+            }
+        });
     }
 
     @Override
