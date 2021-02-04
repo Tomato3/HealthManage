@@ -296,7 +296,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
      */
     @Override
     final public int getItemCount() {
-        return mItems.size();
+        return mItems == null ? 0 : mItems.size();//mItems.size();
     }
 
     /**

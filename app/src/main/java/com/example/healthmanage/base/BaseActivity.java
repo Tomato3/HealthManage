@@ -123,10 +123,10 @@ public abstract class BaseActivity<DB extends ViewDataBinding, VM extends BaseVi
         viewModel.getUiChangeEvent().getToastTxt().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                Toast toast = Toast.makeText(BaseActivity.this, s,
-                        Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.CENTER, 0, 0);
-                toast.show();
+//                Toast toast = Toast.makeText(BaseActivity.this, s,
+//                        Toast.LENGTH_SHORT);
+//                toast.setGravity(Gravity.CENTER, 0, 0);
+//                toast.show();
             }
         });
 

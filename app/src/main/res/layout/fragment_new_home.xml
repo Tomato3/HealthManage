@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-<variable
-    name="ViewModel"
-    type="com.example.healthmanage.ui.fragment.home.NewHomeFragmentViewModel" />
+
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.fragment.home.NewHomeFragmentViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -75,7 +76,7 @@
                     app:layout_constraintTop_toTopOf="@+id/name_tv" />
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/message_img"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="16dp"
@@ -112,33 +113,55 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp" />
 
-            <com.youth.banner.Banner
-                android:id="@+id/banner_home"
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tablayout"
+                style="@style/myTablayoutOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                app:tabIndicatorFullWidth="false"
+                app:tabTextColor="#999999">
 
-                app:image_scale_type="fit_xy" />
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="重点关注会员" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="高级会员" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="贵宾会员" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="至尊会员" />
+
+            </com.google.android.material.tabs.TabLayout>
 
             <include
                 android:id="@+id/include_vvip"
                 layout="@layout/include_home_vvip"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="300dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="20dp" />
 
             <include
-                android:layout_marginBottom="20dp"
                 layout="@layout/include_home_fuwudaohang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginRight="20dp" />
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

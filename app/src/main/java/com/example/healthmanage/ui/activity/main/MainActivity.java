@@ -56,7 +56,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         initFragment();
         initBottomTab();
 
-        StatusBarUitils.setStatusBar(R.color.colorBlue, true, this);
+        StatusBarUitils.setStatusBar(R.color.colorBlue, false, this);
     }
 
     /**

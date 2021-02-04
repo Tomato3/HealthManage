@@ -27,7 +27,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView style="@style/ActivityMemberDetailTextStyle.LocationTitle" />
+                <TextView
+                    style="@style/ActivityMemberDetailTextStyle.LocationTitle"
+                    android:visibility="invisible" />
 
                 <TextView
                     style="@style/ActivityMemberDetailTextStyle.Location"
