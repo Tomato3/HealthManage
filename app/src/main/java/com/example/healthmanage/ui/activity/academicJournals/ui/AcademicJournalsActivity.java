@@ -1,6 +1,7 @@
 package com.example.healthmanage.ui.activity.academicJournals.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioGroup;
@@ -65,10 +66,14 @@ public class AcademicJournalsActivity extends BaseActivity<ActivityAcademicJourn
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                 switch (view.getId()){
                     case R.id.tv_go_contribution:
-                        ToastUtil.showShort("去投稿");
+                        Intent intent = new Intent(context,EditAcademicActivity.class);
+                        intent.putExtra("dataBean",periodicalBeans.get(position));
+                        startActivity(intent);
                         break;
                     case R.id.tv_watch_detail:
-                        ToastUtil.showShort("查看详情");
+                        Intent intent1 = new Intent(context,AcademicInfoActivity.class);
+                        intent1.putExtra("id",periodicalBeans.get(position).getId());
+                        startActivity(intent1);
                         break;
                     case R.id.tv_see_contribution_detail:
                         ToastUtil.showShort("查看过稿详情");
@@ -83,6 +88,18 @@ public class AcademicJournalsActivity extends BaseActivity<ActivityAcademicJourn
                 }
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (index == 0){
+            initData();
+            periodicalAdapter.notifyDataSetChanged();
+        }else if (index == 1){
+            viewModel.getPeriodicalList(1);
+            periodicalAdapter.notifyDataSetChanged();
+        }
     }
 
     @Override
@@ -159,6 +176,12 @@ public class AcademicJournalsActivity extends BaseActivity<ActivityAcademicJourn
                         dataBinding.smartRefreshLayout.finishRefresh(200);
                         break;
                 }
+            }
+        });
+        dataBinding.layoutWriteAcademicJournals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(CreateAcademicJournalsActivity.class);
             }
         });
     }

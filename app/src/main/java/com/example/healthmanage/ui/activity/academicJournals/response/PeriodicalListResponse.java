@@ -1,5 +1,6 @@
 package com.example.healthmanage.ui.activity.academicJournals.response;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class PeriodicalListResponse {
@@ -73,7 +74,7 @@ public class PeriodicalListResponse {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable {
         private int id;
         private int systemUserId;
         private String periodical;

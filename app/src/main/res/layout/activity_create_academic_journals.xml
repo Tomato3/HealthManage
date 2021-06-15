@@ -44,11 +44,12 @@
                         android:textColor="#616161"/>
 
                     <TextView
+                        android:id="@+id/tv_periodical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_alignParentEnd="true"
-                        android:text="《保健医苑》"
+                        android:text="@={ViewModel.periodical}"
                         android:textSize="@dimen/sp_15"
                         android:textColor="@color/black"
                         android:drawableEnd="@drawable/more_icon"/>
@@ -224,7 +225,7 @@
                 android:id="@+id/btn_query_draft"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="确认草稿"
+                android:text="确认投稿"
                 android:padding="@dimen/dp_10"
                 android:textSize="@dimen/sp_18"
                 android:textColor="@color/white"

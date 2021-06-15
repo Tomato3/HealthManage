@@ -242,6 +242,9 @@
         <activity android:name=".ui.activity.delegate.ui.DelegateInfoActivity"/>
         <activity android:name=".ui.activity.personalRequest.ui.PersonalRequestActivity"/>
         <activity android:name=".ui.activity.academicJournals.ui.AcademicJournalsActivity"/>
+        <activity android:name=".ui.activity.academicJournals.ui.EditAcademicActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name=".ui.activity.academicJournals.ui.AcademicInfoActivity"/>
         <activity android:name=".ui.activity.consultation.ConsultationActivity" /> <!-- 设置key -->
         <meta-data
             android:name="com.amap.api.v2.apikey"

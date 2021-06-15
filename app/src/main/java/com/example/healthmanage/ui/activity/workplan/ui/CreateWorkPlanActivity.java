@@ -112,7 +112,7 @@ public class CreateWorkPlanActivity extends BaseActivity<ActivityCreatePlanBindi
             public void onChanged(String s) {
                 uiProgressDialog.dismiss();
                 if (s!=null){
-                    dataBinding.reMainEditor.insertImage(s,"picvision\" style=\"max-width:100%");
+                    dataBinding.reMainEditor.insertImage(s,"pic");
                 }
             }
         });

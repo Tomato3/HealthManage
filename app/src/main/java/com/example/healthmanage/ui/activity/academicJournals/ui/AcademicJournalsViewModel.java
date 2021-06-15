@@ -7,6 +7,10 @@ import com.example.healthmanage.base.BaseViewModel;
 import com.example.healthmanage.bean.UsersInterface;
 import com.example.healthmanage.bean.UsersRemoteSource;
 import com.example.healthmanage.data.network.exception.ExceptionHandle;
+import com.example.healthmanage.ui.activity.academicJournals.bean.AddPeriodicalBean;
+import com.example.healthmanage.ui.activity.academicJournals.bean.EditPeriodicalBean;
+import com.example.healthmanage.ui.activity.academicJournals.response.AddOrEditSucceedResponse;
+import com.example.healthmanage.ui.activity.academicJournals.response.PeriodicalInfoResponse;
 import com.example.healthmanage.ui.activity.academicJournals.response.PeriodicalListResponse;
 import com.example.healthmanage.ui.activity.qualification.response.UploadResponse;
 
@@ -15,6 +19,8 @@ import java.util.List;
 
 public class AcademicJournalsViewModel extends BaseViewModel {
     private UsersRemoteSource usersRemoteSource;
+    //投稿期刊
+    public MutableLiveData<String> periodical = new MutableLiveData<>();
     //个人简介
     public MutableLiveData<String> personalInfo = new MutableLiveData<>();
     //标题
@@ -25,6 +31,10 @@ public class AcademicJournalsViewModel extends BaseViewModel {
     public MutableLiveData<String> picUrl = new MutableLiveData<>();
 
     public MutableLiveData<List<PeriodicalListResponse.DataBean>> periodicalLiveData = new MutableLiveData<>();
+
+    public MutableLiveData<Boolean> isAddSucceed = new MutableLiveData<>();
+    public MutableLiveData<Boolean> isEditSucceed = new MutableLiveData<>();
+    public MutableLiveData<PeriodicalInfoResponse.DataBean> infoLiveData = new MutableLiveData<>();
 
     public AcademicJournalsViewModel() {
         usersRemoteSource = new UsersRemoteSource();
@@ -73,6 +83,70 @@ public class AcademicJournalsViewModel extends BaseViewModel {
             @Override
             public void error(ExceptionHandle.ResponseException e) {
                 periodicalLiveData.setValue(null);
+            }
+        });
+    }
+
+    public void addPeriodical(AddPeriodicalBean addPeriodicalBean){
+        usersRemoteSource.addPeriodical(addPeriodicalBean, new UsersInterface.AddPeriodicalCallback() {
+            @Override
+            public void addSucceed(AddOrEditSucceedResponse addOrEditSucceedResponse) {
+                isAddSucceed.setValue(true);
+            }
+
+            @Override
+            public void addFailed(String msg) {
+                getUiChangeEvent().getToastTxt().setValue(msg);
+                isAddSucceed.setValue(false);
+            }
+
+            @Override
+            public void error(ExceptionHandle.ResponseException e) {
+                isAddSucceed.setValue(false);
+            }
+        });
+    }
+
+    public void editPeriodical(EditPeriodicalBean editPeriodicalBean){
+        usersRemoteSource.editPeriodical(editPeriodicalBean, new UsersInterface.EditPeriodicalCallback() {
+            @Override
+            public void editSucceed(AddOrEditSucceedResponse addOrEditSucceedResponse) {
+                isEditSucceed.setValue(true);
+            }
+
+            @Override
+            public void editFailed(String msg) {
+                getUiChangeEvent().getToastTxt().setValue(msg);
+                isEditSucceed.setValue(false);
+            }
+
+            @Override
+            public void error(ExceptionHandle.ResponseException e) {
+                isEditSucceed.setValue(false);
+            }
+        });
+    }
+
+    public void getPeriodical(int id){
+        usersRemoteSource.getPeriodical(BaseApplication.getToken(), id, new UsersInterface.GetPeriodicalCallback() {
+            @Override
+            public void getSucceed(PeriodicalInfoResponse periodicalInfoResponse) {
+                if (periodicalInfoResponse.getData()!=null){
+                    infoLiveData.setValue(periodicalInfoResponse.getData());
+                }else {
+                    infoLiveData.setValue(null);
+                }
+            }
+
+            @Override
+            public void getFailed(String msg) {
+                getUiChangeEvent().getToastTxt().setValue(msg);
+                infoLiveData.setValue(null);
+            }
+
+            @Override
+            public void error(ExceptionHandle.ResponseException e) {
+                infoLiveData.setValue(null);
             }
         });
     }

@@ -3,6 +3,7 @@ package com.example.healthmanage.ui.activity.academicJournals.ui;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,8 +19,10 @@ import com.aries.ui.widget.progress.UIProgressDialog;
 import com.contrarywind.view.WheelView;
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
+import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.databinding.ActivityCreateAcademicJournalsBinding;
 import com.example.healthmanage.ui.activity.academicJournals.adapter.ColumnAdapter;
+import com.example.healthmanage.ui.activity.academicJournals.bean.AddPeriodicalBean;
 import com.example.healthmanage.ui.activity.workplan.ui.CreateWorkPlanActivity;
 import com.example.healthmanage.utils.GlideEngine;
 import com.example.healthmanage.utils.ToastUtil;
@@ -46,10 +49,13 @@ public class CreateAcademicJournalsActivity extends BaseActivity<ActivityCreateA
     private PopupWindow popupWindow;
     private List<String> picUrl = new ArrayList<>();
     private UIProgressDialog uiProgressDialog;
+    private AddPeriodicalBean addPeriodicalBean;
     //adapter layout item_academic_journals
     @Override
     protected void initData() {
         context = CreateAcademicJournalsActivity.this;
+        viewModel.periodical.setValue("《保健医苑》");
+        addPeriodicalBean = new AddPeriodicalBean();
         titleToolBar.setTitle("发布学术期刊");
         titleToolBar.setLeftIconVisible(true);
         titleToolBar.setTitleColor(getResources().getColor(R.color.colorBlack));
@@ -113,11 +119,67 @@ public class CreateAcademicJournalsActivity extends BaseActivity<ActivityCreateA
             public void onChanged(String s) {
                 uiProgressDialog.dismiss();
                 if (s!=null){
-                    dataBinding.reMainEditor.insertImage(s,"pic");
+                    dataBinding.reMainEditor.insertImage(s,"pic vision\" style=\"max-width:100%");
                 }
             }
         });
 
+        dataBinding.btnSaveDraft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addPeriodicalBean.setPeriodical(viewModel.periodical.getValue());
+                addPeriodicalBean.setDeliveryColumn(viewModel.contributionColumn.getValue());
+                addPeriodicalBean.setPersonalProfile(viewModel.personalInfo.getValue());
+                addPeriodicalBean.setTitle(viewModel.journalsTitle.getValue());
+                addPeriodicalBean.setContent(dataBinding.reMainEditor.getHtml());
+                addPeriodicalBean.setStatus(0);
+                addPeriodicalBean.setSystemUserId(BaseApplication.getUserInfoBean().getSysId());
+                viewModel.addPeriodical(addPeriodicalBean);
+            }
+        });
+
+        dataBinding.btnQueryDraft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addPeriodicalBean.setPeriodical(viewModel.periodical.getValue());
+                addPeriodicalBean.setStatus(1);
+                addPeriodicalBean.setSystemUserId(BaseApplication.getUserInfoBean().getSysId());
+                if (TextUtils.isEmpty(viewModel.contributionColumn.getValue())){
+                    ToastUtil.showShort("请填写投稿栏目");
+                    return;
+                }else {
+                    addPeriodicalBean.setDeliveryColumn(viewModel.contributionColumn.getValue());
+                }
+                if (TextUtils.isEmpty(viewModel.personalInfo.getValue())){
+                    ToastUtil.showShort("请输入个人简历");
+                    return;
+                }else {
+                    addPeriodicalBean.setPersonalProfile(viewModel.personalInfo.getValue());
+                }
+                if (TextUtils.isEmpty(viewModel.journalsTitle.getValue())){
+                    ToastUtil.showShort("请输入标题");
+                    return;
+                }else {
+                    addPeriodicalBean.setTitle(viewModel.journalsTitle.getValue());
+                }
+                if (TextUtils.isEmpty(dataBinding.reMainEditor.getHtml())){
+                    ToastUtil.showShort("请输入正文内容");
+                    return;
+                }else {
+                    addPeriodicalBean.setContent(dataBinding.reMainEditor.getHtml());
+                }
+                viewModel.addPeriodical(addPeriodicalBean);
+            }
+        });
+
+        viewModel.isAddSucceed.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if (aBoolean){
+                    finish();
+                }
+            }
+        });
 
 //        dataBinding.tvChooseColumn.setOnClickListener(new View.OnClickListener() {
 //            @Override
