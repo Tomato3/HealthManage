@@ -33,7 +33,9 @@ public class AcademicJournalsViewModel extends BaseViewModel {
     public MutableLiveData<List<PeriodicalListResponse.DataBean>> periodicalLiveData = new MutableLiveData<>();
 
     public MutableLiveData<Boolean> isAddSucceed = new MutableLiveData<>();
+    public MutableLiveData<Boolean> isAddDraftSucceed = new MutableLiveData<>();
     public MutableLiveData<Boolean> isEditSucceed = new MutableLiveData<>();
+    public MutableLiveData<Boolean> isEditDraftSucceed = new MutableLiveData<>();
     public MutableLiveData<PeriodicalInfoResponse.DataBean> infoLiveData = new MutableLiveData<>();
 
     public AcademicJournalsViewModel() {
@@ -87,6 +89,26 @@ public class AcademicJournalsViewModel extends BaseViewModel {
         });
     }
 
+    public void addDraftPeriodical(AddPeriodicalBean addPeriodicalBean){
+        usersRemoteSource.addPeriodical(addPeriodicalBean, new UsersInterface.AddPeriodicalCallback() {
+            @Override
+            public void addSucceed(AddOrEditSucceedResponse addOrEditSucceedResponse) {
+                isAddDraftSucceed.setValue(true);
+            }
+
+            @Override
+            public void addFailed(String msg) {
+                getUiChangeEvent().getToastTxt().setValue(msg);
+                isAddDraftSucceed.setValue(false);
+            }
+
+            @Override
+            public void error(ExceptionHandle.ResponseException e) {
+                isAddDraftSucceed.setValue(false);
+            }
+        });
+    }
+
     public void addPeriodical(AddPeriodicalBean addPeriodicalBean){
         usersRemoteSource.addPeriodical(addPeriodicalBean, new UsersInterface.AddPeriodicalCallback() {
             @Override
@@ -123,6 +145,26 @@ public class AcademicJournalsViewModel extends BaseViewModel {
             @Override
             public void error(ExceptionHandle.ResponseException e) {
                 isEditSucceed.setValue(false);
+            }
+        });
+    }
+
+    public void editDraftPeriodical(EditPeriodicalBean editPeriodicalBean){
+        usersRemoteSource.editPeriodical(editPeriodicalBean, new UsersInterface.EditPeriodicalCallback() {
+            @Override
+            public void editSucceed(AddOrEditSucceedResponse addOrEditSucceedResponse) {
+                isEditDraftSucceed.setValue(true);
+            }
+
+            @Override
+            public void editFailed(String msg) {
+                getUiChangeEvent().getToastTxt().setValue(msg);
+                isEditDraftSucceed.setValue(false);
+            }
+
+            @Override
+            public void error(ExceptionHandle.ResponseException e) {
+                isEditDraftSucceed.setValue(false);
             }
         });
     }

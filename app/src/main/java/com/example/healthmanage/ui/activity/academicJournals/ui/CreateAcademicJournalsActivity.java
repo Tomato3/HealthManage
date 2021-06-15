@@ -4,17 +4,21 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
+import com.aries.ui.widget.alert.UIAlertDialog;
 import com.aries.ui.widget.progress.UIProgressDialog;
 import com.contrarywind.view.WheelView;
 import com.example.healthmanage.R;
@@ -23,8 +27,10 @@ import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.databinding.ActivityCreateAcademicJournalsBinding;
 import com.example.healthmanage.ui.activity.academicJournals.adapter.ColumnAdapter;
 import com.example.healthmanage.ui.activity.academicJournals.bean.AddPeriodicalBean;
+import com.example.healthmanage.ui.activity.mytask.DealTaskActivity;
 import com.example.healthmanage.ui.activity.workplan.ui.CreateWorkPlanActivity;
 import com.example.healthmanage.utils.GlideEngine;
+import com.example.healthmanage.utils.SizeUtil;
 import com.example.healthmanage.utils.ToastUtil;
 import com.example.healthmanage.utils.ToolUtil;
 import com.example.healthmanage.widget.TitleToolBar;
@@ -134,7 +140,7 @@ public class CreateAcademicJournalsActivity extends BaseActivity<ActivityCreateA
                 addPeriodicalBean.setContent(dataBinding.reMainEditor.getHtml());
                 addPeriodicalBean.setStatus(0);
                 addPeriodicalBean.setSystemUserId(BaseApplication.getUserInfoBean().getSysId());
-                viewModel.addPeriodical(addPeriodicalBean);
+                viewModel.addDraftPeriodical(addPeriodicalBean);
             }
         });
 
@@ -173,6 +179,45 @@ public class CreateAcademicJournalsActivity extends BaseActivity<ActivityCreateA
         });
 
         viewModel.isAddSucceed.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if (aBoolean){
+                    View view = View.inflate(context,R.layout.dialog_create_consultation_task,null);
+                    UIAlertDialog uiAlertDialog = new UIAlertDialog.DividerIOSBuilder(context)
+                            .setView(view)
+                            .setCanceledOnTouchOutside(false)//设置空白处不消失
+                            .setMinHeight(SizeUtil.dp2px(160))
+                            .setPositiveButtonTextColorResource(R.color.colorTxtBlue)
+                            .create()
+                            .setDimAmount(0.6f);
+                    TextView tvTitle = view.findViewById(R.id.tv_success);
+                    TextView tvContent = view.findViewById(R.id.tv_tips_task);
+                    tvTitle.setText("投稿成功");
+                    tvContent.setText("请耐心等待审核，审核结果将以app消息通知到您");
+                    uiAlertDialog.show();
+                    Window window = uiAlertDialog.getWindow();
+                    WindowManager.LayoutParams lp = window.getAttributes();
+                    lp.gravity = Gravity.CENTER;
+                    //dialog宽高适应子布局xml
+                    //lp.width = WindowManager.LayoutParams.MATCH_PARENT;//宽高可设置具体大小
+                    //dialog宽高适应屏幕
+                    WindowManager manager= getWindowManager();
+                    Display display= manager.getDefaultDisplay();
+                    //params.height= (int) (display.getHeight()* 0.8);
+                    lp.width= (int) (display.getWidth()* 0.6);
+                    uiAlertDialog.getWindow().setAttributes(lp);
+                    Button button = view.findViewById(R.id.btn_success_consultation);
+                    button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            finish();
+                        }
+                    });
+                }
+            }
+        });
+
+        viewModel.isAddDraftSucceed.observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean){

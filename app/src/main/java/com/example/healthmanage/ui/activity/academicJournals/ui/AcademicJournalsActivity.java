@@ -3,8 +3,14 @@ package com.example.healthmanage.ui.activity.academicJournals.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Display;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -12,6 +18,7 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.aries.ui.widget.alert.UIAlertDialog;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.healthmanage.BR;
 import com.example.healthmanage.R;
@@ -19,6 +26,7 @@ import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.databinding.ActivityAcademicJournalsBinding;
 import com.example.healthmanage.ui.activity.academicJournals.adapter.PeriodicalAdapter;
 import com.example.healthmanage.ui.activity.academicJournals.response.PeriodicalListResponse;
+import com.example.healthmanage.utils.SizeUtil;
 import com.example.healthmanage.utils.ToastUtil;
 import com.example.healthmanage.view.GridItemDecoration;
 import com.example.healthmanage.widget.TitleToolBar;
@@ -71,18 +79,76 @@ public class AcademicJournalsActivity extends BaseActivity<ActivityAcademicJourn
                         startActivity(intent);
                         break;
                     case R.id.tv_watch_detail:
+                    case R.id.tv_see_contribution_detail:
                         Intent intent1 = new Intent(context,AcademicInfoActivity.class);
                         intent1.putExtra("id",periodicalBeans.get(position).getId());
                         startActivity(intent1);
                         break;
-                    case R.id.tv_see_contribution_detail:
-                        ToastUtil.showShort("查看过稿详情");
-                        break;
                     case R.id.tv_pass_or_rejection_explain:
                         if (index==2){
-                            ToastUtil.showShort("过稿说明");
+                            View dialog = View.inflate(context,R.layout.dialog_create_consultation_task,null);
+                            UIAlertDialog uiAlertDialog = new UIAlertDialog.DividerIOSBuilder(context)
+                                    .setView(dialog)
+                                    .setCanceledOnTouchOutside(false)//设置空白处不消失
+                                    .setMinHeight(SizeUtil.dp2px(160))
+                                    .setPositiveButtonTextColorResource(R.color.colorTxtBlue)
+                                    .create()
+                                    .setDimAmount(0.6f);
+                            TextView tvTitle = dialog.findViewById(R.id.tv_success);
+                            TextView tvContent = dialog.findViewById(R.id.tv_tips_task);
+                            tvTitle.setText("过稿声明");
+                            tvContent.setText(periodicalBeans.get(position).getExplains());
+                            uiAlertDialog.show();
+                            Window window = uiAlertDialog.getWindow();
+                            WindowManager.LayoutParams lp = window.getAttributes();
+                            lp.gravity = Gravity.CENTER;
+                            //dialog宽高适应子布局xml
+                            //lp.width = WindowManager.LayoutParams.MATCH_PARENT;//宽高可设置具体大小
+                            //dialog宽高适应屏幕
+                            WindowManager manager= getWindowManager();
+                            Display display= manager.getDefaultDisplay();
+                            //params.height= (int) (display.getHeight()* 0.8);
+                            lp.width= (int) (display.getWidth()* 0.6);
+                            uiAlertDialog.getWindow().setAttributes(lp);
+                            Button button = dialog.findViewById(R.id.btn_success_consultation);
+                            button.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    uiAlertDialog.dismiss();
+                                }
+                            });
                         }else {
-                            ToastUtil.showShort("退稿说明");
+                            View dialog = View.inflate(context,R.layout.dialog_create_consultation_task,null);
+                            UIAlertDialog uiAlertDialog = new UIAlertDialog.DividerIOSBuilder(context)
+                                    .setView(dialog)
+                                    .setCanceledOnTouchOutside(false)//设置空白处不消失
+                                    .setMinHeight(SizeUtil.dp2px(160))
+                                    .setPositiveButtonTextColorResource(R.color.colorTxtBlue)
+                                    .create()
+                                    .setDimAmount(0.6f);
+                            TextView tvTitle = dialog.findViewById(R.id.tv_success);
+                            TextView tvContent = dialog.findViewById(R.id.tv_tips_task);
+                            tvTitle.setText("退稿声明");
+                            tvContent.setText(periodicalBeans.get(position).getExplains());
+                            uiAlertDialog.show();
+                            Window window = uiAlertDialog.getWindow();
+                            WindowManager.LayoutParams lp = window.getAttributes();
+                            lp.gravity = Gravity.CENTER;
+                            //dialog宽高适应子布局xml
+                            //lp.width = WindowManager.LayoutParams.MATCH_PARENT;//宽高可设置具体大小
+                            //dialog宽高适应屏幕
+                            WindowManager manager= getWindowManager();
+                            Display display= manager.getDefaultDisplay();
+                            //params.height= (int) (display.getHeight()* 0.8);
+                            lp.width= (int) (display.getWidth()* 0.6);
+                            uiAlertDialog.getWindow().setAttributes(lp);
+                            Button button = dialog.findViewById(R.id.btn_success_consultation);
+                            button.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    uiAlertDialog.dismiss();
+                                }
+                            });
                         }
                         break;
                 }
