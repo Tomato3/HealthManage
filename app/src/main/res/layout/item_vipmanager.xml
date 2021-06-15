@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/dp_80"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dp_10"
     android:background="@color/white">
 
     <ImageView
@@ -19,11 +20,10 @@
         android:id="@+id/vip_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/dp_20"
         android:text="起的龙"
-        android:textColor="#101010"
-        android:textSize="16sp"
+        android:textColor="@color/colorTxtBlack"
+        android:textSize="@dimen/sp_18"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/vip_ava_img"
         app:layout_constraintTop_toTopOf="@+id/vip_ava_img" />
@@ -32,9 +32,9 @@
         android:id="@+id/vip_info_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="4dp"
         android:text="普通会员  |  女  |  33岁"
-        android:textSize="12sp"
+        android:textSize="@dimen/sp_13"
         app:layout_constraintBottom_toBottomOf="@+id/vip_ava_img"
         app:layout_constraintStart_toStartOf="@+id/vip_name_tv" />
 
@@ -44,32 +44,48 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bg_vipmanager_btn"
         android:gravity="center"
-        android:paddingLeft="5dp"
-        android:paddingTop="5dp"
-        android:paddingRight="5dp"
-        android:paddingBottom="5dp"
+        android:paddingLeft="@dimen/dp_5"
+        android:paddingTop="@dimen/dp_5"
+        android:paddingRight="@dimen/dp_5"
+        android:paddingBottom="@dimen/dp_5"
         android:text="设为特别关注"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/colorLineGrey"
-        app:layout_constraintBottom_toBottomOf="parent" />
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/dp_1"-->
+<!--        android:background="@color/colorLineGrey"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent" />-->
 
     <TextView
         android:id="@+id/isfocus_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="90dp"
+        android:layout_marginStart="@dimen/dp_15"
         android:drawableLeft="@drawable/choose"
-        android:drawablePadding="5dp"
+        android:drawablePadding="@dimen/dp_5"
         android:gravity="center"
         android:text="已关注"
-        android:textSize="10sp"
+        android:textSize="@dimen/sp_10"
         app:layout_constraintBottom_toBottomOf="@+id/vip_name_tv"
-        app:layout_constraintStart_toEndOf="@+id/vip_ava_img" />
+        app:layout_constraintStart_toEndOf="@+id/vip_name_tv" />
+
+    <TextView
+        android:id="@+id/tv_vip_type"
+        android:layout_width="@dimen/dp_65"
+        android:layout_height="@dimen/dp_25"
+        app:layout_constraintTop_toTopOf="@id/vip_name_tv"
+        app:layout_constraintBottom_toBottomOf="@id/vip_name_tv"
+        app:layout_constraintStart_toEndOf="@id/isfocus_tv"
+        android:textSize="@dimen/sp_13"
+        android:textColor="@color/white"
+        android:text="团队患者"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:gravity="center"
+        android:background="@drawable/bg_temperature_yellow"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

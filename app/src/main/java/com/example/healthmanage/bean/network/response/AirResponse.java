@@ -1,5 +1,6 @@
 package com.example.healthmanage.bean.network.response;
 
+
 import java.util.List;
 
 public class AirResponse {
@@ -8,14 +9,41 @@ public class AirResponse {
      * requestId : null
      * errorLog : null
      * status : 0
-     * message : 成功
-     * data : [{"id":1425184,"deviceId":"11102435CC152AD7","productId":null,"productType":null,"temperature":"21.5","humidity":"54.6","pm25":"38.0","co2":"719","hcho":"0.04","waterT":null,"jfwd":null,"negOxygenIons":"0","o2":"20.8","o3":"1.00","tvoc":"55.00","co":"0.0","pm03":"18.0","loadStatus":null,"runModel":null,"deviceType":"2","createTime":"2020-08-21 16:19:22","sceneName":"卧室"}]
+     * message : 查询成功
+     * data : [{"id":7541486,"deviceId":"10002435CC152AA4","productId":null,"productType":null,"temperature":"22.5","humidity":"49.3","pm25":"18.0","co2":"719","hcho":"0.04","waterT":null,"jfwd":null,"negOxygenIons":"0","o2":"5.6","o3":"0.00","tvoc":"0.15","co":"0.0","pm03":"8.0","loadStatus":null,"runModel":null,"deviceType":"2","createTime":"2021-03-09 17:12:13","sourceData":"/10002435CC152AA4/S00/1/225,493,180,80,719,0,0,56,0,15,4/1615281133556","sceneName":null,"deviceInfo":{"deviceId":null,"deviceName":null,"companyId":null,"type":null,"sceneId":2,"sceneName":"办公室","userId":null,"userName":null,"factoryName":null,"factoryId":null,"isFetus":null,"createTime":null}}]
      */
 
     private Object requestId;
     private Object errorLog;
     private int status;
     private String message;
+    /**
+     * id : 7541486
+     * deviceId : 10002435CC152AA4
+     * productId : null
+     * productType : null
+     * temperature : 22.5
+     * humidity : 49.3
+     * pm25 : 18.0
+     * co2 : 719
+     * hcho : 0.04
+     * waterT : null
+     * jfwd : null
+     * negOxygenIons : 0
+     * o2 : 5.6
+     * o3 : 0.00
+     * tvoc : 0.15
+     * co : 0.0
+     * pm03 : 8.0
+     * loadStatus : null
+     * runModel : null
+     * deviceType : 2
+     * createTime : 2021-03-09 17:12:13
+     * sourceData : /10002435CC152AA4/S00/1/225,493,180,80,719,0,0,56,0,15,4/1615281133556
+     * sceneName : null
+     * deviceInfo : {"deviceId":null,"deviceName":null,"companyId":null,"type":null,"sceneId":2,"sceneName":"办公室","userId":null,"userName":null,"factoryName":null,"factoryId":null,"isFetus":null,"createTime":null}
+     */
+
     private List<DataBean> data;
 
     public Object getRequestId() {
@@ -59,31 +87,6 @@ public class AirResponse {
     }
 
     public static class DataBean {
-        /**
-         * id : 1425184
-         * deviceId : 11102435CC152AD7
-         * productId : null
-         * productType : null
-         * temperature : 21.5
-         * humidity : 54.6
-         * pm25 : 38.0
-         * co2 : 719
-         * hcho : 0.04
-         * waterT : null
-         * jfwd : null
-         * negOxygenIons : 0
-         * o2 : 20.8
-         * o3 : 1.00
-         * tvoc : 55.00
-         * co : 0.0
-         * pm03 : 18.0
-         * loadStatus : null
-         * runModel : null
-         * deviceType : 2
-         * createTime : 2020-08-21 16:19:22
-         * sceneName : 卧室
-         */
-
         private int id;
         private String deviceId;
         private Object productId;
@@ -105,7 +108,24 @@ public class AirResponse {
         private Object runModel;
         private String deviceType;
         private String createTime;
-        private String sceneName;
+        private String sourceData;
+        private Object sceneName;
+        /**
+         * deviceId : null
+         * deviceName : null
+         * companyId : null
+         * type : null
+         * sceneId : 2
+         * sceneName : 办公室
+         * userId : null
+         * userName : null
+         * factoryName : null
+         * factoryId : null
+         * isFetus : null
+         * createTime : null
+         */
+
+        private DeviceInfoBean deviceInfo;
 
         public int getId() {
             return id;
@@ -275,12 +295,139 @@ public class AirResponse {
             this.createTime = createTime;
         }
 
-        public String getSceneName() {
+        public String getSourceData() {
+            return sourceData;
+        }
+
+        public void setSourceData(String sourceData) {
+            this.sourceData = sourceData;
+        }
+
+        public Object getSceneName() {
             return sceneName;
         }
 
-        public void setSceneName(String sceneName) {
+        public void setSceneName(Object sceneName) {
             this.sceneName = sceneName;
+        }
+
+        public DeviceInfoBean getDeviceInfo() {
+            return deviceInfo;
+        }
+
+        public void setDeviceInfo(DeviceInfoBean deviceInfo) {
+            this.deviceInfo = deviceInfo;
+        }
+
+        public static class DeviceInfoBean {
+            private Object deviceId;
+            private Object deviceName;
+            private Object companyId;
+            private Object type;
+            private int sceneId;
+            private String sceneName;
+            private Object userId;
+            private Object userName;
+            private Object factoryName;
+            private Object factoryId;
+            private Object isFetus;
+            private Object createTime;
+
+            public Object getDeviceId() {
+                return deviceId;
+            }
+
+            public void setDeviceId(Object deviceId) {
+                this.deviceId = deviceId;
+            }
+
+            public Object getDeviceName() {
+                return deviceName;
+            }
+
+            public void setDeviceName(Object deviceName) {
+                this.deviceName = deviceName;
+            }
+
+            public Object getCompanyId() {
+                return companyId;
+            }
+
+            public void setCompanyId(Object companyId) {
+                this.companyId = companyId;
+            }
+
+            public Object getType() {
+                return type;
+            }
+
+            public void setType(Object type) {
+                this.type = type;
+            }
+
+            public int getSceneId() {
+                return sceneId;
+            }
+
+            public void setSceneId(int sceneId) {
+                this.sceneId = sceneId;
+            }
+
+            public String getSceneName() {
+                return sceneName;
+            }
+
+            public void setSceneName(String sceneName) {
+                this.sceneName = sceneName;
+            }
+
+            public Object getUserId() {
+                return userId;
+            }
+
+            public void setUserId(Object userId) {
+                this.userId = userId;
+            }
+
+            public Object getUserName() {
+                return userName;
+            }
+
+            public void setUserName(Object userName) {
+                this.userName = userName;
+            }
+
+            public Object getFactoryName() {
+                return factoryName;
+            }
+
+            public void setFactoryName(Object factoryName) {
+                this.factoryName = factoryName;
+            }
+
+            public Object getFactoryId() {
+                return factoryId;
+            }
+
+            public void setFactoryId(Object factoryId) {
+                this.factoryId = factoryId;
+            }
+
+            public Object getIsFetus() {
+                return isFetus;
+            }
+
+            public void setIsFetus(Object isFetus) {
+                this.isFetus = isFetus;
+            }
+
+            public Object getCreateTime() {
+                return createTime;
+            }
+
+            public void setCreateTime(Object createTime) {
+                this.createTime = createTime;
+            }
         }
     }
 }

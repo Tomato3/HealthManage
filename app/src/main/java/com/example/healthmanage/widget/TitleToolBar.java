@@ -7,15 +7,35 @@ import com.example.healthmanage.R;
 public class TitleToolBar {
 
     private String title;
+    private String rightTitle;
     private boolean rightIconVisible;
     private boolean leftIconVisible;
+    private boolean rightTitleVisible;
     private int backgroundColor;
     private int rightIconSrc;
+    private int backIconSrc;
+    private int titleColor;
+    private int rightTitleColor;
     private OnTitleIconClickCallBack onTitleIconClickCallBack;
 
     public TitleToolBar() {
     }
 
+    public int getTitleColor() {
+        return titleColor;
+    }
+
+    public void setTitleColor(int titleColor) {
+        this.titleColor = titleColor;
+    }
+
+    public int getRightTitleColor() {
+        return rightTitleColor;
+    }
+
+    public void setRightTitleColor(int rightTitleColor) {
+        this.rightTitleColor = rightTitleColor;
+    }
 
     public boolean isRightIconVisible() {
         return rightIconVisible;
@@ -32,6 +52,22 @@ public class TitleToolBar {
 
     public void setLeftIconVisible(boolean leftIconVisible) {
         this.leftIconVisible = leftIconVisible;
+    }
+
+    public boolean isRightTitleVisible() {
+        return rightTitleVisible;
+    }
+
+    public void setRightTitleVisible(boolean rightTitleVisible) {
+        this.rightTitleVisible = rightTitleVisible;
+    }
+
+    public int getBackIconSrc() {
+        return backIconSrc;
+    }
+
+    public void setBackIconSrc(int backIconSrc) {
+        this.backIconSrc = backIconSrc;
     }
 
     public int getRightIconSrc() {
@@ -56,6 +92,14 @@ public class TitleToolBar {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getRightTitle() {
+        return rightTitle;
+    }
+
+    public void setRightTitle(String rightTitle) {
+        this.rightTitle = rightTitle;
     }
 
     public OnTitleIconClickCallBack getOnClickCallBack() {

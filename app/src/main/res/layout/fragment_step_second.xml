@@ -32,8 +32,9 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:id="@+id/iv_avatar"
+                        android:layout_width="@dimen/dp_90"
+                        android:layout_height="@dimen/dp_90"
                         android:background="@drawable/shape_solid_white_stroke_grey_radius_50"
                         android:src="@drawable/face_default" />
 
@@ -105,7 +106,7 @@
                     android:gravity="top"
                     android:hint=" 请填写您的执业经历/所获荣誉等..."
                     android:padding="@dimen/dp_10"
-                    android:text="@={ViewModel.personalProfile}" />
+                    android:text="@={ViewModel.personalProfile}"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -143,7 +144,7 @@
                     android:gravity="top"
                     android:hint=" 请填写您的专业领域/擅长疾病等..."
                     android:padding="@dimen/dp_10"
-                    android:text="@={ViewModel.field}" />
+                    android:text="@={ViewModel.field}"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -170,47 +171,60 @@
                         android:layout_height="wrap_content"
                         android:text='@{ViewModel.field.length()+"/500"}'
                         android:textColor="@color/colorTxtGrey"
-                        android:textSize="@dimen/text_size_17" />
+                        android:textSize="@dimen/text_size_17"
+                        android:visibility="gone"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_250"
+                    android:layout_height="@dimen/dp_150"
                     android:layout_marginTop="@dimen/dp_30"
                     android:gravity="center_vertical">
 
-                    <LinearLayout
-                        android:layout_width="0dp"
+                    <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/shape_solid_white_stroke_grey"
-                        android:gravity="center">
+                        android:background="@drawable/shape_solid_white_stroke_grey">
+
+                        <ImageView
+                            android:id="@+id/iv_card_back"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/national_emblem"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:drawableTop="@drawable/national_emblem"
-                            android:drawablePadding="@dimen/dp_30"
-                            android:gravity="center_horizontal"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
                             android:text="上传国徽面" />
-                    </LinearLayout>
+                    </RelativeLayout>
 
-                    <LinearLayout
-                        android:layout_width="0dp"
+                    <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/dp_40"
                         android:layout_weight="1"
-                        android:background="@drawable/shape_solid_white_stroke_grey"
-                        android:gravity="center">
+                        android:background="@drawable/shape_solid_white_stroke_grey">
+
+                        <ImageView
+                            android:id="@+id/iv_card_front"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/portrait"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:drawableTop="@drawable/portrait"
-                            android:drawablePadding="@dimen/dp_30"
-                            android:gravity="center_horizontal"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
                             android:text="上传人像面" />
-                    </LinearLayout>
+                    </RelativeLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -235,6 +249,33 @@
                         android:textSize="@dimen/text_size_14" />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="@dimen/dp_30"
+                    android:gravity="center_vertical">
+
+                    <View
+                        android:layout_width="@dimen/dp_10"
+                        android:layout_height="24dp"
+                        android:background="@color/colorTxtBlue" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:layout_weight="1"
+                        android:text="资质认证 (最多五张)"
+                        android:textColor="@color/colorTxtBlack"
+                        android:textSize="@dimen/text_size_17" />
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/grid_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
@@ -255,7 +296,6 @@
             <Button
                 android:id="@+id/btn_commit"
                 style="@style/ActivityQualificationButtonStyle.Operation"
-                android:onClick="onClick"
                 android:text="提交验证" />
 
         </LinearLayout>

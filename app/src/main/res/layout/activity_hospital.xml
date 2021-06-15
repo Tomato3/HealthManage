@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.qualification.DepartMentViewModel" />
+    </data>
+
+    <LinearLayout style="@style/CommonMatchLinearLayoutStyle">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            style="@style/ActivityRegisterOrForgetImageViewStyle.Back" />
+
+        <TextView
+            style="@style/ActivityRegisterOrForgetTextStyle.Title"
+            android:text="@{ViewModel.hospitalTitle}" />
+
+        <EditText
+            android:id="@+id/edt_search_hospital"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_35"
+            android:hint="@string/activity_search_department"
+            android:background="@drawable/bg_department_search"
+            android:layout_marginStart="@dimen/dp_20"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_10"
+            android:gravity="center_vertical"
+            android:drawableStart="@drawable/search"
+            android:singleLine="true"
+            android:imeOptions="actionSearch"
+            android:drawablePadding="@dimen/dp_7"
+            android:paddingStart="@dimen/dp_15"/>
+
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_hospital"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20"/>
+
+    </LinearLayout>
+</layout>

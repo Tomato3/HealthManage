@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.healthrecord.HealthRecordViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_65"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="是否吸烟"
+                    android:textSize="@dimen/sp_18"
+                    android:layout_marginLeft="@dimen/dp_20"/>
+
+                <TextView
+                    android:id="@+id/tv_smooking"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:text="未填写"
+                    android:textColor="@color/colorTxtBlack"
+                    android:textSize="@dimen/sp_18"
+                    android:gravity="right"
+                    android:singleLine="false"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:background="@color/colorLineGrey"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_65"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="是否饮酒"
+                    android:textSize="@dimen/sp_18"
+                    android:layout_marginLeft="@dimen/dp_20"/>
+
+                <TextView
+                    android:id="@+id/tv_drink"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:text="未填写"
+                    android:textColor="@color/colorTxtBlack"
+                    android:textSize="@dimen/sp_18"
+                    android:gravity="right"
+                    android:singleLine="false"/>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:background="@color/colorLineGrey"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_65"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="饮食偏好"
+                    android:textSize="@dimen/sp_18"
+                    android:layout_marginLeft="@dimen/dp_20"/>
+
+                <TextView
+                    android:id="@+id/tv_diet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="未填写"
+                    android:textSize="@dimen/sp_18"
+                    android:textColor="@color/colorTxtBlack"
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:gravity="right"
+                    android:singleLine="false"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:background="@color/colorLineGrey"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_65"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="运动习惯"
+                    android:textSize="@dimen/sp_18"
+                    android:layout_marginLeft="@dimen/dp_20"/>
+
+                <TextView
+                    android:id="@+id/tv_sport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="未填写"
+                    android:textSize="@dimen/sp_18"
+                    android:textColor="@color/colorTxtBlack"
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:gravity="right"
+                    android:singleLine="false"/>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:background="@color/colorLineGrey"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_65"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="睡眠时长"
+                    android:textSize="@dimen/sp_18"
+                    android:layout_marginLeft="@dimen/dp_20"/>
+
+                <TextView
+                    android:id="@+id/tv_sleep_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="未填写"
+                    android:textSize="@dimen/sp_18"
+                    android:textColor="@color/colorTxtBlack"
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:singleLine="false"
+                    android:gravity="right"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:background="@color/colorLineGrey"/>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

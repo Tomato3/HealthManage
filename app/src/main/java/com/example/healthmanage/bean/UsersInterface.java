@@ -2,12 +2,12 @@ package com.example.healthmanage.bean;
 
 import com.example.healthmanage.bean.network.response.AbnormalDataResponse;
 import com.example.healthmanage.bean.network.response.AirResponse;
+import com.example.healthmanage.bean.network.response.BaseResponse;
 import com.example.healthmanage.bean.network.response.ConsultationRecordResponse;
 import com.example.healthmanage.bean.network.response.ConsultationResponse;
 import com.example.healthmanage.bean.network.response.DoctorDetailResponse;
 import com.example.healthmanage.bean.network.response.DoctorListResponse;
 import com.example.healthmanage.bean.network.response.GeneralResponse;
-import com.example.healthmanage.bean.network.response.HealthDataResponse;
 import com.example.healthmanage.bean.network.response.HistoryDataResponse;
 import com.example.healthmanage.bean.network.response.LoginResponse;
 import com.example.healthmanage.bean.network.response.MemberInfoResponse;
@@ -15,12 +15,67 @@ import com.example.healthmanage.bean.network.response.MyDoctorResponse;
 import com.example.healthmanage.bean.network.response.MyMemberResponse;
 import com.example.healthmanage.bean.network.response.NursingResponse;
 import com.example.healthmanage.bean.network.response.SmsCodeResponse;
-import com.example.healthmanage.bean.network.response.SearchMemberResponse;
 import com.example.healthmanage.bean.network.response.ServicePlanResponse;
 import com.example.healthmanage.bean.network.response.TaskDetailResponse;
 import com.example.healthmanage.bean.network.response.TaskResponse;
 import com.example.healthmanage.bean.network.response.WeatherResponse;
 import com.example.healthmanage.data.network.exception.ExceptionHandle;
+import com.example.healthmanage.ui.activity.academicJournals.response.AddOrEditSucceedResponse;
+import com.example.healthmanage.ui.activity.academicJournals.response.PeriodicalInfoResponse;
+import com.example.healthmanage.ui.activity.academicJournals.response.PeriodicalListResponse;
+import com.example.healthmanage.ui.activity.consultation.response.AddConsultationPlanResponse;
+import com.example.healthmanage.ui.activity.consultation.response.AddPatientInfoResponse;
+import com.example.healthmanage.ui.activity.consultation.response.ConsultationListResponse;
+import com.example.healthmanage.ui.activity.consultation.response.DoctorTeamListResponse;
+import com.example.healthmanage.ui.activity.consultation.response.DoctordepartMentResponse;
+import com.example.healthmanage.ui.activity.delegate.response.CreateDelegateResponse;
+import com.example.healthmanage.ui.activity.delegate.response.DelegateListResponse;
+import com.example.healthmanage.ui.activity.healthrecord.response.CheckReportResponse;
+import com.example.healthmanage.ui.activity.healthrecord.response.HealthRecordResponse;
+import com.example.healthmanage.ui.activity.healthrecord.response.HistoryAssessListResponse;
+import com.example.healthmanage.ui.activity.healthrecord.response.MedicineBookResponse;
+import com.example.healthmanage.ui.activity.healthreport.response.HealthReportConfirmResponse;
+import com.example.healthmanage.ui.activity.healthreport.response.HealthReportDetailResponse;
+import com.example.healthmanage.ui.activity.healthreport.response.HealthReportResponse;
+import com.example.healthmanage.ui.activity.memberdetail.response.CreateTaskResponse;
+import com.example.healthmanage.ui.activity.memberdetail.response.HealthDataResponse;
+import com.example.healthmanage.ui.activity.memberdetail.response.SpiritHealthResponse;
+import com.example.healthmanage.ui.activity.mytask.response.HealthTaskDetailResponse;
+import com.example.healthmanage.ui.activity.mytask.response.TransferResponse;
+import com.example.healthmanage.ui.activity.mytask.response.UpdateTaskResponse;
+import com.example.healthmanage.ui.activity.notice.response.NoticeResponse;
+import com.example.healthmanage.ui.activity.notice.response.TeamApplyResponse;
+import com.example.healthmanage.ui.activity.personalRequest.response.AddRequestResponse;
+import com.example.healthmanage.ui.activity.personalRequest.response.CancelResponse;
+import com.example.healthmanage.ui.activity.personalRequest.response.ReplyResponse;
+import com.example.healthmanage.ui.activity.personalRequest.response.RequestResponse;
+import com.example.healthmanage.ui.activity.qualification.response.CertificateResponse;
+import com.example.healthmanage.ui.activity.qualification.response.DepartmentResponse;
+import com.example.healthmanage.ui.activity.qualification.response.DoctorInfoResponse;
+import com.example.healthmanage.ui.activity.qualification.response.HospitalResponse;
+import com.example.healthmanage.ui.activity.qualification.response.UploadResponse;
+import com.example.healthmanage.ui.activity.referral.response.InsertReferralResponse;
+import com.example.healthmanage.ui.activity.referral.response.ReferralResponse;
+import com.example.healthmanage.ui.activity.signmember.response.SignMemberResponse;
+import com.example.healthmanage.ui.activity.signmember.response.SignMemberSuccessResponse;
+import com.example.healthmanage.ui.activity.team.response.BusinessDealListResponse;
+import com.example.healthmanage.ui.activity.team.response.BusinessDetailResponse;
+import com.example.healthmanage.ui.activity.team.response.DoctorTeamResponse;
+import com.example.healthmanage.ui.activity.team.response.EditResponse;
+import com.example.healthmanage.ui.activity.team.response.QuitTeamResponse;
+import com.example.healthmanage.ui.activity.team.response.SearchTeamResponse;
+import com.example.healthmanage.ui.activity.team.response.SendResponse;
+import com.example.healthmanage.ui.activity.team.response.SignTeamResponse;
+import com.example.healthmanage.ui.activity.team.response.TeamMemberResponse;
+import com.example.healthmanage.ui.activity.temperature.response.HealthTaskResponse;
+import com.example.healthmanage.ui.activity.temperature.response.InsertResponse;
+import com.example.healthmanage.ui.activity.temperature.response.PrescriptionResponse;
+import com.example.healthmanage.ui.activity.temperature.response.RefusalResponse;
+import com.example.healthmanage.ui.activity.temperature.response.TemperatureResponse;
+import com.example.healthmanage.ui.activity.temperature.response.UpdateResponse;
+import com.example.healthmanage.ui.activity.workplan.response.InsertPlanResponse;
+import com.example.healthmanage.ui.activity.workplan.response.UpdateWorkResponse;
+import com.example.healthmanage.ui.activity.workplan.response.WorkPlanListResponse;
 
 public interface UsersInterface {
 
@@ -57,7 +112,7 @@ public interface UsersInterface {
     }
 
     interface SearchMembersCallback {
-        void searchSucceed(SearchMemberResponse searchMemberResponse);
+        void searchSucceed(BaseResponse<MyMemberResponse.DataBean> searchMemberResponse);
 
         void searchFailed(String msg);
 
@@ -120,12 +175,30 @@ public interface UsersInterface {
         void error(ExceptionHandle.ResponseException e);
     }
 
+    interface CreateHealthTaskCallback{
+        void createSucceed(CreateTaskResponse createTaskResponse);
+        void createFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
 
     interface LoadMyTaskCallback {
         void loadSucceed(TaskResponse taskResponse);
 
         void loadFailed(String msg);
 
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetHealthTaskListCallback{
+        void getSucceed(HealthTaskResponse healthTaskResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetTransferHealthTaskListCallback{
+        void getSucceed(HealthTaskResponse healthTaskResponse);
+        void getFailed(String msg);
         void error(ExceptionHandle.ResponseException e);
     }
 
@@ -225,6 +298,14 @@ public interface UsersInterface {
         void error(ExceptionHandle.ResponseException e);
     }
 
+    interface GetSpiritListCallback {
+        void getSucceed(SpiritHealthResponse spiritHealthResponse);
+
+        void getFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
     interface GetInviteCodeCallback {
         void getSucceed(GeneralResponse generalResponse);
 
@@ -286,6 +367,426 @@ public interface UsersInterface {
 
         void getFailed(String msg);
 
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetJobDataCallback {
+        void sendSucceed(ProfessionBeanResponse professionBeanResponse);
+
+        void sendFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetDepartmentDataCallback {
+        void sendSucceed(DepartmentResponse departmentResponse);
+
+        void sendFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetDepartmentByNameCallback{
+        void sendSucceed(DepartmentResponse departmentResponse);
+
+        void sendFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetHospitalByNameCallback{
+        void sendSucceed(HospitalResponse hospitalResponse);
+
+        void sendFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface UpLoadIdCardCallback{
+        void sendSucceed(UploadResponse uploadResponse);
+
+        void sendFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface UpCertificateCallback{
+        void sendSucceed(CertificateResponse certificateResponse);
+
+        void sendFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface SaveDoctorInfoCallback{
+        void sendSucceed(UploadResponse uploadResponse);
+
+        void sendFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetDoctorInfoCallback{
+        void sendSucceed(DoctorInfoResponse doctorInfoResponse);
+
+        void sendFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface UpdateDoctorInfoCallback{
+        void sendSucceed(UploadResponse uploadResponse);
+
+        void sendFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetUserInfoCallback{
+        void sendSucceed(HealthRecordResponse healthRecordResponse);
+
+        void sendFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetCheckReportListCallback{
+        void sendSucceed(CheckReportResponse checkReportResponse);
+
+        void sendFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetHistoryAssessListCallback{
+        void sendSucceed(HistoryAssessListResponse historyAssessListResponse);
+
+        void sendFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetMedicalRecordAllCallback{
+        void sendSucceed(MedicineBookResponse medicineBookResponse);
+
+        void sendFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetHealthReportAllCallback{
+        void sendSucceed(HealthReportResponse healthReportResponse);
+
+        void sendFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface SaveHealthReportCallback{
+        void sendSucceed(HealthReportConfirmResponse healthReportConfirmResponse);
+
+        void sendFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetHealthReportCallback{
+        void sendSucceed(HealthReportDetailResponse healthReportDetailResponse);
+
+        void sendFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetWorkPlanByTimeCallback{
+        void sendSucceed(WorkPlanListResponse workPlanListResponse);
+
+        void sendFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface UpdateWorkPlanByIdCallback{
+        void updateSucceed(UpdateWorkResponse updateWorkResponse);
+
+        void updateFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface InsertWorkPlanCallback{
+        void insertSucceed(InsertPlanResponse insertPlanResponse);
+
+        void insertFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetSignMemberCallback{
+        void sendSucceed(SignMemberResponse signMemberResponse);
+
+        void sendFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetNotSignMemberCallback{
+        void sendSucceed(SignMemberResponse signMemberResponse);
+
+        void sendFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface AddSignMemberCallback{
+        void sendSucceed(SignMemberSuccessResponse signMemberSuccessResponse);
+
+        void sendFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface UpdateTaskCallback{
+        void updateSucceed(UpdateTaskResponse updateTaskResponse);
+
+        void updateFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetExceptionDataCallback{
+        void getSucceed(HealthTaskDetailResponse healthTaskDetailResponse);
+
+        void getFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface SendTransferTaskCallback{
+        void transferSucceed(TransferResponse transferResponse);
+
+        void transferFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetHospitalDepartmentListCallback{
+        void getSucceed(DoctorTeamListResponse doctorTeamListResponse);
+
+        void getFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface InsertPatientExamineCallback{
+        void insertSucceed(AddPatientInfoResponse addPatientInfoResponse);
+
+        void insertFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetPatientExamineCallback{
+        void getSucceed(ConsultationListResponse consultationListResponse);
+
+        void getFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface UpdatePatientExamineCallback{
+        void updateSucceed(AddConsultationPlanResponse addConsultationPlanResponse);
+
+        void updateFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface InsertPatientReferralCallback{
+        void insertSucceed(InsertReferralResponse insertReferralResponse);
+
+        void insertFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetPatientReferralCallback{
+        void getSucceed(ReferralResponse referralResponse);
+
+        void getFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetHealthConsultCallback{
+        void getSucceed(TemperatureResponse temperatureResponse);
+
+        void getFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface UpdateHealthConsultCallback{
+        void updateSucceed(UpdateResponse updateResponse);
+
+        void updateFailed(String msg);
+
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface InsertHealthConsultDrugModelCallback{
+        void insertSucceed(InsertResponse insertResponse);
+        void insertFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface InsertHealthConsultDrugCallback{
+        void insertSucceed(InsertResponse insertResponse);
+        void insertFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetHealthConsultDrugModelCallback{
+        void getSucceed(PrescriptionResponse prescriptionResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetHealthConsultDrugBackCallback{
+        void getSucceed(RefusalResponse refusalResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface TeamInvitationListCallback{
+        void getSucceed(SearchTeamResponse searchTeamResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetDoctorByPhoneCallback{
+        void getSucceed(SearchTeamResponse searchTeamResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface SendApplyCallback{
+        void sendSucceed(SendResponse sendResponse);
+        void sendFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetDoctorTeamApplyListCallback{
+        void getSucceed(NoticeResponse noticeResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface DoctorTeamApplyListCallback{
+        void getSucceed(TeamApplyResponse teamApplyResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface SignOrNotCallback{
+        void getSucceed(SignTeamResponse signTeamResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetDoctorTeamCallback{
+        void getSucceed(DoctorTeamResponse doctorTeamResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetDoctorTeamListCallback{
+        void getSucceed(TeamMemberResponse teamMemberResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface QuitTeamCallback{
+        void quitSucceed(QuitTeamResponse quitTeamResponse);
+        void quitFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetBusineServiceListCallback{
+        void getSucceed(BusinessDealListResponse businessDealListResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetBusineServiceInfoCallback{
+        void getSucceed(BusinessDetailResponse businessDetailResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface EditBusineServiceCallback{
+        void editSucceed(EditResponse editResponse);
+        void editFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetBusineServiceCallback{
+        void getSucceed(DelegateListResponse delegateListResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface AddBusineServiceCallback{
+        void addSucceed(CreateDelegateResponse createDelegateResponse);
+        void addFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetPersonalRequestListCallback{
+        void getSucceed(RequestResponse requestResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface AddPersonalRequestCallback{
+        void addSucceed(AddRequestResponse addRequestResponse);
+        void addFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetPersonalRequestCallback{
+        void getSucceed(ReplyResponse replyResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface CancelPersonalRequestCallback{
+        void cancelSucceed(CancelResponse cancelResponse);
+        void cancelFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetPeriodicalListCallback{
+        void getSucceed(PeriodicalListResponse periodicalListResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetPeriodicalCallback{
+        void getSucceed(PeriodicalInfoResponse periodicalInfoResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface AddPeriodicalCallback{
+        void addSucceed(AddOrEditSucceedResponse addOrEditSucceedResponse);
+        void addFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface EditPeriodicalCallback{
+        void editSucceed(AddOrEditSucceedResponse addOrEditSucceedResponse);
+        void editFailed(String msg);
         void error(ExceptionHandle.ResponseException e);
     }
 

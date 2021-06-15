@@ -18,12 +18,14 @@
         <ImageView
             android:id="@+id/iv_back"
             style="@style/ToolbarTitleViewStyle.Back"
+            android:ImageSrc="@{TitleToolBar.backIconSrc}"
             android:onClick="@{TitleToolBar::viewOnclick}"
             android:visibility="@{TitleToolBar.leftIconVisible?View.VISIBLE:View.GONE}" />
 
         <TextView
             android:id="@+id/tv_title"
             style="@style/ToolbarTitleViewStyle.Title"
+            android:textColor="@{TitleToolBar.titleColor}"
             android:text="@={TitleToolBar.title}" />
 
         <ImageView
@@ -32,6 +34,18 @@
             android:ImageSrc="@{TitleToolBar.rightIconSrc}"
             android:onClick="@{TitleToolBar::viewOnclick}"
             android:visibility="@{TitleToolBar.rightIconVisible?View.VISIBLE:View.GONE}" />
+
+        <TextView
+            android:id="@+id/tv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:textColor="@{TitleToolBar.rightTitleColor}"
+            android:text="@={TitleToolBar.rightTitle}"
+            android:visibility="@{TitleToolBar.rightTitleVisible?View.VISIBLE:View.GONE}"/>
 
     </RelativeLayout>
 

@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.referral.ReferralViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints">
+
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/layout_title"
+            android:layout_above="@id/btn_transfer_referral"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:background="#F2F2F7">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="@dimen/dp_10"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_10"
+                        android:text="患者简要病史:"
+                        android:textSize="@dimen/sp_15"/>
+
+                    <EditText
+                        android:id="@+id/edit_patient_describe"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/dp_100"
+                        android:gravity="top"
+                        android:background="@drawable/bg_shape_solid_task_radiu_5"
+                        android:padding="@dimen/dp_10"
+                        android:textColor="@color/colorTxtBlack"
+                        android:maxLength="300"
+                        android:textSize="@dimen/sp_16"
+                        android:text="@={ViewModel.patientHistory}"
+                        android:hint="在此输入患者疾病描述"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_10"
+                        android:text="患者病例照片:"
+                        android:textSize="@dimen/sp_15"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/grid_recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_10"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:padding="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_10">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_10"
+                        android:text="患者初步诊断:"
+                        android:textSize="@dimen/sp_15"/>
+
+                    <EditText
+                        android:id="@+id/edit_primary_diagnosis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/dp_100"
+                        android:gravity="top"
+                        android:background="@drawable/bg_shape_solid_task_radiu_5"
+                        android:padding="@dimen/dp_10"
+                        android:textColor="@color/colorTxtBlack"
+                        android:maxLength="300"
+                        android:textSize="@dimen/sp_16"
+                        android:text="@={ViewModel.primaryDiagnosis}"
+                        android:hint="在此输入初步诊断"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_10"
+                        android:text="转诊原因说明:"
+                        android:textSize="@dimen/sp_15"/>
+
+                    <EditText
+                        android:id="@+id/edit_referral_reason"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/dp_100"
+                        android:gravity="top"
+                        android:background="@drawable/bg_shape_solid_task_radiu_5"
+                        android:padding="@dimen/dp_10"
+                        android:textColor="@color/colorTxtBlack"
+                        android:maxLength="300"
+                        android:textSize="@dimen/sp_16"
+                        android:text="@={ViewModel.referralReason}"
+                        android:hint="在此输入会诊目的与要求"/>
+
+                </LinearLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/layout_choose_meet_person"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:padding="@dimen/dp_10">
+
+                    <TextView
+                        android:id="@+id/tv_transfer_hospital"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="申请转出医院:"
+                        android:textSize="@dimen/sp_15"
+                        android:layout_centerVertical="true"/>
+
+                    <EditText
+                        android:id="@+id/edit_transfer_hospital"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_toRightOf="@id/tv_transfer_hospital"
+                        android:hint="请输入转出医院"
+                        android:text="@={ViewModel.transferHospital}"
+                        android:background="@null"
+                        android:textColorHint="@color/colorTxtBlack"
+                        android:gravity="end"
+                        android:textColor="@color/colorTxtBlack"
+                        android:textSize="@dimen/sp_15"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="@dimen/dp_10">
+
+                    <TextView
+                        android:id="@+id/tv_into_hospital"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="申请转入医院:"
+                        android:textSize="@dimen/sp_15"
+                        android:layout_centerVertical="true"/>
+
+                    <EditText
+                        android:id="@+id/edit_into_hospital"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_toRightOf="@id/tv_into_hospital"
+                        android:hint="请输入转入医院"
+                        android:text="@={ViewModel.intoHospital}"
+                        android:background="@null"
+                        android:textColorHint="@color/colorTxtBlack"
+                        android:gravity="end"
+                        android:textColor="@color/colorTxtBlack"
+                        android:textSize="@dimen/sp_15"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="@dimen/dp_10">
+
+                    <TextView
+                        android:id="@+id/tv_must"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="*"
+                        android:textColor="@color/colorTxtRed"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tv_choose_referral"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/tv_must"
+                        android:text="选择转诊:"
+                        android:textSize="@dimen/sp_15"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tv_choose_referral_object"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:hint="请选择"
+                        android:textColorHint="@color/colorTxtBlack"
+                        android:gravity="end"
+                        android:textColor="@color/colorTxtBlack"
+                        android:drawableRight="@drawable/more_icon"
+                        android:layout_toRightOf="@id/tv_choose_referral"
+                        android:drawablePadding="@dimen/dp_10"
+                        android:textSize="@dimen/sp_15"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="@dimen/dp_10">
+
+                    <TextView
+                        android:id="@+id/tv_must_patient"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="*"
+                        android:textColor="@color/colorTxtRed"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tv_patient"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="转诊患者:"
+                        android:textSize="@dimen/sp_15"
+                        android:layout_toRightOf="@id/tv_must_patient"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tv_patient_referral"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:hint="请选择"
+                        android:textColorHint="@color/colorTxtBlack"
+                        android:gravity="end"
+                        android:textColor="@color/colorTxtBlack"
+                        android:drawableRight="@drawable/more_icon"
+                        android:layout_toRightOf="@id/tv_patient"
+                        android:drawablePadding="@dimen/dp_10"
+                        android:textSize="@dimen/sp_15"/>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <Button
+            android:id="@+id/btn_transfer_referral"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_60"
+            android:text="确认转诊"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_18"
+            android:background="@color/colorBlue"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingConstraints"
+    android:padding="@dimen/dp_20">
+
+
+    <TextView
+        android:id="@+id/tv_reply_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="回复时间:"
+        android:textSize="@dimen/sp_16"
+        android:layout_marginTop="@dimen/dp_20"/>
+
+    <TextView
+        android:id="@+id/tv_reply_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_reply_time"
+        android:text="患者已成功接受您的健康异常提示及建议"
+        android:textColor="@color/colorTxtBlack"
+        android:textSize="@dimen/sp_16"
+        android:layout_marginTop="@dimen/dp_20"/>
+
+    <Button
+        android:id="@+id/btn_success_reply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_reply_content"
+        android:text="好的"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_18"
+        android:layout_marginTop="@dimen/dp_30"
+        android:background="@drawable/shape_solid_blue_radius_5"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

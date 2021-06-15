@@ -7,10 +7,13 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.base.BaseViewModel;
+import com.example.healthmanage.bean.network.response.BaseResponse;
 import com.example.healthmanage.bean.network.response.LoginResponse;
+import com.example.healthmanage.bean.network.response.MyMemberResponse;
 import com.example.healthmanage.bean.network.response.SearchMemberResponse;
 import com.example.healthmanage.bean.UsersInterface;
 import com.example.healthmanage.bean.UsersRemoteSource;
+import com.example.healthmanage.bean.network.response.VipUserBean;
 import com.example.healthmanage.data.network.exception.ExceptionHandle;
 import com.jeremyliao.liveeventbus.LiveEventBus;
 
@@ -22,8 +25,9 @@ public class InviteMemberViewModel extends BaseViewModel {
     public MutableLiveData<LoginResponse.DataBean.UserInfoBean> userInfoBean =
             new MutableLiveData<>();
     public MutableLiveData<SearchMemberResponse.DataBean> searchMemberResponse = new MutableLiveData<>();
+    public MutableLiveData<Boolean> inviteSuccess = new MutableLiveData<>();
     private UsersRemoteSource usersRemoteSource;
-    private int a;
+    private int userId;
 
     public InviteMemberViewModel() {
         usersRemoteSource = new UsersRemoteSource();
@@ -40,14 +44,14 @@ public class InviteMemberViewModel extends BaseViewModel {
             usersRemoteSource.searchMembers(phone,
                     new UsersInterface.SearchMembersCallback() {
                         @Override
-                        public void searchSucceed(SearchMemberResponse searchMemberResponse) {
+                        public void searchSucceed(BaseResponse<MyMemberResponse.DataBean> searchMemberResponse) {
                             if (searchMemberResponse.getData() == null) {
                                 getUiChangeEvent().getToastTxt().setValue(searchMemberResponse.getMessage());
                             } else {
                                 getUiChangeEvent().getToastTxt().setValue(searchMemberResponse.getMessage());
                                 LiveEventBus.get("CloseKeyboard").post(true);
                                 inviteBtnVisible.setValue(true);
-                                a = searchMemberResponse.getData().getId();
+                                userId = searchMemberResponse.getData().getId();
                                 name.setValue(searchMemberResponse.getData().getNickName());
                                 switch (searchMemberResponse.getData().getRank()) {
                                     case 0:
@@ -86,17 +90,19 @@ public class InviteMemberViewModel extends BaseViewModel {
      * 邀请会员
      */
     public void inviteMember() {
-        usersRemoteSource.inviteMembers(String.valueOf(BaseApplication.getUserInfoBean().getSysId()),
-                String.valueOf(a),
+        usersRemoteSource.inviteMembers(String.valueOf(BaseApplication.getUserInfoBean().getAppDoctorInfo().getSystemUserId()),
+                String.valueOf(userId),
                 new UsersInterface.InvitingMembersCallback() {
                     @Override
                     public void inviteSucceed(String msg) {
+                        inviteSuccess.postValue(true);
                         getUiChangeEvent().getToastTxt().setValue(msg);
                         LiveEventBus.get("Refresh").post(true);
                     }
 
                     @Override
                     public void inviteFailed(String msg) {
+                        inviteSuccess.postValue(false);
                         getUiChangeEvent().getToastTxt().setValue(msg);
                     }
 

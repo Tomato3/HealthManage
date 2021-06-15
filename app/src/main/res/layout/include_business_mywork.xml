@@ -44,12 +44,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableTop="@drawable/huanzhezhuanzhen"
-                android:text="患者转诊"
+                android:drawableTop="@drawable/wodejiangtang"
+                android:text="我的讲堂"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/textView7"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -61,8 +62,8 @@
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableTop="@drawable/huanzhehuizhen"
-                android:text="患者会诊"
+                android:drawableTop="@drawable/fabushangpin"
+                android:text="发布商品"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintEnd_toStartOf="@+id/textView9"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -73,8 +74,8 @@
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableTop="@drawable/yewuweipai"
-                android:text="委派业务"
+                android:drawableTop="@drawable/xueshuqikan"
+                android:text="学术期刊"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintEnd_toStartOf="@+id/textView10"
                 app:layout_constraintHorizontal_bias="0.5"

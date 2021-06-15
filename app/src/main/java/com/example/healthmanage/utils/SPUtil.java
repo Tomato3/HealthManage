@@ -3,10 +3,23 @@ package com.example.healthmanage.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+
 /**
  * SharePreference 工具类
  */
 public final class SPUtil {
+
+    public static void saveSignName(String url,Context context){
+        SharedPreferences share = context.getSharedPreferences("signName", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = share.edit();
+        editor.putString("signUrl", url);
+        editor.apply();
+    }
+    public static String getSignName(Context context) {
+        SharedPreferences sp = context.getSharedPreferences("signName", Context.MODE_PRIVATE);
+        return sp.getString("signUrl", "");
+    }
+
 
     /**
      * 保存号码
@@ -102,6 +115,30 @@ public final class SPUtil {
     public static String getRoleId(Context context) {
         SharedPreferences sp = context.getSharedPreferences("LoginInfos", Context.MODE_PRIVATE);
         return sp.getString("RoleId", "");
+    }
+
+    /**
+     * 保存角色Id
+     *
+     * @param id
+     * @param context
+     */
+    public static void saveId(String id, Context context) {
+        SharedPreferences share = context.getSharedPreferences("LoginInfos", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = share.edit();
+        editor.putString("id", id);
+        editor.apply();
+    }
+
+    /**
+     * 获取角色Id
+     *
+     * @param context
+     * @return
+     */
+    public static String getId(Context context) {
+        SharedPreferences sp = context.getSharedPreferences("LoginInfos", Context.MODE_PRIVATE);
+        return sp.getString("id", "");
     }
 
 }

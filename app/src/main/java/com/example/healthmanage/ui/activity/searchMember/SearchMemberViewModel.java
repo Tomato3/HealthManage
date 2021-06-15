@@ -33,7 +33,7 @@ public class SearchMemberViewModel extends BaseViewModel {
     public void search(String searchTxt) {
         if (!TextUtils.isEmpty(searchTxt)) {
             usersRemoteSource.searchMemberByName(searchTxt,
-                    String.valueOf(BaseApplication.getUserInfoBean().getSysId()), new UsersInterface.LoadMyMembersCallback() {
+                    String.valueOf(BaseApplication.getUserInfoBean().getAppDoctorInfo().getSystemUserId()), new UsersInterface.LoadMyMembersCallback() {
                         @Override
                         public void loadSucceed(MyMemberResponse myMemberResponse) {
                             myMemberRecyclerViewList = new ArrayList<>();

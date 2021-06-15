@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.academicJournals.ui.AcademicJournalsViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:layout_below="@id/layout_title">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dp_10">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="投稿期刊："
+                        android:textSize="@dimen/sp_15"
+                        android:padding="@dimen/dp_10"
+                        android:layout_centerVertical="true"
+                        android:textColor="#616161"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:text="《保健医苑》"
+                        android:textSize="@dimen/sp_15"
+                        android:textColor="@color/black"
+                        android:drawableEnd="@drawable/more_icon"/>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:background="@color/colorLineGrey"
+                    android:layout_marginStart="@dimen/dp_20"
+                    android:layout_marginEnd="@dimen/dp_20"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dp_10">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="投稿栏目："
+                        android:textSize="@dimen/sp_15"
+                        android:padding="@dimen/dp_10"
+                        android:layout_centerVertical="true"
+                        android:textColor="#616161"/>
+
+                    <TextView
+                        android:id="@+id/tv_choose_column"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:drawablePadding="@dimen/dp_10"
+                        android:text="@={ViewModel.contributionColumn}"
+                        android:background="@null"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textSize="@dimen/sp_15" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:background="@color/colorLineGrey"
+                    android:layout_marginStart="@dimen/dp_20"
+                    android:layout_marginEnd="@dimen/dp_20"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="个人简介："
+                    android:textSize="@dimen/sp_15"
+                    android:padding="@dimen/dp_10"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_centerVertical="true"
+                    android:textColor="#616161"
+                    android:layout_marginTop="@dimen/dp_10"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/dp_100"
+                    android:padding="@dimen/dp_10"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:background="@drawable/bg_shape_solid_task_radiu_5"
+                    android:text="@={ViewModel.personalInfo}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_15"
+                    android:gravity="top"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="标题："
+                    android:textSize="@dimen/sp_15"
+                    android:padding="@dimen/dp_10"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_centerVertical="true"
+                    android:textColor="#616161"
+                    android:layout_marginTop="@dimen/dp_10"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dp_10"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:background="@drawable/bg_shape_solid_task_radiu_5"
+                    android:text="@={ViewModel.journalsTitle}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_15"
+                    android:gravity="top"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="正文内容："
+                    android:textSize="@dimen/sp_15"
+                    android:padding="@dimen/dp_10"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_centerVertical="true"
+                    android:textColor="#616161"
+                    android:layout_marginTop="@dimen/dp_10"/>
+
+                <WebView
+                    android:id="@+id/webview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:background="@drawable/bg_shape_solid_task_radiu_5"/>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </RelativeLayout>
+</layout>

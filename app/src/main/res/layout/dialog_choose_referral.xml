@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RadioGroup
+        android:id="@+id/rg_choose_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:padding="@dimen/dp_10"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radiobutton_health_department"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableRight="@drawable/btn_radio"
+            android:padding="@dimen/dp_10"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/colorTxtBlack"
+            android:text="保健医院-健康医疗部"/>
+
+        <RadioButton
+            android:id="@+id/radiobutton_health_management"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableRight="@drawable/btn_radio"
+            android:padding="@dimen/dp_10"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/colorTxtBlack"
+            android:text="保健医院-健康管理部"/>
+
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

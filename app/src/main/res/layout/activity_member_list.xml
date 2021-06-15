@@ -12,17 +12,21 @@
     <RelativeLayout style="@style/CommonMatchLinearLayoutStyle">
 
         <include
+            android:id="@+id/layout_title"
             layout="@layout/toolbar_title"
             app:TitleToolBar="@{ViewModel.titleToolBar}" />
 
         <TextView
+            android:id="@+id/tv_search_member"
             style="@style/ActivityMemberListTxtStyle.Input"
             android:onClick="@{()->ViewModel.searchMember()}"
-            android:text="@={ViewModel.searchPhone}" />
+            android:text="@={ViewModel.searchPhone}"
+            android:layout_below="@id/layout_title"/>
 
         <RadioGroup
             android:id="@+id/rg"
-            style="@style/ActivityMemberListRadioGroupStyle">
+            style="@style/ActivityMemberListRadioGroupStyle"
+            android:layout_below="@id/tv_search_member">
 
             <RadioButton
                 android:id="@+id/rb_ordinary_member"

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.login.LoginViewModel" />
+    </data>
+
+    <RelativeLayout style="@style/CommonMatchLinearLayoutStyle">
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_centerHorizontal="true"
+            style="@style/ActivityLoginImageViewStyle.Logo" />
+
+        <RadioGroup
+            android:id="@+id/rg_login"
+            style="@style/ActivityLoginRadioGroupStyle"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/iv_logo">
+
+            <RadioButton
+                android:id="@+id/rb_code"
+                style="@style/ActivityLoginRadioButtonStyle.Code" />
+
+            <RadioButton
+                android:id="@+id/rb_password"
+                style="@style/ActivityLoginRadioButtonStyle.Password" />
+        </RadioGroup>
+
+        <RelativeLayout
+            android:id="@+id/layout_check_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_40"
+            android:layout_below="@id/rg_login"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linear_layout_code"
+                style="@style/CommonWrapLinearLayoutStyle"
+                android:visibility="visible">
+
+                <LinearLayout style="@style/ActivityLoginInputLayoutStyle">
+
+                    <TextView style="@style/ActivityLoginTextStyle.AreaCode" />
+                    <EditText
+                        style="@style/ActivityLoginEditTextStyle.Phone"
+                        android:text="@={ViewModel.phone}" />
+
+                    <Button
+                        android:id="@+id/btn_get_code"
+                        style="@style/ActivityLoginButtonStyle.GetCode"
+                        android:onClick="@{()->ViewModel.getSmsCode()}"/>
+
+                </LinearLayout>
+
+                <View style="@style/ActivityLoginViewStyle" />
+
+                <EditText
+                    style="@style/ActivityLoginEditTextStyle.Code"
+                    android:text="@={ViewModel.code}" />
+
+                <View style="@style/ActivityLoginViewStyle" />
+
+                <LinearLayout style="@style/ActivityLoginInputLayoutStyle.Tip">
+
+                    <ImageView
+                        android:id="@+id/iv_tips"
+                        style="@style/ActivityLoginImageViewStyle.Tip"
+                        android:ImageSrc="@{ViewModel.tipImg}" />
+
+                    <TextView
+                        android:id="@+id/tv_tips"
+                        style="@style/ActivityLoginTextStyle"
+                        android:text="@{ViewModel.tip}"
+                        android:textColor="@{ViewModel.tipColor ? @color/colorTxtBlack : @color/colorTxtRed}" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_layout_password"
+                style="@style/CommonWrapLinearLayoutStyle"
+                android:visibility="gone">
+
+                <EditText
+                    style="@style/ActivityLoginEditTextStyle.Phone1"
+                    android:text="@={ViewModel.phone}" />
+
+                <View style="@style/ActivityLoginViewStyle" />
+
+                <LinearLayout style="@style/ActivityLoginInputLayoutStyle">
+
+                    <EditText
+                        android:id="@+id/et_password"
+                        style="@style/ActivityLoginEditTextStyle.Password"
+                        android:text="@={ViewModel.password}" />
+
+                    <CheckBox
+                        android:id="@+id/cb_eye"
+                        style="@style/ActivityLoginCheckBoxStyle.Eye" />
+                </LinearLayout>
+
+
+                <View style="@style/ActivityLoginViewStyle" />
+
+                <LinearLayout style="@style/ActivityLoginInputLayoutStyle.Tip">
+
+                    <CheckBox
+                        android:id="@+id/cb_remember"
+                        style="@style/ActivityLoginCheckBoxStyle" />
+
+                    <TextView
+                        android:id="@+id/tv_forget_pwd"
+                        style="@style/ActivityLoginTextStyle.Forget"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_login"
+            style="@style/ActivityLoginButtonStyle.Login"
+            android:layout_below="@id/layout_check_login"
+            android:layout_centerHorizontal="true"/>
+
+        <LinearLayout
+            android:id="@+id/linear_layout_register"
+            style="@style/ActivityLoginInputLayoutStyle.Register"
+            android:layout_below="@id/btn_login"
+            android:layout_centerHorizontal="true">
+
+            <TextView style="@style/ActivityLoginTextStyle.RegisterTip" />
+
+            <TextView
+                style="@style/ActivityLoginTextStyle.Register"
+                android:onClick="@{()->ViewModel.jumpToRegisterOrForgetActivity()}" />
+        </LinearLayout>
+
+        <RelativeLayout style="@style/ActivityLoginInputLayoutStyle.Other"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@id/iv_wechat">
+
+            <View style="@style/ActivityLoginViewStyle.Tip" />
+
+            <TextView style="@style/ActivityLoginTextStyle.Tip" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_wechat"
+            style="@style/ActivityLoginImageViewStyle.WeChat"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dp_26"
+            android:onClick="onClick" />
+    </RelativeLayout>
+</layout>

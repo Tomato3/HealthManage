@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.healthrecord.HealthRecordViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_65">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="身高"
+                    android:textSize="@dimen/sp_18"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_20"/>
+
+                <TextView
+                    android:id="@+id/tv_height"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:layout_centerVertical="true"
+                    android:text="未填写"
+                    android:textColor="@color/colorTxtBlack"
+                    android:textSize="@dimen/sp_20" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:background="@color/colorLineGrey"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_65">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="体重"
+                    android:textSize="@dimen/sp_18"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_20"/>
+
+                <TextView
+                    android:id="@+id/tv_weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:text="未填写"
+                    android:textColor="@color/colorTxtBlack"
+                    android:textSize="@dimen/sp_20" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:background="@color/colorLineGrey"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_65">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="胸围"
+                    android:textSize="@dimen/sp_18"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_20"/>
+
+                <TextView
+                    android:id="@+id/tv_bust"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="未填写"
+                    android:textSize="@dimen/sp_20"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/colorTxtBlack"
+                    android:layout_marginRight="@dimen/dp_20"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:background="@color/colorLineGrey"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_65">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="腰围"
+                    android:textSize="@dimen/sp_18"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_20"/>
+
+                <TextView
+                    android:id="@+id/tv_waistline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="未填写"
+                    android:textSize="@dimen/sp_20"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/colorTxtBlack"
+                    android:layout_marginRight="@dimen/dp_20"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:background="@color/colorLineGrey"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_65">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="臀围"
+                    android:textSize="@dimen/sp_18"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_20"/>
+
+                <TextView
+                    android:id="@+id/tv_hipLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="未填写"
+                    android:textSize="@dimen/sp_20"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/colorTxtBlack"
+                    android:layout_marginRight="@dimen/dp_20"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:background="@color/colorLineGrey"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_65">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="收缩压/高压"
+                    android:textSize="@dimen/sp_18"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_20"/>
+
+                <TextView
+                    android:id="@+id/tv_highPressure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="未填写"
+                    android:textSize="@dimen/sp_20"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/colorTxtBlack"
+                    android:layout_marginRight="@dimen/dp_20"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:background="@color/colorLineGrey"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_65">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="舒张压/低压"
+                    android:textSize="@dimen/sp_18"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_20"/>
+
+                <TextView
+                    android:id="@+id/tv_lowPressure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="未填写"
+                    android:textSize="@dimen/sp_20"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/colorTxtBlack"
+                    android:layout_marginRight="@dimen/dp_20"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:background="@color/colorLineGrey"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_65">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="血糖值"
+                    android:textSize="@dimen/sp_18"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_20"/>
+
+                <TextView
+                    android:id="@+id/tv_bloodSugar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="未填写"
+                    android:textSize="@dimen/sp_20"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/colorTxtBlack"
+                    android:layout_marginRight="@dimen/dp_20"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:background="@color/colorLineGrey"
+                    android:layout_alignParentBottom="true"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

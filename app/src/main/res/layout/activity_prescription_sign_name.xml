@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.workplan.ui.WorkPlanViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+
+        <LinearLayout
+            android:id="@+id/layout_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/layout_title"
+            android:layout_above="@id/layout_button">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10"
+                android:text="提醒事项:"
+                android:textSize="@dimen/sp_15"
+                android:textColor="@color/black"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginEnd="@dimen/dp_10"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10"
+                android:text="1.处方签名应用在开处方单 医师 签名一栏"
+                android:textSize="@dimen/sp_15"
+                android:textColor="@color/black"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginEnd="@dimen/dp_10"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10"
+                android:text="2.确保签名清晰可辨认"
+                android:textSize="@dimen/sp_15"
+                android:textColor="@color/black"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginEnd="@dimen/dp_10"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10"
+                android:text="3.实施细则明确规定,所有在线诊断和处方必须有医师电子签名,请配合"
+                android:textSize="@dimen/sp_15"
+                android:textColor="@color/black"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginEnd="@dimen/dp_10"/>
+            
+            <ImageView
+                android:id="@+id/iv_sign"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_140"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_20"
+                android:background="@drawable/bg_shape_sign_name"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_20"
+                android:background="@drawable/bg_shape_sign_name"
+                android:layout_marginBottom="@dimen/dp_20">
+
+                <com.example.healthmanage.view.SignatureView
+                    android:id="@+id/signature_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/dp_1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="请在此区域手写签名"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_15"/>
+
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:padding="@dimen/dp_10">
+
+            <Button
+                android:id="@+id/btn_clear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="清除"
+                android:textSize="@dimen/sp_15"
+                android:textColor="@color/black"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:background="@drawable/shape_solid_grey_radius_5" />
+
+            <Button
+                android:id="@+id/btn_query"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="确定"
+                android:textSize="@dimen/sp_15"
+                android:textColor="@color/white"
+                android:layout_marginStart="@dimen/dp_10"
+                android:background="@drawable/shape_solid_blue_radius_5"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

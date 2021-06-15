@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.workplan.ui.WorkPlanViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+
+        <jp.wasabeef.richeditor.RichEditor
+            android:id="@+id/re_main_editor"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+
+        <RelativeLayout
+            android:id="@+id/layout_choose_photo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50">
+
+            <TextView
+                android:id="@+id/btn_choose_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:textSize="@dimen/sp_18"
+                android:textColor="@color/colorTxtBlack"
+                android:drawableLeft="@drawable/ic_md_photo"
+                android:text="选择图片"/>
+
+        </RelativeLayout>
+
+
+<!--        <Button-->
+<!--            android:id="@+id/btn_see"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="@dimen/dp_50"-->
+<!--            android:text="预览"/>-->
+
+
+    </LinearLayout>
+</layout>

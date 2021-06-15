@@ -21,6 +21,7 @@ import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.databinding.ActivityMyInfoBinding;
 import com.example.healthmanage.ui.activity.login.LoginActivity;
+import com.example.healthmanage.ui.activity.login.LoginNewActivity;
 import com.example.healthmanage.ui.activity.qualification.QualificationActivity;
 import com.example.healthmanage.dialog.EditTextDialog;
 import com.example.healthmanage.widget.TitleToolBar;
@@ -48,8 +49,11 @@ public class MyInfoActivity extends BaseActivity<ActivityMyInfoBinding, MyInfoVi
 
     @Override
     protected void initData() {
-        titleToolBar.setLeftIconVisible(true);
         titleToolBar.setTitle("账户信息");
+        titleToolBar.setLeftIconVisible(true);
+        titleToolBar.setTitleColor(getResources().getColor(R.color.colorBlack));
+        dataBinding.includeTitle.toolbarTitle.setBackgroundColor(getResources().getColor(R.color.white));
+        titleToolBar.setBackIconSrc(R.drawable.back_black);
         viewModel.setTitleToolBar(titleToolBar);
 
         Log.d(HTAG, "initData==========>: " + BaseApplication.getUserInfoBean().getInvitationCode());
@@ -131,7 +135,7 @@ public class MyInfoActivity extends BaseActivity<ActivityMyInfoBinding, MyInfoVi
                 AppManager.getAppManager().finishAllActivity();
                 SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("LoginInfos", Context.MODE_PRIVATE);
                 sharedPreferences.edit().clear().apply();
-                startActivity(LoginActivity.class);
+                startActivity(LoginNewActivity.class);
                 break;
             case R.id.rl_avatar:
                 if (builder != null) {

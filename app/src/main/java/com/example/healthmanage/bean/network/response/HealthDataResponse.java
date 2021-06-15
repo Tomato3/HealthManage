@@ -124,9 +124,13 @@ public class HealthDataResponse {
              */
 
             private String imei;
+            /**最大血糖*/
             private String bigBloodSugar;
+            /**最小血糖*/
             private String smallBloodSugar;
+            /**超级血糖*/
             private int superBloodSugar;
+            /**最大高压*/
             private String bigBloodHighPressure;
             private String smallBloodHighPressure;
             private int superBloodHighPressure;

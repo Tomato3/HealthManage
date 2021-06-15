@@ -67,39 +67,22 @@ public class DoctorHallViewModel extends BaseViewModel {
     }
 
     public void getAllDoctor() {
-        usersRemoteSource.getDoctorList(new UsersInterface.GetDoctorListCallback() {
-            @Override
-            public void getSucceed(DoctorListResponse doctorListResponse) {
-                taskReceiverRecyclerViewList = new ArrayList<>();
-                if (doctorListResponse.getData() != null) {
-                    for (int i = 0; i < doctorListResponse.getData().size(); i++) {
-                        switch (doctorListResponse.getData().get(i).getType()) {
-                            case 0:
-                                type = "中医";
-                                break;
-                            case 1:
-                                type = "西医";
-                                break;
-                        }
-                        taskReceiverRecyclerViewList.add(new TaskReceiverRecyclerView(doctorListResponse.getData().get(i).getAvatar(),
-                                doctorListResponse.getData().get(i).getName(),
-                                type,
-                                doctorListResponse.getData().get(i).getProfessionalTitle(),
-                                doctorListResponse.getData().get(i).getSittingPlace(),
-                                doctorListResponse.getData().get(i).getId()));
-                    }
-                    taskReceiverMutableLiveData.setValue(taskReceiverRecyclerViewList);
-                }
-            }
-
-            @Override
-            public void getFailed(String msg) {
-            }
-
-            @Override
-            public void error(ExceptionHandle.ResponseException e) {
-            }
-        });
+//        usersRemoteSource.getDoctorList(new UsersInterface.GetDoctorListCallback() {
+//            @Override
+//            public void getSucceed(DoctorListResponse doctorListResponse) {
+//                taskReceiverRecyclerViewList = new ArrayList<>();
+//                if (doctorListResponse.getData() != null) {
+//                }
+//            }
+//
+//            @Override
+//            public void getFailed(String msg) {
+//            }
+//
+//            @Override
+//            public void error(ExceptionHandle.ResponseException e) {
+//            }
+//        });
     }
 
 }

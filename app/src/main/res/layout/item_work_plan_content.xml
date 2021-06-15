@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_plan_detail"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingConstraints"
+    android:background="@drawable/bg_plan_shape"
+    android:layout_marginLeft="@dimen/dp_10"
+    android:layout_marginRight="@dimen/dp_10"
+    android:padding="@dimen/dp_10">
+
+    <TextView
+        android:id="@+id/tv_work_plan_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         android:textSize="@dimen/sp_18"
+        android:textColor="@color/colorTxtBlack"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/dp_10"
+        android:maxLines="1"
+        android:maxLength="20"
+        android:ellipsize="end"
+        android:text="完成客户端问题"/>
+
+    <TextView
+        android:id="@+id/tv_work_plan_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_18"
+        app:layout_constraintTop_toBottomOf="@id/tv_work_plan_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="今天"/>
+
+    <Button
+        android:id="@+id/btn_confirm_plan"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_30"
+        android:text="确认完成"
+        app:layout_constraintTop_toTopOf="@id/tv_work_plan_content"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textColor="@color/colorBlue"
+        android:background="@drawable/bg_plan_shape"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

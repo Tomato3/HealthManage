@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.academicJournals.ui.AcademicJournalsViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:layout_below="@id/layout_title"
+            android:layout_above="@id/layout_button">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dp_10">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="投稿期刊："
+                        android:textSize="@dimen/sp_15"
+                        android:padding="@dimen/dp_10"
+                        android:layout_centerVertical="true"
+                        android:textColor="#616161"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:text="《保健医苑》"
+                        android:textSize="@dimen/sp_15"
+                        android:textColor="@color/black"
+                        android:drawableEnd="@drawable/more_icon"/>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:background="@color/colorLineGrey"
+                    android:layout_marginStart="@dimen/dp_20"
+                    android:layout_marginEnd="@dimen/dp_20"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dp_10">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="投稿栏目："
+                        android:textSize="@dimen/sp_15"
+                        android:padding="@dimen/dp_10"
+                        android:layout_centerVertical="true"
+                        android:textColor="#616161"/>
+
+                    <EditText
+                        android:id="@+id/tv_choose_column"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:drawablePadding="@dimen/dp_10"
+                        android:hint="请输入"
+                        android:text="@={ViewModel.contributionColumn}"
+                        android:background="@null"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textSize="@dimen/sp_15" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:background="@color/colorLineGrey"
+                    android:layout_marginStart="@dimen/dp_20"
+                    android:layout_marginEnd="@dimen/dp_20"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="个人简介："
+                    android:textSize="@dimen/sp_15"
+                    android:padding="@dimen/dp_10"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_centerVertical="true"
+                    android:textColor="#616161"
+                    android:layout_marginTop="@dimen/dp_10"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/dp_100"
+                    android:padding="@dimen/dp_10"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:background="@drawable/bg_shape_solid_task_radiu_5"
+                    android:hint="在此输入个人简历"
+                    android:text="@={ViewModel.personalInfo}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_15"
+                    android:gravity="top"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="标题："
+                    android:textSize="@dimen/sp_15"
+                    android:padding="@dimen/dp_10"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_centerVertical="true"
+                    android:textColor="#616161"
+                    android:layout_marginTop="@dimen/dp_10"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dp_10"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:background="@drawable/bg_shape_solid_task_radiu_5"
+                    android:hint="在此输入标题"
+                    android:text="@={ViewModel.journalsTitle}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_15"
+                    android:gravity="top"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="正文内容："
+                    android:textSize="@dimen/sp_15"
+                    android:padding="@dimen/dp_10"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_centerVertical="true"
+                    android:textColor="#616161"
+                    android:layout_marginTop="@dimen/dp_10"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:background="@drawable/bg_shape_solid_task_radiu_5">
+
+                    <jp.wasabeef.richeditor.RichEditor
+                        android:id="@+id/re_main_editor"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/dp_10"
+                        android:layout_above="@id/layout_choose_photo"/>
+
+                    <RelativeLayout
+                        android:id="@+id/layout_choose_photo"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_50"
+                        android:layout_alignParentBottom="true"
+                        android:background="#FAFAFA">
+
+                        <TextView
+                            android:id="@+id/btn_choose_photo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:gravity="center"
+                            android:textSize="@dimen/sp_18"
+                            android:textColor="@color/colorTxtBlack"
+                            android:drawableLeft="@drawable/ic_md_photo"
+                            android:text="插入图片"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+
+        </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            android:id="@+id/layout_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bg_shape_fram">
+
+            <Button
+                android:id="@+id/btn_save_draft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="保存草稿"
+                android:padding="@dimen/dp_10"
+                android:textSize="@dimen/sp_18"
+                android:background="#F5F5F5"/>
+
+            <Button
+                android:id="@+id/btn_query_draft"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="确认草稿"
+                android:padding="@dimen/dp_10"
+                android:textSize="@dimen/sp_18"
+                android:textColor="@color/white"
+                android:background="#2979FF"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

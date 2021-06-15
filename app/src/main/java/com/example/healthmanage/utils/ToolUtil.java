@@ -81,6 +81,13 @@ public class ToolUtil {
         return simpleDateFormat.format(date);
     }
 
+    //获取当前日期时间
+    public static String getCurTime(){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date(System.currentTimeMillis());
+        return simpleDateFormat.format(date);
+    }
+
     //获取当前日期 格式：list(year,month,day)
     public static List<Integer> currentDate() {
         int mYear, mMonth, mDay;
@@ -115,6 +122,41 @@ public class ToolUtil {
         return isBigger;
     }
 
+    //时间戳转成日期
+    public static String timeStampToDate(String date,String format){
+        if (date == null || date.isEmpty() || date.equals("null")) {
+            return "";
+        }
+        if (format == null || format.isEmpty()) {
+            format = "yyyy-MM-dd HH:mm";
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        return sdf.format(new Date(Long.valueOf(date)));//毫秒需加000
+    }
+
+    //时间戳转成日期
+    public static String timeStampToMonth(String date,String format){
+        if (date == null || date.isEmpty() || date.equals("null")) {
+            return "";
+        }
+        if (format == null || format.isEmpty()) {
+            format = "MM月dd日 HH:mm";
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        return sdf.format(new Date(Long.valueOf(date)));//毫秒需加000
+    }
+
+    public static String timeStampToTime(String date,String format){
+        if (date == null || date.isEmpty() || date.equals("null")) {
+            return "";
+        }
+        if (format == null || format.isEmpty()) {
+            format = "HH:mm";
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        return sdf.format(new Date(Long.valueOf(date)));//毫秒需加000
+    }
+
     //将时间戳转成日期格式
     public static String timeStamp2Date(String seconds, String format) {
         if (seconds == null || seconds.isEmpty() || seconds.equals("null")) {
@@ -125,6 +167,12 @@ public class ToolUtil {
         }
         SimpleDateFormat sdf = new SimpleDateFormat(format);
         return sdf.format(new Date(Long.valueOf(seconds)));//毫秒需加000
+    }
+
+    public static String formatDate(String time) throws ParseException {
+        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(time);
+        String now = new SimpleDateFormat("yyyy年MM月dd日").format(date);
+        return now;
     }
 
     //判断是否为null

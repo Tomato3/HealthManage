@@ -40,7 +40,11 @@ public class HistoryDataActivity extends BaseActivity<ActivityHistoryDataBinding
         memberName = bundle.getString("memberName");
         titleToolBar.setTitle(memberName + "的历史数据");
         titleToolBar.setLeftIconVisible(true);
+        titleToolBar.setTitleColor(getResources().getColor(R.color.colorBlack));
+        dataBinding.toolbarTitle.toolbarTitle.setBackgroundColor(getResources().getColor(R.color.white));
+        titleToolBar.setBackIconSrc(R.drawable.back_black);
         viewModel.setTitleToolBar(titleToolBar);
+
         viewModel.getHistoryData(memberId, ToolUtil.getStartTime(), ToolUtil.getEndTime(), 1);
     }
 

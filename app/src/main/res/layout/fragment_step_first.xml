@@ -52,17 +52,17 @@
 
             <include
                 android:id="@+id/include_department"
-                layout="@layout/qualification_input_item"
+                layout="@layout/qualification_new_input_item"
                 app:QualificationInputItem="@{ViewModel.qualificationInputItemListMutableLiveData.get(2)}" />
 
             <include
                 android:id="@+id/include_title"
-                layout="@layout/qualification_input_item"
+                layout="@layout/qualification_new_input_item"
                 app:QualificationInputItem="@{ViewModel.qualificationInputItemListMutableLiveData.get(3)}" />
 
             <include
                 android:id="@+id/include_hospital"
-                layout="@layout/qualification_input_item"
+                layout="@layout/qualification_new_input_item"
                 app:QualificationInputItem="@{ViewModel.qualificationInputItemListMutableLiveData.get(4)}" />
 
         </LinearLayout>

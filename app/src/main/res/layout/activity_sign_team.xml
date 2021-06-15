@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.team.TeamViewModel" />
+    </data>
+
+    <RelativeLayout style="@style/CommonMatchLinearLayoutStyle">
+
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+
+        <RadioGroup
+            android:id="@+id/rg_title"
+            style="@style/ActivityMemberListRadioGroupStyle"
+            android:layout_below="@id/layout_title">
+
+            <RadioButton
+                android:id="@+id/rb_unsigned"
+                style="@style/ActivityMemberListRadioGroupStyle.OrdinaryMember"
+                android:checked="true"
+                android:text="待通过" />
+
+
+            <RadioButton
+                android:id="@+id/rb_signed"
+                style="@style/ActivityMemberListRadioGroupStyle.SVipMember"
+                android:text="已通过" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tv_sign_null"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/rg_title"
+            android:text="暂无数据"
+            android:gravity="center"
+            android:visibility="gone"/>
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/smart_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/rg_title">
+
+            <com.scwang.smartrefresh.layout.header.ClassicsHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_sign"
+                style="@style/ActivityMyTaskRecyclerViewStyle" />
+
+            <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    </RelativeLayout>
+</layout>

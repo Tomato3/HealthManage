@@ -12,6 +12,7 @@
     <LinearLayout style="@style/ActivityHistoryDataLayoutStyle">
 
         <include
+            android:id="@+id/toolbar_title"
             layout="@layout/toolbar_title"
             app:TitleToolBar="@{ViewModel.titleToolBar}" />
 

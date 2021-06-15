@@ -47,7 +47,7 @@
         app:layout_constraintTop_toTopOf="@+id/huiyuanguanli">
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="39dp"
             android:layout_height="wrap_content"
             android:src="@drawable/home_tuandui"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="left"
-            android:text="团队管理"
+            android:text="业务团队"
             android:textColor="#101010"
             android:textSize="@dimen/home_normal_size" />
     </LinearLayout>
@@ -118,7 +118,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="left"
-            android:text="团队签约"
+            android:text="业务签约"
             android:textColor="#101010"
             android:textSize="@dimen/home_normal_size" />
     </LinearLayout>

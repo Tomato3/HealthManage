@@ -16,6 +16,7 @@ import com.example.healthmanage.bean.recyclerview.MyMemberRecyclerView;
 import com.example.healthmanage.widget.TitleToolBar;
 import com.jeremyliao.liveeventbus.LiveEventBus;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MemberListActivity extends BaseActivity<ActivityMemberListBinding,
@@ -33,7 +34,7 @@ public class MemberListActivity extends BaseActivity<ActivityMemberListBinding,
         viewModel.setTitleToolBar(titleToolBar);
         bundle = this.getIntent().getExtras();
         type = bundle.getInt("focusOrMember");
-        viewModel.loadDifferentLevelMember(type, 0);
+        viewModel.loadDifferentLevelMember(type, String.valueOf(0));
     }
 
     @Override
@@ -65,7 +66,7 @@ public class MemberListActivity extends BaseActivity<ActivityMemberListBinding,
                 .observe(this, new Observer<String>() {
                     @Override
                     public void onChanged(@Nullable String s) {
-                        viewModel.loadDifferentLevelMember(type, rank);
+                        viewModel.loadDifferentLevelMember(type, String.valueOf(rank));
                     }
                 });
     }
@@ -85,15 +86,15 @@ public class MemberListActivity extends BaseActivity<ActivityMemberListBinding,
         switch (v.getId()) {
             case R.id.rb_ordinary_member:
                 rank = 0;
-                viewModel.loadDifferentLevelMember(type, rank);
+                viewModel.loadDifferentLevelMember(type, String.valueOf(rank));
                 break;
             case R.id.rb_vip_member:
                 rank = 1;
-                viewModel.loadDifferentLevelMember(type, rank);
+                viewModel.loadDifferentLevelMember(type, String.valueOf(rank));
                 break;
             case R.id.rb_svip_member:
                 rank = 2;
-                viewModel.loadDifferentLevelMember(type, rank);
+                viewModel.loadDifferentLevelMember(type, String.valueOf(rank));
                 break;
         }
     }

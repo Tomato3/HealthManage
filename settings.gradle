@@ -1,3 +1,4 @@
+include ':ncalendar'
 include ':crashexcptioner'
 rootProject.name='HealthManage'
 include ':app'

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.consultation.ConsultationViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints">
+
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/layout_title"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:background="#F2F2F7">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="@dimen/dp_10"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_10"
+                        android:text="患者简要病史:"
+                        android:textSize="@dimen/sp_15"/>
+
+                    <TextView
+                        android:id="@+id/tv_patient_describe"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/dp_100"
+                        android:gravity="top"
+                        android:background="@drawable/bg_shape_solid_task_radiu_5"
+                        android:padding="@dimen/dp_10"
+                        android:textColor="@color/colorTxtBlack"
+                        android:maxLength="300"
+                        android:textSize="@dimen/sp_16"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_10"
+                        android:text="患者病例照片:"
+                        android:textSize="@dimen/sp_15"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/grid_recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_10"/>
+
+                    <TextView
+                        android:id="@+id/tv_pic_null"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="暂无病例图片"
+                        android:textSize="@dimen/sp_18"
+                        android:gravity="center"
+                        android:visibility="gone"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:padding="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_10">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_10"
+                        android:text="患者初步诊断:"
+                        android:textSize="@dimen/sp_15"/>
+
+                    <TextView
+                        android:id="@+id/tv_primary_diagnosis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/dp_100"
+                        android:gravity="top"
+                        android:background="@drawable/bg_shape_solid_task_radiu_5"
+                        android:padding="@dimen/dp_10"
+                        android:textColor="@color/colorTxtBlack"
+                        android:maxLength="300"
+                        android:textSize="@dimen/sp_16"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_10"
+                        android:text="会诊目的与要求:"
+                        android:textSize="@dimen/sp_15"/>
+
+                    <TextView
+                        android:id="@+id/tv_consultation_purpose"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/dp_100"
+                        android:gravity="top"
+                        android:background="@drawable/bg_shape_solid_task_radiu_5"
+                        android:padding="@dimen/dp_10"
+                        android:textColor="@color/colorTxtBlack"
+                        android:maxLength="300"
+                        android:textSize="@dimen/sp_16"/>
+
+                </LinearLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/layout_choose_meet_person"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:padding="@dimen/dp_10">
+
+                    <TextView
+                        android:id="@+id/tv_choose_person"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="会诊参与人员:"
+                        android:textSize="@dimen/sp_15"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tv_choose_meet_person"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_toRightOf="@id/tv_choose_person"
+                        android:textColorHint="@color/colorTxtBlack"
+                        android:gravity="end"
+                        android:textColor="@color/colorTxtBlack"
+                        android:drawableRight="@drawable/more_icon"
+                        android:drawablePadding="@dimen/dp_10"
+                        android:textSize="@dimen/sp_15"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layout_choose_meet_start_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="@dimen/dp_10">
+
+                    <TextView
+                        android:id="@+id/tv_start_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="会诊开始时间:"
+                        android:textSize="@dimen/sp_15"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tv_choose_meet_start_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:textColorHint="@color/colorTxtBlack"
+                        android:gravity="end"
+                        android:textColor="@color/colorTxtBlack"
+                        android:drawableRight="@drawable/more_icon"
+                        android:layout_toRightOf="@id/tv_start_time"
+                        android:drawablePadding="@dimen/dp_10"
+                        android:textSize="@dimen/sp_15"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layout_choose_meet_end_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="@dimen/dp_10">
+
+                    <TextView
+                        android:id="@+id/tv_end_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="会诊结束时间:"
+                        android:textSize="@dimen/sp_15"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/tv_choose_meet_end_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:textColorHint="@color/colorTxtBlack"
+                        android:gravity="end"
+                        android:textColor="@color/colorTxtBlack"
+                        android:drawableRight="@drawable/more_icon"
+                        android:layout_toRightOf="@id/tv_end_time"
+                        android:drawablePadding="@dimen/dp_10"
+                        android:textSize="@dimen/sp_15"/>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </RelativeLayout>
+</layout>

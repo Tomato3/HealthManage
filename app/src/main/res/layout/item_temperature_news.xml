@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="@dimen/dp_10"
+    android:layout_marginRight="@dimen/dp_10"
+    android:padding="@dimen/dp_10"
+    tools:ignore="MissingConstraints"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/layout_user_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10">
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="咚咚锵"
+            android:layout_toRightOf="@id/iv_avatar"
+            android:textColor="@color/colorTxtBlack"
+            android:textStyle="bold"
+            android:textSize="@dimen/sp_18"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_10"/>
+
+        <TextView
+            android:id="@+id/tv_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/sp_13"
+            android:layout_toRightOf="@id/tv_name"
+            android:text="普通会员｜女｜36岁"
+            android:layout_marginLeft="@dimen/dp_10"/>
+
+        <TextView
+            android:id="@+id/tv_vip_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/tv_info"
+            android:textSize="@dimen/sp_13"
+            android:textColor="@color/white"
+            android:text="团队患者"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:background="@drawable/bg_temperature_yellow"
+            android:padding="@dimen/dp_10"/>
+
+        <TextView
+            android:id="@+id/tv_consultation_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:text="问诊时间:"
+            android:textSize="@dimen/sp_13"/>
+
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/colorLineGrey"
+        app:layout_constraintTop_toBottomOf="@id/layout_user_info"/>
+
+    <TextView
+        android:id="@+id/tv_disease"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:textSize="@dimen/sp_15"
+        android:text="疾病描述:"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/line"/>
+
+    <TextView
+        android:id="@+id/tv_disease_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:text="从昨天夜里开始发烧"
+        android:textSize="@dimen/sp_15"
+        android:textColor="@color/colorTxtBlack"
+        app:layout_constraintTop_toBottomOf="@id/tv_disease"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_patient_pic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_disease_description"/>
+
+    <TextView
+        android:id="@+id/tv_apply_prescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="申请处方:"
+        app:layout_constraintTop_toBottomOf="@id/recyclerview_patient_pic"
+        android:padding="@dimen/dp_10"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/sp_15"/>
+
+    <CheckBox
+        android:id="@+id/tv_select_recyclerview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/sp_15"
+        android:button="@null"
+        android:text="点击收起详情"
+        android:drawableRight="@drawable/selector_health_means"
+        android:drawablePadding="@dimen/dp_10"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_apply_prescription"/>
+
+    <View
+        android:id="@+id/line_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/colorLineGrey"
+        app:layout_constraintTop_toBottomOf="@id/tv_select_recyclerview"/>
+
+    <RelativeLayout
+        android:id="@+id/layout_transmit_temperature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintTop_toBottomOf="@id/line_bottom"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_transmit_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="转交时间:"/>
+
+        <TextView
+            android:id="@+id/tv_transmit_person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:text="转交对象:"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_already_temperature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintTop_toBottomOf="@id/line_bottom"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_reply_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="回复时间:"/>
+
+        <TextView
+            android:id="@+id/tv_see_reply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:text="查看回复"
+            android:padding="@dimen/dp_10"
+            android:textSize="@dimen/sp_15"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_task_sold"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_wait_temperature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintTop_toBottomOf="@id/line_bottom"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/tv_Withdrawal"
+            android:layout_width="@dimen/dp_90"
+            android:layout_height="@dimen/dp_40"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/tv_transmit_reply"
+            android:layout_marginRight="@dimen/dp_20"
+            android:gravity="center"
+            android:text="退诊"
+            android:padding="@dimen/dp_10"
+            android:textSize="@dimen/sp_15"
+            android:textColor="@color/colorBlue"
+            android:background="@drawable/bg_task_blue_shape"/>
+
+        <TextView
+            android:id="@+id/tv_transmit_reply"
+            android:layout_width="@dimen/dp_90"
+            android:layout_height="@dimen/dp_40"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/tv_immediately_reply"
+            android:gravity="center"
+            android:layout_marginRight="@dimen/dp_20"
+            android:text="转交处理"
+            android:padding="@dimen/dp_10"
+            android:textSize="@dimen/sp_15"
+            android:textColor="@color/colorBlue"
+            android:background="@drawable/bg_task_blue_shape"/>
+
+        <TextView
+            android:id="@+id/tv_immediately_reply"
+            android:layout_width="@dimen/dp_90"
+            android:layout_height="@dimen/dp_40"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:text="立即回复"
+            android:padding="@dimen/dp_10"
+            android:textSize="@dimen/sp_15"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_task_sold"/>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.temperature.ui.TemperatureViewModel" />
+    </data>
+
+    <RelativeLayout style="@style/CommonMatchLinearLayoutStyle"
+        android:background="@color/colorLineGrey">
+
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+
+        <RadioGroup
+            android:id="@+id/rg_title"
+            style="@style/ActivityMemberListRadioGroupStyle"
+            android:layout_below="@id/layout_title">
+
+            <RadioButton
+                android:id="@+id/rb_wait_reply"
+                style="@style/ActivityMemberListRadioGroupStyle.OrdinaryMember"
+                android:checked="true"
+                android:text="待回复" />
+
+            <RadioButton
+                android:id="@+id/rb_already_reply"
+                style="@style/ActivityMemberListRadioGroupStyle.OrdinaryMember"
+                android:text="已回复" />
+
+            <RadioButton
+                android:id="@+id/rb_already_transmit"
+                style="@style/ActivityMemberListRadioGroupStyle.VipMember"
+                android:text="已转交" />
+
+        </RadioGroup>
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/smart_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorLineGrey"
+            android:layout_below="@id/rg_title"
+            android:layout_marginTop="@dimen/dp_15"
+            android:visibility="visible">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/layout_temperature_news_null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="visible">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true">
+
+                        <ImageView
+                            android:id="@+id/iv_no_data"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/health_no_data"/>
+
+                        <TextView
+                            android:id="@+id/tv_temperature_news_null"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="暂无咨询信息"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@id/iv_no_data"
+                            android:textSize="@dimen/sp_20"
+                            android:textStyle="bold"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_temperature_news"
+                    style="@style/ActivityMyTaskRecyclerViewStyle" />
+
+
+            </RelativeLayout>
+
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    </RelativeLayout>
+</layout>

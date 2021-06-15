@@ -43,7 +43,7 @@ public class HomeViewModel extends BaseViewModel {
     }
 
     public void loadMyFocus() {
-        usersRemoteSource.loadMyFocus(String.valueOf(BaseApplication.getUserInfoBean().getSysId()),
+        usersRemoteSource.loadMyFocus(String.valueOf(BaseApplication.getUserInfoBean().getAppDoctorInfo().getSystemUserId()),
                 new UsersInterface.LoadMyMembersCallback() {
                     @Override
                     public void loadSucceed(MyMemberResponse myMemberResponse) {
@@ -82,7 +82,7 @@ public class HomeViewModel extends BaseViewModel {
 
 
     public void loadMyMembers() {
-        usersRemoteSource.loadMyMembers(String.valueOf(BaseApplication.getUserInfoBean().getSysId()), new UsersInterface.LoadMyMembersCallback() {
+        usersRemoteSource.loadMyMembers(String.valueOf(BaseApplication.getUserInfoBean().getAppDoctorInfo().getSystemUserId()), new UsersInterface.LoadMyMembersCallback() {
             @Override
             public void loadSucceed(MyMemberResponse myMemberResponse) {
                 myMemberRecyclerViewList = new ArrayList<>();

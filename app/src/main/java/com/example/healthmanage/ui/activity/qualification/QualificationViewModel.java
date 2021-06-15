@@ -25,7 +25,7 @@ public class QualificationViewModel extends BaseViewModel {
     }
 
     public void toMain(String phone, String password, String roleId) {
-        usersRemoteSource.loginByPassword(phone, password, "9",
+        usersRemoteSource.loginByPassword(phone, password,
                 new UsersInterface.LoginResponseCallback() {
             @Override
             public void loginSucceed(LoginResponse loginResponse) {

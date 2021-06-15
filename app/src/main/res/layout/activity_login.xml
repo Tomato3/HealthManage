@@ -102,7 +102,8 @@
 
                 <TextView
                     style="@style/ActivityLoginTextStyle.Forget"
-                    android:onClick="@{()->ViewModel.jumpToRegisterOrForgetActivity(2)}" />
+                    android:layout_height="wrap_content"
+                    android:onClick="@{()->ViewModel.jumpToRegisterOrForgetActivity()}" />
             </LinearLayout>
         </LinearLayout>
 
@@ -118,7 +119,7 @@
 
             <TextView
                 style="@style/ActivityLoginTextStyle.Register"
-                android:onClick="@{()->ViewModel.jumpToRegisterOrForgetActivity(1)}" />
+                android:onClick="@{()->ViewModel.jumpToRegisterOrForgetActivity()}" />
         </LinearLayout>
 
         <RelativeLayout style="@style/ActivityLoginInputLayoutStyle.Other">

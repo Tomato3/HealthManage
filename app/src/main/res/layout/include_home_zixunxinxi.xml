@@ -2,9 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp">
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -44,7 +42,9 @@
             android:id="@+id/imageView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/activity_main_bottom_business_selected"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_message_fill"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -90,7 +90,7 @@
             android:id="@+id/zixun"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/activity_main_bottom_business_selected"
+            android:src="@drawable/ic_medkit_fill"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -137,7 +137,7 @@
             android:id="@+id/gongzuojihua"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/activity_main_bottom_business_selected"
+            android:src="@drawable/ic_calendar_todo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -162,7 +162,7 @@
             android:layout_height="wrap_content"
             android:drawableRight="@drawable/arrow"
             android:drawablePadding="20dp"
-            android:text="我的任务"
+            android:text="业务处理"
             android:textColor="@color/colorBlue"
             android:textSize="@dimen/home_normal_size"
             app:layout_constraintStart_toStartOf="parent"
@@ -184,7 +184,7 @@
             android:id="@+id/jihuawode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/activity_main_bottom_business_selected"
+            android:src="@drawable/ic_todo_fill"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

@@ -4,11 +4,13 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.base.BaseViewModel;
+import com.example.healthmanage.bean.network.response.DoctorListResponse;
 import com.example.healthmanage.bean.network.response.TaskResponse;
 import com.example.healthmanage.bean.UsersInterface;
 import com.example.healthmanage.bean.UsersRemoteSource;
 import com.example.healthmanage.data.network.exception.ExceptionHandle;
 import com.example.healthmanage.bean.recyclerview.MyTaskRecyclerView;
+import com.example.healthmanage.ui.activity.mytask.response.UpdateTaskResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +35,7 @@ public class MyTaskViewModel extends BaseViewModel {
 
     public void loadMyTask(boolean isFirst, int state) {
         if (isFirst) {
-            usersRemoteSource.loadMyTask(BaseApplication.getUserInfoBean().getSysId(), 1, 3,
+            usersRemoteSource.loadMyTask(BaseApplication.getToken(), 1, 3,state,
                     new UsersInterface.LoadMyTaskCallback() {
                         @Override
                         public void loadSucceed(TaskResponse taskResponse) {
@@ -57,14 +59,16 @@ public class MyTaskViewModel extends BaseViewModel {
 
                         @Override
                         public void loadFailed(String msg) {
+                            status.setValue(state);
                         }
 
                         @Override
                         public void error(ExceptionHandle.ResponseException e) {
+                            status.setValue(state);
                         }
                     });
         } else {
-            usersRemoteSource.loadMyTask(BaseApplication.getUserInfoBean().getSysId(), index, 3,
+            usersRemoteSource.loadMyTask(BaseApplication.getToken(), index, 3,state,
                     new UsersInterface.LoadMyTaskCallback() {
                         @Override
                         public void loadSucceed(TaskResponse taskResponse) {
@@ -84,13 +88,15 @@ public class MyTaskViewModel extends BaseViewModel {
 
                         @Override
                         public void loadFailed(String msg) {
+                            status.setValue(state);
                         }
 
                         @Override
                         public void error(ExceptionHandle.ResponseException e) {
+                            status.setValue(state);
                         }
                     });
         }
-
     }
+
 }

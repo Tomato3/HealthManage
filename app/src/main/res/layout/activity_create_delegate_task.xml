@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.delegate.ui.DelegateViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/recyclerView_background">
+
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/layout_title"
+            android:layout_above="@id/btn_query_delegate">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginStart="@dimen/dp_20"
+                android:layout_marginEnd="@dimen/dp_20"
+                android:background="@color/white"
+                android:layout_below="@id/toolbar_title"
+                android:layout_above="@id/btn_query_delegate">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/dp_10"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_10"
+                            android:text="委派对象:"
+                            android:layout_centerVertical="true"
+                            android:drawableStart="@drawable/ic_star"
+                            android:gravity="center_vertical"
+                            android:textSize="@dimen/sp_15"/>
+
+                        <TextView
+                            android:id="@+id/tv_choose_delegate_person"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_10"
+                            android:hint="请选择"
+                            android:gravity="center_vertical"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:drawableEnd="@drawable/more_icon"
+                            android:drawablePadding="@dimen/dp_10"
+                            android:textSize="@dimen/sp_15"/>
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_10"
+                        android:text="委派内容:"
+                        android:drawableStart="@drawable/ic_star"
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/sp_15"/>
+
+                    <EditText
+                        android:id="@+id/edit_delegate_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_shape_solid_task_radiu_5"
+                        android:minHeight="@dimen/dp_150"
+                        android:maxLength="300"
+                        android:padding="@dimen/dp_10"
+                        android:gravity="top"
+                        android:layout_marginStart="@dimen/dp_28"
+                        android:layout_marginEnd="@dimen/dp_28"
+                        android:text="@={ViewModel.delegateDetail}"
+                        android:hint="多行输入"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_10"
+                            android:text="服务对象:"
+                            android:layout_centerVertical="true"
+                            android:gravity="center_vertical"
+                            android:textSize="@dimen/sp_15"/>
+
+                        <TextView
+                            android:id="@+id/tv_choose_service_person"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_10"
+                            android:hint="请选择"
+                            android:gravity="center_vertical"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:drawableEnd="@drawable/more_icon"
+                            android:drawablePadding="@dimen/dp_10"
+                            android:textSize="@dimen/sp_15"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_10"
+                            android:text="任务日期:"
+                            android:layout_centerVertical="true"
+                            android:drawableStart="@drawable/ic_star"
+                            android:gravity="center_vertical"
+                            android:textSize="@dimen/sp_15"/>
+
+                        <TextView
+                            android:id="@+id/tv_choose_task_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:drawableEnd="@drawable/more_icon"
+                            android:drawablePadding="@dimen/dp_10"
+                            android:gravity="center_vertical"
+                            android:hint="请选择"
+                            android:padding="@dimen/dp_10"
+                            android:text="@={ViewModel.delegateTime}"
+                            android:textSize="@dimen/sp_15" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_10"
+                            android:text="具体时间:"
+                            android:layout_centerVertical="true"
+                            android:drawableStart="@drawable/ic_star"
+                            android:gravity="center_vertical"
+                            android:textSize="@dimen/sp_15"/>
+
+                        <EditText
+                            android:id="@+id/edit_specific_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_10"
+                            android:hint="请输入"
+                            android:text="@={ViewModel.delegateSpecificTime}"
+                            android:background="@null"
+                            android:gravity="center_vertical|end"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:textSize="@dimen/sp_15"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_10"
+                            android:text="任务地点:"
+                            android:layout_centerVertical="true"
+                            android:drawableStart="@drawable/ic_star"
+                            android:gravity="center_vertical"
+                            android:textSize="@dimen/sp_15"/>
+
+                        <EditText
+                            android:id="@+id/edit_task_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_10"
+                            android:hint="请输入详细地址"
+                            android:background="@null"
+                            android:text="@={ViewModel.delegateAddress}"
+                            android:gravity="center_vertical|end"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:textSize="@dimen/sp_15"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_query_delegate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_solid_blue_radius_5"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:text="确认委派"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_15"/>
+
+
+    </RelativeLayout>
+</layout>

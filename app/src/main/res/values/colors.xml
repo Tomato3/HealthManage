@@ -33,5 +33,8 @@
     <color name="colorSpinnerStroke">#EEEEEE</color>
     <color name="colorTxtRed">#FF3A30</color>
     <color name="color_75">#757575</color>
-
+    <color name="color_line_grey">#EEEEEE</color>
+    <color name="app_color_f6">#f6f6f6</color>
+    <color name="text_title">#333333</color>
+    <color name="recyclerView_background">#F2F2F7</color>
 </resources>

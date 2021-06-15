@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -8,9 +9,82 @@
             type="com.example.healthmanage.ui.activity.referral.ReferralViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <RelativeLayout style="@style/CommonMatchLinearLayoutStyle"
+        android:background="@color/colorLineGrey">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/smart_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorLineGrey"
+            android:layout_below="@id/layout_title"
+            android:layout_marginTop="@dimen/dp_10"
+            android:visibility="visible">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/layout_referral_task_null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/iv_no_data"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/health_no_data"
+                        android:layout_centerInParent="true"/>
+
+                    <TextView
+                        android:id="@+id/tv_referral_task_null"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="暂无转诊记录"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@id/iv_no_data"
+                        android:textSize="@dimen/sp_20"
+                        android:textStyle="bold"/>
+
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_referral_task"
+                    style="@style/ActivityMyTaskRecyclerViewStyle" />
+
+            </RelativeLayout>
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_write_referral_task"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/bg_circular_plan"
+            android:layout_marginRight="@dimen/dp_45"
+            android:layout_marginBottom="@dimen/dp_54"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="申请转诊"
+                android:drawableTop="@drawable/ic_write_plan"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_15"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
 </layout>

@@ -16,6 +16,7 @@ import com.example.healthmanage.bean.UsersInterface;
 import com.example.healthmanage.bean.UsersRemoteSource;
 import com.example.healthmanage.bean.network.response.WeatherResponse;
 import com.example.healthmanage.data.network.exception.ExceptionHandle;
+import com.example.healthmanage.utils.ToastUtil;
 import com.example.healthmanage.utils.ToolUtil;
 import com.example.healthmanage.widget.DataItem;
 import com.example.healthmanage.widget.DropdownBar;
@@ -49,6 +50,8 @@ public class MemberDetailViewModel extends BaseViewModel {
     public MutableLiveData<Boolean> todayHealthVisible = new MutableLiveData<>(false);
     public MutableLiveData<Boolean> bodyHealthVisible = new MutableLiveData<>(false);
     public MutableLiveData<Boolean> spiritHealthVisible = new MutableLiveData<>(false);
+    /**今日空气质量是否存在数据*/
+    public MutableLiveData<Boolean> todayAirVisible = new MutableLiveData<>(false);
 
     private UsersRemoteSource usersRemoteSource;
 
@@ -79,7 +82,7 @@ public class MemberDetailViewModel extends BaseViewModel {
                 }
             });
         } else {
-            usersRemoteSource.addFocus(String.valueOf(BaseApplication.getUserInfoBean().getSysId()), userId, new UsersInterface.AddFocusCallback() {
+            usersRemoteSource.addFocus(String.valueOf(BaseApplication.getUserInfoBean().getAppDoctorInfo().getSystemUserId()), userId, new UsersInterface.AddFocusCallback() {
                 @Override
                 public void addSucceed() {
                     showToast("添加关注成功", 0);
@@ -136,52 +139,55 @@ public class MemberDetailViewModel extends BaseViewModel {
         }
     }
 
+//    /**获取今日健康数据
+//     * userId
+//     */
+//    public void getHealthDataList(String userId) {
+//        usersRemoteSource.getHealthList(userId, new UsersInterface.GetHealthListCallback() {
+//            @Override
+//            public void getSucceed(HealthDataResponse healthDataResponse) {
+//                if (healthDataResponse.getData() == null || healthDataResponse.getData().getBloodSugarSendList() == null) {
+//                    todayHealthVisible.setValue(true);
+//                } else {
+//                    List<String> data = new ArrayList<>();
+//                    data.add("脉搏：" + healthDataResponse.getData().getBloodSugarSendList().get(0).getHeartRate());
+//                    data.add("步数：" + healthDataResponse.getData().getBloodSugarSendList().get(0).getSmallBloodHighPressure() +
+//                            "-" + healthDataResponse.getData().getBloodSugarSendList().get(0).getBigBloodHighPressure());
+//                    data.add("血压：" + healthDataResponse.getData().getBloodSugarSendList().get(0).getSmallBloodLowPressure() +
+//                            "-" + healthDataResponse.getData().getBloodSugarSendList().get(0).getBigBloodLowPressure());
+//                    data.add("睡眠：" + healthDataResponse.getData().getBloodSugarSendList().get(0).getSmallBloodSugar() + "-" +
+//                            healthDataResponse.getData().getBloodSugarSendList().get(0).getBigBloodSugar());
+//                    data.add("血氧：" + healthDataResponse.getData().getBloodSugarSendList().get(0).getHeartRate());
+//                    data.add("血糖：" + healthDataResponse.getData().getBloodSugarSendList().get(0).getHeartRate());
+//                    data.add("体温：" + healthDataResponse.getData().getBloodSugarSendList().get(0).getHeartRate());
+//                    dataItemTodayHealth.setValue(new DataItem("血糖表", data));
+//                    todayHealthVisible.setValue(false);
+//                }
+//            }
+//
+//            @Override
+//            public void getFailed(String msg) {
+//                todayHealthVisible.setValue(true);
+//                getUiChangeEvent().getToastTxt().setValue(msg);
+//            }
+//
+//            @Override
+//            public void error(ExceptionHandle.ResponseException e) {
+//                Log.d(HTAG, "error==========>: " + e.getMessage());
+//            }
+//        });
+//    }
+
     /**
-     * @param userId
+     * 今日环境获取空气质量数据
+     * userId
      */
-    public void getHealthDataList(String userId) {
-        usersRemoteSource.getHealthList(userId, new UsersInterface.GetHealthListCallback() {
-            @Override
-            public void getSucceed(HealthDataResponse healthDataResponse) {
-                if (healthDataResponse.getData() == null || healthDataResponse.getData().getBloodSugarSendList() == null) {
-                    todayHealthVisible.setValue(true);
-                } else {
-                    List<String> data = new ArrayList<>();
-                    data.add("脉搏：" + healthDataResponse.getData().getBloodSugarSendList().get(0).getHeartRate());
-                    data.add("收缩压：" + healthDataResponse.getData().getBloodSugarSendList().get(0).getSmallBloodHighPressure() +
-                            "-" + healthDataResponse.getData().getBloodSugarSendList().get(0).getBigBloodHighPressure());
-                    data.add("舒张压：" + healthDataResponse.getData().getBloodSugarSendList().get(0).getSmallBloodLowPressure() +
-                            "-" + healthDataResponse.getData().getBloodSugarSendList().get(0).getBigBloodLowPressure());
-                    data.add("血糖：" + healthDataResponse.getData().getBloodSugarSendList().get(0).getSmallBloodSugar() + "-" +
-                            healthDataResponse.getData().getBloodSugarSendList().get(0).getBigBloodSugar());
-                    data.add("脉搏：" + healthDataResponse.getData().getBloodSugarSendList().get(0).getHeartRate());
-                    data.add("脉搏：" + healthDataResponse.getData().getBloodSugarSendList().get(0).getHeartRate());
-                    data.add("脉搏：" + healthDataResponse.getData().getBloodSugarSendList().get(0).getHeartRate());
-                    data.add("脉搏：" + healthDataResponse.getData().getBloodSugarSendList().get(0).getHeartRate());
-                    dataItemTodayHealth.setValue(new DataItem("血糖表", data));
-                    todayHealthVisible.setValue(false);
-                }
-            }
-
-            @Override
-            public void getFailed(String msg) {
-                todayHealthVisible.setValue(true);
-                getUiChangeEvent().getToastTxt().setValue(msg);
-            }
-
-            @Override
-            public void error(ExceptionHandle.ResponseException e) {
-                Log.d(HTAG, "error==========>: " + e.getMessage());
-            }
-        });
-    }
-
     public void getAirList(String memberId) {
         usersRemoteSource.getAirList(memberId, new UsersInterface.GetAirListCallback() {
             @Override
             public void getSucceed(AirResponse airResponse) {
                 if (airResponse.getData() == null) {
-                    todayEnvironmentVisible.setValue(false);
+                    todayAirVisible.setValue(true);
                 } else {
                     List<String> data = new ArrayList<>();
                     data.add("温度：" + ToolUtil.isNull(airResponse.getData().get(0).getTemperature()));
@@ -192,15 +198,15 @@ public class MemberDetailViewModel extends BaseViewModel {
                     data.add("PM0.3：" + ToolUtil.isNull(airResponse.getData().get(0).getPm03()));
                     data.add("甲醛：" + ToolUtil.isNull(airResponse.getData().get(0).getHcho()));
                     data.add("VOC：" + ToolUtil.isNull(airResponse.getData().get(0).getTvoc()));
-                    dataItemAir.setValue(new DataItem(airResponse.getData().get(0).getSceneName(),
-                            data));
-                    todayEnvironmentVisible.setValue(true);
+//                    dataItemAir.setValue(airResponse.getData());
+                    todayAirVisible.setValue(false);
                 }
             }
 
             @Override
             public void getFailed(String msg) {
-
+                ToastUtil.showShort(msg);
+                todayAirVisible.setValue(true);
             }
 
 
@@ -218,12 +224,13 @@ public class MemberDetailViewModel extends BaseViewModel {
      * @param title
      * @param content
      */
-    public void createMyTask(long userId, String title, String content) {
+    public void createMyTask(long userId, String title, String content,String createTime,String queryTime) {
         if (!TextUtils.isEmpty(title) && !TextUtils.isEmpty(content)) {
             usersRemoteSource.createMyTask(userId,
                     title,
                     content,
-                    BaseApplication.getUserInfoBean().getSysId(),
+                    BaseApplication.getUserInfoBean().getAppDoctorInfo().getSystemUserId(),
+                    BaseApplication.getToken(),createTime,queryTime,
                     new UsersInterface.CreateMyTaskCallback() {
                         @Override
                         public void createSucceed(GeneralResponse generalResponse) {
@@ -246,6 +253,10 @@ public class MemberDetailViewModel extends BaseViewModel {
 
     }
 
+    /**
+     * 获取护理仪数据
+     * @param memberId
+     */
     public void getNursingData(long memberId) {
         usersRemoteSource.getNursingData(BaseApplication.getToken(), memberId, new UsersInterface.GetNursingDataCallback() {
             @Override
@@ -255,14 +266,14 @@ public class MemberDetailViewModel extends BaseViewModel {
                     bodyHealthVisible.setValue(false);
                 } else {
                     List<String> data = new ArrayList<>();
-                    data.add("Id：" + ToolUtil.isNull(nursingResponse.getData().get(0).getDeviceId()));
-                    data.add("设定风温：" + stateToString(nursingResponse.getData().get(0).getSetWindT()));
-                    data.add("设定水压：" + stateToString(nursingResponse.getData().get(0).getSetWaterP()));
-                    data.add("设定水温：" + stateToString(nursingResponse.getData().get(0).getSetWaterT()));
-                    data.add("当前风温：" + ToolUtil.isNull(nursingResponse.getData().get(0).getCurrentWindT()));
-                    data.add("清洁空气状态：" + ToolUtil.isNull(nursingResponse.getData().get(0).getCleanAirStatus() == 0 ? "等待中" : "进行中"));
-                    data.add("当前工作状态：" + ToolUtil.isNull(nursingResponse.getData().get(0).getCurrentWorkStatus()));
-                    data.add("当前工作状态：" + ToolUtil.isNull(nursingResponse.getData().get(0).getCurrentWorkStatus()));
+//                    data.add("Id：" + ToolUtil.isNull(nursingResponse.getData().get(0).getDeviceId()));
+//                    data.add("设定风温：" + stateToString(nursingResponse.getData().get(0).getSetWindT()));
+//                    data.add("设定水压：" + stateToString(nursingResponse.getData().get(0).getSetWaterP()));
+//                    data.add("设定水温：" + stateToString(nursingResponse.getData().get(0).getSetWaterT()));
+//                    data.add("当前风温：" + ToolUtil.isNull(nursingResponse.getData().get(0).getCurrentWindT()));
+//                    data.add("清洁空气状态：" + ToolUtil.isNull(nursingResponse.getData().get(0).getCleanAirStatus() == 0 ? "等待中" : "进行中"));
+//                    data.add("当前工作状态：" + ToolUtil.isNull(nursingResponse.getData().get(0).getCurrentWorkStatus()));
+//                    data.add("当前工作状态：" + ToolUtil.isNull(nursingResponse.getData().get(0).getCurrentWorkStatus()));
                     dataItemBodyHealth.setValue(new DataItem("护理仪", data));
                     bodyHealthVisible.setValue(true);
                 }

@@ -1,5 +1,6 @@
 package com.example.healthmanage.ui.activity.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -14,7 +15,6 @@ import com.example.healthmanage.bean.network.response.LoginResponse;
 import com.example.healthmanage.databinding.ActivityLoginBinding;
 import com.example.healthmanage.utils.Constants;
 import com.example.healthmanage.utils.SPUtil;
-import com.example.healthmanage.utils.ToastUtil;
 
 /**
  * 登录
@@ -145,7 +145,9 @@ public class LoginActivity extends BaseActivity<ActivityLoginBinding, LoginViewM
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_wechat:
-                ToastUtil.showShort("正在开发中...");
+//                ToastUtil.showShort("正在开发中...");
+                Intent intent = new Intent(this, LoginNewActivity.class);
+                startActivity(intent);
                 break;
         }
     }

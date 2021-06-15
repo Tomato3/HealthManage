@@ -10,6 +10,7 @@ import androidx.databinding.BindingAdapter;
 import com.example.healthmanage.BR;
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
+import com.example.healthmanage.databinding.ActivityInviteMemberBinding;
 import com.example.healthmanage.databinding.ActivityMemberDetailBinding;
 import com.example.healthmanage.utils.LocationUtil;
 import com.example.healthmanage.dialog.EditTextDialog;
@@ -31,7 +32,6 @@ public class MemberDetailActivity extends BaseActivity<ActivityMemberDetailBindi
     private int memberId;
     private String memberName;
     private EditTextDialog editTextDialog;
-
     DropdownBar dropdownBarTodayEnvironment;
 
     @Override
@@ -43,6 +43,9 @@ public class MemberDetailActivity extends BaseActivity<ActivityMemberDetailBindi
         titleToolBar.setTitle(memberName + "会员详情");
         titleToolBar.setLeftIconVisible(true);
         titleToolBar.setRightIconVisible(true);
+        titleToolBar.setRightIconSrc(R.drawable.ic_md_more_vert);
+        dataBinding.includeTitle.ivRight.setVisibility(View.INVISIBLE);
+        dataBinding.includeTitle.ivRight.setImageResource(R.drawable.ic_md_more_vert);
         showFocus(b);
         viewModel.setTitleToolBar(titleToolBar);
         LocationUtil.getAddress(this);
@@ -55,16 +58,18 @@ public class MemberDetailActivity extends BaseActivity<ActivityMemberDetailBindi
             }
         });
 
-        viewModel.getHealthDataList(String.valueOf(memberId));
+//        viewModel.getHealthDataList(String.valueOf(memberId));
 
+        /**空气检测仪数据*/
         viewModel.getAirList(String.valueOf(memberId));
 
-        viewModel.getNursingData(85);
+        /**护理仪数据*/
+        viewModel.getNursingData(memberId);
 
         dropdownBarTodayEnvironment = new DropdownBar("今日环境", false,
-                viewModel.todayEnvironmentVisible.getValue(), false);
+                viewModel.todayAirVisible.getValue(), false);
         DropdownBar dropdownBarTodayHealth = new DropdownBar("今日健康", false, false, false);
-        DropdownBar dropdownBarBodyHealth = new DropdownBar("身体健康", false, false, false);
+        DropdownBar dropdownBarBodyHealth = new DropdownBar("身体健康", viewModel.bodyHealthVisible.getValue(), false, false);
         DropdownBar dropdownBarSpiritHealth = new DropdownBar("精神健康", false, false, false);
         DropdownBar dropdownBarHealthDataAnalyse = new DropdownBar("健康数据分析", false, false, false);
         DropdownBar dropdownBarInspectionQuantity = new DropdownBar("定期服务", false, false, false);
@@ -99,7 +104,7 @@ public class MemberDetailActivity extends BaseActivity<ActivityMemberDetailBindi
         });
 
 
-        viewModel.todayEnvironmentVisible.observe(this, aBoolean -> {
+        viewModel.todayAirVisible.observe(this, aBoolean -> {
             if (aBoolean) {
                 dataBinding.includeTodayEnvironment.tvExpand.setVisibility(View.VISIBLE);
                 dataBinding.includeTodayEnvironmentNull.setVisibility(View.VISIBLE);
@@ -152,7 +157,7 @@ public class MemberDetailActivity extends BaseActivity<ActivityMemberDetailBindi
 
     @Override
     public void onRightIconClick() {
-        viewModel.changeFocus(String.valueOf(memberId), b);
+//        viewModel.changeFocus(String.valueOf(memberId), b);
     }
 
     @Override
@@ -186,7 +191,7 @@ public class MemberDetailActivity extends BaseActivity<ActivityMemberDetailBindi
                 editTextDialog.setOnEditTextDialogClickListener(new EditTextDialog.OnEditTextDialogClickListener() {
                     @Override
                     public void doCreate(List<String> content) {
-                        viewModel.createMyTask(memberId, memberName, content.get(0));
+//                        viewModel.createMyTask(memberId, memberName, content.get(0));
                     }
 
                     @Override

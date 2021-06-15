@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.team.TeamViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+
+        <RelativeLayout
+            android:id="@+id/layout_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_title"
+            android:layout_marginTop="@dimen/dp_10">
+
+            <EditText
+                android:id="@+id/edit_search_phone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:background="@drawable/bg_search"
+                android:drawableLeft="@drawable/search"
+                android:padding="@dimen/dp_10"
+                android:drawablePadding="@dimen/dp_10"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:hint="输入手机号码搜索"
+                android:text="@={ViewModel.phone}"
+                android:textSize="@dimen/sp_15"
+                android:layout_toStartOf="@id/btn_search"
+                android:gravity="center_vertical"
+                android:layout_centerVertical="true"
+                android:inputType="phone"/>
+
+            <ImageView
+                android:id="@+id/iv_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/clear"
+                android:layout_centerVertical="true"
+                android:layout_alignEnd="@id/edit_search_phone"
+                android:visibility="gone"
+                android:layout_marginEnd="@dimen/dp_10"/>
+
+            <Button
+                android:id="@+id/btn_search"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_40"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:text="搜索"
+                android:textSize="@dimen/sp_15"
+                android:textColor="@color/colorBlue"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:background="@drawable/bg_task_blue_shape"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_health_manager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_below="@id/layout_search"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="@dimen/dp_50"
+                android:layout_height="@dimen/dp_50"
+                android:src="@mipmap/ic_launcher"
+                android:layout_centerVertical="true"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_toEndOf="@id/iv_avatar"
+                android:layout_toStartOf="@id/btn_sign"
+                android:layout_alignTop="@id/iv_avatar"
+                android:layout_alignBottom="@id/iv_avatar"
+                android:gravity="center_vertical"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dp_10">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@={ViewModel.healthName}"
+                    android:textColor="@color/colorBlack"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/sp_18"
+                    android:layout_alignParentTop="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/tv_name"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:text="健康管理师 | 18852409980"
+                    android:layout_alignBottom="@id/tv_name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_16"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/tv_rank_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@={ViewModel.healthRank}"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentBottom="true"
+                    android:textSize="@dimen/sp_16"/>
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btn_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_35"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:text="发起签约"
+                android:textSize="@dimen/sp_15"
+                android:textColor="@color/white"
+                android:background="@drawable/shape_solid_blue_radius_5"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>

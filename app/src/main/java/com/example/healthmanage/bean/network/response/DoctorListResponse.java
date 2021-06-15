@@ -9,13 +9,21 @@ public class DoctorListResponse {
      * errorLog : null
      * status : 0
      * message : 查询成功
-     * data : [{"id":20,"name":"王医生","type":0,"speciality":null,"experience":null,"grade":null,"professionalTitle":null,"sittingPlace":null,"avatar":null,"updateTime":null,"departmentId":null,"hospitalId":null,"departId":null},{"id":22,"name":"方医生","type":1,"speciality":null,"experience":null,"grade":null,"professionalTitle":null,"sittingPlace":null,"avatar":null,"updateTime":null,"departmentId":null,"hospitalId":null,"departId":null},{"id":24,"name":"于医生","type":0,"speciality":null,"experience":null,"grade":null,"professionalTitle":null,"sittingPlace":null,"avatar":null,"updateTime":null,"departmentId":null,"hospitalId":null,"departId":null}]
+     * data : [{"id":13,"systemUserId":34,"teamSystemUserId":55,"roleId":11,"appDoctorInfo":{"id":null,"systemUserId":55,"name":"丁老师","idCard":"445121199604055622","roleId":11,"departmentId":2,"addr":null,"rank":"主任医师","hospitalId":11,"avatar":"http://119.23.187.176:8083/picture/ad180d23c65df9c47f8efd72a45ad2f7.jpeg","experience":"上海复旦大学毕业，研究生导师","speciality":"小儿麻痹，儿童基疾病","updateTime":1619436792000,"auditStatus":1,"auditTime":null,"createTime":null,"frontIdCardUrl":null,"backIdCardUrl":null,"urlList":null,"phone":null,"appHospitalDepartment":{"id":13,"parentId":null,"name":"儿童内科","isUsed":null,"sort":null,"createTime":null,"updateTime":null,"list":null},"appSystemUser":{"sysId":55,"sysNickName":"健康管理师","sysUserName":"15862335733","sysInitPwd":null,"sysPwd":null,"token":null,"isLocked":null,"isDeleted":null,"createTime":null,"updateTime":null,"createUserId":null,"lastLoginTime":null,"roleId":null,"groupId":null,"groupName":null,"groupParentId":null,"groupParentPath":null,"groupPath":null,"departmentId":null,"departmentName":null,"phone":"15862335733","invitationCode":null,"appDoctorInfo":null}}}]
      */
 
     private Object requestId;
     private Object errorLog;
     private int status;
     private String message;
+    /**
+     * id : 13
+     * systemUserId : 34
+     * teamSystemUserId : 55
+     * roleId : 11
+     * appDoctorInfo : {"id":null,"systemUserId":55,"name":"丁老师","idCard":"445121199604055622","roleId":11,"departmentId":2,"addr":null,"rank":"主任医师","hospitalId":11,"avatar":"http://119.23.187.176:8083/picture/ad180d23c65df9c47f8efd72a45ad2f7.jpeg","experience":"上海复旦大学毕业，研究生导师","speciality":"小儿麻痹，儿童基疾病","updateTime":1619436792000,"auditStatus":1,"auditTime":null,"createTime":null,"frontIdCardUrl":null,"backIdCardUrl":null,"urlList":null,"phone":null,"appHospitalDepartment":{"id":13,"parentId":null,"name":"儿童内科","isUsed":null,"sort":null,"createTime":null,"updateTime":null,"list":null},"appSystemUser":{"sysId":55,"sysNickName":"健康管理师","sysUserName":"15862335733","sysInitPwd":null,"sysPwd":null,"token":null,"isLocked":null,"isDeleted":null,"createTime":null,"updateTime":null,"createUserId":null,"lastLoginTime":null,"roleId":null,"groupId":null,"groupName":null,"groupParentId":null,"groupParentPath":null,"groupPath":null,"departmentId":null,"departmentName":null,"phone":"15862335733","invitationCode":null,"appDoctorInfo":null}}
+     */
+
     private List<DataBean> data;
 
     public Object getRequestId() {
@@ -59,35 +67,45 @@ public class DoctorListResponse {
     }
 
     public static class DataBean {
+        private int id;
+        private int systemUserId;
+        private int teamSystemUserId;
+        private int roleId;
+        private boolean isChecked;
         /**
-         * id : 20
-         * name : 王医生
-         * type : 0
-         * speciality : null
-         * experience : null
-         * grade : null
-         * professionalTitle : null
-         * sittingPlace : null
-         * avatar : null
-         * updateTime : null
-         * departmentId : null
-         * hospitalId : null
-         * departId : null
+         * id : null
+         * systemUserId : 55
+         * name : 丁老师
+         * idCard : 445121199604055622
+         * roleId : 11
+         * departmentId : 2
+         * addr : null
+         * rank : 主任医师
+         * hospitalId : 11
+         * avatar : http://119.23.187.176:8083/picture/ad180d23c65df9c47f8efd72a45ad2f7.jpeg
+         * experience : 上海复旦大学毕业，研究生导师
+         * speciality : 小儿麻痹，儿童基疾病
+         * updateTime : 1619436792000
+         * auditStatus : 1
+         * auditTime : null
+         * createTime : null
+         * frontIdCardUrl : null
+         * backIdCardUrl : null
+         * urlList : null
+         * phone : null
+         * appHospitalDepartment : {"id":13,"parentId":null,"name":"儿童内科","isUsed":null,"sort":null,"createTime":null,"updateTime":null,"list":null}
+         * appSystemUser : {"sysId":55,"sysNickName":"健康管理师","sysUserName":"15862335733","sysInitPwd":null,"sysPwd":null,"token":null,"isLocked":null,"isDeleted":null,"createTime":null,"updateTime":null,"createUserId":null,"lastLoginTime":null,"roleId":null,"groupId":null,"groupName":null,"groupParentId":null,"groupParentPath":null,"groupPath":null,"departmentId":null,"departmentName":null,"phone":"15862335733","invitationCode":null,"appDoctorInfo":null}
          */
 
-        private int id;
-        private String name;
-        private int type;
-        private Object speciality;
-        private Object experience;
-        private int grade;
-        private String professionalTitle;
-        private String sittingPlace;
-        private String avatar;
-        private Object updateTime;
-        private Object departmentId;
-        private Object hospitalId;
-        private Object departId;
+        private DataBean.AppDoctorInfoBean appDoctorInfo;
+
+        public boolean isChecked() {
+            return isChecked;
+        }
+
+        public void setChecked(boolean checked) {
+            isChecked = checked;
+        }
 
         public int getId() {
             return id;
@@ -97,100 +115,559 @@ public class DoctorListResponse {
             this.id = id;
         }
 
-        public String getName() {
-            return name;
+        public int getSystemUserId() {
+            return systemUserId;
         }
 
-        public void setName(String name) {
-            this.name = name;
+        public void setSystemUserId(int systemUserId) {
+            this.systemUserId = systemUserId;
         }
 
-        public int getType() {
-            return type;
+        public int getTeamSystemUserId() {
+            return teamSystemUserId;
         }
 
-        public void setType(int type) {
-            this.type = type;
+        public void setTeamSystemUserId(int teamSystemUserId) {
+            this.teamSystemUserId = teamSystemUserId;
         }
 
-        public Object getSpeciality() {
-            return speciality;
+        public int getRoleId() {
+            return roleId;
         }
 
-        public void setSpeciality(Object speciality) {
-            this.speciality = speciality;
+        public void setRoleId(int roleId) {
+            this.roleId = roleId;
         }
 
-        public Object getExperience() {
-            return experience;
+        public DataBean.AppDoctorInfoBean getAppDoctorInfo() {
+            return appDoctorInfo;
         }
 
-        public void setExperience(Object experience) {
-            this.experience = experience;
+        public void setAppDoctorInfo(DataBean.AppDoctorInfoBean appDoctorInfo) {
+            this.appDoctorInfo = appDoctorInfo;
         }
 
-        public int getGrade() {
-            return grade;
-        }
+        public static class AppDoctorInfoBean {
+            private Object id;
+            private int systemUserId;
+            private String name;
+            private String idCard;
+            private int roleId;
+            private int departmentId;
+            private Object addr;
+            private String rank;
+            private int hospitalId;
+            private String avatar;
+            private String experience;
+            private String speciality;
+            private long updateTime;
+            private int auditStatus;
+            private Object auditTime;
+            private Object createTime;
+            private Object frontIdCardUrl;
+            private Object backIdCardUrl;
+            private Object urlList;
+            private Object phone;
+            /**
+             * id : 13
+             * parentId : null
+             * name : 儿童内科
+             * isUsed : null
+             * sort : null
+             * createTime : null
+             * updateTime : null
+             * list : null
+             */
 
-        public void setGrade(int grade) {
-            this.grade = grade;
-        }
+            private DataBean.AppDoctorInfoBean.AppHospitalDepartmentBean appHospitalDepartment;
+            /**
+             * sysId : 55
+             * sysNickName : 健康管理师
+             * sysUserName : 15862335733
+             * sysInitPwd : null
+             * sysPwd : null
+             * token : null
+             * isLocked : null
+             * isDeleted : null
+             * createTime : null
+             * updateTime : null
+             * createUserId : null
+             * lastLoginTime : null
+             * roleId : null
+             * groupId : null
+             * groupName : null
+             * groupParentId : null
+             * groupParentPath : null
+             * groupPath : null
+             * departmentId : null
+             * departmentName : null
+             * phone : 15862335733
+             * invitationCode : null
+             * appDoctorInfo : null
+             */
 
-        public String getProfessionalTitle() {
-            return professionalTitle;
-        }
+            private DataBean.AppDoctorInfoBean.AppSystemUserBean appSystemUser;
 
-        public void setProfessionalTitle(String professionalTitle) {
-            this.professionalTitle = professionalTitle;
-        }
+            public Object getId() {
+                return id;
+            }
 
-        public String getSittingPlace() {
-            return sittingPlace;
-        }
+            public void setId(Object id) {
+                this.id = id;
+            }
 
-        public void setSittingPlace(String sittingPlace) {
-            this.sittingPlace = sittingPlace;
-        }
+            public int getSystemUserId() {
+                return systemUserId;
+            }
 
-        public String getAvatar() {
-            return avatar;
-        }
+            public void setSystemUserId(int systemUserId) {
+                this.systemUserId = systemUserId;
+            }
 
-        public void setAvatar(String avatar) {
-            this.avatar = avatar;
-        }
+            public String getName() {
+                return name;
+            }
 
-        public Object getUpdateTime() {
-            return updateTime;
-        }
+            public void setName(String name) {
+                this.name = name;
+            }
 
-        public void setUpdateTime(Object updateTime) {
-            this.updateTime = updateTime;
-        }
+            public String getIdCard() {
+                return idCard;
+            }
 
-        public Object getDepartmentId() {
-            return departmentId;
-        }
+            public void setIdCard(String idCard) {
+                this.idCard = idCard;
+            }
 
-        public void setDepartmentId(Object departmentId) {
-            this.departmentId = departmentId;
-        }
+            public int getRoleId() {
+                return roleId;
+            }
 
-        public Object getHospitalId() {
-            return hospitalId;
-        }
+            public void setRoleId(int roleId) {
+                this.roleId = roleId;
+            }
 
-        public void setHospitalId(Object hospitalId) {
-            this.hospitalId = hospitalId;
-        }
+            public int getDepartmentId() {
+                return departmentId;
+            }
 
-        public Object getDepartId() {
-            return departId;
-        }
+            public void setDepartmentId(int departmentId) {
+                this.departmentId = departmentId;
+            }
 
-        public void setDepartId(Object departId) {
-            this.departId = departId;
+            public Object getAddr() {
+                return addr;
+            }
+
+            public void setAddr(Object addr) {
+                this.addr = addr;
+            }
+
+            public String getRank() {
+                return rank;
+            }
+
+            public void setRank(String rank) {
+                this.rank = rank;
+            }
+
+            public int getHospitalId() {
+                return hospitalId;
+            }
+
+            public void setHospitalId(int hospitalId) {
+                this.hospitalId = hospitalId;
+            }
+
+            public String getAvatar() {
+                return avatar;
+            }
+
+            public void setAvatar(String avatar) {
+                this.avatar = avatar;
+            }
+
+            public String getExperience() {
+                return experience;
+            }
+
+            public void setExperience(String experience) {
+                this.experience = experience;
+            }
+
+            public String getSpeciality() {
+                return speciality;
+            }
+
+            public void setSpeciality(String speciality) {
+                this.speciality = speciality;
+            }
+
+            public long getUpdateTime() {
+                return updateTime;
+            }
+
+            public void setUpdateTime(long updateTime) {
+                this.updateTime = updateTime;
+            }
+
+            public int getAuditStatus() {
+                return auditStatus;
+            }
+
+            public void setAuditStatus(int auditStatus) {
+                this.auditStatus = auditStatus;
+            }
+
+            public Object getAuditTime() {
+                return auditTime;
+            }
+
+            public void setAuditTime(Object auditTime) {
+                this.auditTime = auditTime;
+            }
+
+            public Object getCreateTime() {
+                return createTime;
+            }
+
+            public void setCreateTime(Object createTime) {
+                this.createTime = createTime;
+            }
+
+            public Object getFrontIdCardUrl() {
+                return frontIdCardUrl;
+            }
+
+            public void setFrontIdCardUrl(Object frontIdCardUrl) {
+                this.frontIdCardUrl = frontIdCardUrl;
+            }
+
+            public Object getBackIdCardUrl() {
+                return backIdCardUrl;
+            }
+
+            public void setBackIdCardUrl(Object backIdCardUrl) {
+                this.backIdCardUrl = backIdCardUrl;
+            }
+
+            public Object getUrlList() {
+                return urlList;
+            }
+
+            public void setUrlList(Object urlList) {
+                this.urlList = urlList;
+            }
+
+            public Object getPhone() {
+                return phone;
+            }
+
+            public void setPhone(Object phone) {
+                this.phone = phone;
+            }
+
+            public DataBean.AppDoctorInfoBean.AppHospitalDepartmentBean getAppHospitalDepartment() {
+                return appHospitalDepartment;
+            }
+
+            public void setAppHospitalDepartment(DataBean.AppDoctorInfoBean.AppHospitalDepartmentBean appHospitalDepartment) {
+                this.appHospitalDepartment = appHospitalDepartment;
+            }
+
+            public DataBean.AppDoctorInfoBean.AppSystemUserBean getAppSystemUser() {
+                return appSystemUser;
+            }
+
+            public void setAppSystemUser(DataBean.AppDoctorInfoBean.AppSystemUserBean appSystemUser) {
+                this.appSystemUser = appSystemUser;
+            }
+
+            public static class AppHospitalDepartmentBean {
+                private int id;
+                private Object parentId;
+                private String name;
+                private Object isUsed;
+                private Object sort;
+                private Object createTime;
+                private Object updateTime;
+                private Object list;
+
+                public int getId() {
+                    return id;
+                }
+
+                public void setId(int id) {
+                    this.id = id;
+                }
+
+                public Object getParentId() {
+                    return parentId;
+                }
+
+                public void setParentId(Object parentId) {
+                    this.parentId = parentId;
+                }
+
+                public String getName() {
+                    return name;
+                }
+
+                public void setName(String name) {
+                    this.name = name;
+                }
+
+                public Object getIsUsed() {
+                    return isUsed;
+                }
+
+                public void setIsUsed(Object isUsed) {
+                    this.isUsed = isUsed;
+                }
+
+                public Object getSort() {
+                    return sort;
+                }
+
+                public void setSort(Object sort) {
+                    this.sort = sort;
+                }
+
+                public Object getCreateTime() {
+                    return createTime;
+                }
+
+                public void setCreateTime(Object createTime) {
+                    this.createTime = createTime;
+                }
+
+                public Object getUpdateTime() {
+                    return updateTime;
+                }
+
+                public void setUpdateTime(Object updateTime) {
+                    this.updateTime = updateTime;
+                }
+
+                public Object getList() {
+                    return list;
+                }
+
+                public void setList(Object list) {
+                    this.list = list;
+                }
+            }
+
+            public static class AppSystemUserBean {
+                private int sysId;
+                private String sysNickName;
+                private String sysUserName;
+                private Object sysInitPwd;
+                private Object sysPwd;
+                private Object token;
+                private Object isLocked;
+                private Object isDeleted;
+                private Object createTime;
+                private Object updateTime;
+                private Object createUserId;
+                private Object lastLoginTime;
+                private Object roleId;
+                private Object groupId;
+                private Object groupName;
+                private Object groupParentId;
+                private Object groupParentPath;
+                private Object groupPath;
+                private Object departmentId;
+                private Object departmentName;
+                private String phone;
+                private Object invitationCode;
+                private Object appDoctorInfo;
+
+                public int getSysId() {
+                    return sysId;
+                }
+
+                public void setSysId(int sysId) {
+                    this.sysId = sysId;
+                }
+
+                public String getSysNickName() {
+                    return sysNickName;
+                }
+
+                public void setSysNickName(String sysNickName) {
+                    this.sysNickName = sysNickName;
+                }
+
+                public String getSysUserName() {
+                    return sysUserName;
+                }
+
+                public void setSysUserName(String sysUserName) {
+                    this.sysUserName = sysUserName;
+                }
+
+                public Object getSysInitPwd() {
+                    return sysInitPwd;
+                }
+
+                public void setSysInitPwd(Object sysInitPwd) {
+                    this.sysInitPwd = sysInitPwd;
+                }
+
+                public Object getSysPwd() {
+                    return sysPwd;
+                }
+
+                public void setSysPwd(Object sysPwd) {
+                    this.sysPwd = sysPwd;
+                }
+
+                public Object getToken() {
+                    return token;
+                }
+
+                public void setToken(Object token) {
+                    this.token = token;
+                }
+
+                public Object getIsLocked() {
+                    return isLocked;
+                }
+
+                public void setIsLocked(Object isLocked) {
+                    this.isLocked = isLocked;
+                }
+
+                public Object getIsDeleted() {
+                    return isDeleted;
+                }
+
+                public void setIsDeleted(Object isDeleted) {
+                    this.isDeleted = isDeleted;
+                }
+
+                public Object getCreateTime() {
+                    return createTime;
+                }
+
+                public void setCreateTime(Object createTime) {
+                    this.createTime = createTime;
+                }
+
+                public Object getUpdateTime() {
+                    return updateTime;
+                }
+
+                public void setUpdateTime(Object updateTime) {
+                    this.updateTime = updateTime;
+                }
+
+                public Object getCreateUserId() {
+                    return createUserId;
+                }
+
+                public void setCreateUserId(Object createUserId) {
+                    this.createUserId = createUserId;
+                }
+
+                public Object getLastLoginTime() {
+                    return lastLoginTime;
+                }
+
+                public void setLastLoginTime(Object lastLoginTime) {
+                    this.lastLoginTime = lastLoginTime;
+                }
+
+                public Object getRoleId() {
+                    return roleId;
+                }
+
+                public void setRoleId(Object roleId) {
+                    this.roleId = roleId;
+                }
+
+                public Object getGroupId() {
+                    return groupId;
+                }
+
+                public void setGroupId(Object groupId) {
+                    this.groupId = groupId;
+                }
+
+                public Object getGroupName() {
+                    return groupName;
+                }
+
+                public void setGroupName(Object groupName) {
+                    this.groupName = groupName;
+                }
+
+                public Object getGroupParentId() {
+                    return groupParentId;
+                }
+
+                public void setGroupParentId(Object groupParentId) {
+                    this.groupParentId = groupParentId;
+                }
+
+                public Object getGroupParentPath() {
+                    return groupParentPath;
+                }
+
+                public void setGroupParentPath(Object groupParentPath) {
+                    this.groupParentPath = groupParentPath;
+                }
+
+                public Object getGroupPath() {
+                    return groupPath;
+                }
+
+                public void setGroupPath(Object groupPath) {
+                    this.groupPath = groupPath;
+                }
+
+                public Object getDepartmentId() {
+                    return departmentId;
+                }
+
+                public void setDepartmentId(Object departmentId) {
+                    this.departmentId = departmentId;
+                }
+
+                public Object getDepartmentName() {
+                    return departmentName;
+                }
+
+                public void setDepartmentName(Object departmentName) {
+                    this.departmentName = departmentName;
+                }
+
+                public String getPhone() {
+                    return phone;
+                }
+
+                public void setPhone(String phone) {
+                    this.phone = phone;
+                }
+
+                public Object getInvitationCode() {
+                    return invitationCode;
+                }
+
+                public void setInvitationCode(Object invitationCode) {
+                    this.invitationCode = invitationCode;
+                }
+
+                public Object getAppDoctorInfo() {
+                    return appDoctorInfo;
+                }
+
+                public void setAppDoctorInfo(Object appDoctorInfo) {
+                    this.appDoctorInfo = appDoctorInfo;
+                }
+            }
         }
     }
 }

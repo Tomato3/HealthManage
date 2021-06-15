@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingConstraints"
+    android:padding="@dimen/dp_20">
+
+    <TextView
+        android:id="@+id/tv_hint_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请输入异常描述:"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textSize="@dimen/sp_18" />
+
+    <EditText
+        android:id="@+id/edt_hint_task"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_150"
+        android:maxLength="150"
+        android:background="@drawable/bg_shape_solid_task_radiu_5"
+        app:layout_constraintTop_toBottomOf="@id/tv_hint_task"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:padding="@dimen/dp_20"
+        android:gravity="top"
+        android:layout_marginTop="@dimen/dp_20"/>
+
+    <TextView
+        android:id="@+id/tv_task_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="异常数据图片(请自行截图上传)"
+        app:layout_constraintTop_toBottomOf="@id/edt_hint_task"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="@dimen/dp_30"
+        android:textSize="@dimen/sp_18" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_task_pic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_30"
+        app:layout_constraintTop_toBottomOf="@id/tv_task_pic"/>
+
+    <Button
+        android:id="@+id/btn_query_task_create"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_18"
+        android:text="确定"
+        android:background="@drawable/shape_solid_blue_radius_5"
+        app:layout_constraintTop_toBottomOf="@id/recycler_view_task_pic"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="@dimen/dp_30"/>
+
+    <Button
+        android:id="@+id/btn_cancel_task_create"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:text="取消"
+        android:textSize="@dimen/sp_18"
+        android:gravity="center"
+        android:background="@null"
+        app:layout_constraintTop_toBottomOf="@id/btn_query_task_create"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="@dimen/dp_20"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

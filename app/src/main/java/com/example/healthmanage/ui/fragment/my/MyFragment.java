@@ -1,20 +1,13 @@
 package com.example.healthmanage.ui.fragment.my;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-
-import androidx.databinding.BindingAdapter;
 import androidx.fragment.app.Fragment;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.healthmanage.BR;
 import com.example.healthmanage.R;
-import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.base.BaseFragment;
 import com.example.healthmanage.databinding.FragmentMyBinding;
 import com.example.healthmanage.ui.activity.invitemember.InviteMemberActivity;
@@ -23,8 +16,8 @@ import com.example.healthmanage.ui.activity.myinfo.MyInfoActivity;
 import com.example.healthmanage.ui.activity.mypoint.MyPointActivity;
 import com.example.healthmanage.ui.activity.mystudio.MyStudioActivity;
 import com.example.healthmanage.ui.activity.servicecenter.ServiceCenterActivity;
-
 import java.util.List;
+
 
 public class MyFragment extends BaseFragment<FragmentMyBinding, MyViewModel> implements View.OnClickListener {
 
@@ -70,8 +63,9 @@ public class MyFragment extends BaseFragment<FragmentMyBinding, MyViewModel> imp
         dataBinding.tvMyPoint.setOnClickListener(this::onClick);
         dataBinding.tvServiceCenter.setOnClickListener(this::onClick);
 
-
     }
+
+
 
     @Override
     protected void registerUIChangeLiveDataCallBack() {

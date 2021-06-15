@@ -3,21 +3,23 @@ package com.example.healthmanage.ui.fragment.business;
 import android.content.Context;
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.healthmanage.BR;
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseFragment;
 import com.example.healthmanage.databinding.FragmentNewBusinessBinding;
-import com.example.healthmanage.ui.fragment.home.NewHomeFragment;
+import com.example.healthmanage.ui.activity.academicJournals.ui.AcademicJournalsActivity;
+import com.example.healthmanage.ui.activity.consultation.ConsultationActivity;
+import com.example.healthmanage.ui.activity.delegate.ui.DelegateTaskActivity;
+import com.example.healthmanage.ui.activity.personalRequest.ui.PersonalRequestActivity;
+import com.example.healthmanage.ui.activity.referral.ReferralActivity;
+import com.example.healthmanage.ui.activity.team.ui.BusinessDealActivity;
+import com.example.healthmanage.utils.ToastUtil;
 import com.youth.banner.loader.ImageLoader;
 
 import java.util.ArrayList;
@@ -27,7 +29,42 @@ public class NewBusinessFragment extends BaseFragment<FragmentNewBusinessBinding
 
     @Override
     protected void initData() {
-
+        dataBinding.includeMedicalService.findViewById(R.id.textView9).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(DelegateTaskActivity.class);
+            }
+        });
+        dataBinding.includeMedicalService.findViewById(R.id.textView10).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(ConsultationActivity.class);
+            }
+        });
+        dataBinding.includeMedicalService.findViewById(R.id.textView11).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(ReferralActivity.class);
+            }
+        });
+        dataBinding.includeBusinessWork.findViewById(R.id.textView9).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(AcademicJournalsActivity.class);
+            }
+        });
+        dataBinding.includeBusinessWork.findViewById(R.id.textView10).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(BusinessDealActivity.class);
+            }
+        });
+        dataBinding.includeBusinessWork.findViewById(R.id.textView11).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(PersonalRequestActivity.class);
+            }
+        });
     }
 
     @Override

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="@dimen/dp_10"
+    android:layout_marginRight="@dimen/dp_10"
+    android:background="@color/white"
+    tools:ignore="MissingConstraints">
+
+    <TextView
+        android:id="@+id/tv_referral_result_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:text="转诊结果:已处理"
+        android:textSize="@dimen/sp_20"
+        android:textColor="@color/colorBlue"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:padding="@dimen/dp_10"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="查看详情"
+        android:textSize="@dimen/sp_15"
+        android:textColor="@color/colorBlue"
+        android:gravity="center_vertical"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/tv_referral_result_type"
+        android:drawableRight="@drawable/ic_icon_right"
+        android:padding="@dimen/dp_10"/>
+
+    <View
+        android:id="@+id/referral_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/colorLineGrey"
+        app:layout_constraintTop_toBottomOf="@id/tv_referral_result_type"/>
+
+    <TextView
+        android:id="@+id/tv_referral_patient_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="转诊患者:"
+        android:textSize="@dimen/sp_15"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/referral_line"
+        android:padding="@dimen/dp_10"/>
+
+    <TextView
+        android:id="@+id/tv_illness_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="病情描述:"
+        android:textSize="@dimen/sp_15"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/tv_referral_patient_name"
+        android:padding="@dimen/dp_10"/>
+
+    <TextView
+        android:id="@+id/tv_referral_reason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="转诊原因:"
+        android:textSize="@dimen/sp_15"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/tv_illness_description"
+        android:padding="@dimen/dp_10"/>
+
+    <View
+        android:id="@+id/line_content"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/colorLineGrey"
+        app:layout_constraintTop_toBottomOf="@id/tv_referral_reason"/>
+
+    <TextView
+        android:id="@+id/tv_referral_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/line_content"
+        android:gravity="center_vertical"
+        android:text="转出时间:"
+        android:textSize="@dimen/sp_15"
+        android:padding="@dimen/dp_10"/>
+
+
+    <TextView
+        android:id="@+id/tv_referral_target"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/line_content"
+        app:layout_constraintRight_toRightOf="parent"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toBottomOf="@id/tv_referral_time"
+        android:text="转诊对象:"
+        android:textSize="@dimen/sp_15"
+        android:padding="@dimen/dp_10"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

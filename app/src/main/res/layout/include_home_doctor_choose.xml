@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F5F5F5"
+    tools:ignore="MissingConstraints">
+
+
+    <TextView
+        android:id="@+id/tv_patient_manage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:text="患者管理"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_15"
+        android:drawableTop="@drawable/ic_patient_manage"
+        android:drawablePadding="@dimen/dp_8"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_sign_patient"
+        app:layout_constraintHorizontal_bias="0.5"/>
+
+    <TextView
+        android:id="@+id/tv_sign_patient"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:text="签约患者"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_15"
+        android:gravity="center"
+        android:drawableTop="@drawable/ic_sign_patient"
+        android:drawablePadding="@dimen/dp_8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/tv_patient_manage"
+        app:layout_constraintEnd_toStartOf="@id/tv_business_team"
+        app:layout_constraintBottom_toBottomOf="@id/tv_patient_manage"/>
+
+
+    <TextView
+        android:id="@+id/tv_business_team"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:text="业务团队"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_15"
+        android:gravity="center"
+        android:drawableTop="@drawable/ic_bussiness_team"
+        android:drawablePadding="@dimen/dp_8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/tv_sign_patient"
+        app:layout_constraintEnd_toStartOf="@id/tv_rp_sign"
+        app:layout_constraintBottom_toBottomOf="@id/tv_sign_patient"/>
+
+    <TextView
+        android:id="@+id/tv_rp_sign"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:text="处方签名"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_15"
+        android:drawableTop="@drawable/ic_write_rp"
+        android:drawablePadding="@dimen/dp_8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/tv_business_team"
+        app:layout_constraintEnd_toStartOf="@id/tv_rp_template"
+        app:layout_constraintBottom_toBottomOf="@id/tv_business_team"/>
+
+    <TextView
+        android:id="@+id/tv_rp_template"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:text="处方模板"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_15"
+        android:gravity="center"
+        android:drawableTop="@drawable/ic_rp_template"
+        android:drawablePadding="@dimen/dp_8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/tv_rp_sign"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/tv_rp_sign"/>
+
+    <TextView
+        android:id="@+id/tv_consultation_setting"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:text="问诊设置"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_15"
+        android:gravity="center"
+        android:drawableTop="@drawable/ic_consulation_setting"
+        android:drawablePadding="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_patient_manage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_personal_info"/>
+
+    <TextView
+        android:id="@+id/tv_personal_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:text="个人名片"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_15"
+        android:gravity="center"
+        android:drawableTop="@drawable/ic_personal_info"
+        android:drawablePadding="@dimen/dp_8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/tv_consultation_setting"
+        app:layout_constraintBottom_toBottomOf="@id/tv_consultation_setting"
+        app:layout_constraintEnd_toStartOf="@id/tv_patient_education"/>
+
+    <TextView
+        android:id="@+id/tv_patient_education"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:text="患教文章"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_15"
+        android:gravity="center"
+        android:drawableTop="@drawable/ic_patient_education"
+        android:drawablePadding="@dimen/dp_8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/tv_personal_info"
+        app:layout_constraintEnd_toStartOf="@id/tv_learn_live"
+        app:layout_constraintBottom_toBottomOf="@id/tv_personal_info"/>
+
+    <TextView
+        android:id="@+id/tv_learn_live"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:text="学术直播"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_15"
+        android:gravity="center"
+        android:drawableTop="@drawable/ic_study_live"
+        android:drawablePadding="@dimen/dp_8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/tv_patient_education"
+        app:layout_constraintEnd_toStartOf="@id/tv_my_mall"
+        app:layout_constraintBottom_toBottomOf="@id/tv_patient_education"/>
+
+    <TextView
+        android:id="@+id/tv_my_mall"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:text="我的小店"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_15"
+        android:gravity="center"
+        android:drawableTop="@drawable/ic_my_shop"
+        android:drawablePadding="@dimen/dp_8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/tv_learn_live"
+        app:layout_constraintBottom_toBottomOf="@id/tv_learn_live"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

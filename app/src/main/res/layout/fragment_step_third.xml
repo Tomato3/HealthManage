@@ -21,6 +21,7 @@
             android:src="@drawable/certification_process" />
 
         <TextView
+            android:id="@+id/tv_renzheng_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="认证资料已提交"
@@ -29,6 +30,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tv_renzheng_failed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -56,9 +58,11 @@
                 style="@style/ActivityQualificationButtonStyle.Step"
                 android:onClick="onClick"
                 android:text="进入首页"
-                android:textColor="@color/colorTxtBlack" />
+                android:textColor="@color/colorTxtBlack"
+                android:visibility="gone"/>
 
             <Button
+                android:id="@+id/btn_re_post"
                 style="@style/ActivityQualificationButtonStyle.Operation"
                 android:background="@drawable/shape_solid_blue_radius_5_50"
                 android:text="等待审核结果" />

@@ -21,9 +21,13 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp" />
 
-        <include layout="@layout/include_business_mywork" />
+        <include
+            android:id="@+id/include_business_work"
+            layout="@layout/include_business_mywork" />
 
-        <include layout="@layout/include_business_medicalservice" />
+        <include
+            android:id="@+id/include_medical_service"
+            layout="@layout/include_business_medicalservice" />
 
         <include layout="@layout/include_business_lifeservice" />
     </LinearLayout>

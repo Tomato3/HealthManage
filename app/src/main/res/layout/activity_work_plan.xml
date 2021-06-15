@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.workplan.ui.WorkPlanViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+
+        <com.haibin.calendarview.CalendarLayout
+            android:id="@+id/calendarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            android:orientation="vertical"
+            app:calendar_show_mode="only_week_view"
+            android:layout_below="@id/layout_title">
+
+            <com.haibin.calendarview.CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:calendar_padding="10dp"
+                app:calendar_height="@dimen/dp_46"
+                app:selected_text_color="@color/white"
+                app:selected_theme_color="@color/colorBlue"
+                app:week_background="@color/white"
+                app:week_text_color="@color/colorBlack"
+                app:week_view="com.example.healthmanage.view.SimpleWeekView"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:background="@color/color_line_grey"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_plan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </com.haibin.calendarview.CalendarLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_write_plan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/bg_circular_plan"
+            android:layout_marginRight="@dimen/dp_45"
+            android:layout_marginBottom="@dimen/dp_54"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="写计划"
+                android:drawableTop="@drawable/ic_write_plan"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_15"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

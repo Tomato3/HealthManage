@@ -16,7 +16,7 @@ public class NursingResponse {
     private Object errorLog;
     private int status;
     private String message;
-    private List<DataBean> data;
+    private DataBean data;
 
     public Object getRequestId() {
         return requestId;
@@ -50,11 +50,11 @@ public class NursingResponse {
         this.message = message;
     }
 
-    public List<DataBean> getData() {
+    public DataBean getData() {
         return data;
     }
 
-    public void setData(List<DataBean> data) {
+    public void setData(DataBean data) {
         this.data = data;
     }
 

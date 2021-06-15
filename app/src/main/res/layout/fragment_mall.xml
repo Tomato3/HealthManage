@@ -12,13 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
+        <WebView
+            android:id="@+id/webview_mall"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/under_do"
-            android:textColor="@color/colorTxtGrey"
-            android:textSize="@dimen/text_size_26" />
+            android:layout_height="match_parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

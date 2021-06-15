@@ -3,6 +3,7 @@ package com.example.healthmanage.base;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -12,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -24,6 +26,7 @@ import com.example.healthmanage.utils.ToastUtil;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.text.ParseException;
 import java.util.Map;
 
 /**
@@ -123,10 +126,10 @@ public abstract class BaseActivity<DB extends ViewDataBinding, VM extends BaseVi
         viewModel.getUiChangeEvent().getToastTxt().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-//                Toast toast = Toast.makeText(BaseActivity.this, s,
-//                        Toast.LENGTH_SHORT);
-//                toast.setGravity(Gravity.CENTER, 0, 0);
-//                toast.show();
+                Toast toast = Toast.makeText(BaseActivity.this, s,
+                        Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
             }
         });
 
@@ -232,4 +235,6 @@ public abstract class BaseActivity<DB extends ViewDataBinding, VM extends BaseVi
         //将当前当前activity设为生命周期的拥有者
         dataBinding.setLifecycleOwner(this);
     }
+
+
 }

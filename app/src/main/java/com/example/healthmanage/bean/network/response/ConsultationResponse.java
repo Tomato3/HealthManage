@@ -2,6 +2,7 @@ package com.example.healthmanage.bean.network.response;
 
 import java.util.List;
 
+
 public class ConsultationResponse {
 
     /**

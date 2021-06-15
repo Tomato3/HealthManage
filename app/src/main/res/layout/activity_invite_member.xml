@@ -14,6 +14,7 @@
     <RelativeLayout style="@style/ActivityInviteMemberLayoutStyle">
 
         <include
+            android:id="@+id/layout_title"
             layout="@layout/toolbar_title"
             app:TitleToolBar="@{ViewModel.titleToolBar}" />
 

@@ -27,6 +27,7 @@
                 android:text="@={ViewModel.phone}" />
 
             <Button
+                android:id="@+id/btn_get_registercode"
                 style="@style/ActivityRegisterOrForgetButtonStyle.GetCode"
                 android:onClick="@{()->ViewModel.getSmsCode()}" />
 
@@ -58,18 +59,20 @@
         <LinearLayout style="@style/ActivityRegisterOrForgetInputLayoutStyle.Tip">
 
             <ImageView
+                android:id="@+id/iv_tips"
                 style="@style/ActivityRegisterOrForgetImageViewStyle.Tip"
                 android:ImageSrc="@{ViewModel.tipImg}" />
 
             <TextView
+                android:id="@+id/tv_tips"
                 style="@style/ActivityRegisterOrForgetTextStyle"
                 android:text="@{ViewModel.tip}"
                 android:textColor="@{ViewModel.tipColor ? @color/colorTxtBlack : @color/colorTxtRed}" />
         </LinearLayout>
 
         <Button
+            android:id="@+id/btn_register_or_forget"
             style="@style/ActivityRegisterOrForgetButtonStyle.Register"
-            android:onClick="@{()->ViewModel.register()}"
             android:text="@{ViewModel.operationTxt}" />
 
     </LinearLayout>

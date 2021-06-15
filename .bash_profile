@@ -1,0 +1,1 @@
+export PATH=${PATH}:/Users/ruix/Library/Android/sdk/tools:/Users/ruix/Library/Android/sdk/platform-tools

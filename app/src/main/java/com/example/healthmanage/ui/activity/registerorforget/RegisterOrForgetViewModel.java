@@ -6,6 +6,7 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.blankj.utilcode.util.StringUtils;
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseViewModel;
 import com.example.healthmanage.bean.UsersInterface;
@@ -26,12 +27,16 @@ public class RegisterOrForgetViewModel extends BaseViewModel {
     public MutableLiveData<String> verificationCode = new MutableLiveData<>("");
     public MutableLiveData<String> countdown = new MutableLiveData<>(defaultString);
     public String title = "注册账号", operationTxt = "确认注册";
-    public MutableLiveData<Integer> type = new MutableLiveData<>();
     public MutableLiveData<String> tip = new MutableLiveData<>("");
     public MutableLiveData<Integer> tipImg = new MutableLiveData<>();
     public MutableLiveData<Boolean> tipColor = new MutableLiveData<>();
+    public MutableLiveData<Boolean> isGetCodeStart = new MutableLiveData<>();
+    public MutableLiveData<Boolean> isClose = new MutableLiveData<>(false);
+//    public MutableLiveData<Boolean> isGetFinish = new MutableLiveData<>();
     private String smsIdentity = "";//发送短信时返回的标识
     private UsersRemoteSource usersRemoteSource;
+    public MutableLiveData<Boolean> isRegisterSuccess = new MutableLiveData<Boolean>();
+    public MutableLiveData<Boolean> isForgetSuccess = new MutableLiveData<Boolean>();
 
 
     public RegisterOrForgetViewModel() {
@@ -46,14 +51,12 @@ public class RegisterOrForgetViewModel extends BaseViewModel {
 
 
     public void register() {
-        startActivity(QualificationActivity.class);
-        if (type.getValue() == 1) {
-            startActivity(QualificationActivity.class);
+//            startActivity(QualificationActivity.class);
             usersRemoteSource.register(phone.getValue(), password.getValue(),
                     verificationCode.getValue(), smsIdentity, new UsersInterface.RegisterCallback() {
                         @Override
                         public void registerSucceed() {
-                            startActivity(QualificationActivity.class);
+                            isRegisterSuccess.postValue(true);
                         }
 
                         @Override
@@ -63,28 +66,30 @@ public class RegisterOrForgetViewModel extends BaseViewModel {
 
                         @Override
                         public void error(ExceptionHandle.ResponseException e) {
+                            isRegisterSuccess.postValue(false);
                         }
                     });
-        } else {
-            usersRemoteSource.forgetPassword(phone.getValue(), password.getValue(),
-                    verificationCode.getValue(), smsIdentity, new UsersInterface.ForgetPasswordCallback() {
-                        @Override
-                        public void forgetSucceed(GeneralResponse generalResponse) {
-                            startActivity(QualificationActivity.class);
-                            Log.d(HTAG, "forgetSucceed==========>: ");
-                        }
+    }
 
-                        @Override
-                        public void forgetFailed(String msg) {
-                            showToast(msg, 1);
-                        }
+    public void forgetPwd(){
+        usersRemoteSource.forgetPassword(phone.getValue(), password.getValue(),
+                verificationCode.getValue(), smsIdentity, new UsersInterface.ForgetPasswordCallback() {
+                    @Override
+                    public void forgetSucceed(GeneralResponse generalResponse) {
+                        isForgetSuccess.postValue(true);
+                        Log.d(HTAG, "forgetSucceed==========>: ");
+                    }
 
-                        @Override
-                        public void error(ExceptionHandle.ResponseException e) {
+                    @Override
+                    public void forgetFailed(String msg) {
+                        showToast(msg, 1);
+                    }
 
-                        }
-                    });
-        }
+                    @Override
+                    public void error(ExceptionHandle.ResponseException e) {
+                        isForgetSuccess.postValue(false);
+                    }
+                });
     }
 
 
@@ -93,10 +98,12 @@ public class RegisterOrForgetViewModel extends BaseViewModel {
             tipImg.setValue(R.drawable.tip_fail);
             tip.setValue("手机号码不能为空");
             tipColor.setValue(false);
+            isClose.setValue(true);
         } else if (!ToolUtil.isMobileNO(phone.getValue())) {
             tipImg.setValue(R.drawable.tip_fail);
             tip.setValue("请输入正确的手机号码");
             tipColor.setValue(false);
+            isClose.setValue(true);
         } else {
             usersRemoteSource.getSmsCode(phone.getValue(), new UsersInterface.getSmsCodeCallback() {
                 @Override
@@ -105,36 +112,47 @@ public class RegisterOrForgetViewModel extends BaseViewModel {
                     tip.setValue("验证码已发送，请耐心等待");
                     tipColor.setValue(true);
                     smsIdentity = smsCodeResponse.getData();
-                    new CountDownTimer(60 * 1000, 1 * 1000) {
-
-                        @Override
-                        public void onTick(long millisUntilFinished) {
-                            countdown.setValue(String.valueOf(millisUntilFinished / 1000) + "s");
-                        }
-
-                        @Override
-                        public void onFinish() {
-                            countdown.setValue(defaultString);
-                        }
-                    }.start();
+                    isGetCodeStart.setValue(true);
+                    isClose.setValue(true);
+//                    new CountDownTimer(60 * 1000, 1 * 1000) {
+//
+//                        @Override
+//                        public void onTick(long millisUntilFinished) {
+//                            countdown.setValue(String.valueOf(millisUntilFinished / 1000) + "s");
+//                            isGetFinish.setValue(false);
+//                        }
+//
+//                        @Override
+//                        public void onFinish() {
+//                            countdown.setValue(defaultString);
+//                            isGetFinish.setValue(true);
+//                        }
+//                    }.start();
                 }
 
                 @Override
                 public void sendFailed(String msg) {
+                    isGetCodeStart.setValue(false);
+//                    isGetFinish.setValue(true);
                     tipImg.setValue(R.drawable.tip_fail);
                     tip.setValue(msg);
                     tipColor.setValue(false);
+                    isClose.setValue(true);
                 }
 
                 @Override
                 public void error(ExceptionHandle.ResponseException e) {
+//                    isGetFinish.setValue(true);
+                    isGetCodeStart.setValue(false);
                     tipImg.setValue(R.drawable.tip_fail);
                     tip.setValue(e.getMessage());
                     tipColor.setValue(false);
+                    isClose.setValue(true);
                 }
             });
 
         }
     }
+
 
 }

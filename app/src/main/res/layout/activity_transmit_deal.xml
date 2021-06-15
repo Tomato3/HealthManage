@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.mytask.MyNewTaskViewModel" />
+    </data>
+
+    <RelativeLayout style="@style/CommonMatchLinearLayoutStyle"
+        android:background="@color/white">
+
+        <include
+            android:id="@+id/layout_title"
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}" />
+
+        <RadioGroup
+            android:id="@+id/rg_title"
+            style="@style/ActivityMemberListRadioGroupStyle"
+            android:layout_below="@id/layout_title">
+
+            <RadioButton
+                android:id="@+id/rb_health_dietitian"
+                style="@style/ActivityMemberListRadioGroupStyle.OrdinaryMember"
+                android:checked="true"
+                android:text="健康营养师" />
+
+            <RadioButton
+                android:id="@+id/rb_health_nurse"
+                style="@style/ActivityMemberListRadioGroupStyle.VipMember"
+                android:text="健康护理师" />
+
+            <RadioButton
+                android:id="@+id/rb_health_doctor"
+                style="@style/ActivityMemberListRadioGroupStyle.SVipMember"
+                android:text="医师" />
+
+            <RadioButton
+                android:id="@+id/rb_health_manager"
+                style="@style/ActivityMemberListRadioGroupStyle.SVipMember"
+                android:text="健康管理师" />
+        </RadioGroup>
+
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/smart_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:layout_below="@id/rg_title"
+            android:layout_above="@id/btn_query_post_deal"
+            android:layout_marginTop="@dimen/dp_15">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_doctor_null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="暂无数据"
+                    android:gravity="center"
+                    android:visibility="gone"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_select_doctor"
+                    style="@style/ActivityMyTaskRecyclerViewStyle" />
+
+            </RelativeLayout>
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+        <Button
+            android:id="@+id/btn_query_post_deal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:textColor="@color/white"
+            android:text="确认发送"
+            android:background="@drawable/shape_solid_blue_radius_5"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_marginBottom="@dimen/dp_10"/>
+
+    </RelativeLayout>
+</layout>

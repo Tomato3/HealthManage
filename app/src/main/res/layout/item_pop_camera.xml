@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/item_popup_bg">
+
+
+    <TextView
+        android:id="@+id/tv_camera"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:text="相机"
+        android:gravity="center"
+        android:textSize="@dimen/sp_18"
+        android:textColor="@color/colorBlack"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/colorLineGrey"/>
+
+    <TextView
+        android:id="@+id/tv_garrey"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:text="相册"
+        android:gravity="center"
+        android:textSize="@dimen/sp_18"
+        android:textColor="@color/colorBlack"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/colorLineGrey"/>
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:text="取消"
+        android:gravity="center"
+        android:textSize="@dimen/sp_18"
+        android:textColor="@color/colorBlue"/>
+
+</LinearLayout>

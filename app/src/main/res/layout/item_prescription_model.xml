@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/constraintLayout_model"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="@dimen/dp_10"
+    android:layout_marginRight="@dimen/dp_10"
+    android:padding="@dimen/dp_10"
+    android:background="@drawable/bg_shape_solid_task_radiu_5"
+    tools:ignore="MissingConstraints">
+
+    <TextView
+        android:id="@+id/tv_model_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:text="模板名称:"
+        android:padding="@dimen/dp_10"
+        android:textSize="@dimen/sp_15"/>
+
+    <RadioButton
+        android:id="@+id/rbt_choose_model"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="选择该模板"
+        android:textColor="@color/colorBlue"
+        app:layout_constraintTop_toTopOf="@id/tv_model_name"
+        app:layout_constraintBottom_toBottomOf="@id/tv_model_name"
+        android:textSize="@dimen/sp_15"/>
+
+    <View
+        android:id="@+id/line_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/colorLineGrey"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintTop_toBottomOf="@id/tv_model_name"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_prescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintTop_toBottomOf="@id/line_top"/>
+
+    <View
+        android:id="@+id/line_2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@color/colorLineGrey"
+        app:layout_constraintTop_toBottomOf="@id/recycler_view_prescription"/>
+
+    <TextView
+        android:id="@+id/tv_watch_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/line_2"
+        android:padding="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="查看详情"
+        android:textSize="@dimen/sp_15"
+        android:textColor="@color/colorBlue"
+        android:gravity="center"
+        android:drawableRight="@drawable/ic_icon_right"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

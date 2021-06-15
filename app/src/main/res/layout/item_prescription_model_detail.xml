@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingConstraints">
+
+    <LinearLayout
+        android:id="@+id/layout_drugs_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/sp_15"
+            android:gravity="center"
+            android:text="药物名称:"/>
+
+        <TextView
+            android:id="@+id/tv_drugs_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/sp_15"
+            android:padding="@dimen/dp_5"
+            android:text="药物名称:"
+            android:gravity="center_vertical"
+            android:layout_marginStart="@dimen/dp_10"
+            android:background="@drawable/bg_content_grey"/>
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/layout_drugs_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:orientation="horizontal"
+        android:layout_below="@id/layout_drugs_name">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="药品数量:"
+                android:gravity="center"
+                android:textSize="@dimen/sp_15"/>
+
+            <TextView
+                android:id="@+id/tv_drugs_num"
+                android:layout_width="@dimen/dp_50"
+                android:layout_height="@dimen/dp_32"
+                android:text="1"
+                android:textSize="@dimen/sp_15"
+                android:gravity="center"
+                android:layout_marginStart="@dimen/dp_10"
+                android:background="@drawable/bg_content_grey"/>
+
+            <TextView
+                android:id="@+id/tv_drugs_num_type"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_32"
+                android:layout_marginStart="@dimen/dp_10"
+                android:background="@drawable/bg_shape_solid_task_radiu_5"
+                android:drawableRight="@drawable/dropdown_expand_icon"
+                android:gravity="center_vertical"
+                android:text="盒"
+                android:paddingStart="@dimen/dp_5"
+                android:drawablePadding="@dimen/dp_10"
+                android:textSize="@dimen/sp_15" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginStart="@dimen/dp_10">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="服用方法:"
+                android:gravity="center"
+                android:textSize="@dimen/sp_15"/>
+
+            <TextView
+                android:id="@+id/tv_take_method"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_32"
+                android:background="@drawable/bg_content_grey"
+                android:drawableRight="@drawable/dropdown_expand_icon"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/dp_5"
+                android:text="口服"
+                android:layout_marginStart="@dimen/dp_10"
+                android:textSize="@dimen/sp_15" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_take_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_drugs_num"
+        android:padding="@dimen/dp_10"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="服用时间:"
+                android:gravity="center"
+                android:textSize="@dimen/sp_15"/>
+
+            <TextView
+                android:id="@+id/tv_take_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_32"
+                android:background="@drawable/bg_content_grey"
+                android:drawableRight="@drawable/dropdown_expand_icon"
+                android:gravity="center_vertical"
+                android:text="睡前"
+                android:layout_marginStart="@dimen/dp_10"
+                android:paddingStart="@dimen/dp_5"
+                android:textSize="@dimen/sp_15" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_marginStart="@dimen/dp_10">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="服用频次:"
+                android:gravity="center"
+                android:textSize="@dimen/sp_15"/>
+
+            <TextView
+                android:id="@+id/tv_take_rate"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_32"
+                android:background="@drawable/bg_content_grey"
+                android:drawableRight="@drawable/dropdown_expand_icon"
+                android:gravity="center_vertical"
+                android:text="一天三次"
+                android:paddingStart="@dimen/dp_5"
+                android:layout_marginStart="@dimen/dp_10"
+                android:textSize="@dimen/sp_15" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

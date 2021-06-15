@@ -1,27 +1,32 @@
 package com.example.healthmanage.ui.activity.main;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
 
 import com.example.healthmanage.BR;
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.databinding.ActivityMainBinding;
-import com.example.healthmanage.ui.fragment.business.BusinessFragment;
+import com.example.healthmanage.ui.activity.login.LoginNewActivity;
+import com.example.healthmanage.ui.activity.qualification.QualificationActivity;
 import com.example.healthmanage.ui.fragment.business.NewBusinessFragment;
-import com.example.healthmanage.ui.fragment.education.EducationFragment;
 import com.example.healthmanage.ui.fragment.education.NewEducationFragment;
-import com.example.healthmanage.ui.fragment.home.HomeFragment;
 import com.example.healthmanage.ui.fragment.home.NewHomeFragment;
 import com.example.healthmanage.ui.fragment.mall.MallFragment;
-import com.example.healthmanage.ui.fragment.my.MyFragment;
+import com.example.healthmanage.ui.fragment.my.NewMyFragment;
 import com.example.healthmanage.utils.StatusBarUitils;
 import com.example.healthmanage.widget.TitleToolBar;
+import com.hyphenate.EMCallBack;
+import com.hyphenate.chat.EMClient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,16 +52,46 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     private String[] tabTexts = {"首页", "业务服务", "教育培训", "商城", "我的"};
     private int colorNormal = 0xFF6C6C6C;
     private int colorSelected = 0xFF00A2FF;
+    private String phone;
+    private String pwd;
+
 
     @Override
     protected void initData() {
 
         viewModel.setUserInfo(BaseApplication.getToken());
-
+        StatusBarUitils.setStatusBar(R.color.colorBlue, false, this);
         initFragment();
         initBottomTab();
 
-        StatusBarUitils.setStatusBar(R.color.colorBlue, false, this);
+        phone = getIntent().getStringExtra("phone");
+        pwd = getIntent().getStringExtra("pwd");
+        if (!TextUtils.isEmpty(phone) && !TextUtils.isEmpty(pwd)){
+            EMClient.getInstance().login(phone, pwd, new EMCallBack() {
+                @Override
+                public void onSuccess() {
+                    EMClient.getInstance().groupManager().loadAllGroups();
+                    Log.e("login======","EMC登录成功");
+                }
+
+                @Override
+                public void onError(int code, String error) {
+                    Log.e("login=======",error);
+                }
+
+                @Override
+                public void onProgress(int progress, String status) {
+
+                }
+            });
+        }
+
+
+    }
+
+    @Override
+    protected void registerUIChangeEventObserver() {
+        super.registerUIChangeEventObserver();
     }
 
     /**
@@ -158,7 +193,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         mFragments.add(new NewBusinessFragment());
         mFragments.add(new NewEducationFragment());
         mFragments.add(new MallFragment());
-        mFragments.add(new MyFragment());
+        mFragments.add(new NewMyFragment());
 
         changeFragment(0);
         changeTitleBar(0);
@@ -205,4 +240,5 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     protected int setContentViewSrc(Bundle savedInstanceState) {
         return R.layout.activity_main;
     }
+
 }

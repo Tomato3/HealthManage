@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_recycle_all"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_50"
+    android:orientation="horizontal">
+
+    <View
+        android:id="@+id/line_blue"
+        android:layout_width="@dimen/dp_8"
+        android:layout_height="match_parent"
+        android:background="@color/colorTxtBlue"/>
+
+    <TextView
+        android:id="@+id/tv_office"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/app_name"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:button="@null"
+        tools:ignore="MissingConstraints" />
+
+</LinearLayout>

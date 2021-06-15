@@ -27,6 +27,9 @@ public class InviteMemberActivity extends BaseActivity<ActivityInviteMemberBindi
     protected void initData() {
         titleToolBar.setTitle("邀请会员");
         titleToolBar.setLeftIconVisible(true);
+        titleToolBar.setTitleColor(getResources().getColor(R.color.colorBlack));
+        dataBinding.layoutTitle.toolbarTitle.setBackgroundColor(getResources().getColor(R.color.white));
+        titleToolBar.setBackIconSrc(R.drawable.back_black);
         viewModel.setTitleToolBar(titleToolBar);
     }
 

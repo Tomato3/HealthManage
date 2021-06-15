@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="QualificationInputItem"
+            type="com.example.healthmanage.bean.QualificationInputItem" />
+    </data>
+
+    <LinearLayout style="@style/ItemQualificationInputLinearLayoutStyle">
+
+        <LinearLayout style="@style/ItemQualificationInputLinearLayoutStyle.Text">
+
+            <TextView
+                android:id="@+id/tv_choose_name"
+                style="@style/ItemQualificationInputTextViewStyle"
+                android:text="@{QualificationInputItem.title}" />
+
+            <TextView
+                android:id="@+id/tv_input"
+                style="@style/ItemQualificationInputEditTextStyle"
+                android:hint="@{QualificationInputItem.hint}" />
+
+            <ImageView
+                android:id="@+id/iv_choose"
+                style="@style/ItemQualificationInputImageViewStyle"
+                android:visibility="@{QualificationInputItem.isShowMore?View.VISIBLE:View.GONE}" />
+        </LinearLayout>
+
+        <View style="@style/ItemQualificationInputViewStyle" />
+    </LinearLayout>
+</layout>

@@ -2,18 +2,25 @@ package com.example.healthmanage.bean.network.response;
 
 public class LoginResponse {
 
+
     /**
      * requestId : null
      * errorLog : null
      * status : 200
      * message : 成功
-     * data : {"userInfo":{"sysId":19,"sysNickName":"测试健康管理师","sysUserName":"王姓健康管理师","sysInitPwd":"564321","sysPwd":"bbf125918ac66d4ab6fac2c767b213df","token":null,"isLocked":0,"isDeleted":0,"createTime":null,"updateTime":null,"createUserId":null,"lastLoginTime":null,"roleId":9,"groupId":null,"groupName":null,"groupParentId":null,"groupParentPath":null,"groupPath":null,"departmentId":null,"departmentName":null,"phone":"13584869132","invitationCode":null},"expires_in":86400,"token":"3b2bd03a1cc742338714df1f1022232f1598000529772"}
+     * data : {"userInfo":{"sysId":19,"sysNickName":"测试健康管理师19","sysUserName":"13584869132","sysInitPwd":"222222","sysPwd":"7b9f5fa1302e8b08ca78e35669d08589","token":null,"isLocked":0,"isDeleted":0,"createTime":1617348476000,"updateTime":null,"createUserId":null,"lastLoginTime":null,"roleId":13,"groupId":null,"groupName":null,"groupParentId":null,"groupParentPath":null,"groupPath":null,"departmentId":null,"departmentName":null,"phone":"13584869132","invitationCode":"692016","appDoctorInfo":{"id":48,"systemUserId":19,"name":"题目","idCard":"54269","roleId":9,"departmentId":0,"addr":"北京市北京市东城区","rank":"健康管理师","hospitalId":0,"avatar":"http://192.168.199.235:8080/picture/e8b4b4bdb34705dc46fd0c5f70db8e1b.jpeg","experience":null,"speciality":"从业8年,专注于老年健康问题，服务超好","updateTime":null,"auditStatus":1,"auditTime":1617268368000,"createTime":1617268021000,"frontIdCardUrl":"http://192.168.199.235:8080/picture/8e55935a6aa7a0b778625ee660ed4332.jpeg","backIdCardUrl":"http://192.168.199.235:8080/picture/8378e4cd4c744a825fd93b87ebdd4b41.jpeg","urlList":null,"phone":null}},"expires_in":86400,"token":"fdc6402ea8e248dab38e7ad6f51f26ae1617788596580"}
      */
 
     private Object requestId;
     private Object errorLog;
     private int status;
     private String message;
+    /**
+     * userInfo : {"sysId":19,"sysNickName":"测试健康管理师19","sysUserName":"13584869132","sysInitPwd":"222222","sysPwd":"7b9f5fa1302e8b08ca78e35669d08589","token":null,"isLocked":0,"isDeleted":0,"createTime":1617348476000,"updateTime":null,"createUserId":null,"lastLoginTime":null,"roleId":13,"groupId":null,"groupName":null,"groupParentId":null,"groupParentPath":null,"groupPath":null,"departmentId":null,"departmentName":null,"phone":"13584869132","invitationCode":"692016","appDoctorInfo":{"id":48,"systemUserId":19,"name":"题目","idCard":"54269","roleId":9,"departmentId":0,"addr":"北京市北京市东城区","rank":"健康管理师","hospitalId":0,"avatar":"http://192.168.199.235:8080/picture/e8b4b4bdb34705dc46fd0c5f70db8e1b.jpeg","experience":null,"speciality":"从业8年,专注于老年健康问题，服务超好","updateTime":null,"auditStatus":1,"auditTime":1617268368000,"createTime":1617268021000,"frontIdCardUrl":"http://192.168.199.235:8080/picture/8e55935a6aa7a0b778625ee660ed4332.jpeg","backIdCardUrl":"http://192.168.199.235:8080/picture/8378e4cd4c744a825fd93b87ebdd4b41.jpeg","urlList":null,"phone":null}}
+     * expires_in : 86400
+     * token : fdc6402ea8e248dab38e7ad6f51f26ae1617788596580
+     */
+
     private DataBean data;
 
     public Object getRequestId() {
@@ -58,9 +65,29 @@ public class LoginResponse {
 
     public static class DataBean {
         /**
-         * userInfo : {"sysId":19,"sysNickName":"测试健康管理师","sysUserName":"王姓健康管理师","sysInitPwd":"564321","sysPwd":"bbf125918ac66d4ab6fac2c767b213df","token":null,"isLocked":0,"isDeleted":0,"createTime":null,"updateTime":null,"createUserId":null,"lastLoginTime":null,"roleId":9,"groupId":null,"groupName":null,"groupParentId":null,"groupParentPath":null,"groupPath":null,"departmentId":null,"departmentName":null,"phone":"13584869132","invitationCode":null}
-         * expires_in : 86400
-         * token : 3b2bd03a1cc742338714df1f1022232f1598000529772
+         * sysId : 19
+         * sysNickName : 测试健康管理师19
+         * sysUserName : 13584869132
+         * sysInitPwd : 222222
+         * sysPwd : 7b9f5fa1302e8b08ca78e35669d08589
+         * token : null
+         * isLocked : 0
+         * isDeleted : 0
+         * createTime : 1617348476000
+         * updateTime : null
+         * createUserId : null
+         * lastLoginTime : null
+         * roleId : 13
+         * groupId : null
+         * groupName : null
+         * groupParentId : null
+         * groupParentPath : null
+         * groupPath : null
+         * departmentId : null
+         * departmentName : null
+         * phone : 13584869132
+         * invitationCode : 692016
+         * appDoctorInfo : {"id":48,"systemUserId":19,"name":"题目","idCard":"54269","roleId":9,"departmentId":0,"addr":"北京市北京市东城区","rank":"健康管理师","hospitalId":0,"avatar":"http://192.168.199.235:8080/picture/e8b4b4bdb34705dc46fd0c5f70db8e1b.jpeg","experience":null,"speciality":"从业8年,专注于老年健康问题，服务超好","updateTime":null,"auditStatus":1,"auditTime":1617268368000,"createTime":1617268021000,"frontIdCardUrl":"http://192.168.199.235:8080/picture/8e55935a6aa7a0b778625ee660ed4332.jpeg","backIdCardUrl":"http://192.168.199.235:8080/picture/8378e4cd4c744a825fd93b87ebdd4b41.jpeg","urlList":null,"phone":null}
          */
 
         private UserInfoBean userInfo;
@@ -92,31 +119,6 @@ public class LoginResponse {
         }
 
         public static class UserInfoBean {
-            /**
-             * sysId : 19
-             * sysNickName : 测试健康管理师
-             * sysUserName : 王姓健康管理师
-             * sysInitPwd : 564321
-             * sysPwd : bbf125918ac66d4ab6fac2c767b213df
-             * token : null
-             * isLocked : 0
-             * isDeleted : 0
-             * createTime : null
-             * updateTime : null
-             * createUserId : null
-             * lastLoginTime : null
-             * roleId : 9
-             * groupId : null
-             * groupName : null
-             * groupParentId : null
-             * groupParentPath : null
-             * groupPath : null
-             * departmentId : null
-             * departmentName : null
-             * phone : 13584869132
-             * invitationCode : null
-             */
-
             private int sysId;
             private String sysNickName;
             private String sysUserName;
@@ -125,7 +127,7 @@ public class LoginResponse {
             private Object token;
             private int isLocked;
             private int isDeleted;
-            private Object createTime;
+            private long createTime;
             private Object updateTime;
             private Object createUserId;
             private Object lastLoginTime;
@@ -139,6 +141,30 @@ public class LoginResponse {
             private Object departmentName;
             private String phone;
             private String invitationCode;
+            /**
+             * id : 48
+             * systemUserId : 19
+             * name : 题目
+             * idCard : 54269
+             * roleId : 9
+             * departmentId : 0
+             * addr : 北京市北京市东城区
+             * rank : 健康管理师
+             * hospitalId : 0
+             * avatar : http://192.168.199.235:8080/picture/e8b4b4bdb34705dc46fd0c5f70db8e1b.jpeg
+             * experience : null
+             * speciality : 从业8年,专注于老年健康问题，服务超好
+             * updateTime : null
+             * auditStatus : 1
+             * auditTime : 1617268368000
+             * createTime : 1617268021000
+             * frontIdCardUrl : http://192.168.199.235:8080/picture/8e55935a6aa7a0b778625ee660ed4332.jpeg
+             * backIdCardUrl : http://192.168.199.235:8080/picture/8378e4cd4c744a825fd93b87ebdd4b41.jpeg
+             * urlList : null
+             * phone : null
+             */
+
+            private AppDoctorInfoBean appDoctorInfo;
 
             public int getSysId() {
                 return sysId;
@@ -204,11 +230,11 @@ public class LoginResponse {
                 this.isDeleted = isDeleted;
             }
 
-            public Object getCreateTime() {
+            public long getCreateTime() {
                 return createTime;
             }
 
-            public void setCreateTime(Object createTime) {
+            public void setCreateTime(long createTime) {
                 this.createTime = createTime;
             }
 
@@ -314,6 +340,197 @@ public class LoginResponse {
 
             public void setInvitationCode(String invitationCode) {
                 this.invitationCode = invitationCode;
+            }
+
+            public AppDoctorInfoBean getAppDoctorInfo() {
+                return appDoctorInfo;
+            }
+
+            public void setAppDoctorInfo(AppDoctorInfoBean appDoctorInfo) {
+                this.appDoctorInfo = appDoctorInfo;
+            }
+
+            public static class AppDoctorInfoBean {
+                private int id;
+                private int systemUserId;
+                private String name;
+                private String idCard;
+                private int roleId;
+                private int departmentId;
+                private String addr;
+                private String rank;
+                private int hospitalId;
+                private String avatar;
+                private Object experience;
+                private String speciality;
+                private Object updateTime;
+                private int auditStatus;
+                private long auditTime;
+                private long createTime;
+                private String frontIdCardUrl;
+                private String backIdCardUrl;
+                private Object urlList;
+                private Object phone;
+
+                public int getId() {
+                    return id;
+                }
+
+                public void setId(int id) {
+                    this.id = id;
+                }
+
+                public int getSystemUserId() {
+                    return systemUserId;
+                }
+
+                public void setSystemUserId(int systemUserId) {
+                    this.systemUserId = systemUserId;
+                }
+
+                public String getName() {
+                    return name;
+                }
+
+                public void setName(String name) {
+                    this.name = name;
+                }
+
+                public String getIdCard() {
+                    return idCard;
+                }
+
+                public void setIdCard(String idCard) {
+                    this.idCard = idCard;
+                }
+
+                public int getRoleId() {
+                    return roleId;
+                }
+
+                public void setRoleId(int roleId) {
+                    this.roleId = roleId;
+                }
+
+                public int getDepartmentId() {
+                    return departmentId;
+                }
+
+                public void setDepartmentId(int departmentId) {
+                    this.departmentId = departmentId;
+                }
+
+                public String getAddr() {
+                    return addr;
+                }
+
+                public void setAddr(String addr) {
+                    this.addr = addr;
+                }
+
+                public String getRank() {
+                    return rank;
+                }
+
+                public void setRank(String rank) {
+                    this.rank = rank;
+                }
+
+                public int getHospitalId() {
+                    return hospitalId;
+                }
+
+                public void setHospitalId(int hospitalId) {
+                    this.hospitalId = hospitalId;
+                }
+
+                public String getAvatar() {
+                    return avatar;
+                }
+
+                public void setAvatar(String avatar) {
+                    this.avatar = avatar;
+                }
+
+                public Object getExperience() {
+                    return experience;
+                }
+
+                public void setExperience(Object experience) {
+                    this.experience = experience;
+                }
+
+                public String getSpeciality() {
+                    return speciality;
+                }
+
+                public void setSpeciality(String speciality) {
+                    this.speciality = speciality;
+                }
+
+                public Object getUpdateTime() {
+                    return updateTime;
+                }
+
+                public void setUpdateTime(Object updateTime) {
+                    this.updateTime = updateTime;
+                }
+
+                public int getAuditStatus() {
+                    return auditStatus;
+                }
+
+                public void setAuditStatus(int auditStatus) {
+                    this.auditStatus = auditStatus;
+                }
+
+                public long getAuditTime() {
+                    return auditTime;
+                }
+
+                public void setAuditTime(long auditTime) {
+                    this.auditTime = auditTime;
+                }
+
+                public long getCreateTime() {
+                    return createTime;
+                }
+
+                public void setCreateTime(long createTime) {
+                    this.createTime = createTime;
+                }
+
+                public String getFrontIdCardUrl() {
+                    return frontIdCardUrl;
+                }
+
+                public void setFrontIdCardUrl(String frontIdCardUrl) {
+                    this.frontIdCardUrl = frontIdCardUrl;
+                }
+
+                public String getBackIdCardUrl() {
+                    return backIdCardUrl;
+                }
+
+                public void setBackIdCardUrl(String backIdCardUrl) {
+                    this.backIdCardUrl = backIdCardUrl;
+                }
+
+                public Object getUrlList() {
+                    return urlList;
+                }
+
+                public void setUrlList(Object urlList) {
+                    this.urlList = urlList;
+                }
+
+                public Object getPhone() {
+                    return phone;
+                }
+
+                public void setPhone(Object phone) {
+                    this.phone = phone;
+                }
             }
         }
     }

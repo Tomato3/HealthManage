@@ -35,8 +35,8 @@ public class MemberListViewModel extends BaseViewModel {
         startActivity(SearchMemberActivity.class);
     }
 
-    public void loadDifferentLevelMember(int type, int rank) {
-        usersRemoteSource.selectMember(String.valueOf(BaseApplication.getUserInfoBean().getSysId()), rank, new UsersInterface.LoadMyMembersCallback() {
+    public void loadDifferentLevelMember(int type, String ranks) {
+        usersRemoteSource.selectMember(String.valueOf(BaseApplication.getUserInfoBean().getAppDoctorInfo().getSystemUserId()), ranks, new UsersInterface.LoadMyMembersCallback() {
             @Override
             public void loadSucceed(MyMemberResponse myMemberResponse) {
                 if (type == 0) {
