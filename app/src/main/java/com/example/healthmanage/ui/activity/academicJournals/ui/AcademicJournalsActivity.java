@@ -85,17 +85,17 @@ public class AcademicJournalsActivity extends BaseActivity<ActivityAcademicJourn
                         startActivity(intent1);
                         break;
                     case R.id.tv_pass_or_rejection_explain:
+                        View dialog = View.inflate(context,R.layout.dialog_create_consultation_task,null);
+                        UIAlertDialog uiAlertDialog = new UIAlertDialog.DividerIOSBuilder(context)
+                                .setView(dialog)
+                                .setCanceledOnTouchOutside(false)//设置空白处不消失
+                                .setMinHeight(SizeUtil.dp2px(160))
+                                .setPositiveButtonTextColorResource(R.color.colorTxtBlue)
+                                .create()
+                                .setDimAmount(0.6f);
+                        TextView tvTitle = dialog.findViewById(R.id.tv_success);
+                        TextView tvContent = dialog.findViewById(R.id.tv_tips_task);//设置空白处不消失
                         if (index==2){
-                            View dialog = View.inflate(context,R.layout.dialog_create_consultation_task,null);
-                            UIAlertDialog uiAlertDialog = new UIAlertDialog.DividerIOSBuilder(context)
-                                    .setView(dialog)
-                                    .setCanceledOnTouchOutside(false)//设置空白处不消失
-                                    .setMinHeight(SizeUtil.dp2px(160))
-                                    .setPositiveButtonTextColorResource(R.color.colorTxtBlue)
-                                    .create()
-                                    .setDimAmount(0.6f);
-                            TextView tvTitle = dialog.findViewById(R.id.tv_success);
-                            TextView tvContent = dialog.findViewById(R.id.tv_tips_task);
                             tvTitle.setText("过稿声明");
                             tvContent.setText(periodicalBeans.get(position).getExplains());
                             uiAlertDialog.show();
@@ -118,16 +118,6 @@ public class AcademicJournalsActivity extends BaseActivity<ActivityAcademicJourn
                                 }
                             });
                         }else {
-                            View dialog = View.inflate(context,R.layout.dialog_create_consultation_task,null);
-                            UIAlertDialog uiAlertDialog = new UIAlertDialog.DividerIOSBuilder(context)
-                                    .setView(dialog)
-                                    .setCanceledOnTouchOutside(false)//设置空白处不消失
-                                    .setMinHeight(SizeUtil.dp2px(160))
-                                    .setPositiveButtonTextColorResource(R.color.colorTxtBlue)
-                                    .create()
-                                    .setDimAmount(0.6f);
-                            TextView tvTitle = dialog.findViewById(R.id.tv_success);
-                            TextView tvContent = dialog.findViewById(R.id.tv_tips_task);
                             tvTitle.setText("退稿声明");
                             tvContent.setText(periodicalBeans.get(position).getExplains());
                             uiAlertDialog.show();

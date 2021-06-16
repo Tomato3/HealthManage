@@ -28,6 +28,7 @@ import com.example.healthmanage.ui.activity.notice.ui.NewsNoticeActivity;
 import com.example.healthmanage.ui.activity.signmember.SignMemberActivity;
 import com.example.healthmanage.ui.activity.team.TeamActivity;
 import com.example.healthmanage.ui.activity.team.TeamSignActivity;
+import com.example.healthmanage.ui.activity.team.ui.BusinessDealActivity;
 import com.example.healthmanage.ui.activity.team.ui.BusinessTeamActivity;
 import com.example.healthmanage.ui.activity.temperature.ui.PrescriptionModelActivity;
 import com.example.healthmanage.ui.activity.temperature.ui.SignPrescriptionActivity;
@@ -290,6 +291,12 @@ public class NewHomeFragment extends BaseFragment<FragmentNewHomeBinding, NewHom
             @Override
             public void onClick(View v) {
                 startActivity(WorkPlanActivity.class);
+            }
+        });
+        dataBinding.include.findViewById(R.id.constraintLayout4).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(BusinessDealActivity.class);
             }
         });
 
