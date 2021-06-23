@@ -19,7 +19,7 @@ import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.databinding.ActivitySignVipBinding;
-import com.example.healthmanage.ui.activity.invitemember.InviteMemberActivity;
+import com.example.healthmanage.ui.activity.invitemember.InviteNewMemberActivity;
 import com.example.healthmanage.ui.activity.signmember.adapter.UnSignAdapter;
 import com.example.healthmanage.ui.activity.signmember.response.SignMemberResponse;
 import com.example.healthmanage.utils.SizeUtil;
@@ -122,7 +122,7 @@ public class SignMemberActivity extends BaseActivity<ActivitySignVipBinding,Sign
         dataBinding.layoutTitle.tvRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(InviteMemberActivity.class);
+                startActivity(InviteNewMemberActivity.class);
             }
         });
         viewModel.signList.observe(this, new Observer<List<SignMemberResponse.DataBean>>() {

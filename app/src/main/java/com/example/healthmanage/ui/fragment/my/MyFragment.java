@@ -10,7 +10,7 @@ import com.example.healthmanage.BR;
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseFragment;
 import com.example.healthmanage.databinding.FragmentMyBinding;
-import com.example.healthmanage.ui.activity.invitemember.InviteMemberActivity;
+import com.example.healthmanage.ui.activity.invitemember.InviteNewMemberActivity;
 import com.example.healthmanage.ui.activity.mycomment.MyCommentActivity;
 import com.example.healthmanage.ui.activity.myinfo.MyInfoActivity;
 import com.example.healthmanage.ui.activity.mypoint.MyPointActivity;
@@ -78,7 +78,7 @@ public class MyFragment extends BaseFragment<FragmentMyBinding, MyViewModel> imp
         int id = v.getId();
         switch (id) {
             case R.id.tv_inviting_members:
-                startActivity(InviteMemberActivity.class);
+                startActivity(InviteNewMemberActivity.class);
                 break;
             case R.id.tv_my_studio:
                 startActivity(MyStudioActivity.class);

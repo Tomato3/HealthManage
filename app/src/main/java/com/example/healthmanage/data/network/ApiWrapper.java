@@ -4,7 +4,6 @@ package com.example.healthmanage.data.network;
 import com.example.healthmanage.bean.ProfessionBeanResponse;
 import com.example.healthmanage.bean.network.response.AbnormalDataResponse;
 import com.example.healthmanage.bean.network.response.AirResponse;
-import com.example.healthmanage.bean.network.response.BaseResponse;
 import com.example.healthmanage.bean.network.response.ConsultationRecordResponse;
 import com.example.healthmanage.bean.network.response.ConsultationResponse;
 import com.example.healthmanage.bean.network.response.DoctorDetailResponse;
@@ -30,7 +29,6 @@ import com.example.healthmanage.ui.activity.consultation.response.AddConsultatio
 import com.example.healthmanage.ui.activity.consultation.response.AddPatientInfoResponse;
 import com.example.healthmanage.ui.activity.consultation.response.ConsultationListResponse;
 import com.example.healthmanage.ui.activity.consultation.response.DoctorTeamListResponse;
-import com.example.healthmanage.ui.activity.consultation.response.DoctordepartMentResponse;
 import com.example.healthmanage.ui.activity.consultation.response.PatientInfoBean;
 import com.example.healthmanage.ui.activity.delegate.response.CreateDelegateResponse;
 import com.example.healthmanage.ui.activity.delegate.response.DelegateBean;
@@ -43,6 +41,7 @@ import com.example.healthmanage.ui.activity.healthreport.HealthReportInfo;
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportConfirmResponse;
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportDetailResponse;
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportResponse;
+import com.example.healthmanage.ui.activity.invitemember.response.InviteSucceedResponse;
 import com.example.healthmanage.ui.activity.memberdetail.bean.CreateTaskBean;
 import com.example.healthmanage.ui.activity.memberdetail.response.CreateTaskResponse;
 import com.example.healthmanage.ui.activity.memberdetail.response.HealthDataResponse;
@@ -87,6 +86,10 @@ import com.example.healthmanage.ui.activity.temperature.response.TemperatureResp
 import com.example.healthmanage.ui.activity.temperature.response.TransferBean;
 import com.example.healthmanage.ui.activity.temperature.response.UpdateResponse;
 import com.example.healthmanage.ui.activity.vipmanager.VipPostBean;
+import com.example.healthmanage.ui.activity.vipmanager.response.DeleteMemberResponse;
+import com.example.healthmanage.ui.activity.vipmanager.response.InviteMemberResponse;
+import com.example.healthmanage.ui.activity.vipmanager.response.IsFocusResponse;
+import com.example.healthmanage.ui.activity.vipmanager.response.MemberTeamListResponse;
 import com.example.healthmanage.ui.activity.workplan.response.InsertPlanResponse;
 import com.example.healthmanage.ui.activity.workplan.response.UpdateWorkResponse;
 import com.example.healthmanage.ui.activity.workplan.response.WorkPlanListResponse;
@@ -431,19 +434,16 @@ public class ApiWrapper extends RetrofitHttpUtils {
      * @param phone 手机号
      * @return SearchMemberResponse
      */
-    public Observable<BaseResponse<MyMemberResponse.DataBean>> searchMembers(String phone) {
-        return getApiServer().searchMembers(phone);
+    public Observable<InviteMemberResponse> searchMembers(String token,String phone) {
+        return getApiServer().searchMembers(token,phone);
     }
 
-    /**
-     * 邀请会员
-     *
-     * @param sysId  医生id
-     * @param userId 会员id
-     * @return Response
-     */
-    public Observable<GeneralResponse> invitingMembers(String sysId, String userId) {
-        return getApiServer().invitingMembers(sysId, userId);
+    public Observable<InviteSucceedResponse> inviteUserMember(String token,int userId){
+        return getApiServer().inviteUserMember(token, userId);
+    }
+
+    public Observable<MemberTeamListResponse> getMemberTeamByName(String token,String nameOrPhone,int status){
+        return getApiServer().getMemberTeamByName(token, nameOrPhone, status);
     }
 
     /**
@@ -1081,6 +1081,18 @@ public class ApiWrapper extends RetrofitHttpUtils {
 
     public Observable<AddOrEditSucceedResponse> editPeriodical(EditPeriodicalBean editPeriodicalBean){
         return getApiServer().editPeriodical(editPeriodicalBean);
+    }
+
+    public Observable<MemberTeamListResponse> getMemberTeamList(String token,String ranks,int status){
+        return getApiServer().getMemberTeamList(token, ranks,status);
+    }
+
+    public Observable<IsFocusResponse> editMemberTeam(String token,int id ,int status){
+        return getApiServer().editMemberTeam(token, id, status);
+    }
+
+    public Observable<DeleteMemberResponse> deleteMemberTeam(String token,int id){
+        return getApiServer().deleteMemberTeam(token, id);
     }
 
 }

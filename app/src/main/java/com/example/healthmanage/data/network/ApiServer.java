@@ -4,7 +4,6 @@ package com.example.healthmanage.data.network;
 import com.example.healthmanage.bean.ProfessionBeanResponse;
 import com.example.healthmanage.bean.network.response.AbnormalDataResponse;
 import com.example.healthmanage.bean.network.response.AirResponse;
-import com.example.healthmanage.bean.network.response.BaseResponse;
 import com.example.healthmanage.bean.network.response.ConsultationRecordResponse;
 import com.example.healthmanage.bean.network.response.ConsultationResponse;
 import com.example.healthmanage.bean.network.response.DoctorDetailResponse;
@@ -30,7 +29,6 @@ import com.example.healthmanage.ui.activity.consultation.response.AddConsultatio
 import com.example.healthmanage.ui.activity.consultation.response.AddPatientInfoResponse;
 import com.example.healthmanage.ui.activity.consultation.response.ConsultationListResponse;
 import com.example.healthmanage.ui.activity.consultation.response.DoctorTeamListResponse;
-import com.example.healthmanage.ui.activity.consultation.response.DoctordepartMentResponse;
 import com.example.healthmanage.ui.activity.consultation.response.PatientInfoBean;
 import com.example.healthmanage.ui.activity.delegate.response.CreateDelegateResponse;
 import com.example.healthmanage.ui.activity.delegate.response.DelegateBean;
@@ -43,6 +41,7 @@ import com.example.healthmanage.ui.activity.healthreport.HealthReportInfo;
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportConfirmResponse;
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportDetailResponse;
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportResponse;
+import com.example.healthmanage.ui.activity.invitemember.response.InviteSucceedResponse;
 import com.example.healthmanage.ui.activity.memberdetail.bean.CreateTaskBean;
 import com.example.healthmanage.ui.activity.memberdetail.response.CreateTaskResponse;
 import com.example.healthmanage.ui.activity.memberdetail.response.HealthDataResponse;
@@ -87,6 +86,10 @@ import com.example.healthmanage.ui.activity.temperature.response.TemperatureResp
 import com.example.healthmanage.ui.activity.temperature.response.TransferBean;
 import com.example.healthmanage.ui.activity.temperature.response.UpdateResponse;
 import com.example.healthmanage.ui.activity.vipmanager.VipPostBean;
+import com.example.healthmanage.ui.activity.vipmanager.response.DeleteMemberResponse;
+import com.example.healthmanage.ui.activity.vipmanager.response.InviteMemberResponse;
+import com.example.healthmanage.ui.activity.vipmanager.response.IsFocusResponse;
+import com.example.healthmanage.ui.activity.vipmanager.response.MemberTeamListResponse;
 import com.example.healthmanage.ui.activity.workplan.response.InsertPlanResponse;
 import com.example.healthmanage.ui.activity.workplan.response.UpdateWorkResponse;
 import com.example.healthmanage.ui.activity.workplan.response.WorkPlanListResponse;
@@ -438,24 +441,35 @@ public interface ApiServer {
      * 搜索会员
      *
      * @param phone 手机号
-     * @return SearchMemberResponse
+     * @return
      */
-    @FormUrlEncoded
-    @POST("doctor/appSystemUser/searchUser")
-    Observable<BaseResponse<MyMemberResponse.DataBean>> searchMembers(@Field("phone") String phone);
+    @GET("api/memberTeam/getUserByPhone")
+    Observable<InviteMemberResponse> searchMembers(@Query("token") String token,
+                                                   @Query("phone") String phone);
 
 
     /**
      * 邀请会员
-     *
-     * @param sysId
+     * @param token
      * @param userId
-     * @return Response
+     * @return
      */
-    @FormUrlEncoded
-    @POST("doctor/appSystemUser/invitationUser")
-    Observable<GeneralResponse> invitingMembers(@Field("sysId") String sysId,
-                                                @Field("userId") String userId);
+    @GET("api/memberTeam/inviteUserMember")
+    Observable<InviteSucceedResponse> inviteUserMember(@Query("token") String token,
+                                                       @Query("userId") int userId);
+
+
+    /**
+     * 输入手机号或名称查询会员
+     * @param token
+     * @param nameOrPhone
+     * @param status
+     * @return
+     */
+    @GET("api/memberTeam/getMemberTeamByName")
+    Observable<MemberTeamListResponse> getMemberTeamByName(@Query("token") String token,
+                                                         @Query("nameOrPhone") String nameOrPhone,
+                                                         @Query("status") int status);
 
     /**
      * 我的关注
@@ -478,7 +492,41 @@ public interface ApiServer {
     @POST("doctor/appSystemUser/doctorMember")
     Observable<MyMemberResponse> loadMyMembers(@Field("sysId") String sysId);
 
+    //会员团队模块
 
+    /**
+     * 团队列表
+     * @param token
+     * @param ranks
+     * @return
+     */
+    @GET("api/memberTeam/getMemberTeamList")
+    Observable<MemberTeamListResponse> getMemberTeamList(@Query("token") String token,
+                                                         @Query("ranks") String ranks,
+                                                         @Query("status") int status);
+
+    /**
+     * 关注或取消关注
+     * 0=未关注 1=关注
+     * @param token
+     * @param id
+     * @param status
+     * @return
+     */
+    @GET("api/memberTeam/editMemberTeam")
+    Observable<IsFocusResponse> editMemberTeam(@Query("token") String token,
+                                               @Query("id") int id,
+                                               @Query("status") int status);
+
+    /**
+     * 移除会员
+     * @param token
+     * @param id
+     * @return
+     */
+    @GET("api/memberTeam/deleteMemberTeam")
+    Observable<DeleteMemberResponse> deleteMemberTeam(@Query("token") String token,
+                                                      @Query("id") int id);
 
     /**
      * 获取不同等级会员

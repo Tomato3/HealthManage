@@ -20,12 +20,10 @@ import com.example.healthmanage.BR;
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.base.BaseFragment;
-import com.example.healthmanage.bean.network.response.MyMemberResponse;
 import com.example.healthmanage.databinding.FragmentNewHomeBinding;
-import com.example.healthmanage.ui.activity.invitemember.InviteMemberActivity;
+import com.example.healthmanage.ui.activity.invitemember.InviteNewMemberActivity;
 import com.example.healthmanage.ui.activity.mytask.MyNewTaskActivity;
 import com.example.healthmanage.ui.activity.notice.ui.NewsNoticeActivity;
-import com.example.healthmanage.ui.activity.signmember.SignMemberActivity;
 import com.example.healthmanage.ui.activity.team.TeamActivity;
 import com.example.healthmanage.ui.activity.team.TeamSignActivity;
 import com.example.healthmanage.ui.activity.team.ui.BusinessDealActivity;
@@ -33,7 +31,8 @@ import com.example.healthmanage.ui.activity.team.ui.BusinessTeamActivity;
 import com.example.healthmanage.ui.activity.temperature.ui.PrescriptionModelActivity;
 import com.example.healthmanage.ui.activity.temperature.ui.SignPrescriptionActivity;
 import com.example.healthmanage.ui.activity.temperature.ui.TemperatureActivity;
-import com.example.healthmanage.ui.activity.vipmanager.VipTeamNewActivity;
+import com.example.healthmanage.ui.activity.vipmanager.MemberManageListActivity;
+import com.example.healthmanage.ui.activity.vipmanager.response.MemberTeamListResponse;
 import com.example.healthmanage.ui.activity.workplan.ui.WorkPlanActivity;
 import com.example.healthmanage.utils.ToolUtil;
 import com.google.android.material.tabs.TabLayout;
@@ -48,7 +47,7 @@ public class NewHomeFragment extends BaseFragment<FragmentNewHomeBinding, NewHom
     private RecyclerView mRecyclerView;
     //    private ImageView ava;
     private TextView vipType;
-    private List<MyMemberResponse.DataBean> mDataBeanList;
+    private List<MemberTeamListResponse.DataBean> mDataBeanList;
     private HomeVipAdapter adapter;
     private static final String TAG = "NewHomeFragment";
     //type是为了从会员管理页面操作后返回到本页面，进行一次数据请求刷新
@@ -56,7 +55,6 @@ public class NewHomeFragment extends BaseFragment<FragmentNewHomeBinding, NewHom
     private List<String> path = new ArrayList<>();
     private boolean isQualificationSuccess;
     public boolean isTrue;
-    private String userId;
     TextView tvTemperatureSize;
     TextView tvTaskSize;
     TextView tvWorkPlanSize;
@@ -66,46 +64,11 @@ public class NewHomeFragment extends BaseFragment<FragmentNewHomeBinding, NewHom
         super.onResume();
 
         if (isTrue){
-            if (BaseApplication.getUserInfoBean().getAppDoctorInfo().getRoleId()==11){
-                viewModel.userId.observe(this, new Observer<String>() {
-                    @Override
-                    public void onChanged(String s) {
-                        if (TextUtils.isEmpty(s)){
-                            userId = null;
-                        }else {
-                            userId = s;
-                        }
-                        if (type == 0) {
-                            if (TextUtils.isEmpty(userId)){
-                                viewModel.myFocus(String.valueOf(BaseApplication.getUserInfoBean().getAppDoctorInfo().getSystemUserId()));
-                            }else {
-                                viewModel.myFocus(userId);
-                            }
+            if (type == 0) {
+                viewModel.getMemberTeamList("0,1,2,3",1);
 
-                        } else {
-                            if (TextUtils.isEmpty(userId)){
-                                viewModel.getVip(String.valueOf(BaseApplication.getUserInfoBean().getAppDoctorInfo().getSystemUserId()), String.valueOf(type-1));
-                            }else {
-                                viewModel.getVip(userId, String.valueOf(type-1));
-                            }
-                        }
-                    }
-                });
-            }else {
-                if (type == 0) {
-                    if (TextUtils.isEmpty(userId)){
-                        viewModel.myFocus(String.valueOf(BaseApplication.getUserInfoBean().getAppDoctorInfo().getSystemUserId()));
-                    }else {
-                        viewModel.myFocus(userId);
-                    }
-
-                } else {
-                    if (TextUtils.isEmpty(userId)){
-                        viewModel.getVip(String.valueOf(BaseApplication.getUserInfoBean().getAppDoctorInfo().getSystemUserId()), String.valueOf(type-1));
-                    }else {
-                        viewModel.getVip(userId, String.valueOf(type-1));
-                    }
-                }
+            } else {
+                viewModel.getMemberTeamList(String.valueOf(type-1),0);
             }
             tvTemperatureSize = dataBinding.include.findViewById(R.id.textView5);
             tvTaskSize = dataBinding.include.findViewById(R.id.jixun_da);
@@ -174,7 +137,6 @@ public class NewHomeFragment extends BaseFragment<FragmentNewHomeBinding, NewHom
 
 
     private void initRV() {
-
         if (BaseApplication.getUserInfoBean().getAppDoctorInfo().getRoleId()==11){
             dataBinding.includeHomeChooseDoctor.setVisibility(View.VISIBLE);
             dataBinding.includeHomeChoose.setVisibility(View.GONE);
@@ -227,7 +189,7 @@ public class NewHomeFragment extends BaseFragment<FragmentNewHomeBinding, NewHom
         dataBinding.includeVvip.findViewById(R.id.allofvip_tv).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), VipTeamNewActivity.class);
+                Intent intent = new Intent(getActivity(), MemberManageListActivity.class);
                 intent.putExtra("type", type);
                 startActivity(intent);
             }
@@ -235,7 +197,7 @@ public class NewHomeFragment extends BaseFragment<FragmentNewHomeBinding, NewHom
         dataBinding.includeHomeChoose.findViewById(R.id.huiyuanguanli).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), VipTeamNewActivity.class);
+                Intent intent = new Intent(getActivity(), MemberManageListActivity.class);
                 intent.putExtra("type", 99);
                 startActivity(intent);
             }
@@ -251,17 +213,9 @@ public class NewHomeFragment extends BaseFragment<FragmentNewHomeBinding, NewHom
                 vipType.setText(tab.getText());
                 Log.e("tab.getposition", "onTabSelected: " + tab.getPosition());
                 if (tab.getPosition() == 0) {//如果是0，查询我的关注接口数据
-                    if (TextUtils.isEmpty(userId)){
-                        viewModel.myFocus(String.valueOf(BaseApplication.getUserInfoBean().getAppDoctorInfo().getSystemUserId()));
-                    }else {
-                        viewModel.myFocus(userId);
-                    }
+                    viewModel.getMemberTeamList("0,1,2,3",1);
                 } else {//如果是其他的1 2 3   则查询不同等级的会员数据  0 1 2
-                    if (TextUtils.isEmpty(userId)){
-                        viewModel.getVip(String.valueOf(BaseApplication.getUserInfoBean().getAppDoctorInfo().getSystemUserId()), String.valueOf(tab.getPosition() - 1));
-                    }else {
-                        viewModel.getVip(userId, String.valueOf(tab.getPosition() - 1));
-                    }
+                    viewModel.getMemberTeamList(String.valueOf(type-1),0);
                 }
             }
 
@@ -303,7 +257,7 @@ public class NewHomeFragment extends BaseFragment<FragmentNewHomeBinding, NewHom
         dataBinding.includeHomeChoose.findViewById(R.id.linearLayout3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(InviteMemberActivity.class);
+                startActivity(InviteNewMemberActivity.class);
 //                startActivity(SignMemberActivity.class);
             }
         });
@@ -322,7 +276,7 @@ public class NewHomeFragment extends BaseFragment<FragmentNewHomeBinding, NewHom
         dataBinding.includeHomeChooseDoctor.findViewById(R.id.tv_patient_manage).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), VipTeamNewActivity.class);
+                Intent intent = new Intent(getActivity(), MemberManageListActivity.class);
                 intent.putExtra("type", 99);
                 startActivity(intent);
             }
@@ -342,7 +296,7 @@ public class NewHomeFragment extends BaseFragment<FragmentNewHomeBinding, NewHom
         dataBinding.includeHomeChooseDoctor.findViewById(R.id.tv_sign_patient).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(InviteMemberActivity.class);
+                startActivity(InviteNewMemberActivity.class);
 //                startActivity(SignMemberActivity.class);
             }
         });
@@ -373,9 +327,9 @@ public class NewHomeFragment extends BaseFragment<FragmentNewHomeBinding, NewHom
 
     @Override
     protected void initData() {
-        if (BaseApplication.getUserInfoBean().getAppDoctorInfo().getRoleId()==11){
-            viewModel.getDoctorTeam();
-        }
+//        if (BaseApplication.getUserInfoBean().getAppDoctorInfo().getRoleId()!=9){
+//            viewModel.getDoctorTeam();
+//        }
         viewModel.getHealthConsultStatus(0);
         viewModel.getHealthTaskList(0);
         viewModel.getWorkPlanByTime(ToolUtil.getEndTime(),BaseApplication.getUserInfoBean().getAppDoctorInfo().getSystemUserId());
@@ -401,9 +355,9 @@ public class NewHomeFragment extends BaseFragment<FragmentNewHomeBinding, NewHom
 
     @Override
     protected void initObserver() {
-        viewModel.mMyMemberResponseMutableLiveData.observe(this, new Observer<List<MyMemberResponse.DataBean>>() {
+        viewModel.mListMutableLiveData.observe(this, new Observer<List<MemberTeamListResponse.DataBean>>() {
             @Override
-            public void onChanged(List<MyMemberResponse.DataBean> dataBeans) {
+            public void onChanged(List<MemberTeamListResponse.DataBean> dataBeans) {
                 if (dataBeans != null && dataBeans.size()>0) {
                     dataBinding.includeVvip.findViewById(R.id.nodata_tv).setVisibility(View.GONE);
                     dataBinding.includeVvip.findViewById(R.id.recyler_view).setVisibility(View.VISIBLE);

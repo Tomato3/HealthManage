@@ -113,10 +113,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.activity.invitemember.InviteMemberActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
         <activity android:name=".ui.activity.memberdetail.MemberDetailActivity"
             android:screenOrientation="landscape"
             android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"/>
@@ -160,6 +156,7 @@
             android:screenOrientation="portrait"
             android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"/>
         <activity android:name=".ui.activity.vipmanager.VipTeamNewActivity"/>
+        <activity android:name=".ui.activity.vipmanager.MemberManageListActivity"/>
         <activity android:name=".ui.activity.memberdetail.MemberNewDetailActivity"
             android:screenOrientation="portrait"
             android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"
@@ -245,6 +242,7 @@
         <activity android:name=".ui.activity.academicJournals.ui.EditAcademicActivity"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity android:name=".ui.activity.academicJournals.ui.AcademicInfoActivity"/>
+        <activity android:name=".ui.activity.invitemember.InviteNewMemberActivity"/>
         <activity android:name=".ui.activity.consultation.ConsultationActivity" /> <!-- 设置key -->
         <meta-data
             android:name="com.amap.api.v2.apikey"

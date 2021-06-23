@@ -1,118 +1,71 @@
 package com.example.healthmanage.ui.activity.invitemember;
 
-import android.text.TextUtils;
-import android.util.Log;
-
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.base.BaseViewModel;
-import com.example.healthmanage.bean.network.response.BaseResponse;
-import com.example.healthmanage.bean.network.response.LoginResponse;
-import com.example.healthmanage.bean.network.response.MyMemberResponse;
-import com.example.healthmanage.bean.network.response.SearchMemberResponse;
 import com.example.healthmanage.bean.UsersInterface;
 import com.example.healthmanage.bean.UsersRemoteSource;
-import com.example.healthmanage.bean.network.response.VipUserBean;
 import com.example.healthmanage.data.network.exception.ExceptionHandle;
-import com.jeremyliao.liveeventbus.LiveEventBus;
+import com.example.healthmanage.ui.activity.invitemember.response.InviteSucceedResponse;
+import com.example.healthmanage.ui.activity.vipmanager.response.InviteMemberResponse;
 
 public class InviteMemberViewModel extends BaseViewModel {
 
-    public MutableLiveData<String> name = new MutableLiveData<>("");
-    public MutableLiveData<String> rank = new MutableLiveData<>("");
-    public MutableLiveData<Boolean> inviteBtnVisible = new MutableLiveData<>(false);
-    public MutableLiveData<LoginResponse.DataBean.UserInfoBean> userInfoBean =
-            new MutableLiveData<>();
-    public MutableLiveData<SearchMemberResponse.DataBean> searchMemberResponse = new MutableLiveData<>();
+    public MutableLiveData<String> name = new MutableLiveData<>();
+    public MutableLiveData<String> rank = new MutableLiveData<>();
+    public MutableLiveData<String> phone = new MutableLiveData<>();
     public MutableLiveData<Boolean> inviteSuccess = new MutableLiveData<>();
     private UsersRemoteSource usersRemoteSource;
-    private int userId;
+    public MutableLiveData<InviteMemberResponse.DataBean> mInviteMemberResponseMutableLiveData = new MutableLiveData<>();
 
     public InviteMemberViewModel() {
         usersRemoteSource = new UsersRemoteSource();
     }
 
-    /**
-     * 搜索会员
-     *
-     * @param phone
-     */
-    public void searchMember(String phone) {
-        inviteBtnVisible.setValue(false);
-        if (!TextUtils.isEmpty(phone)) {
-            usersRemoteSource.searchMembers(phone,
-                    new UsersInterface.SearchMembersCallback() {
-                        @Override
-                        public void searchSucceed(BaseResponse<MyMemberResponse.DataBean> searchMemberResponse) {
-                            if (searchMemberResponse.getData() == null) {
-                                getUiChangeEvent().getToastTxt().setValue(searchMemberResponse.getMessage());
-                            } else {
-                                getUiChangeEvent().getToastTxt().setValue(searchMemberResponse.getMessage());
-                                LiveEventBus.get("CloseKeyboard").post(true);
-                                inviteBtnVisible.setValue(true);
-                                userId = searchMemberResponse.getData().getId();
-                                name.setValue(searchMemberResponse.getData().getNickName());
-                                switch (searchMemberResponse.getData().getRank()) {
-                                    case 0:
-                                        rank.setValue("普通会员");
-                                        break;
-                                    case 1:
-                                        rank.setValue("贵宾会员");
-                                        break;
-                                    case 2:
-                                        rank.setValue("SVIP会员");
-                                        break;
-                                }
-                            }
-                        }
-
-                        @Override
-                        public void searchFailed(String msg) {
-                            name.setValue(null);
-                            rank.setValue(null);
-                            getUiChangeEvent().getToastTxt().setValue("检查会员手机号是否输入正确");
-                        }
-
-                        @Override
-                        public void error(ExceptionHandle.ResponseException e) {
-                            name.setValue(null);
-                            rank.setValue(null);
-                        }
-                    });
-        } else {
-            name.setValue(null);
-            rank.setValue(null);
-        }
-    }
-
-    /**
-     * 邀请会员
-     */
-    public void inviteMember() {
-        usersRemoteSource.inviteMembers(String.valueOf(BaseApplication.getUserInfoBean().getAppDoctorInfo().getSystemUserId()),
-                String.valueOf(userId),
-                new UsersInterface.InvitingMembersCallback() {
-                    @Override
-                    public void inviteSucceed(String msg) {
-                        inviteSuccess.postValue(true);
-                        getUiChangeEvent().getToastTxt().setValue(msg);
-                        LiveEventBus.get("Refresh").post(true);
-                    }
-
-                    @Override
-                    public void inviteFailed(String msg) {
-                        inviteSuccess.postValue(false);
-                        getUiChangeEvent().getToastTxt().setValue(msg);
-                    }
-
-                    @Override
-                    public void error(ExceptionHandle.ResponseException e) {
-                        Log.d("TAG", "Error: ===>" + e.getMessage());
-
-                    }
+    public void inviteSearchMember(String phone){
+        usersRemoteSource.searchMembers(BaseApplication.getToken(), phone, new UsersInterface.SearchMembersCallback() {
+            @Override
+            public void searchSucceed(InviteMemberResponse searchMemberResponse) {
+                if (searchMemberResponse.getData()!=null){
+                    mInviteMemberResponseMutableLiveData.setValue(searchMemberResponse.getData());
+                }else {
+                    mInviteMemberResponseMutableLiveData.setValue(null);
                 }
-        );
+            }
+
+            @Override
+            public void searchFailed(String msg) {
+                getUiChangeEvent().getToastTxt().setValue(msg);
+                mInviteMemberResponseMutableLiveData.setValue(null);
+            }
+
+            @Override
+            public void error(ExceptionHandle.ResponseException e) {
+                mInviteMemberResponseMutableLiveData.setValue(null);
+            }
+        });
     }
+
+    public void inviteMember(int userId){
+        usersRemoteSource.inviteMember(BaseApplication.getToken(), userId, new UsersInterface.InviteUserMemberCallback() {
+            @Override
+            public void inviteSucceed(InviteSucceedResponse inviteSucceedResponse) {
+                inviteSuccess.setValue(true);
+            }
+
+            @Override
+            public void inviteFailed(String msg) {
+                getUiChangeEvent().getToastTxt().setValue(msg);
+                inviteSuccess.setValue(false);
+            }
+
+            @Override
+            public void error(ExceptionHandle.ResponseException e) {
+                inviteSuccess.setValue(false);
+            }
+        });
+    }
+
 
 }

@@ -11,25 +11,25 @@ import com.bumptech.glide.request.RequestOptions;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.healthmanage.R;
-import com.example.healthmanage.bean.network.response.MyMemberResponse;
+import com.example.healthmanage.ui.activity.vipmanager.response.MemberTeamListResponse;
 
 import java.util.List;
 
-public class ChooseMemberAdapter extends BaseQuickAdapter<MyMemberResponse.DataBean, BaseViewHolder> {
+public class ChooseMemberAdapter extends BaseQuickAdapter<MemberTeamListResponse.DataBean, BaseViewHolder> {
     Context mContext;
     String sex;
     int sexSign;
 
-    public ChooseMemberAdapter(Context context,@Nullable List<MyMemberResponse.DataBean> data) {
+    public ChooseMemberAdapter(Context context,@Nullable List<MemberTeamListResponse.DataBean> data) {
         super(R.layout.item_choose_member,data);
         this.mContext = context;
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, MyMemberResponse.DataBean item) {
-        helper.setText(R.id.vip_name_tv,item.getNickName());
-        if (item.getAvatar()!=null){
-            Glide.with(mContext).load(item.getAvatar()).apply(new RequestOptions().circleCrop())
+    protected void convert(BaseViewHolder helper, MemberTeamListResponse.DataBean item) {
+        helper.setText(R.id.vip_name_tv,item.getAppUser().getNickName());
+        if (item.getAppUser().getAvatar()!=null){
+            Glide.with(mContext).load(item.getAppUser().getAvatar()).apply(new RequestOptions().circleCrop())
                     .into((ImageView) helper.getView(R.id.vip_ava_img));
         }else {
             Glide.with(mContext).load("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=259981538,2780056385&fm=11&gp=0.jpg").apply(new RequestOptions().circleCrop())
@@ -40,7 +40,7 @@ public class ChooseMemberAdapter extends BaseQuickAdapter<MyMemberResponse.DataB
          * 1:男
          * 2:女
          * **/
-        sexSign = item.getSex();
+        sexSign = item.getAppUser().getSex();
         if (sexSign==0){
             sex = "保密";
         }else if (sexSign == 1){
@@ -50,19 +50,19 @@ public class ChooseMemberAdapter extends BaseQuickAdapter<MyMemberResponse.DataB
         }
         switch (item.getRank()){
             case 0:
-                helper.setText(R.id.vip_info_tv,"普通会员"+"\u3000｜\u3000"+sex+"\u3000｜\u3000"+item.getOld());
+                helper.setText(R.id.vip_info_tv,"普通会员"+"\u3000｜\u3000"+sex);
                 break;
             case 1:
-                helper.setText(R.id.vip_info_tv,"高级会员"+"\u3000｜\u3000"+sex+"\u3000｜\u3000"+item.getOld());
+                helper.setText(R.id.vip_info_tv,"高级会员"+"\u3000｜\u3000"+sex);
                 break;
             case 2:
-                helper.setText(R.id.vip_info_tv,"贵宾会员"+"\u3000｜\u3000"+sex+"\u3000｜\u3000"+item.getOld());
+                helper.setText(R.id.vip_info_tv,"贵宾会员"+"\u3000｜\u3000"+sex);
                 break;
             case 3:
-                helper.setText(R.id.vip_info_tv,"至尊会员"+"\u3000｜\u3000"+sex+"\u3000｜\u3000"+item.getOld());
+                helper.setText(R.id.vip_info_tv,"至尊会员"+"\u3000｜\u3000"+sex);
                 break;
         }
-        helper.getView(R.id.isfocus_tv).setVisibility(item.getFollowStatus()==0 ? View.GONE : View.VISIBLE);
+        helper.getView(R.id.isfocus_tv).setVisibility(item.getStatus()==0 ? View.GONE : View.VISIBLE);
         helper.addOnClickListener(R.id.btn_select_member);
         helper.setChecked(R.id.btn_select_member,item.isSelect() ? true : false);
     }

@@ -69,7 +69,7 @@ public class VipTeamNewActivity extends BaseActivity<ActivityVipTeamBinding,VipT
     protected void initData() {
         mContext = VipTeamNewActivity.this;
         StatusBarUitils.setStatusBar(R.color.white, true, this);
-        if (BaseApplication.getUserInfoBean().getAppDoctorInfo().getRoleId()==11){
+        if (BaseApplication.getUserInfoBean().getAppDoctorInfo().getRoleId()!=9){
             viewModel.getDoctorTeam();
         }else {
             initRv();
@@ -605,7 +605,7 @@ public class VipTeamNewActivity extends BaseActivity<ActivityVipTeamBinding,VipT
                     SoftKeyboardUtils.closeInoutDecorView(VipTeamNewActivity.this);
                     dataBinding.tvSearchVip.setVisibility(View.VISIBLE);
                     dataBinding.edtSearchVip.setVisibility(View.GONE);
-                    viewModel.getVipByPhone(dataBinding.edtSearchVip.getText().toString());
+//                    viewModel.getVipByPhone(dataBinding.edtSearchVip.getText().toString());
 //                    Toast.makeText(mContext,dataBinding.edtSearchVip.getText().toString(),Toast.LENGTH_SHORT).show();
                     return true;
                 }

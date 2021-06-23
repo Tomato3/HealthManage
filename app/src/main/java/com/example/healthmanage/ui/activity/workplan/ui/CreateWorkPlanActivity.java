@@ -13,7 +13,6 @@ import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.databinding.ActivityCreatePlanBinding;
-import com.example.healthmanage.ui.activity.invitemember.InviteMemberActivity;
 import com.example.healthmanage.utils.GlideEngine;
 import com.example.healthmanage.utils.ToolUtil;
 import com.example.healthmanage.widget.TitleToolBar;

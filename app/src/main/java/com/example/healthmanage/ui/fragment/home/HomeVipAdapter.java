@@ -17,11 +17,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseApplication;
-import com.example.healthmanage.bean.network.response.MyMemberResponse;
-import com.example.healthmanage.bean.network.response.VipUserBean;
-import com.example.healthmanage.bean.test.HomeVipBean;
 import com.example.healthmanage.ui.activity.historydata.HistoryDataActivity;
 import com.example.healthmanage.ui.activity.memberdetail.MemberNewDetailActivity;
+import com.example.healthmanage.ui.activity.vipmanager.response.MemberTeamListResponse;
 
 import java.util.List;
 
@@ -30,15 +28,15 @@ import java.util.List;
  */
 public
 class HomeVipAdapter extends RecyclerView.Adapter<HomeVipAdapter.MyViewHolder> {
-    private List<MyMemberResponse.DataBean> mList;
+    private List<MemberTeamListResponse.DataBean> mList;
     private Context mContext;
     private int resourceId;
 
-    public void setList(List<MyMemberResponse.DataBean> list) {
+    public void setList(List<MemberTeamListResponse.DataBean> list) {
         mList = list;
     }
 
-    public HomeVipAdapter(List<MyMemberResponse.DataBean> list, Context context, int resourceId) {
+    public HomeVipAdapter(List<MemberTeamListResponse.DataBean> list, Context context, int resourceId) {
         mList = list;
         mContext = context;
         this.resourceId = resourceId;
@@ -54,7 +52,7 @@ class HomeVipAdapter extends RecyclerView.Adapter<HomeVipAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.name.setText(mList.get(position).getNickName());
+        holder.name.setText(mList.get(position).getAppUser().getNickName());
         String s = "";
         switch (mList.get(position).getRank()) {
             case 0:
@@ -80,7 +78,7 @@ class HomeVipAdapter extends RecyclerView.Adapter<HomeVipAdapter.MyViewHolder> {
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, MemberNewDetailActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("MemberName", mList.get(position).getNickName());
+                bundle.putString("MemberName", mList.get(position).getAppUser().getNickName());
                 bundle.putInt("MemberId", mList.get(position).getId());
 //        bundle.putBoolean("FocusState", focusState);
                 intent.putExtras(bundle);
@@ -94,7 +92,7 @@ class HomeVipAdapter extends RecyclerView.Adapter<HomeVipAdapter.MyViewHolder> {
                 Intent historyIntent = new Intent(mContext, HistoryDataActivity.class);
                 Bundle historyBundle = new Bundle();
                 historyBundle.putInt("memberId",mList.get(position).getId());
-                historyBundle.putString("memberName",mList.get(position).getNickName());
+                historyBundle.putString("memberName",mList.get(position).getAppUser().getNickName());
                 historyIntent.putExtras(historyBundle);
                 mContext.startActivity(historyIntent);
             }
@@ -104,7 +102,7 @@ class HomeVipAdapter extends RecyclerView.Adapter<HomeVipAdapter.MyViewHolder> {
             public void onClick(View v) {
                 Intent intent = new Intent(BaseApplication.getInstance(), MemberNewDetailActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("MemberName", mList.get(position).getNickName());
+                bundle.putString("MemberName", mList.get(position).getAppUser().getNickName());
                 bundle.putInt("MemberId", mList.get(position).getId());
                 intent.putExtras(bundle);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -5,7 +5,6 @@ import android.util.Log;
 import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.bean.network.response.AbnormalDataResponse;
 import com.example.healthmanage.bean.network.response.AirResponse;
-import com.example.healthmanage.bean.network.response.BaseResponse;
 import com.example.healthmanage.bean.network.response.ConsultationRecordResponse;
 import com.example.healthmanage.bean.network.response.ConsultationResponse;
 import com.example.healthmanage.bean.network.response.DoctorDetailResponse;
@@ -35,7 +34,6 @@ import com.example.healthmanage.ui.activity.consultation.response.AddConsultatio
 import com.example.healthmanage.ui.activity.consultation.response.AddPatientInfoResponse;
 import com.example.healthmanage.ui.activity.consultation.response.ConsultationListResponse;
 import com.example.healthmanage.ui.activity.consultation.response.DoctorTeamListResponse;
-import com.example.healthmanage.ui.activity.consultation.response.DoctordepartMentResponse;
 import com.example.healthmanage.ui.activity.consultation.response.PatientInfoBean;
 import com.example.healthmanage.ui.activity.delegate.response.CreateDelegateResponse;
 import com.example.healthmanage.ui.activity.delegate.response.DelegateBean;
@@ -48,6 +46,7 @@ import com.example.healthmanage.ui.activity.healthreport.HealthReportInfo;
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportConfirmResponse;
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportDetailResponse;
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportResponse;
+import com.example.healthmanage.ui.activity.invitemember.response.InviteSucceedResponse;
 import com.example.healthmanage.ui.activity.memberdetail.bean.CreateTaskBean;
 import com.example.healthmanage.ui.activity.memberdetail.response.CreateTaskResponse;
 import com.example.healthmanage.ui.activity.memberdetail.response.HealthDataResponse;
@@ -91,11 +90,17 @@ import com.example.healthmanage.ui.activity.temperature.response.RefusalResponse
 import com.example.healthmanage.ui.activity.temperature.response.TemperatureResponse;
 import com.example.healthmanage.ui.activity.temperature.response.TransferBean;
 import com.example.healthmanage.ui.activity.temperature.response.UpdateResponse;
+import com.example.healthmanage.ui.activity.vipmanager.response.DeleteMemberResponse;
+import com.example.healthmanage.ui.activity.vipmanager.response.InviteMemberResponse;
+import com.example.healthmanage.ui.activity.vipmanager.response.IsFocusResponse;
+import com.example.healthmanage.ui.activity.vipmanager.response.MemberTeamListResponse;
 import com.example.healthmanage.ui.activity.workplan.response.InsertPlanResponse;
 import com.example.healthmanage.ui.activity.workplan.response.UpdateWorkResponse;
 import com.example.healthmanage.ui.activity.workplan.response.WorkPlanListResponse;
 import com.example.healthmanage.ui.fragment.qualification.bean.DoctorInfo;
 import com.example.healthmanage.ui.fragment.qualification.bean.UpdateDoctorInfo;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.util.List;
@@ -1245,12 +1250,12 @@ public class UsersRemoteSource {
      * @param phone
      * @param searchMembersCallback
      */
-    public void searchMembers(String phone,
+    public void searchMembers(String token,String phone,
                               UsersInterface.SearchMembersCallback searchMembersCallback) {
         Log.d(HTAG, "searchMembers==========>: " + "手机号===>" + phone);
-        ApiWrapper.getInstance().searchMembers(phone)
+        ApiWrapper.getInstance().searchMembers(token,phone)
                 .compose(RxHelper.to_mian())
-                .subscribe(new MyObserver<BaseResponse<MyMemberResponse.DataBean>>() {
+                .subscribe(new MyObserver<InviteMemberResponse>() {
                     @Override
                     public void onError(ExceptionHandle.ResponseException responseException) {
                         searchMembersCallback.error(responseException);
@@ -1262,7 +1267,7 @@ public class UsersRemoteSource {
                     }
 
                     @Override
-                    public void onNext(BaseResponse<MyMemberResponse.DataBean> searchMemberResponse) {
+                    public void onNext(InviteMemberResponse searchMemberResponse) {
                         if (searchMemberResponse.getStatus() == 0) {
                             searchMembersCallback.searchSucceed(searchMemberResponse);
                         } else {
@@ -1277,38 +1282,26 @@ public class UsersRemoteSource {
                 });
     }
 
-    /**
-     * 邀请会员
-     *
-     * @param sysId
-     * @param userId
-     * @param invitingMembersCallback
-     */
-    public void inviteMembers(String sysId,
-                              String userId,
-                              UsersInterface.InvitingMembersCallback invitingMembersCallback) {
-        Log.d(HTAG, "inviteMembers==========>: " + "当前用户Id===>" + sysId + "会员Id===>" + userId);
-        ApiWrapper.getInstance().invitingMembers(sysId, userId)
-                .compose(RxHelper.to_mian())
-                .subscribe(new MyObserver<GeneralResponse>() {
+    public void inviteMember(String token,int userId,UsersInterface.InviteUserMemberCallback inviteUserMemberCallback){
+        ApiWrapper.getInstance().inviteUserMember(token, userId).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<InviteSucceedResponse>() {
                     @Override
                     public void onError(ExceptionHandle.ResponseException responseException) {
-                        invitingMembersCallback.error(responseException);
+                        inviteUserMemberCallback.error(responseException);
                     }
 
                     @Override
-                    public void onSubscribe(Disposable d) {
+                    public void onSubscribe(@NotNull Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(GeneralResponse generalResponse) {
-                        if (generalResponse.getStatus() == 0) {
-                            invitingMembersCallback.inviteSucceed(generalResponse.getMessage());
-                        } else {
-                            invitingMembersCallback.inviteFailed(generalResponse.getMessage());
+                    public void onNext(@NotNull InviteSucceedResponse inviteSucceedResponse) {
+                        if (inviteSucceedResponse.getStatus()==0){
+                            inviteUserMemberCallback.inviteSucceed(inviteSucceedResponse);
+                        }else {
+                            inviteUserMemberCallback.inviteFailed(inviteSucceedResponse.getMessage());
                         }
-
                     }
 
                     @Override
@@ -1317,6 +1310,36 @@ public class UsersRemoteSource {
                     }
                 });
     }
+
+    public void getMemberTeamByName(String token,String nameOrPhone,int status,UsersInterface.GetMemberTeamByNameCallback getMemberTeamByNameCallback){
+        ApiWrapper.getInstance().getMemberTeamByName(token, nameOrPhone, status).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<MemberTeamListResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        getMemberTeamByNameCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull MemberTeamListResponse memberTeamListResponse) {
+                        if (memberTeamListResponse.getStatus()==0){
+                            getMemberTeamByNameCallback.getSucceed(memberTeamListResponse);
+                        }else {
+                            getMemberTeamByNameCallback.getFailed(memberTeamListResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
 
     /**
      * 加载我的会员
@@ -3590,6 +3613,93 @@ public class UsersRemoteSource {
                             editPeriodicalCallback.editSucceed(addOrEditSucceedResponse);
                         }else {
                             editPeriodicalCallback.editFailed(addOrEditSucceedResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getMemberTeamList(String token,String ranks,int status,UsersInterface.GetMemberTeamListCallback getMemberTeamListCallback){
+        ApiWrapper.getInstance().getMemberTeamList(token, ranks,status).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<MemberTeamListResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        getMemberTeamListCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull MemberTeamListResponse memberTeamListResponse) {
+                        if (memberTeamListResponse.getStatus()==0){
+                            getMemberTeamListCallback.getSucceed(memberTeamListResponse);
+                        }else {
+                            getMemberTeamListCallback.getFailed(memberTeamListResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void editMemberTeam(String token,int id,int status,UsersInterface.EditMemberTeamCallback editMemberTeamCallback){
+        ApiWrapper.getInstance().editMemberTeam(token, id, status).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<IsFocusResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        editMemberTeamCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull IsFocusResponse isFocusResponse) {
+                        if (isFocusResponse.getStatus()==0){
+                            editMemberTeamCallback.editSucceed(isFocusResponse);
+                        }else {
+                            editMemberTeamCallback.editFailed(isFocusResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void deleteMemberTeam(String token,int id,UsersInterface.DeleteMemberTeamCallback deleteMemberTeamCallback){
+        ApiWrapper.getInstance().deleteMemberTeam(token, id).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<DeleteMemberResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        deleteMemberTeamCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull DeleteMemberResponse deleteMemberResponse) {
+                        if (deleteMemberResponse.getStatus()==0){
+                            deleteMemberTeamCallback.deleteSucceed(deleteMemberResponse);
+                        }else {
+                            deleteMemberTeamCallback.deleteFailed(deleteMemberResponse.getMessage());
                         }
                     }
 

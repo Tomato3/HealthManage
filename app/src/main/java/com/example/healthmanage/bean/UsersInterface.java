@@ -2,7 +2,6 @@ package com.example.healthmanage.bean;
 
 import com.example.healthmanage.bean.network.response.AbnormalDataResponse;
 import com.example.healthmanage.bean.network.response.AirResponse;
-import com.example.healthmanage.bean.network.response.BaseResponse;
 import com.example.healthmanage.bean.network.response.ConsultationRecordResponse;
 import com.example.healthmanage.bean.network.response.ConsultationResponse;
 import com.example.healthmanage.bean.network.response.DoctorDetailResponse;
@@ -27,7 +26,6 @@ import com.example.healthmanage.ui.activity.consultation.response.AddConsultatio
 import com.example.healthmanage.ui.activity.consultation.response.AddPatientInfoResponse;
 import com.example.healthmanage.ui.activity.consultation.response.ConsultationListResponse;
 import com.example.healthmanage.ui.activity.consultation.response.DoctorTeamListResponse;
-import com.example.healthmanage.ui.activity.consultation.response.DoctordepartMentResponse;
 import com.example.healthmanage.ui.activity.delegate.response.CreateDelegateResponse;
 import com.example.healthmanage.ui.activity.delegate.response.DelegateListResponse;
 import com.example.healthmanage.ui.activity.healthrecord.response.CheckReportResponse;
@@ -37,6 +35,7 @@ import com.example.healthmanage.ui.activity.healthrecord.response.MedicineBookRe
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportConfirmResponse;
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportDetailResponse;
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportResponse;
+import com.example.healthmanage.ui.activity.invitemember.response.InviteSucceedResponse;
 import com.example.healthmanage.ui.activity.memberdetail.response.CreateTaskResponse;
 import com.example.healthmanage.ui.activity.memberdetail.response.HealthDataResponse;
 import com.example.healthmanage.ui.activity.memberdetail.response.SpiritHealthResponse;
@@ -73,6 +72,10 @@ import com.example.healthmanage.ui.activity.temperature.response.PrescriptionRes
 import com.example.healthmanage.ui.activity.temperature.response.RefusalResponse;
 import com.example.healthmanage.ui.activity.temperature.response.TemperatureResponse;
 import com.example.healthmanage.ui.activity.temperature.response.UpdateResponse;
+import com.example.healthmanage.ui.activity.vipmanager.response.DeleteMemberResponse;
+import com.example.healthmanage.ui.activity.vipmanager.response.InviteMemberResponse;
+import com.example.healthmanage.ui.activity.vipmanager.response.IsFocusResponse;
+import com.example.healthmanage.ui.activity.vipmanager.response.MemberTeamListResponse;
 import com.example.healthmanage.ui.activity.workplan.response.InsertPlanResponse;
 import com.example.healthmanage.ui.activity.workplan.response.UpdateWorkResponse;
 import com.example.healthmanage.ui.activity.workplan.response.WorkPlanListResponse;
@@ -112,18 +115,24 @@ public interface UsersInterface {
     }
 
     interface SearchMembersCallback {
-        void searchSucceed(BaseResponse<MyMemberResponse.DataBean> searchMemberResponse);
+        void searchSucceed(InviteMemberResponse searchMemberResponse);
 
         void searchFailed(String msg);
 
         void error(ExceptionHandle.ResponseException e);
     }
 
-    interface InvitingMembersCallback {
-        void inviteSucceed(String msg);
+    interface InviteUserMemberCallback{
+        void inviteSucceed(InviteSucceedResponse inviteSucceedResponse);
 
         void inviteFailed(String msg);
 
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetMemberTeamByNameCallback{
+        void getSucceed(MemberTeamListResponse memberTeamListResponse);
+        void getFailed(String msg);
         void error(ExceptionHandle.ResponseException e);
     }
 
@@ -787,6 +796,24 @@ public interface UsersInterface {
     interface EditPeriodicalCallback{
         void editSucceed(AddOrEditSucceedResponse addOrEditSucceedResponse);
         void editFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetMemberTeamListCallback{
+        void getSucceed(MemberTeamListResponse memberTeamListResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface EditMemberTeamCallback{
+        void editSucceed(IsFocusResponse isFocusResponse);
+        void editFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface DeleteMemberTeamCallback{
+        void deleteSucceed(DeleteMemberResponse deleteMemberResponse);
+        void deleteFailed(String msg);
         void error(ExceptionHandle.ResponseException e);
     }
 

@@ -27,7 +27,6 @@ import com.example.healthmanage.databinding.ActivityAcademicJournalsBinding;
 import com.example.healthmanage.ui.activity.academicJournals.adapter.PeriodicalAdapter;
 import com.example.healthmanage.ui.activity.academicJournals.response.PeriodicalListResponse;
 import com.example.healthmanage.utils.SizeUtil;
-import com.example.healthmanage.utils.ToastUtil;
 import com.example.healthmanage.view.GridItemDecoration;
 import com.example.healthmanage.widget.TitleToolBar;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -77,6 +76,7 @@ public class AcademicJournalsActivity extends BaseActivity<ActivityAcademicJourn
                         Intent intent = new Intent(context,EditAcademicActivity.class);
                         intent.putExtra("dataBean",periodicalBeans.get(position));
                         startActivity(intent);
+//                        ToastUtil.showSuccess("'hello word");
                         break;
                     case R.id.tv_watch_detail:
                     case R.id.tv_see_contribution_detail:

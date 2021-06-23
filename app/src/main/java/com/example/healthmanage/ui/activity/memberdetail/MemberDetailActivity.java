@@ -10,7 +10,6 @@ import androidx.databinding.BindingAdapter;
 import com.example.healthmanage.BR;
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
-import com.example.healthmanage.databinding.ActivityInviteMemberBinding;
 import com.example.healthmanage.databinding.ActivityMemberDetailBinding;
 import com.example.healthmanage.utils.LocationUtil;
 import com.example.healthmanage.dialog.EditTextDialog;

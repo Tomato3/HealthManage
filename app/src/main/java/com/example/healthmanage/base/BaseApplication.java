@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.bumptech.glide.request.target.ViewTarget;
 import com.example.healthmanage.R;
@@ -20,6 +21,8 @@ import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMOptions;
 import com.hyphenate.easeui.EaseIM;
 import com.jeremyliao.liveeventbus.LiveEventBus;
+import com.parfoismeng.slidebacklib.SlideBack;
+import com.parfoismeng.slidebacklib.callback.SlideBackCallBack;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
@@ -29,12 +32,14 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Iterator;
 import java.util.List;
 
 import static com.example.healthmanage.utils.Constants.HTAG;
 
-public class BaseApplication extends Application {
+public class BaseApplication extends Application implements Application.ActivityLifecycleCallbacks{
     //static 代码段可以防止内存泄露
     static {
         //设置全局的Header构建器
@@ -98,6 +103,8 @@ public class BaseApplication extends Application {
         CrashExceptioner.init(this);
 
         initHx();
+
+//        registerActivityLifecycleCallbacks(this);
     }
 
     private String getAppName(int pID) {
@@ -212,4 +219,48 @@ public class BaseApplication extends Application {
         return sInstance;
     }
 
+    @Override
+    public void onActivityCreated(Activity activity,  Bundle savedInstanceState) {
+        // 在需要滑动返回的Activity中注册，最好但非必须在onCreate中
+        SlideBack.with(activity)
+                .haveScroll(true)
+                .edgeMode(SlideBack.EDGE_LEFT)
+                .callBack(new SlideBackCallBack() {
+                    @Override
+                    public void onSlideBack() {
+                        activity.finish();
+                    }
+                })
+                .register();
+    }
+
+    @Override
+    public void onActivityStarted(@NonNull @NotNull Activity activity) {
+
+    }
+
+    @Override
+    public void onActivityResumed(@NonNull @NotNull Activity activity) {
+
+    }
+
+    @Override
+    public void onActivityPaused(@NonNull @NotNull Activity activity) {
+
+    }
+
+    @Override
+    public void onActivityStopped(@NonNull @NotNull Activity activity) {
+
+    }
+
+    @Override
+    public void onActivitySaveInstanceState(@NonNull @NotNull Activity activity, @NonNull @NotNull Bundle outState) {
+
+    }
+
+    @Override
+    public void onActivityDestroyed(@NonNull @NotNull Activity activity) {
+        SlideBack.unregister(activity);
+    }
 }

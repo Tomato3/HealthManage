@@ -156,8 +156,8 @@
                     android:textColor="#616161"
                     android:layout_marginTop="@dimen/dp_10"/>
 
-                <WebView
-                    android:id="@+id/webview"
+                <TextView
+                    android:id="@+id/tv_content"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/dp_10"

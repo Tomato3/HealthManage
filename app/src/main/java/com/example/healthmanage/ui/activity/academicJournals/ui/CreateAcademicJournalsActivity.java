@@ -21,6 +21,7 @@ import androidx.lifecycle.Observer;
 import com.aries.ui.widget.alert.UIAlertDialog;
 import com.aries.ui.widget.progress.UIProgressDialog;
 import com.contrarywind.view.WheelView;
+import com.example.healthmanage.BR;
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.base.BaseApplication;
@@ -43,7 +44,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.tatarka.bindingcollectionadapter2.BR;
 
 /**
  * 创建学术期刊

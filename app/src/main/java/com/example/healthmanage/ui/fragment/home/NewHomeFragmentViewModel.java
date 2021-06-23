@@ -16,6 +16,7 @@ import com.example.healthmanage.ui.activity.qualification.response.DoctorInfoRes
 import com.example.healthmanage.ui.activity.team.response.DoctorTeamResponse;
 import com.example.healthmanage.ui.activity.temperature.response.HealthTaskResponse;
 import com.example.healthmanage.ui.activity.temperature.response.TemperatureResponse;
+import com.example.healthmanage.ui.activity.vipmanager.response.MemberTeamListResponse;
 import com.example.healthmanage.ui.activity.workplan.response.WorkPlanListResponse;
 
 import java.util.List;
@@ -25,11 +26,11 @@ import io.reactivex.disposables.Disposable;
 
 public class NewHomeFragmentViewModel extends BaseViewModel {
     private UsersRemoteSource usersRemoteSource;
-    public MutableLiveData<List<MyMemberResponse.DataBean>> mMyMemberResponseMutableLiveData = new MutableLiveData<>();
     public MutableLiveData<String> userId = new MutableLiveData<>();
     public MutableLiveData<String> temperatureSize = new MutableLiveData<>();
     public MutableLiveData<String> healthTaskSize = new MutableLiveData<>();
     public MutableLiveData<String> workPlanSize = new MutableLiveData<>();
+    public MutableLiveData<List<MemberTeamListResponse.DataBean>> mListMutableLiveData = new MutableLiveData<>();
 
     public NewHomeFragmentViewModel() {
         usersRemoteSource = new UsersRemoteSource();
@@ -127,68 +128,34 @@ public class NewHomeFragmentViewModel extends BaseViewModel {
         });
     }
 
-    public void myFocus(String sysId) {
-        ApiWrapper.getInstance().loadMyFocus(sysId)
-                .compose(RxHelper.to_mian())
-                .subscribe(new MyObserver<MyMemberResponse>() {
-                    @Override
-                    public void onError(ExceptionHandle.ResponseException responseException) {
 
-                    }
+    /**
+     * 0=所有 1=关注
+     * @param ranks
+     * @param status
+     */
+    public void getMemberTeamList(String ranks,int status){
+        usersRemoteSource.getMemberTeamList(BaseApplication.getToken(), ranks,status, new UsersInterface.GetMemberTeamListCallback() {
+            @Override
+            public void getSucceed(MemberTeamListResponse memberTeamListResponse) {
+                if (memberTeamListResponse.getData()!=null && memberTeamListResponse.getData().size()>0){
+                    mListMutableLiveData.setValue(memberTeamListResponse.getData());
+                }else {
+                    mListMutableLiveData.setValue(null);
+                }
+            }
 
-                    @Override
-                    public void onSubscribe(@NonNull Disposable d) {
+            @Override
+            public void getFailed(String msg) {
+                getUiChangeEvent().getToastTxt().setValue(msg);
+                mListMutableLiveData.setValue(null);
+            }
 
-                    }
-
-                    @Override
-                    public void onNext(@NonNull MyMemberResponse myMemberResponse) {
-                        if (myMemberResponse.getStatus() == 0) {
-                            if (myMemberResponse.getData() != null) {
-                                mMyMemberResponseMutableLiveData.postValue(myMemberResponse.getData());
-                            } else {
-                                mMyMemberResponseMutableLiveData.postValue(null);
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-    }
-
-    public void getVip(String sysId, String ranks) {
-        ApiWrapper.getInstance().selectMember(sysId, ranks)
-                .compose(RxHelper.to_mian())
-                .subscribe(new MyObserver<MyMemberResponse>() {
-                    @Override
-                    public void onError(ExceptionHandle.ResponseException responseException) {
-
-                    }
-
-                    @Override
-                    public void onSubscribe(@NonNull Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(@NonNull MyMemberResponse myMemberResponse) {
-                        if (myMemberResponse.getStatus() == 0) {
-                            if (myMemberResponse.getData() != null) {
-                                mMyMemberResponseMutableLiveData.postValue(myMemberResponse.getData());
-                            } else {
-                                mMyMemberResponseMutableLiveData.postValue(null);
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
+            @Override
+            public void error(ExceptionHandle.ResponseException e) {
+                mListMutableLiveData.setValue(null);
+            }
+        });
     }
 
 }

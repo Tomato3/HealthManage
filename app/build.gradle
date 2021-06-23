@@ -138,7 +138,7 @@ dependencies {
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
     implementation 'com.github.wildma:IDCardCamera:1.1.1'
-
+    //万能适配器
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
 
     implementation 'com.blankj:utilcode:1.23.2'
@@ -152,6 +152,7 @@ dependencies {
     implementation "com.github.AriesHoo.UIWidget:widget-alert:3.2.25"
     implementation "com.github.AriesHoo.UIWidget:widget-collapsing:3.2.25"
     implementation "com.github.AriesHoo.UIWidget:tab-layout:3.2.25"
+//    implementation 'com.github.AriesHoo:FastLib:2.4.0'
 
     implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.6.0'
     compile 'org.greenrobot:eventbus:3.0.0'
@@ -173,4 +174,6 @@ dependencies {
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
 
     implementation 'com.contrarywind:wheelview:4.1.0'
+    //滑动返回Activity
+    implementation 'com.github.ParfoisMeng:SlideBack:1.0.6'
 }

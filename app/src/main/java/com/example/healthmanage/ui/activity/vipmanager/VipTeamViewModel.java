@@ -171,26 +171,26 @@ public class VipTeamViewModel extends BaseViewModel {
     }
 
     /**按手机号搜索会员*/
-    public void getVipByPhone(String phone){
-        mUsersRemoteSource.searchMembers(phone, new UsersInterface.SearchMembersCallback() {
-            @Override
-            public void searchSucceed(BaseResponse<MyMemberResponse.DataBean> searchMemberResponse) {
-                if (searchMemberResponse.getData() != null) {
-                    mListSearchMutableLiveData.postValue(searchMemberResponse.getData());
-                } else {
-                    mListSearchMutableLiveData.postValue(null);
-                }
-            }
-
-            @Override
-            public void searchFailed(String msg) {
-
-            }
-
-            @Override
-            public void error(ExceptionHandle.ResponseException e) {
-
-            }
-        });
-    }
+//    public void getVipByPhone(String phone){
+//        mUsersRemoteSource.searchMembers(BaseApplication.getToken(),phone, new UsersInterface.SearchMembersCallback() {
+//            @Override
+//            public void searchSucceed(BaseResponse<MyMemberResponse.DataBean> searchMemberResponse) {
+//                if (searchMemberResponse.getData() != null) {
+//                    mListSearchMutableLiveData.postValue(searchMemberResponse.getData());
+//                } else {
+//                    mListSearchMutableLiveData.postValue(null);
+//                }
+//            }
+//
+//            @Override
+//            public void searchFailed(String msg) {
+//
+//            }
+//
+//            @Override
+//            public void error(ExceptionHandle.ResponseException e) {
+//
+//            }
+//        });
+//    }
 }
