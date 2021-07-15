@@ -33,6 +33,12 @@ import com.example.healthmanage.ui.activity.consultation.response.PatientInfoBea
 import com.example.healthmanage.ui.activity.delegate.response.CreateDelegateResponse;
 import com.example.healthmanage.ui.activity.delegate.response.DelegateBean;
 import com.example.healthmanage.ui.activity.delegate.response.DelegateListResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.DepartMentResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.FamousDoctorInfoResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.FamousDoctorListResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.HospitalDetailResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.HospitalListResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.HospitalTypeResponse;
 import com.example.healthmanage.ui.activity.healthrecord.response.CheckReportResponse;
 import com.example.healthmanage.ui.activity.healthrecord.response.HealthRecordResponse;
 import com.example.healthmanage.ui.activity.healthrecord.response.HistoryAssessListResponse;
@@ -93,11 +99,17 @@ import com.example.healthmanage.ui.activity.vipmanager.response.MemberTeamListRe
 import com.example.healthmanage.ui.activity.workplan.response.InsertPlanResponse;
 import com.example.healthmanage.ui.activity.workplan.response.UpdateWorkResponse;
 import com.example.healthmanage.ui.activity.workplan.response.WorkPlanListResponse;
+import com.example.healthmanage.ui.fragment.educationchild.response.BookArticleResponse;
+import com.example.healthmanage.ui.fragment.educationchild.response.BookListResponse;
+import com.example.healthmanage.ui.fragment.educationchild.response.BookMenuResponse;
+import com.example.healthmanage.ui.fragment.educationchild.response.SubscribeResponse;
+import com.example.healthmanage.ui.fragment.educationchild.response.YearResponse;
 import com.example.healthmanage.ui.fragment.qualification.bean.DoctorInfo;
 import com.example.healthmanage.ui.fragment.qualification.bean.UpdateDoctorInfo;
 
 import java.util.List;
 
+import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import okhttp3.MultipartBody;
 import retrofit2.http.Body;
@@ -1257,5 +1269,147 @@ public interface ApiServer {
     @POST("api/periodical/editPeriodical")
     Observable<AddOrEditSucceedResponse> editPeriodical(@Body EditPeriodicalBean editPeriodicalBean);
 
+    //名医堂
+
+    /**
+     * 获取科室列表
+     * @param token
+     * @return
+     */
+    @GET("api/famousDoctorHall/getHospitalDepartment")
+    Observable<DepartMentResponse> getHospitalDepartment(@Query("token") String token);
+
+    /**
+     * 医生列表
+     * @return
+     */
+    @GET("api/famousDoctorHall/getDoctorList")
+    Observable<FamousDoctorListResponse> getDoctorList(@Query("nameOrHospital") String nameOrHospital,
+                                                       @Query("addr") String addr,
+                                                       @Query("departmentId") String departmentId,
+                                                       @Query("rank") String rank,
+                                                       @Query("grade") String grade,
+                                                       @Query("token") String token);
+
+    /**
+     * 医院列表
+     * @param nameOrHospital
+     * @param address
+     * @param typeId
+     * @param token
+     * @return
+     */
+    @GET("api/famousDoctorHall/getHospitalList")
+    Observable<HospitalListResponse> getHospitalList(@Query("nameOrHospital") String nameOrHospital,
+                                                     @Query("address") String address,
+                                                     @Query("typeId") String typeId,
+                                                     @Query("token") String token);
+
+    /**
+     * 医院等级列表
+     * @param token
+     * @return
+     */
+    @GET("api/famousDoctorHall/getHospitalTypeList")
+    Observable<HospitalTypeResponse> getHospitalTypeList(@Query("token") String token);
+
+    /**
+     * 查看医院详情
+     * @param hospitalId
+     * @param token
+     * @return
+     */
+    @GET("api/famousDoctorHall/getHospitalById")
+    Observable<HospitalDetailResponse> getHospitalById(@Query("hospitalId") int hospitalId,
+                                                       @Query("token") String token);
+
+    /**
+     * 根据医院id获取医生列表
+     * @param nameOrDepartment
+     * @param departmentId
+     * @param rank
+     * @param grade
+     * @param hospitalId
+     * @param token
+     * @return
+     */
+    @GET("api/famousDoctorHall/getDoctorByHospitalId")
+    Observable<FamousDoctorListResponse> getDoctorByHospitalId(@Query("nameOrDepartment") String nameOrDepartment,
+                                                               @Query("departmentId") String departmentId,
+                                                               @Query("rank") String rank,
+                                                               @Query("grade") String grade,
+                                                               @Query("hospitalId") int hospitalId,
+                                                               @Query("token") String token);
+
+    /**
+     * 医生个人详情
+     * @param systemUserId
+     * @param token
+     * @return
+     */
+    @GET("api/famousDoctorHall/getDoctorInfo")
+    Observable<FamousDoctorInfoResponse> getDoctorInfo(@Query("systemUserId") int systemUserId,
+                                                       @Query("token") String token);
+
+    /**
+     * 文摘
+     */
+    /**
+     * 获取年限
+     * @param token
+     * @return
+     */
+    @GET("api/appPeriodical/getYearList")
+    Observable<YearResponse> getYearList(@Query("token") String token);
+
+    /**
+     * 根据年份查询期刊
+     * @param year
+     * @param token
+     * @return
+     */
+    @GET("api/appPeriodical/getBookListByYear")
+    Observable<BookListResponse> getBookListByYear(@Query("year") String year,
+                                                   @Query("token") String token);
+
+    /**
+     * 订阅期刊
+     * @param bookId
+     * @param token
+     * @return
+     */
+    @GET("api/appPeriodical/subscribeBook")
+    Observable<SubscribeResponse> subscribeBook(@Query("bookId") String bookId,
+                                                @Query("token") String token);
+
+    /**
+     * 取消订阅期刊
+     * @param bookId
+     * @param token
+     * @return
+     */
+    @GET("api/appPeriodical/cancelSubscribeBook")
+    Observable<SubscribeResponse> cancelSubscribeBook(@Query("bookId") String bookId,
+                                                @Query("token") String token);
+
+    /**
+     * 查询文章期刊详情
+     * @param id
+     * @param token
+     * @return
+     */
+    @GET("api/appPeriodical/getBookArticle")
+    Observable<BookArticleResponse> getBookArticle(@Query("id") String id,
+                                                   @Query("token") String token);
+
+    /**
+     * 查看期刊目录
+     * @param bookId
+     * @param token
+     * @return
+     */
+    @GET("api/appPeriodical/getBookCatalogList")
+    Observable<BookMenuResponse> getBookCatalogList(@Query("bookId") String bookId,
+                                                  @Query("token") String token);
 }
 

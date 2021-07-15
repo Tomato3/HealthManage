@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingConstraints"
+    android:padding="@dimen/dp_10">
+
+    <LinearLayout
+        android:id="@+id/layout_doctor_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/iv_doctor_logo"
+            android:layout_width="@dimen/dp_67"
+            android:layout_height="@dimen/dp_67"
+            android:src="@drawable/ic_doctor_logo"/>
+
+        <TextView
+            android:id="@+id/tv_doctor_rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBlue"
+            android:padding="@dimen/dp_5"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="全国常委"
+            android:textSize="@dimen/sp_12"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="@id/layout_doctor_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="@dimen/dp_10">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_nameOrRank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="陈利华 主任医师"
+                android:padding="@dimen/dp_5"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_16"
+                android:gravity="center"
+                android:layout_centerVertical="true"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tv_hospital_rank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp_12"
+                android:textColor="@color/white"
+                android:background="#FFC400"
+                android:layout_toEndOf="@id/tv_nameOrRank"
+                android:layout_centerVertical="true"
+                android:paddingTop="@dimen/dp_5"
+                android:paddingBottom="@dimen/dp_5"
+                android:paddingStart="@dimen/dp_10"
+                android:paddingEnd="@dimen/dp_10"
+                android:gravity="center"
+                android:text="三甲"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_hospital_department"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="北京协和医院 内分泌科"
+            android:textColor="#666666"
+            android:textSize="@dimen/sp_14"
+            android:padding="@dimen/dp_5"/>
+
+        <TextView
+            android:id="@+id/tv_skill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="擅长：痤疮、激素依赖性皮炎、敏感皮肤、寻麻疹、湿疹白癜风、银屑病、儿童皮肤病"
+            android:textSize="@dimen/sp_14"
+            android:padding="@dimen/dp_5"
+            android:maxLines="2"
+            android:ellipsize="end"/>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

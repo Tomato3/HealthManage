@@ -32,19 +32,21 @@ public class DelegateAdapter extends BaseQuickAdapter<DelegateListResponse.DataB
                 helper.setText(R.id.tv_deal_result_type,"已完成");
                 break;
         }
-        switch (item.getAppUser().getRank()){
-            case 0:
-                helper.setText(R.id.tv_service_object_name, Html.fromHtml("服务对象:\u3000<font color=\"#000000\">"+item.getAppUser().getNickName()+"\u3000|\u3000"+"普通会员"+"</font>"));
-                break;
-            case 1:
-                helper.setText(R.id.tv_service_object_name, Html.fromHtml("服务对象:\u3000<font color=\"#000000\">"+item.getAppUser().getNickName()+"\u3000|\u3000"+"高级会员"+"</font>"));
-                break;
-            case 2:
-                helper.setText(R.id.tv_service_object_name, Html.fromHtml("服务对象:\u3000<font color=\"#000000\">"+item.getAppUser().getNickName()+"\u3000|\u3000"+"贵宾会员"+"</font>"));
-                break;
-            case 3:
-                helper.setText(R.id.tv_service_object_name, Html.fromHtml("服务对象:\u3000<font color=\"#000000\">"+item.getAppUser().getNickName()+"\u3000|\u3000"+"至尊会员"+"</font>"));
-                break;
+        if (item.getAppUser()!=null){
+            switch (item.getAppUser().getRank()){
+                case 0:
+                    helper.setText(R.id.tv_service_object_name, Html.fromHtml("服务对象:\u3000<font color=\"#000000\">"+item.getAppUser().getNickName()+"\u3000|\u3000"+"普通会员"+"</font>"));
+                    break;
+                case 1:
+                    helper.setText(R.id.tv_service_object_name, Html.fromHtml("服务对象:\u3000<font color=\"#000000\">"+item.getAppUser().getNickName()+"\u3000|\u3000"+"高级会员"+"</font>"));
+                    break;
+                case 2:
+                    helper.setText(R.id.tv_service_object_name, Html.fromHtml("服务对象:\u3000<font color=\"#000000\">"+item.getAppUser().getNickName()+"\u3000|\u3000"+"贵宾会员"+"</font>"));
+                    break;
+                case 3:
+                    helper.setText(R.id.tv_service_object_name, Html.fromHtml("服务对象:\u3000<font color=\"#000000\">"+item.getAppUser().getNickName()+"\u3000|\u3000"+"至尊会员"+"</font>"));
+                    break;
+            }
         }
         helper.setText(R.id.tv_task_description, Html.fromHtml("任务描述:\u3000<font color=\"#000000\">"+item.getContent()+"</font>"));
         helper.setText(R.id.tv_task_time, Html.fromHtml("任务时间:\u3000<font color=\"#000000\">"+item.getDate()+"\u3000"+item.getTime()+"</font>"));

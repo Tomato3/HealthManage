@@ -80,21 +80,23 @@ public class DelegateInfoActivity extends BaseActivity<ActivityBusinessDetailBin
                 }
                 break;
         }
-        switch (dataBean.getAppUser().getRank()){
-            case 0:
-                dataBinding.tvServiceObjectName.setText(Html.fromHtml("服务对象:\u3000<font color=\"#000000\">"+dataBean.getAppUser().getNickName()+"\u3000|\u3000"+"普通会员"+"</font>"));
-                break;
-            case 1:
-                dataBinding.tvServiceObjectName.setText(Html.fromHtml("服务对象:\u3000<font color=\"#000000\">"+dataBean.getAppUser().getNickName()+"\u3000|\u3000"+"高级会员"+"</font>"));
-                break;
-            case 2:
-                dataBinding.tvServiceObjectName.setText(Html.fromHtml("服务对象:\u3000<font color=\"#000000\">"+dataBean.getAppUser().getNickName()+"\u3000|\u3000"+"贵宾会员"+"</font>"));
-                break;
-            case 3:
-                dataBinding.tvServiceObjectName.setText(Html.fromHtml("服务对象:\u3000<font color=\"#000000\">"+dataBean.getAppUser().getNickName()+"\u3000|\u3000"+"至尊会员"+"</font>"));
-                break;
+        if (dataBean.getAppUser()!=null){
+            switch (dataBean.getAppUser().getRank()){
+                case 0:
+                    dataBinding.tvServiceObjectName.setText(Html.fromHtml("服务对象:\u3000<font color=\"#000000\">"+dataBean.getAppUser().getNickName()+"\u3000|\u3000"+"普通会员"+"</font>"));
+                    break;
+                case 1:
+                    dataBinding.tvServiceObjectName.setText(Html.fromHtml("服务对象:\u3000<font color=\"#000000\">"+dataBean.getAppUser().getNickName()+"\u3000|\u3000"+"高级会员"+"</font>"));
+                    break;
+                case 2:
+                    dataBinding.tvServiceObjectName.setText(Html.fromHtml("服务对象:\u3000<font color=\"#000000\">"+dataBean.getAppUser().getNickName()+"\u3000|\u3000"+"贵宾会员"+"</font>"));
+                    break;
+                case 3:
+                    dataBinding.tvServiceObjectName.setText(Html.fromHtml("服务对象:\u3000<font color=\"#000000\">"+dataBean.getAppUser().getNickName()+"\u3000|\u3000"+"至尊会员"+"</font>"));
+                    break;
+            }
+            dataBinding.tvVipPhone.setText(Html.fromHtml("会员电话:\u3000<font color=\"#000000\">"+dataBean.getAppUser().getPhone()+"</font>"));
         }
-        dataBinding.tvVipPhone.setText(Html.fromHtml("会员电话:\u3000<font color=\"#000000\">"+dataBean.getAppUser().getPhone()+"</font>"));
         dataBinding.tvTaskDescribe.setText(Html.fromHtml("任务描述:\u3000<font color=\"#000000\">"+dataBean.getContent()+"</font>"));
         dataBinding.tvTaskTime.setText(Html.fromHtml("任务时间:\u3000<font color=\"#000000\">"+dataBean.getDate()+"\u3000"+dataBean.getTime()+"</font>"));
         dataBinding.tvTaskLocation.setText(Html.fromHtml("<font color=\"#000000\">"+dataBean.getAddr()+"</font>"));

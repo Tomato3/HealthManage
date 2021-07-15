@@ -38,6 +38,12 @@ import com.example.healthmanage.ui.activity.consultation.response.PatientInfoBea
 import com.example.healthmanage.ui.activity.delegate.response.CreateDelegateResponse;
 import com.example.healthmanage.ui.activity.delegate.response.DelegateBean;
 import com.example.healthmanage.ui.activity.delegate.response.DelegateListResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.DepartMentResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.FamousDoctorInfoResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.FamousDoctorListResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.HospitalDetailResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.HospitalListResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.HospitalTypeResponse;
 import com.example.healthmanage.ui.activity.healthrecord.response.CheckReportResponse;
 import com.example.healthmanage.ui.activity.healthrecord.response.HealthRecordResponse;
 import com.example.healthmanage.ui.activity.healthrecord.response.HistoryAssessListResponse;
@@ -97,6 +103,10 @@ import com.example.healthmanage.ui.activity.vipmanager.response.MemberTeamListRe
 import com.example.healthmanage.ui.activity.workplan.response.InsertPlanResponse;
 import com.example.healthmanage.ui.activity.workplan.response.UpdateWorkResponse;
 import com.example.healthmanage.ui.activity.workplan.response.WorkPlanListResponse;
+import com.example.healthmanage.ui.fragment.educationchild.response.BookArticleResponse;
+import com.example.healthmanage.ui.fragment.educationchild.response.BookListResponse;
+import com.example.healthmanage.ui.fragment.educationchild.response.SubscribeResponse;
+import com.example.healthmanage.ui.fragment.educationchild.response.YearResponse;
 import com.example.healthmanage.ui.fragment.qualification.bean.DoctorInfo;
 import com.example.healthmanage.ui.fragment.qualification.bean.UpdateDoctorInfo;
 
@@ -105,8 +115,11 @@ import org.jetbrains.annotations.NotNull;
 import java.io.File;
 import java.util.List;
 
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 import static com.example.healthmanage.utils.Constants.HTAG;
 
@@ -3700,6 +3713,354 @@ public class UsersRemoteSource {
                             deleteMemberTeamCallback.deleteSucceed(deleteMemberResponse);
                         }else {
                             deleteMemberTeamCallback.deleteFailed(deleteMemberResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getHospitalDepartment(String token,UsersInterface.GetHospitalDepartmentCallback getHospitalDepartmentCallback){
+        ApiWrapper.getInstance().getHospitalDepartment(token).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<DepartMentResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        getHospitalDepartmentCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull DepartMentResponse departMentResponse) {
+                        if (departMentResponse.getStatus()==0){
+                            getHospitalDepartmentCallback.getSucceed(departMentResponse);
+                        }else {
+                            getHospitalDepartmentCallback.getFailed(departMentResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getDoctorList(String nameOrHospital,String addr,String departmentId,String rank,String grade,String token,UsersInterface.GetFamousDoctorListCallback getFamousDoctorListCallback){
+        ApiWrapper.getInstance().getDoctorList(nameOrHospital, addr, departmentId, rank,grade, token).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<FamousDoctorListResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        getFamousDoctorListCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull FamousDoctorListResponse famousDoctorListResponse) {
+                        if (famousDoctorListResponse.getStatus()==0){
+                            getFamousDoctorListCallback.getSucceed(famousDoctorListResponse);
+                        }else {
+                            getFamousDoctorListCallback.getFailed(famousDoctorListResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getHospitalList(String nameOrHospital,String address,String typeId,String token,UsersInterface.GetHospitalListCallback getHospitalListCallback){
+        ApiWrapper.getInstance().getHospitalList(nameOrHospital, address, typeId, token).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<HospitalListResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        getHospitalListCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull HospitalListResponse hospitalListResponse) {
+                        if (hospitalListResponse.getStatus()==0){
+                            getHospitalListCallback.getSucceed(hospitalListResponse);
+                        }else {
+                            getHospitalListCallback.getFailed(hospitalListResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getHospitalTypeList(String token,UsersInterface.GetHospitalTypeListCallback getHospitalTypeListCallback){
+        ApiWrapper.getInstance().getHospitalTypeList(token).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<HospitalTypeResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        getHospitalTypeListCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull HospitalTypeResponse hospitalTypeResponse) {
+                        if (hospitalTypeResponse.getStatus()==0){
+                            getHospitalTypeListCallback.getSucceed(hospitalTypeResponse);
+                        }else {
+                            getHospitalTypeListCallback.getFailed(hospitalTypeResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getHospitalById(int hospitalId,String token,UsersInterface.GetHospitalByIdCallback getHospitalByIdCallback){
+        ApiWrapper.getInstance().getHospitalById(hospitalId, token).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<HospitalDetailResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        getHospitalByIdCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull HospitalDetailResponse hospitalDetailResponse) {
+                        if (hospitalDetailResponse.getStatus()==0){
+                            getHospitalByIdCallback.getSucceed(hospitalDetailResponse);
+                        }else {
+                            getHospitalByIdCallback.getFailed(hospitalDetailResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getDoctorByHospitalId(String nameOrDepartment,String departmentId,String rank,String grade,int hospitalId,String token,UsersInterface.GetFamousDoctorListCallback getFamousDoctorListCallback){
+        ApiWrapper.getInstance().getDoctorByHospitalId(nameOrDepartment, departmentId, rank, grade, hospitalId, token).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<FamousDoctorListResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        getFamousDoctorListCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull FamousDoctorListResponse famousDoctorListResponse) {
+                        if (famousDoctorListResponse.getStatus()==0){
+                            getFamousDoctorListCallback.getSucceed(famousDoctorListResponse);
+                        }else {
+                            getFamousDoctorListCallback.getFailed(famousDoctorListResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getDoctorInfo(int systemUserId,String token,UsersInterface.GetFamousDoctorInfoCallback getFamousDoctorInfoCallback){
+        ApiWrapper.getInstance().getDoctorInfo(systemUserId, token).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<FamousDoctorInfoResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        getFamousDoctorInfoCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull FamousDoctorInfoResponse famousDoctorInfoResponse) {
+                        if (famousDoctorInfoResponse.getStatus()==0){
+                            getFamousDoctorInfoCallback.getSucceed(famousDoctorInfoResponse);
+                        }else {
+                            getFamousDoctorInfoCallback.getFailed(famousDoctorInfoResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getYearList(String token,UsersInterface.GetYearListCallback getYearListCallback){
+        ApiWrapper.getInstance().getYearList(token).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<YearResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        getYearListCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull YearResponse yearResponse) {
+                        if (yearResponse.getStatus()==200){
+                            getYearListCallback.getSucceed(yearResponse);
+                        }else {
+                            getYearListCallback.getFailed(yearResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getBookListByYear(String year,String token,UsersInterface.GetBookListByYearCallback getBookListByYearCallback){
+        ApiWrapper.getInstance().getBookListByYear(year, token).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<BookListResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        getBookListByYearCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull BookListResponse bookListResponse) {
+                        if (bookListResponse.getStatus()==200){
+                            getBookListByYearCallback.getSucceed(bookListResponse);
+                        }else {
+                            getBookListByYearCallback.getFailed(bookListResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void subscribeBook(String bookId,String token,UsersInterface.SubscribeBookCallback subscribeBookCallback){
+        ApiWrapper.getInstance().subscribeBook(bookId, token).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<SubscribeResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        subscribeBookCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull SubscribeResponse subscribeResponse) {
+                        if (subscribeResponse.getStatus()==200){
+                            subscribeBookCallback.getSucceed(subscribeResponse);
+                        }else {
+                            subscribeBookCallback.getFailed(subscribeResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void cancelSubscribeBook(String bookId,String token,UsersInterface.CancelSubscribeBookCallback cancelSubscribeBookCallback){
+        ApiWrapper.getInstance().cancelSubscribeBook(bookId, token).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<SubscribeResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        cancelSubscribeBookCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull SubscribeResponse subscribeResponse) {
+                        if (subscribeResponse.getStatus()==200){
+                            cancelSubscribeBookCallback.getSucceed(subscribeResponse);
+                        }else {
+                            cancelSubscribeBookCallback.getFailed(subscribeResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getBookArticle(String id,String token,UsersInterface.GetBookArticleCallback getBookArticleCallback){
+        ApiWrapper.getInstance().getBookArticle(id, token).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<BookArticleResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        getBookArticleCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull BookArticleResponse bookArticleResponse) {
+                        if (bookArticleResponse.getStatus()==200){
+                            getBookArticleCallback.getSucceed(bookArticleResponse);
+                        }else {
+                            getBookArticleCallback.getFailed(bookArticleResponse.getMessage());
                         }
                     }
 

@@ -28,6 +28,12 @@ import com.example.healthmanage.ui.activity.consultation.response.ConsultationLi
 import com.example.healthmanage.ui.activity.consultation.response.DoctorTeamListResponse;
 import com.example.healthmanage.ui.activity.delegate.response.CreateDelegateResponse;
 import com.example.healthmanage.ui.activity.delegate.response.DelegateListResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.DepartMentResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.FamousDoctorInfoResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.FamousDoctorListResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.HospitalDetailResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.HospitalListResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.HospitalTypeResponse;
 import com.example.healthmanage.ui.activity.healthrecord.response.CheckReportResponse;
 import com.example.healthmanage.ui.activity.healthrecord.response.HealthRecordResponse;
 import com.example.healthmanage.ui.activity.healthrecord.response.HistoryAssessListResponse;
@@ -79,6 +85,10 @@ import com.example.healthmanage.ui.activity.vipmanager.response.MemberTeamListRe
 import com.example.healthmanage.ui.activity.workplan.response.InsertPlanResponse;
 import com.example.healthmanage.ui.activity.workplan.response.UpdateWorkResponse;
 import com.example.healthmanage.ui.activity.workplan.response.WorkPlanListResponse;
+import com.example.healthmanage.ui.fragment.educationchild.response.BookArticleResponse;
+import com.example.healthmanage.ui.fragment.educationchild.response.BookListResponse;
+import com.example.healthmanage.ui.fragment.educationchild.response.SubscribeResponse;
+import com.example.healthmanage.ui.fragment.educationchild.response.YearResponse;
 
 public interface UsersInterface {
 
@@ -814,6 +824,72 @@ public interface UsersInterface {
     interface DeleteMemberTeamCallback{
         void deleteSucceed(DeleteMemberResponse deleteMemberResponse);
         void deleteFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetHospitalDepartmentCallback{
+        void getSucceed(DepartMentResponse departMentResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetFamousDoctorListCallback{
+        void getSucceed(FamousDoctorListResponse famousDoctorListResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetHospitalTypeListCallback{
+        void getSucceed(HospitalTypeResponse hospitalTypeResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetHospitalListCallback{
+        void getSucceed(HospitalListResponse hospitalListResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetHospitalByIdCallback{
+        void getSucceed(HospitalDetailResponse hospitalDetailResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetFamousDoctorInfoCallback{
+        void getSucceed(FamousDoctorInfoResponse famousDoctorInfoResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetYearListCallback{
+        void getSucceed(YearResponse yearResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetBookListByYearCallback{
+        void getSucceed(BookListResponse bookListResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface SubscribeBookCallback{
+        void getSucceed(SubscribeResponse subscribeResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface CancelSubscribeBookCallback{
+        void getSucceed(SubscribeResponse subscribeResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetBookArticleCallback{
+        void getSucceed(BookArticleResponse bookArticleResponse);
+        void getFailed(String msg);
         void error(ExceptionHandle.ResponseException e);
     }
 

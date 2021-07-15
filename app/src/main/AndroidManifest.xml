@@ -243,7 +243,16 @@
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity android:name=".ui.activity.academicJournals.ui.AcademicInfoActivity"/>
         <activity android:name=".ui.activity.invitemember.InviteNewMemberActivity"/>
-        <activity android:name=".ui.activity.consultation.ConsultationActivity" /> <!-- 设置key -->
+        <activity android:name=".ui.activity.shop.ui.ApplyOpenShopActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name=".ui.activity.famousDoctorHall.ui.FamousHallActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name=".ui.activity.famousDoctorHall.ui.HospitalDetailActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name=".ui.activity.famousDoctorHall.ui.HospitalSurveyActivity"/>
+        <activity android:name=".ui.activity.famousDoctorHall.ui.FamousDoctorInfoActivity"/>
+        <activity android:name=".ui.activity.consultation.ConsultationActivity" />
+        <activity android:name=".ui.fragment.educationchild.ui.BookDetailsActivity" /> <!-- 设置key -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="d0ed306fda341a9e51d8b7a17b013b84" /> <!-- 声明定位service -->

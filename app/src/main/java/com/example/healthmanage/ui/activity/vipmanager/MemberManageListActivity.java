@@ -1,6 +1,7 @@
 package com.example.healthmanage.ui.activity.vipmanager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -16,11 +17,13 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.healthmanage.BR;
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.databinding.ActivityVipTeamBinding;
+import com.example.healthmanage.ui.activity.memberdetail.MemberNewDetailActivity;
 import com.example.healthmanage.ui.activity.vipmanager.adapter.MemberTeamAdapter;
 import com.example.healthmanage.ui.activity.vipmanager.response.MemberTeamListResponse;
 import com.example.healthmanage.utils.SoftKeyboardUtils;
@@ -162,6 +165,24 @@ public class MemberManageListActivity extends BaseActivity<ActivityVipTeamBindin
                 mPosition = position;
             }
         });
+        mMemberTeamAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                jumpMemberDetails(mDataBeanList.get(position).getId(),mDataBeanList.get(position).getAppUser().getNickName());
+            }
+        });
+    }
+
+    //跳转会员详情页面
+    public void jumpMemberDetails(int memberId, String memberName) {
+        Intent intent = new Intent(BaseApplication.getInstance(), MemberNewDetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("MemberName", memberName);
+        bundle.putInt("MemberId", memberId);
+//        bundle.putBoolean("FocusState", focusState);
+        intent.putExtras(bundle);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        BaseApplication.getInstance().getApplicationContext().startActivity(intent);
     }
 
     @Override

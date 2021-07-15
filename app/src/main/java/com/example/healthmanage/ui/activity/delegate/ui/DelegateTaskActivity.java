@@ -126,7 +126,7 @@ public class DelegateTaskActivity extends BaseActivity<ActivityDelegateTaskBindi
 
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                viewModel.getBusineService(selectYear+"-"+selectMonth);
+                viewModel.getBusineService(year+"-"+month);
                 delegateAdapter.notifyDataSetChanged();
                 dataBinding.smartRefreshLayout.finishRefresh(200);
             }
@@ -218,9 +218,11 @@ public class DelegateTaskActivity extends BaseActivity<ActivityDelegateTaskBindi
                 selectYear = String.valueOf(datePicker.getYear());
                 if (datePicker.getMonth()+1<10){
                     selectMonth = "0"+String.valueOf(datePicker.getMonth()+1);
+                    month = selectMonth;
                     viewModel.getBusineService(datePicker.getYear()+"-0"+(datePicker.getMonth()+1));
                 }else {
                     selectMonth = String.valueOf(datePicker.getMonth()+1);
+                    month = selectMonth;
                     viewModel.getBusineService(datePicker.getYear()+"-"+(datePicker.getMonth()+1));
                 }
                 delegateAdapter.notifyDataSetChanged();

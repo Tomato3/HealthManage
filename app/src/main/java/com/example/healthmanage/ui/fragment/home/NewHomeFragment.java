@@ -21,9 +21,12 @@ import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.base.BaseFragment;
 import com.example.healthmanage.databinding.FragmentNewHomeBinding;
+import com.example.healthmanage.ui.activity.famousDoctorHall.ui.FamousHallActivity;
 import com.example.healthmanage.ui.activity.invitemember.InviteNewMemberActivity;
 import com.example.healthmanage.ui.activity.mytask.MyNewTaskActivity;
 import com.example.healthmanage.ui.activity.notice.ui.NewsNoticeActivity;
+import com.example.healthmanage.ui.activity.shop.ui.ApplyOpenShopActivity;
+import com.example.healthmanage.ui.activity.shop.ui.ShopActivity;
 import com.example.healthmanage.ui.activity.team.TeamActivity;
 import com.example.healthmanage.ui.activity.team.TeamSignActivity;
 import com.example.healthmanage.ui.activity.team.ui.BusinessDealActivity;
@@ -267,6 +270,12 @@ public class NewHomeFragment extends BaseFragment<FragmentNewHomeBinding, NewHom
                 startActivity(TeamSignActivity.class);
             }
         });
+        dataBinding.includeHomeChoose.findViewById(R.id.linearLayout5).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(ApplyOpenShopActivity.class);
+            }
+        });
         dataBinding.includeHomeChoose.findViewById(R.id.linearLayout2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -316,6 +325,12 @@ public class NewHomeFragment extends BaseFragment<FragmentNewHomeBinding, NewHom
             @Override
             public void onClick(View v) {
                 startActivity(NewsNoticeActivity.class);
+            }
+        });
+        dataBinding.layoutServiceMenu.findViewById(R.id.linearLayout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(FamousHallActivity.class);
             }
         });
     }

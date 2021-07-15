@@ -33,6 +33,12 @@ import com.example.healthmanage.ui.activity.consultation.response.PatientInfoBea
 import com.example.healthmanage.ui.activity.delegate.response.CreateDelegateResponse;
 import com.example.healthmanage.ui.activity.delegate.response.DelegateBean;
 import com.example.healthmanage.ui.activity.delegate.response.DelegateListResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.DepartMentResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.FamousDoctorInfoResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.FamousDoctorListResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.HospitalDetailResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.HospitalListResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.HospitalTypeResponse;
 import com.example.healthmanage.ui.activity.healthrecord.response.CheckReportResponse;
 import com.example.healthmanage.ui.activity.healthrecord.response.HealthRecordResponse;
 import com.example.healthmanage.ui.activity.healthrecord.response.HistoryAssessListResponse;
@@ -93,6 +99,11 @@ import com.example.healthmanage.ui.activity.vipmanager.response.MemberTeamListRe
 import com.example.healthmanage.ui.activity.workplan.response.InsertPlanResponse;
 import com.example.healthmanage.ui.activity.workplan.response.UpdateWorkResponse;
 import com.example.healthmanage.ui.activity.workplan.response.WorkPlanListResponse;
+import com.example.healthmanage.ui.fragment.educationchild.response.BookArticleResponse;
+import com.example.healthmanage.ui.fragment.educationchild.response.BookListResponse;
+import com.example.healthmanage.ui.fragment.educationchild.response.BookMenuResponse;
+import com.example.healthmanage.ui.fragment.educationchild.response.SubscribeResponse;
+import com.example.healthmanage.ui.fragment.educationchild.response.YearResponse;
 import com.example.healthmanage.ui.fragment.qualification.bean.DoctorInfo;
 import com.example.healthmanage.ui.fragment.qualification.bean.UpdateDoctorInfo;
 import com.example.healthmanage.utils.ChartUtils;
@@ -105,6 +116,7 @@ import io.reactivex.Observable;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import retrofit2.http.Query;
 
 public class ApiWrapper extends RetrofitHttpUtils {
     private static volatile ApiWrapper apiWrapper;
@@ -1093,6 +1105,58 @@ public class ApiWrapper extends RetrofitHttpUtils {
 
     public Observable<DeleteMemberResponse> deleteMemberTeam(String token,int id){
         return getApiServer().deleteMemberTeam(token, id);
+    }
+
+    public Observable<DepartMentResponse> getHospitalDepartment(String token){
+        return getApiServer().getHospitalDepartment(token);
+    }
+
+    public Observable<FamousDoctorListResponse> getDoctorList(String nameOrHospital,String addr,String departmentId,String rank,String grade,String token){
+        return getApiServer().getDoctorList(nameOrHospital, addr, departmentId, rank, grade,token);
+    }
+
+    public Observable<HospitalListResponse> getHospitalList(String nameOrHospital,String address,String typeId,String token){
+        return getApiServer().getHospitalList(nameOrHospital, address, typeId, token);
+    }
+
+    public Observable<HospitalTypeResponse> getHospitalTypeList(String token){
+        return getApiServer().getHospitalTypeList(token);
+    }
+
+    public Observable<HospitalDetailResponse> getHospitalById(int hospitalId,String token){
+        return getApiServer().getHospitalById(hospitalId, token);
+    }
+
+    public Observable<FamousDoctorListResponse> getDoctorByHospitalId(String nameOrDepartment,String departmentId,String rank,String grade,int hospitalId,String token){
+        return getApiServer().getDoctorByHospitalId(nameOrDepartment, departmentId, rank, grade, hospitalId, token);
+    }
+
+    public Observable<FamousDoctorInfoResponse> getDoctorInfo(int systemUserId,String token){
+        return getApiServer().getDoctorInfo(systemUserId, token);
+    }
+
+    public Observable<YearResponse> getYearList(String token){
+        return getApiServer().getYearList(token);
+    }
+
+    public Observable<BookListResponse> getBookListByYear(String year,String token){
+        return getApiServer().getBookListByYear(year, token);
+    }
+
+    public Observable<SubscribeResponse> subscribeBook(String bookId,String token){
+        return getApiServer().subscribeBook(bookId, token);
+    }
+
+    public Observable<SubscribeResponse> cancelSubscribeBook(String bookId,String token){
+        return getApiServer().cancelSubscribeBook(bookId, token);
+    }
+
+    public Observable<BookArticleResponse> getBookArticle(String id,String token){
+        return getApiServer().getBookArticle(id, token);
+    }
+
+    public Observable<BookMenuResponse> getBookCatalogList(String bookId, String token){
+        return getApiServer().getBookCatalogList(bookId, token);
     }
 
 }

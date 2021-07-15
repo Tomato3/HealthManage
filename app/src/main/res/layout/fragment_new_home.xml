@@ -193,6 +193,7 @@
                 android:layout_marginRight="@dimen/dp_20" />
 
             <include
+                android:id="@+id/layout_service_menu"
                 layout="@layout/include_home_fuwudaohang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
