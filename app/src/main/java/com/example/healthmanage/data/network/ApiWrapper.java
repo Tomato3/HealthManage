@@ -33,6 +33,7 @@ import com.example.healthmanage.ui.activity.consultation.response.PatientInfoBea
 import com.example.healthmanage.ui.activity.delegate.response.CreateDelegateResponse;
 import com.example.healthmanage.ui.activity.delegate.response.DelegateBean;
 import com.example.healthmanage.ui.activity.delegate.response.DelegateListResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.AppraiseResponse;
 import com.example.healthmanage.ui.activity.famousDoctorHall.response.DepartMentResponse;
 import com.example.healthmanage.ui.activity.famousDoctorHall.response.FamousDoctorInfoResponse;
 import com.example.healthmanage.ui.activity.famousDoctorHall.response.FamousDoctorListResponse;
@@ -47,6 +48,17 @@ import com.example.healthmanage.ui.activity.healthreport.HealthReportInfo;
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportConfirmResponse;
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportDetailResponse;
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportResponse;
+import com.example.healthmanage.ui.activity.integral.response.AddressResponse;
+import com.example.healthmanage.ui.activity.integral.response.ExchangeGoodsBean;
+import com.example.healthmanage.ui.activity.integral.response.ExchangeIntegralResponse;
+import com.example.healthmanage.ui.activity.integral.response.GoodsDetailResponse;
+import com.example.healthmanage.ui.activity.integral.response.GoodsListResponse;
+import com.example.healthmanage.ui.activity.integral.response.IntegralDetailResponse;
+import com.example.healthmanage.ui.activity.integral.response.IntegralResponse;
+import com.example.healthmanage.ui.activity.integral.response.IntegralRuleResponse;
+import com.example.healthmanage.ui.activity.integral.response.LogisticResponse;
+import com.example.healthmanage.ui.activity.integral.response.OrderInfoResponse;
+import com.example.healthmanage.ui.activity.integral.response.OrderListResponse;
 import com.example.healthmanage.ui.activity.invitemember.response.InviteSucceedResponse;
 import com.example.healthmanage.ui.activity.memberdetail.bean.CreateTaskBean;
 import com.example.healthmanage.ui.activity.memberdetail.response.CreateTaskResponse;
@@ -1135,6 +1147,10 @@ public class ApiWrapper extends RetrofitHttpUtils {
         return getApiServer().getDoctorInfo(systemUserId, token);
     }
 
+    public Observable<AppraiseResponse> getAppraiseList(int systemUserId,String token){
+        return getApiServer().getAppraiseList(systemUserId, token);
+    }
+
     public Observable<YearResponse> getYearList(String token){
         return getApiServer().getYearList(token);
     }
@@ -1157,6 +1173,46 @@ public class ApiWrapper extends RetrofitHttpUtils {
 
     public Observable<BookMenuResponse> getBookCatalogList(String bookId, String token){
         return getApiServer().getBookCatalogList(bookId, token);
+    }
+
+    public Observable<IntegralRuleResponse> getIntegralRule(String token){
+        return getApiServer().getIntegralRule(token);
+    }
+
+    public Observable<IntegralResponse> getIntegral(String token){
+        return getApiServer().getIntegral(token);
+    }
+
+    public Observable<GoodsListResponse> getGoodsList(String point,String token){
+        return getApiServer().getGoodsList(point, token);
+    }
+
+    public Observable<GoodsDetailResponse> getGoodsInfo(int id,String token){
+        return getApiServer().getGoodsInfo(id, token);
+    }
+
+    public Observable<IntegralDetailResponse> getIntegralDetail(int type,String token,String date){
+        return getApiServer().getIntegralDetail(type, token, date);
+    }
+
+    public Observable<OrderListResponse> getOrderList(String status,String token){
+        return getApiServer().getOrderList(status, token);
+    }
+
+    public Observable<AddressResponse> queryOneByUserId(String token){
+        return getApiServer().queryOneByUserId(token);
+    }
+
+    public Observable<ExchangeIntegralResponse> exchangeGoods(ExchangeGoodsBean exchangeGoodsBean){
+        return getApiServer().exchangeGoods(exchangeGoodsBean);
+    }
+
+    public Observable<OrderInfoResponse> getOrderInfo(int id,String token){
+        return getApiServer().getOrderInfo(id, token);
+    }
+
+    public Observable<LogisticResponse> getLogistics(String courierNumber, String courierCompanyAbbr,String token){
+        return getApiServer().getLogistics(courierNumber, courierCompanyAbbr, token);
     }
 
 }

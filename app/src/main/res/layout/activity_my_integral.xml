@@ -18,161 +18,145 @@
             layout="@layout/toolbar_title"
             app:TitleToolBar="@{ViewModel.titleToolBar}"/>
 
-        <androidx.core.widget.NestedScrollView
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefresh"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_0"
-            android:background="@color/recyclerView_background"
-            android:fillViewport="true"
             app:layout_constraintTop_toBottomOf="@id/layout_points_title"
             app:layout_constraintBottom_toBottomOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:ignore="MissingConstraints">
+                android:layout_height="@dimen/dp_0"
+                android:background="@color/recyclerView_background"
+                app:layout_constraintTop_toBottomOf="@id/layout_points_title"
+                app:layout_constraintBottom_toBottomOf="parent">
 
-                <View
-                    android:id="@+id/view_head_bg"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_172"
-                    android:background="@color/colorBlue" />
+                    android:layout_height="match_parent"
+                    android:descendantFocusability="blocksDescendants"
+                    tools:ignore="MissingConstraints">
 
-                <LinearLayout
-                    android:id="@+id/layout_points_head"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_100"
-                    android:orientation="horizontal"
-                    android:background="@drawable/shape_solid_white_radius_5"
-                    android:layout_marginStart="@dimen/dp_15"
-                    android:layout_marginEnd="@dimen/dp_15"
-                    app:layout_constraintBottom_toBottomOf="@id/view_head_bg"
-                    app:layout_constraintTop_toBottomOf="@id/view_head_bg">
-
-                    <TextView
-                        android:id="@+id/tv_points_shop"
+                    <View
+                        android:id="@+id/view_head_bg"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="积分商城"
-                        android:textSize="@dimen/dp_15"
-                        android:textColor="@color/black"
-                        android:drawableTop="@drawable/ic_points_shop"
-                        android:drawablePadding="@dimen/dp_8"
-                        android:gravity="center"
-                        android:layout_gravity="center_vertical"
-                        android:padding="@dimen/dp_10"/>
+                        android:layout_height="@dimen/dp_172"
+                        android:background="@color/colorBlue" />
 
-                    <TextView
-                        android:id="@+id/tv_points_detail"
+                    <LinearLayout
+                        android:id="@+id/layout_points_head"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="积分明细"
-                        android:textSize="@dimen/dp_15"
-                        android:textColor="@color/black"
-                        android:drawablePadding="@dimen/dp_8"
-                        android:drawableTop="@drawable/ic_points_detail"
-                        android:gravity="center"
-                        android:layout_gravity="center_vertical"
-                        android:padding="@dimen/dp_10"/>
+                        android:layout_height="@dimen/dp_100"
+                        android:orientation="horizontal"
+                        android:background="@drawable/shape_solid_white_radius_5"
+                        android:layout_marginStart="@dimen/dp_15"
+                        android:layout_marginEnd="@dimen/dp_15"
+                        app:layout_constraintBottom_toBottomOf="@id/view_head_bg"
+                        app:layout_constraintTop_toBottomOf="@id/view_head_bg">
 
-                    <TextView
-                        android:id="@+id/tv_points_order"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="积分订单"
-                        android:textSize="@dimen/dp_15"
-                        android:textColor="@color/black"
-                        android:drawablePadding="@dimen/dp_8"
-                        android:drawableTop="@drawable/ic_points_order"
-                        android:gravity="center"
-                        android:layout_gravity="center_vertical"
-                        android:padding="@dimen/dp_10"/>
+                        <TextView
+                            android:id="@+id/tv_points_shop"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="积分商城"
+                            android:textSize="@dimen/dp_15"
+                            android:textColor="@color/black"
+                            android:drawableTop="@drawable/ic_points_shop"
+                            android:drawablePadding="@dimen/dp_8"
+                            android:gravity="center"
+                            android:layout_gravity="center_vertical"
+                            android:padding="@dimen/dp_10"/>
 
-                </LinearLayout>
+                        <TextView
+                            android:id="@+id/tv_points_detail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="积分明细"
+                            android:textSize="@dimen/dp_15"
+                            android:textColor="@color/black"
+                            android:drawablePadding="@dimen/dp_8"
+                            android:drawableTop="@drawable/ic_points_detail"
+                            android:gravity="center"
+                            android:layout_gravity="center_vertical"
+                            android:padding="@dimen/dp_10"/>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/layout_points_head">
+                        <TextView
+                            android:id="@+id/tv_points_order"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="积分订单"
+                            android:textSize="@dimen/dp_15"
+                            android:textColor="@color/black"
+                            android:drawablePadding="@dimen/dp_8"
+                            android:drawableTop="@drawable/ic_points_order"
+                            android:gravity="center"
+                            android:layout_gravity="center_vertical"
+                            android:padding="@dimen/dp_10"/>
 
-                    <TextView
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="当前积分"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/sp_14"
-                        android:layout_gravity="center"/>
+                        android:orientation="vertical"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/layout_points_head">
 
-                    <TextView
-                        android:id="@+id/tv_points_all"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="当前积分"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/sp_14"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/tv_points_all"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/sp_40"
+                            android:textColor="@color/white"
+                            android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/iv_points_explain"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="3600"
-                        android:textSize="@dimen/sp_40"
-                        android:textColor="@color/white"
-                        android:layout_gravity="center"/>
+                        android:background="@drawable/ic_explain"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/layout_points_head"/>
 
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/iv_points_explain"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_explain"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/layout_points_head"/>
-
-                <LinearLayout
-                    android:id="@+id/layout_action_point"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@drawable/shape_solid_white_radius_5"
-                    android:padding="@dimen/dp_10"
-                    app:layout_constraintTop_toBottomOf="@id/layout_points_head"
-                    android:layout_marginStart="@dimen/dp_15"
-                    android:layout_marginEnd="@dimen/dp_15"
-                    android:layout_marginTop="@dimen/dp_14"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/sp_18"
-                        android:text="行为积分"
-                        android:padding="@dimen/dp_10"/>
-
-
-
-                </LinearLayout>
-
-                <com.scwang.smartrefresh.layout.SmartRefreshLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_0"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/layout_points_head"
-                    android:layout_marginStart="@dimen/dp_15"
-                    android:layout_marginEnd="@dimen/dp_15"
-                    android:layout_marginTop="@dimen/dp_14"
-                    android:background="@color/white">
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_view_my_integral_rules"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
+                        android:layout_height="match_parent"
+                        android:overScrollMode="never"
+                        android:nestedScrollingEnabled="false"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/layout_points_head"
+                        android:layout_marginStart="@dimen/dp_15"
+                        android:layout_marginEnd="@dimen/dp_15"
+                        android:layout_marginTop="@dimen/dp_14"
+                        android:layout_marginBottom="@dimen/dp_14"
+                        android:background="@color/white"/>
 
-                </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.core.widget.NestedScrollView>
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -2,8 +2,12 @@ package com.example.healthmanage.ui.activity.famousDoctorHall.ui;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -12,8 +16,14 @@ import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.databinding.ActivityFamousDoctorDetailBinding;
 import com.example.healthmanage.ui.activity.famousDoctorHall.DoctorHallViewModel;
+import com.example.healthmanage.ui.activity.famousDoctorHall.adapter.AppraiseAdapter;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.AppraiseResponse;
 import com.example.healthmanage.ui.activity.famousDoctorHall.response.FamousDoctorInfoResponse;
+import com.example.healthmanage.view.GridItemDecoration;
 import com.example.healthmanage.widget.TitleToolBar;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * desc:医生详情
@@ -23,6 +33,8 @@ import com.example.healthmanage.widget.TitleToolBar;
 public class FamousDoctorInfoActivity extends BaseActivity<ActivityFamousDoctorDetailBinding, DoctorHallViewModel> implements TitleToolBar.OnTitleIconClickCallBack {
     private Context mContext;
     private TitleToolBar mTitleToolBar = new TitleToolBar();
+    private List<AppraiseResponse.DataBean> mAppraiseDataBeans;
+    private AppraiseAdapter mAppraiseAdapter;
 
     @Override
     protected void initData() {
@@ -34,6 +46,18 @@ public class FamousDoctorInfoActivity extends BaseActivity<ActivityFamousDoctorD
         mTitleToolBar.setBackIconSrc(R.drawable.back_black);
         viewModel.setTitleToolBar(mTitleToolBar);
         viewModel.getDoctorInfo(getIntent().getIntExtra("systemUserId",0));
+
+        viewModel.getAppraiseList(getIntent().getIntExtra("systemUserId",0));
+        mAppraiseDataBeans = new ArrayList<>();
+        mAppraiseAdapter = new AppraiseAdapter(mAppraiseDataBeans);
+        dataBinding.recyclerviewAppraise.setLayoutManager(new LinearLayoutManager(this));
+        //最后一个不显示分割线且自定义分割线
+        GridItemDecoration gridItemDecoration = new GridItemDecoration(this, DividerItemDecoration.VERTICAL);
+        gridItemDecoration.setDrawable(ContextCompat.getDrawable(this, R.drawable.line_divider));
+        if (dataBinding.recyclerviewAppraise.getItemDecorationCount()==0){
+            dataBinding.recyclerviewAppraise.addItemDecoration(gridItemDecoration);
+        }
+        dataBinding.recyclerviewAppraise.setAdapter(mAppraiseAdapter);
     }
 
     @Override
@@ -51,6 +75,24 @@ public class FamousDoctorInfoActivity extends BaseActivity<ActivityFamousDoctorD
                     dataBinding.tvConsultNumber.setText(String.valueOf(dataBean.getConsultAmount()));
                     dataBinding.tvFocusNumber.setText(String.valueOf(dataBean.getFollowAmount()));
                     dataBinding.tvDoctorSpeciality.setText(dataBean.getSpeciality());
+                }
+            }
+        });
+
+        viewModel.mAppraiseBeanMutableLiveData.observe(this, new Observer<List<AppraiseResponse.DataBean>>() {
+            @Override
+            public void onChanged(List<AppraiseResponse.DataBean> dataBeans) {
+                if (dataBeans!=null && dataBeans.size()>0){
+                    dataBinding.tvNoAppraise.setVisibility(View.GONE);
+                    dataBinding.recyclerviewAppraise.setVisibility(View.VISIBLE);
+                    if (mAppraiseDataBeans!=null&& mAppraiseDataBeans.size()>0){
+                        mAppraiseDataBeans.clear();
+                    }
+                    mAppraiseDataBeans.addAll(dataBeans);
+                    mAppraiseAdapter.notifyDataSetChanged();
+                }else {
+                    dataBinding.tvNoAppraise.setVisibility(View.VISIBLE);
+                    dataBinding.recyclerviewAppraise.setVisibility(View.GONE);
                 }
             }
         });

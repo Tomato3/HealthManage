@@ -28,6 +28,7 @@ import com.example.healthmanage.ui.activity.consultation.response.ConsultationLi
 import com.example.healthmanage.ui.activity.consultation.response.DoctorTeamListResponse;
 import com.example.healthmanage.ui.activity.delegate.response.CreateDelegateResponse;
 import com.example.healthmanage.ui.activity.delegate.response.DelegateListResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.AppraiseResponse;
 import com.example.healthmanage.ui.activity.famousDoctorHall.response.DepartMentResponse;
 import com.example.healthmanage.ui.activity.famousDoctorHall.response.FamousDoctorInfoResponse;
 import com.example.healthmanage.ui.activity.famousDoctorHall.response.FamousDoctorListResponse;
@@ -41,6 +42,16 @@ import com.example.healthmanage.ui.activity.healthrecord.response.MedicineBookRe
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportConfirmResponse;
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportDetailResponse;
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportResponse;
+import com.example.healthmanage.ui.activity.integral.response.AddressResponse;
+import com.example.healthmanage.ui.activity.integral.response.ExchangeIntegralResponse;
+import com.example.healthmanage.ui.activity.integral.response.GoodsDetailResponse;
+import com.example.healthmanage.ui.activity.integral.response.GoodsListResponse;
+import com.example.healthmanage.ui.activity.integral.response.IntegralDetailResponse;
+import com.example.healthmanage.ui.activity.integral.response.IntegralResponse;
+import com.example.healthmanage.ui.activity.integral.response.IntegralRuleResponse;
+import com.example.healthmanage.ui.activity.integral.response.LogisticResponse;
+import com.example.healthmanage.ui.activity.integral.response.OrderInfoResponse;
+import com.example.healthmanage.ui.activity.integral.response.OrderListResponse;
 import com.example.healthmanage.ui.activity.invitemember.response.InviteSucceedResponse;
 import com.example.healthmanage.ui.activity.memberdetail.response.CreateTaskResponse;
 import com.example.healthmanage.ui.activity.memberdetail.response.HealthDataResponse;
@@ -863,6 +874,12 @@ public interface UsersInterface {
         void error(ExceptionHandle.ResponseException e);
     }
 
+    interface GetAppraiseListCallback{
+        void getSucceed(AppraiseResponse appraiseResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
     interface GetYearListCallback{
         void getSucceed(YearResponse yearResponse);
         void getFailed(String msg);
@@ -889,6 +906,66 @@ public interface UsersInterface {
 
     interface GetBookArticleCallback{
         void getSucceed(BookArticleResponse bookArticleResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetIntegralRuleCallback{
+        void getSucceed(IntegralRuleResponse integralRuleResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetIntegralCallback{
+        void getSucceed(IntegralResponse integralResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetGoodsListCallback{
+        void getSucceed(GoodsListResponse goodsListResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetGoodsInfoCallback{
+        void getSucceed(GoodsDetailResponse goodsDetailResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetIntegralDetailCallback{
+        void getSucceed(IntegralDetailResponse integralDetailResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetOrderListCallback{
+        void getSucceed(OrderListResponse orderListResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface QueryOneByUserIdCallback{
+        void querySucceed(AddressResponse addressResponse);
+        void queryFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface ExchangeGoodsCallback{
+        void exchangeSucceed(ExchangeIntegralResponse exchangeIntegralResponse);
+        void exchangeFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetOrderInfoCallback{
+        void getSucceed(OrderInfoResponse orderInfoResponse);
+        void getFailed(String msg);
+        void error(ExceptionHandle.ResponseException e);
+    }
+
+    interface GetLogisticsCallback{
+        void getSucceed(LogisticResponse logisticResponse);
         void getFailed(String msg);
         void error(ExceptionHandle.ResponseException e);
     }

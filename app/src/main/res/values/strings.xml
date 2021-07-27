@@ -153,6 +153,17 @@
     <string name="health_report_time">健康评价周期</string>
     <string name="hint_100">请输入不超过100字描述</string>
 
+    /**积分说明*/
+    <string name="Access_step_1">1.完成 "积分学习" 中的行为、学习和新手任务，即可获得相应的积分奖励；</string>
+    <string name="Access_step_2">2.每日任务有完成次数上限，每天零点更新；新手任务不可重复完成。</string>
+    <string name="effect_step_1">1.商品兑换：累计积分可用于商品兑换</string>
+    <string name="exchange_problem_step_1">1.积分商品一旦兑换，不支持取消订单/退换；</string>
+    <string name="exchange_problem_step_2">2.商品兑换库存有限，先到先得。</string>
+    <string name="term_of_validity_step_1">1.积分永久有效，不清零；</string>
+    <string name="term_of_validity_step_2">2.当发现用户存在其他违规/非法行为时，将清除全部积分。</string>
+    <string name="exemption_explain">本积分奖励计划由保健医苑制定并保留所有的解释权和修改权。修改以积分说明为准，不做另行通知。</string>
+
+
 
     /**====== 异常 ======**/
     <string name="exp_network_exception">网络连接异常，请检查您的网络状态</string>

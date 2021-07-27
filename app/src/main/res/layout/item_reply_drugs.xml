@@ -61,6 +61,7 @@
             android:layout_marginLeft="@dimen/dp_20"
             android:layout_toLeftOf="@id/tv_select_num_type"
             android:layout_toRightOf="@id/tv_num"
+            android:inputType="number"
             android:background="@drawable/bg_content_grey"
             android:padding="@dimen/dp_10"
             android:textColor="@color/black"

@@ -135,6 +135,18 @@ public class ToolUtil {
     }
 
     //时间戳转成日期
+    public static String timestampToDate(String date,String format){
+        if (date == null || date.isEmpty() || date.equals("null")) {
+            return "";
+        }
+        if (format == null || format.isEmpty()) {
+            format = "yyyy-MM-dd";
+        }
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        return sdf.format(new Date(Long.valueOf(date)));//毫秒需加000
+    }
+
+    //时间戳转成日期
     public static String timeStampToMonth(String date,String format){
         if (date == null || date.isEmpty() || date.equals("null")) {
             return "";

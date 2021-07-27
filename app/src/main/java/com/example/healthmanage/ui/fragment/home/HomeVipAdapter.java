@@ -79,7 +79,7 @@ class HomeVipAdapter extends RecyclerView.Adapter<HomeVipAdapter.MyViewHolder> {
                 Intent intent = new Intent(mContext, MemberNewDetailActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("MemberName", mList.get(position).getAppUser().getNickName());
-                bundle.putInt("MemberId", mList.get(position).getId());
+                bundle.putInt("MemberId", mList.get(position).getAppUser().getId());
 //        bundle.putBoolean("FocusState", focusState);
                 intent.putExtras(bundle);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -91,7 +91,7 @@ class HomeVipAdapter extends RecyclerView.Adapter<HomeVipAdapter.MyViewHolder> {
             public void onClick(View v) {
                 Intent historyIntent = new Intent(mContext, HistoryDataActivity.class);
                 Bundle historyBundle = new Bundle();
-                historyBundle.putInt("memberId",mList.get(position).getId());
+                historyBundle.putInt("memberId",mList.get(position).getAppUser().getId());
                 historyBundle.putString("memberName",mList.get(position).getAppUser().getNickName());
                 historyIntent.putExtras(historyBundle);
                 mContext.startActivity(historyIntent);
@@ -103,7 +103,7 @@ class HomeVipAdapter extends RecyclerView.Adapter<HomeVipAdapter.MyViewHolder> {
                 Intent intent = new Intent(BaseApplication.getInstance(), MemberNewDetailActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("MemberName", mList.get(position).getAppUser().getNickName());
-                bundle.putInt("MemberId", mList.get(position).getId());
+                bundle.putInt("MemberId", mList.get(position).getAppUser().getId());
                 intent.putExtras(bundle);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent);

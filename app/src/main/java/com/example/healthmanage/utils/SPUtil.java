@@ -3,6 +3,8 @@ package com.example.healthmanage.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.healthmanage.ui.activity.integral.response.AddressBean;
+
 
 /**
  * SharePreference 工具类
@@ -140,5 +142,50 @@ public final class SPUtil {
         SharedPreferences sp = context.getSharedPreferences("LoginInfos", Context.MODE_PRIVATE);
         return sp.getString("id", "");
     }
+
+    /**
+     * 保存上次选择的地址
+     * @param addressData
+     * @param context
+     */
+    public static void saveChooseAddress(String addressData,Context context){
+        SharedPreferences sp = context.getSharedPreferences("chooseAddressData",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("chooseAddressData",addressData);
+        editor.apply();
+    }
+
+    public static String getChooseAddressData(Context context){
+        SharedPreferences sp = context.getSharedPreferences("chooseAddressData",Context.MODE_PRIVATE);
+        return sp.getString("chooseAddressData","");
+    }
+
+    /**
+     * 保存默认地址
+     * @param addressData
+     * @param context
+     */
+    public static void saveAddress(String addressData,Context context){
+        SharedPreferences sp = context.getSharedPreferences("addressData",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("addressData",addressData);
+        editor.apply();
+    }
+
+    public static String getAddressData(Context context){
+        SharedPreferences sp = context.getSharedPreferences("addressData",Context.MODE_PRIVATE);
+        return sp.getString("addressData","");
+    }
+
+    /**
+     * 删除地址
+     * @param context
+     */
+    public static void deleteAddress(Context context){
+        SharedPreferences sp = context.getSharedPreferences("addressData",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.clear().commit();
+    }
+
 
 }

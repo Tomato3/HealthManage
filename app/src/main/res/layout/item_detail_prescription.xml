@@ -59,6 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:inputType="number"
             android:layout_marginLeft="@dimen/dp_20"
             android:layout_toLeftOf="@id/tv_select_num_type"
             android:layout_toRightOf="@id/tv_num"

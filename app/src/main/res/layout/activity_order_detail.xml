@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.integral.IntegralViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/recyclerView_background"
+        tools:ignore="MissingConstraints">
+
+        <include
+            android:id="@+id/layout_order_title"
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0"
+            app:layout_constraintTop_toBottomOf="@id/layout_order_title"
+            android:background="@color/recyclerView_background"
+            app:layout_constraintBottom_toTopOf="@id/layout_bottom">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/layout_order_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_100"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@color/colorBlue">
+
+                    <TextView
+                        android:id="@+id/tv_order_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/sp_20"
+                        android:padding="@dimen/dp_5"
+                        android:textColor="@color/white"
+                        android:drawableStart="@drawable/ic_local_shipping"
+                        android:gravity="center"
+                        android:drawablePadding="@dimen/dp_5"/>
+
+                    <TextView
+                        android:id="@+id/tv_order_status_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/sp_15"
+                        android:padding="@dimen/dp_5"
+                        android:textColor="@color/white"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_logistic_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@id/layout_order_status"
+                    android:background="@drawable/shape_solid_white_radius_5"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:layout_marginStart="@dimen/dp_20"
+                    android:layout_marginEnd="@dimen/dp_20">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_logistic_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_10">
+
+                        <TextView
+                            android:id="@+id/tv_order_logistic_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_local_shipping_black"
+                            android:drawablePadding="@dimen/dp_5"
+                            android:gravity="center"
+                            android:padding="@dimen/dp_10"
+                            android:text="您的包裹已出库"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/sp_15" />
+
+                        <TextView
+                            android:id="@+id/tv_order_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_10"
+                            android:text="2020-11-17 09:12:12"
+                            android:textSize="@dimen/sp_15"
+                            app:layout_constraintTop_toBottomOf="@id/tv_order_logistic_status" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/ic_more_right"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_1"
+                        android:background="@color/recyclerView_background"/>
+
+                    <LinearLayout
+                        android:id="@+id/layout_aaddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/dp_10">
+
+                        <TextView
+                            android:id="@+id/tv_name_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_md_location"
+                            android:drawablePadding="@dimen/dp_5"
+                            android:gravity="center"
+                            android:padding="@dimen/dp_10"
+                            android:text="陈先生 18852401123"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/sp_15" />
+
+                        <TextView
+                            android:id="@+id/tv_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_10"
+                            android:text="@={ViewModel.address}"
+                            android:textSize="@dimen/sp_15" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_goods_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/layout_logistic_status"
+                    android:background="@drawable/shape_solid_white_radius_5"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:layout_marginStart="@dimen/dp_20"
+                    android:layout_marginEnd="@dimen/dp_20"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_20">
+
+                        <ImageView
+                            android:id="@+id/iv_goods_pic"
+                            android:layout_width="@dimen/dp_130"
+                            android:layout_height="@dimen/dp_110"
+                            android:src="@drawable/ic_shop_pic"/>
+
+                        <TextView
+                            android:id="@+id/tv_goods_name"
+                            android:layout_width="@dimen/dp_0"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_20"
+                            app:layout_constraintStart_toEndOf="@id/iv_goods_pic"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:textSize="@dimen/sp_15"
+                            android:textColor="@color/black"
+                            android:text="@={ViewModel.goodsDetailName}"/>
+
+                        <TextView
+                            android:id="@+id/tv_integral"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@={ViewModel.goodsDetailIntegral}"
+                            android:textColor="@color/red"
+                            android:textSize="@dimen/sp_15"
+                            app:layout_constraintStart_toEndOf="@id/iv_goods_pic"
+                            android:layout_marginStart="@dimen/dp_20"
+                            app:layout_constraintBottom_toBottomOf="@id/iv_goods_pic"/>
+
+                        <TextView
+                            android:id="@+id/tv_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@={ViewModel.goodsDetailExchangeNum}"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/sp_15"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="@id/iv_goods_pic"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_1"
+                        android:background="@color/recyclerView_background"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_10"
+                        android:layout_marginEnd="@dimen/dp_10"
+                        android:padding="@dimen/dp_10">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="商品积分"
+                            android:textSize="@dimen/sp_15"
+                            android:layout_centerVertical="true"/>
+
+                        <TextView
+                            android:id="@+id/tv_goods_integrl"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@={ViewModel.goodIntegral}"
+                            android:textSize="@dimen/sp_15"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_10"
+                        android:layout_marginEnd="@dimen/dp_10"
+                        android:padding="@dimen/dp_10">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="消耗积分"
+                            android:textSize="@dimen/sp_15"
+                            android:layout_centerVertical="true"/>
+
+                        <TextView
+                            android:id="@+id/tv_consume_integral"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@={ViewModel.goodConsumeIntegral}"
+                            android:textColor="@color/red"
+                            android:textSize="@dimen/sp_15"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/shape_solid_white_radius_5"
+                    app:layout_constraintTop_toBottomOf="@id/layout_goods_info"
+                    android:layout_marginStart="@dimen/dp_20"
+                    android:layout_marginEnd="@dimen/dp_20"
+                    android:layout_marginTop="@dimen/dp_20">
+
+                    <TextView
+                        android:id="@+id/tv_order_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={ViewModel.orderNumberCode}"
+                        android:textSize="@dimen/sp_15"
+                        android:textColor="@color/black"
+                        android:padding="@dimen/dp_20"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_1"
+                        android:background="@color/recyclerView_background"/>
+
+                    <TextView
+                        android:id="@+id/tv_exchange_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={ViewModel.exchangeTime}"
+                        android:textSize="@dimen/sp_15"
+                        android:textColor="@color/black"
+                        android:padding="@dimen/dp_20"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_1"
+                        android:background="@color/recyclerView_background"/>
+
+                    <TextView
+                        android:id="@+id/tv_logistic_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={ViewModel.orderLogisticType}"
+                        android:textSize="@dimen/sp_15"
+                        android:textColor="@color/black"
+                        android:padding="@dimen/dp_20"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_1"
+                        android:background="@color/recyclerView_background"/>
+
+                    <TextView
+                        android:id="@+id/tv_send_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={ViewModel.orderSendTime}"
+                        android:textSize="@dimen/sp_15"
+                        android:textColor="@color/black"
+                        android:padding="@dimen/dp_20"/>
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_20"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/tv_query_receive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="确认收获"
+                android:textColor="@color/txtYellowColor"
+                android:textSize="@dimen/sp_15"
+                android:padding="@dimen/dp_10"
+                android:background="@drawable/bg_shape_circle_yellow"/>
+
+            <TextView
+                android:id="@+id/tv_see_logistic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_query_receive"
+                android:layout_marginEnd="@dimen/dp_20"
+                android:text="查看物流"
+                android:textSize="@dimen/sp_15"
+                android:padding="@dimen/dp_10"
+                android:background="@drawable/bg_shape_half_circle_grey"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

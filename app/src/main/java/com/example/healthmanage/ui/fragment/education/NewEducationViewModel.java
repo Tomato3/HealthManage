@@ -138,7 +138,11 @@ public class NewEducationViewModel extends BaseViewModel {
 
                     @Override
                     public void onNext(@NonNull BookMenuResponse bookListTodayResponse) {
-                        mBookMenuResponseMutableLiveData.postValue(bookListTodayResponse);
+                        if (bookListTodayResponse.getStatus()==0){
+                            mBookMenuResponseMutableLiveData.postValue(bookListTodayResponse);
+                        }else {
+                            mBookMenuResponseMutableLiveData.postValue(null);
+                        }
                     }
 
                     @Override
@@ -166,6 +170,10 @@ public class NewEducationViewModel extends BaseViewModel {
                 mDataBeanMutableLiveData.setValue(null);
             }
         });
+    }
+
+    public void getIntegralRule(String token){
+
     }
 
 }

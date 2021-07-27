@@ -18,6 +18,8 @@ import android.widget.RadioGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+
+import com.aries.ui.widget.progress.UIProgressDialog;
 import com.example.healthmanage.BR;
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
@@ -31,6 +33,7 @@ import com.example.healthmanage.ui.activity.registerorforget.RegisterOrForgetAct
 import com.example.healthmanage.utils.Constants;
 import com.example.healthmanage.utils.CountDownTimerUtils;
 import com.example.healthmanage.utils.SPUtil;
+import com.example.healthmanage.utils.ToastUtils;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.exceptions.HyphenateException;
 
@@ -41,6 +44,7 @@ public class LoginNewActivity extends BaseActivity<ActivityLoginNewBinding,Login
 
     private int state = 0;
     private CountDownTimerUtils mCountDownTimerUtils;
+    private UIProgressDialog uiProgressDialog;
 
 
     @Override

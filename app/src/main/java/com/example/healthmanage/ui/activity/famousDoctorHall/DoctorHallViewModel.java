@@ -7,6 +7,7 @@ import com.example.healthmanage.base.BaseViewModel;
 import com.example.healthmanage.bean.UsersInterface;
 import com.example.healthmanage.bean.UsersRemoteSource;
 import com.example.healthmanage.data.network.exception.ExceptionHandle;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.AppraiseResponse;
 import com.example.healthmanage.ui.activity.famousDoctorHall.response.DepartMentResponse;
 import com.example.healthmanage.ui.activity.famousDoctorHall.response.FamousDoctorInfoResponse;
 import com.example.healthmanage.ui.activity.famousDoctorHall.response.FamousDoctorListResponse;
@@ -32,6 +33,7 @@ public class DoctorHallViewModel extends BaseViewModel {
     public MutableLiveData<HospitalDetailResponse.DataBean> hospitalDetail = new MutableLiveData<>();
     public MutableLiveData<List<HospitalTypeResponse.DataBean>> typeMutableLiveData = new MutableLiveData<>();
     public MutableLiveData<FamousDoctorInfoResponse.DataBean> doctorInfoLiveData = new MutableLiveData<>();
+    public MutableLiveData<List<AppraiseResponse.DataBean>> mAppraiseBeanMutableLiveData = new MutableLiveData<>();
 
     public DoctorHallViewModel() {
         mUsersRemoteSource = new UsersRemoteSource();
@@ -206,6 +208,29 @@ public class DoctorHallViewModel extends BaseViewModel {
             @Override
             public void error(ExceptionHandle.ResponseException e) {
 
+            }
+        });
+    }
+
+    public void getAppraiseList(int systemUserId){
+        mUsersRemoteSource.getAppraiseList(systemUserId, BaseApplication.getToken(), new UsersInterface.GetAppraiseListCallback() {
+            @Override
+            public void getSucceed(AppraiseResponse appraiseResponse) {
+                if (appraiseResponse.getData()!=null && appraiseResponse.getData().size()>0){
+                    mAppraiseBeanMutableLiveData.setValue(appraiseResponse.getData());
+                }else {
+                    mAppraiseBeanMutableLiveData.setValue(null);
+                }
+            }
+
+            @Override
+            public void getFailed(String msg) {
+                mAppraiseBeanMutableLiveData.setValue(null);
+            }
+
+            @Override
+            public void error(ExceptionHandle.ResponseException e) {
+                mAppraiseBeanMutableLiveData.setValue(null);
             }
         });
     }

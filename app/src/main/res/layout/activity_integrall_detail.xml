@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.integral.IntegralViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints"
+        android:background="@color/recyclerView_background">
+
+        <include
+            android:id="@+id/layout_integral_detail_title"
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}"/>
+
+        <RadioGroup
+            android:id="@+id/rg_title"
+            style="@style/ActivityMemberListRadioGroupStyle"
+            app:layout_constraintTop_toBottomOf="@id/layout_integral_detail_title">
+
+            <RadioButton
+                android:id="@+id/rb_income"
+                style="@style/ActivityMemberListRadioGroupStyle.OrdinaryMember"
+                android:checked="true"
+                android:text="收入" />
+
+            <RadioButton
+                android:id="@+id/rb_expenditure"
+                style="@style/ActivityMemberListRadioGroupStyle.VipMember"
+                android:text="支出" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tv_choose_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/rg_title"
+            android:text="@={ViewModel.mDateMutableLiveData}"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="@dimen/sp_15"
+            android:padding="@dimen/dp_10"
+            android:layout_marginStart="@dimen/dp_10"
+            android:drawableEnd="@drawable/ic_arrow_down"/>
+
+        <TextView
+            android:id="@+id/tv_points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="当前积分"
+            android:textSize="@dimen/sp_15"
+            android:padding="@dimen/dp_10"
+            app:layout_constraintTop_toTopOf="@id/tv_choose_date"
+            app:layout_constraintBottom_toBottomOf="@id/tv_choose_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/dp_20"/>
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/swipeRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0"
+            app:layout_constraintTop_toBottomOf="@id/tv_choose_date">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_integral_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"/>
+
+                <TextView
+                    android:id="@+id/tv_no_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="暂无积分详细"
+                    android:textSize="@dimen/sp_20"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:gravity="center"/>
+
+            </RelativeLayout>
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

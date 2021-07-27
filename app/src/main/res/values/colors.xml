@@ -37,4 +37,8 @@
     <color name="app_color_f6">#f6f6f6</color>
     <color name="text_title">#333333</color>
     <color name="recyclerView_background">#F2F2F7</color>
+    <color name="textGreyColor">#999999</color>
+    <color name="txtGreenColor">#4C9777</color>
+    <color name="txtPinkColor">#AC6B1A</color>
+    <color name="txtYellowColor">#FF9502</color>
 </resources>

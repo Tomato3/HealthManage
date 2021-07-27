@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingConstraints"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dp_20"
+    android:background="@drawable/shape_solid_white_radius_5">
+
+
+    <TextView
+        android:id="@+id/tv_exchange_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:text="兑换提醒"
+        android:textSize="@dimen/sp_20"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginEnd="@dimen/dp_20"
+        app:layout_constraintTop_toBottomOf="@id/tv_exchange_title"
+        android:textSize="@dimen/sp_18"
+        android:textColor="@color/black"
+        android:text="积分商品一经兑换，不退不换；如有质量问题，请联系客服进行售后处理。"/>
+
+    <TextView
+        android:id="@+id/tv_query_exchange"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_content"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginEnd="@dimen/dp_20"
+        android:text="确认兑换"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_22"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="@dimen/dp_15"
+        android:background="@drawable/bg_shape_red_circle"/>
+
+    <TextView
+        android:id="@+id/tv__cancel_exchange"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_20"
+        android:padding="@dimen/dp_10"
+        android:text="取消"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_20"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/tv_query_exchange"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

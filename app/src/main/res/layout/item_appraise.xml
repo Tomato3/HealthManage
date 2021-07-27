@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingConstraints"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/dp_10"
+    android:background="@color/white">
+
+    <RatingBar
+        android:id="@+id/ratingbar"
+        style="@style/RadingStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:isIndicator="true"
+        android:max="5"
+        android:numStars="5"
+        android:rating="3"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_apprasie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ratingbar"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_10"
+        android:text="医生很有耐心，不错不错，感谢"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_15"/>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_apprasie"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_10"
+        android:text="王先生"
+        android:textColor="@color/colorTxtGrey"
+        android:textSize="@dimen/sp_15"/>
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_apprasie"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_10"
+        android:text="2021-12-31"
+        android:textColor="@color/colorTxtGrey"
+        android:textSize="@dimen/sp_15"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

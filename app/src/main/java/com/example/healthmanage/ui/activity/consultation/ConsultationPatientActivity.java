@@ -23,6 +23,7 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import com.aries.ui.widget.progress.UIProgressDialog;
 import com.example.healthmanage.BR;
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
@@ -70,6 +71,7 @@ public class ConsultationPatientActivity extends BaseActivity<ActivityConsultati
     private GridImageAdapter gridImageAdapter;
     private String examineUser;
     private PatientInfoBean patientInfoBean;
+    private UIProgressDialog uiProgressDialog;
     @Override
     protected void initData() {
         patientInfoBean = new PatientInfoBean();
@@ -228,6 +230,15 @@ public class ConsultationPatientActivity extends BaseActivity<ActivityConsultati
                     patientInfoBean.setToken(BaseApplication.getToken());
                     patientInfoBean.setCreateUserId(String.valueOf(BaseApplication.getUserInfoBean().getAppDoctorInfo().getSystemUserId()));
                     viewModel.insertPatientExamine(patientInfoBean);
+                    uiProgressDialog = new UIProgressDialog.WeChatBuilder(context)
+                            .setCanceledOnTouchOutside(false)
+                            .setCancelable(false)
+                            .setMessage("正在创建...")
+                            .setIndeterminateDrawable(R.drawable.dialog_loading_wei_xin)
+                            .setBackgroundRadiusResource(R.dimen.dp_radius_loading)
+                            .create()
+                            .setDimAmount(0.6f);
+                    uiProgressDialog.show();
                 }
             }
         });
@@ -235,8 +246,12 @@ public class ConsultationPatientActivity extends BaseActivity<ActivityConsultati
             @Override
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean){
+                    uiProgressDialog.dismiss();
                     ToastUtil.showShort("创建会诊任务成功");
                     finish();
+                }else {
+                    uiProgressDialog.dismiss();
+                    ToastUtil.showShort("创建会诊任务失败");
                 }
             }
         });

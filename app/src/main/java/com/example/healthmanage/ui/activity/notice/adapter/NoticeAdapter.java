@@ -30,6 +30,7 @@ public class NoticeAdapter extends BaseSectionQuickAdapter<NoticeSection, BaseVi
     @Override
     protected void convertHead(BaseViewHolder helper, NoticeSection item) {
         helper.setText(R.id.tv_head_create_time,item.header);
+        helper.addOnClickListener(R.id.tv_head_create_time);
     }
 
     @Override

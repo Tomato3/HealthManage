@@ -38,6 +38,7 @@ import com.example.healthmanage.ui.activity.consultation.response.PatientInfoBea
 import com.example.healthmanage.ui.activity.delegate.response.CreateDelegateResponse;
 import com.example.healthmanage.ui.activity.delegate.response.DelegateBean;
 import com.example.healthmanage.ui.activity.delegate.response.DelegateListResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.AppraiseResponse;
 import com.example.healthmanage.ui.activity.famousDoctorHall.response.DepartMentResponse;
 import com.example.healthmanage.ui.activity.famousDoctorHall.response.FamousDoctorInfoResponse;
 import com.example.healthmanage.ui.activity.famousDoctorHall.response.FamousDoctorListResponse;
@@ -52,6 +53,17 @@ import com.example.healthmanage.ui.activity.healthreport.HealthReportInfo;
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportConfirmResponse;
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportDetailResponse;
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportResponse;
+import com.example.healthmanage.ui.activity.integral.response.AddressResponse;
+import com.example.healthmanage.ui.activity.integral.response.ExchangeGoodsBean;
+import com.example.healthmanage.ui.activity.integral.response.ExchangeIntegralResponse;
+import com.example.healthmanage.ui.activity.integral.response.GoodsDetailResponse;
+import com.example.healthmanage.ui.activity.integral.response.GoodsListResponse;
+import com.example.healthmanage.ui.activity.integral.response.IntegralDetailResponse;
+import com.example.healthmanage.ui.activity.integral.response.IntegralResponse;
+import com.example.healthmanage.ui.activity.integral.response.IntegralRuleResponse;
+import com.example.healthmanage.ui.activity.integral.response.LogisticResponse;
+import com.example.healthmanage.ui.activity.integral.response.OrderInfoResponse;
+import com.example.healthmanage.ui.activity.integral.response.OrderListResponse;
 import com.example.healthmanage.ui.activity.invitemember.response.InviteSucceedResponse;
 import com.example.healthmanage.ui.activity.memberdetail.bean.CreateTaskBean;
 import com.example.healthmanage.ui.activity.memberdetail.response.CreateTaskResponse;
@@ -259,30 +271,30 @@ public class UsersRemoteSource {
         ApiWrapper.getInstance().getJobDataList()
                 .compose(RxHelper.to_mian())
                 .subscribe(new MyObserver<ProfessionBeanResponse>() {
-            @Override
-            public void onError(ExceptionHandle.ResponseException responseException) {
-                getJobDataCallback.error(responseException);
-            }
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        getJobDataCallback.error(responseException);
+                    }
 
-            @Override
-            public void onSubscribe(@NonNull Disposable d) {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
 
-            }
+                    }
 
-            @Override
-            public void onNext(@NonNull ProfessionBeanResponse professionBeanResponse) {
-                if (professionBeanResponse.getStatus()==0){
-                    getJobDataCallback.sendSucceed(professionBeanResponse);
-                }else {
-                    getJobDataCallback.sendFailed(professionBeanResponse.getMessage());
-                }
-            }
+                    @Override
+                    public void onNext(@NonNull ProfessionBeanResponse professionBeanResponse) {
+                        if (professionBeanResponse.getStatus()==0){
+                            getJobDataCallback.sendSucceed(professionBeanResponse);
+                        }else {
+                            getJobDataCallback.sendFailed(professionBeanResponse.getMessage());
+                        }
+                    }
 
-            @Override
-            public void onComplete() {
+                    @Override
+                    public void onComplete() {
 
-            }
-        });
+                    }
+                });
     }
 
     /**
@@ -1707,7 +1719,7 @@ public class UsersRemoteSource {
      * @param getSpiritListCallback
      */
     public void getSpiritList(String memberId,
-                           UsersInterface.GetSpiritListCallback getSpiritListCallback) {
+                              UsersInterface.GetSpiritListCallback getSpiritListCallback) {
         Log.d(HTAG, "getAirList memberId==========>: " + memberId);
         ApiWrapper.getInstance().getSpiritList(memberId, BaseApplication.getToken())
                 .compose(RxHelper.to_mian())
@@ -3926,6 +3938,35 @@ public class UsersRemoteSource {
                 });
     }
 
+    public void getAppraiseList(int systemUserId,String token,UsersInterface.GetAppraiseListCallback getAppraiseListCallback){
+        ApiWrapper.getInstance().getAppraiseList(systemUserId, token).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<AppraiseResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        getAppraiseListCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull AppraiseResponse appraiseResponse) {
+                        if (appraiseResponse.getStatus()==0){
+                            getAppraiseListCallback.getSucceed(appraiseResponse);
+                        }else {
+                            getAppraiseListCallback.getFailed(appraiseResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
     public void getYearList(String token,UsersInterface.GetYearListCallback getYearListCallback){
         ApiWrapper.getInstance().getYearList(token).compose(RxHelper.to_mian())
                 .subscribe(new MyObserver<YearResponse>() {
@@ -3941,7 +3982,7 @@ public class UsersRemoteSource {
 
                     @Override
                     public void onNext(@NotNull YearResponse yearResponse) {
-                        if (yearResponse.getStatus()==200){
+                        if (yearResponse.getStatus()==0){
                             getYearListCallback.getSucceed(yearResponse);
                         }else {
                             getYearListCallback.getFailed(yearResponse.getMessage());
@@ -3970,7 +4011,7 @@ public class UsersRemoteSource {
 
                     @Override
                     public void onNext(@NotNull BookListResponse bookListResponse) {
-                        if (bookListResponse.getStatus()==200){
+                        if (bookListResponse.getStatus()==0){
                             getBookListByYearCallback.getSucceed(bookListResponse);
                         }else {
                             getBookListByYearCallback.getFailed(bookListResponse.getMessage());
@@ -3999,7 +4040,7 @@ public class UsersRemoteSource {
 
                     @Override
                     public void onNext(@NotNull SubscribeResponse subscribeResponse) {
-                        if (subscribeResponse.getStatus()==200){
+                        if (subscribeResponse.getStatus()==0){
                             subscribeBookCallback.getSucceed(subscribeResponse);
                         }else {
                             subscribeBookCallback.getFailed(subscribeResponse.getMessage());
@@ -4028,7 +4069,7 @@ public class UsersRemoteSource {
 
                     @Override
                     public void onNext(@NotNull SubscribeResponse subscribeResponse) {
-                        if (subscribeResponse.getStatus()==200){
+                        if (subscribeResponse.getStatus()==0){
                             cancelSubscribeBookCallback.getSucceed(subscribeResponse);
                         }else {
                             cancelSubscribeBookCallback.getFailed(subscribeResponse.getMessage());
@@ -4057,7 +4098,7 @@ public class UsersRemoteSource {
 
                     @Override
                     public void onNext(@NotNull BookArticleResponse bookArticleResponse) {
-                        if (bookArticleResponse.getStatus()==200){
+                        if (bookArticleResponse.getStatus()==0){
                             getBookArticleCallback.getSucceed(bookArticleResponse);
                         }else {
                             getBookArticleCallback.getFailed(bookArticleResponse.getMessage());
@@ -4071,4 +4112,293 @@ public class UsersRemoteSource {
                 });
     }
 
+    public void getIntegralRule(String token,UsersInterface.GetIntegralRuleCallback getIntegralRuleCallback){
+        ApiWrapper.getInstance().getIntegralRule(token).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<IntegralRuleResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        getIntegralRuleCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull IntegralRuleResponse integralRuleResponse) {
+                        if (integralRuleResponse.getStatus()==0){
+                            getIntegralRuleCallback.getSucceed(integralRuleResponse);
+                        }else {
+                            getIntegralRuleCallback.getFailed(integralRuleResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getIntegral(String token,UsersInterface.GetIntegralCallback getIntegralCallback){
+        ApiWrapper.getInstance().getIntegral(token).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<IntegralResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        getIntegralCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull IntegralResponse integralResponse) {
+                        if (integralResponse.getStatus()==0){
+                            getIntegralCallback.getSucceed(integralResponse);
+                        }else {
+                            getIntegralCallback.getFailed(integralResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getGoodsList(String point,String token,UsersInterface.GetGoodsListCallback getGoodsListCallback){
+        ApiWrapper.getInstance().getGoodsList(point,token).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<GoodsListResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        getGoodsListCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull GoodsListResponse goodsListResponse) {
+                        if (goodsListResponse.getStatus()==0){
+                            getGoodsListCallback.getSucceed(goodsListResponse);
+                        }else {
+                            getGoodsListCallback.getFailed(goodsListResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getGoodsInfo(int id,String token,UsersInterface.GetGoodsInfoCallback getGoodsInfoCallback){
+        ApiWrapper.getInstance().getGoodsInfo(id, token).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<GoodsDetailResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        getGoodsInfoCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull GoodsDetailResponse goodsDetailResponse) {
+                        if (goodsDetailResponse.getStatus()==0){
+                            getGoodsInfoCallback.getSucceed(goodsDetailResponse);
+                        }else {
+                            getGoodsInfoCallback.getFailed(goodsDetailResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getIntegralDetail(int type,String token,String date,UsersInterface.GetIntegralDetailCallback getIntegralDetailCallback){
+        ApiWrapper.getInstance().getIntegralDetail(type, token, date).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<IntegralDetailResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        getIntegralDetailCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull IntegralDetailResponse integralDetailResponse) {
+                        if (integralDetailResponse.getStatus()==0){
+                            getIntegralDetailCallback.getSucceed(integralDetailResponse);
+                        }else {
+                            getIntegralDetailCallback.getFailed(integralDetailResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getOrderList(String status,String token,UsersInterface.GetOrderListCallback getOrderListCallback){
+        ApiWrapper.getInstance().getOrderList(status, token).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<OrderListResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        getOrderListCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull OrderListResponse orderListResponse) {
+                        if (orderListResponse.getStatus()==0){
+                            getOrderListCallback.getSucceed(orderListResponse);
+                        }else {
+                            getOrderListCallback.getFailed(orderListResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void queryOneByUserId(String token,UsersInterface.QueryOneByUserIdCallback queryOneByUserIdCallback){
+        ApiWrapper.getInstance().queryOneByUserId(token).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<AddressResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        queryOneByUserIdCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull AddressResponse addressResponse) {
+                        if (addressResponse.getCode()==200){
+                            queryOneByUserIdCallback.querySucceed(addressResponse);
+                        }else {
+                            queryOneByUserIdCallback.queryFailed(addressResponse.getMsg());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void exchangeGoods(ExchangeGoodsBean exchangeGoodsBean,UsersInterface.ExchangeGoodsCallback exchangeGoodsCallback){
+        ApiWrapper.getInstance().exchangeGoods(exchangeGoodsBean).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<ExchangeIntegralResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        exchangeGoodsCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull ExchangeIntegralResponse exchangeIntegralResponse) {
+                        if (exchangeIntegralResponse.getStatus()==0){
+                            exchangeGoodsCallback.exchangeSucceed(exchangeIntegralResponse);
+                        }else {
+                            exchangeGoodsCallback.exchangeFailed(exchangeIntegralResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getOrderInfo(int id,String token,UsersInterface.GetOrderInfoCallback getOrderInfoCallback){
+        ApiWrapper.getInstance().getOrderInfo(id, token).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<OrderInfoResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        getOrderInfoCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull OrderInfoResponse orderInfoResponse) {
+                        if (orderInfoResponse.getStatus()==0){
+                            getOrderInfoCallback.getSucceed(orderInfoResponse);
+                        }else {
+                            getOrderInfoCallback.getFailed(orderInfoResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getLogistics(String courierNumber, String courierCompanyAbbr,String token,UsersInterface.GetLogisticsCallback getLogisticsCallback){
+        ApiWrapper.getInstance().getLogistics(courierNumber, courierCompanyAbbr, token).compose(RxHelper.to_mian())
+                .subscribe(new MyObserver<LogisticResponse>() {
+                    @Override
+                    public void onError(ExceptionHandle.ResponseException responseException) {
+                        getLogisticsCallback.error(responseException);
+                    }
+
+                    @Override
+                    public void onSubscribe(@NotNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NotNull LogisticResponse logisticResponse) {
+                        if (logisticResponse.getStatus()==0){
+                            getLogisticsCallback.getSucceed(logisticResponse);
+                        }else {
+                            getLogisticsCallback.getFailed(logisticResponse.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
 }

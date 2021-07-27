@@ -19,6 +19,7 @@ import com.example.healthmanage.ui.activity.notice.adapter.NoticeAdapter;
 import com.example.healthmanage.ui.activity.notice.adapter.NoticeSection;
 import com.example.healthmanage.ui.activity.notice.response.NoticeResponse;
 import com.example.healthmanage.utils.ToastUtil;
+import com.example.healthmanage.utils.ToastUtils;
 import com.example.healthmanage.view.GridItemDecoration;
 import com.example.healthmanage.widget.TitleToolBar;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -107,6 +108,8 @@ public class NewsNoticeActivity extends BaseActivity<ActivityNewsNoticeBinding,N
                         viewModel.signTeam(noticeSections.get(position).t.getId(),1);
                         mPosition = position;
                         break;
+                    case R.id.tv_head_create_time:
+                        ToastUtils.showShort(context,"时间"+noticeSections.get(position).header);
                 }
             }
         });

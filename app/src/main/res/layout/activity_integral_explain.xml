@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="ViewModel"
+            type="com.example.healthmanage.ui.activity.integral.IntegralViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/recyclerView_background">
+
+        <include
+            android:id="@+id/layout_points_shop_title"
+            layout="@layout/toolbar_title"
+            app:TitleToolBar="@{ViewModel.titleToolBar}"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/recyclerView_background">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dp_10"
+                    android:text="积分试行期间，积分规则将会适时调整，带来不便敬请谅解"
+                    android:gravity="center"
+                    android:textSize="@dimen/sp_15"
+                    android:background="#FEECEE"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp_10"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Q：获取途径？"
+                        android:textSize="@dimen/sp_18"
+                        android:textColor="@color/black"
+                        android:padding="@dimen/dp_10"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Access_step_1"
+                        android:textSize="@dimen/sp_15"
+                        android:layout_marginStart="@dimen/dp_10"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Access_step_2"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:textSize="@dimen/sp_15"
+                        android:layout_marginStart="@dimen/dp_10"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Q：积分作用？"
+                        android:layout_marginTop="@dimen/dp_20"
+                        android:textSize="@dimen/sp_18"
+                        android:textColor="@color/black"
+                        android:padding="@dimen/dp_10"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/effect_step_1"
+                        android:textSize="@dimen/sp_15"
+                        android:layout_marginStart="@dimen/dp_10"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Q：商品兑换问题？"
+                        android:layout_marginTop="@dimen/dp_20"
+                        android:textSize="@dimen/sp_18"
+                        android:textColor="@color/black"
+                        android:padding="@dimen/dp_10"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/exchange_problem_step_1"
+                        android:textSize="@dimen/sp_15"
+                        android:layout_marginStart="@dimen/dp_10"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/exchange_problem_step_2"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:textSize="@dimen/sp_15"
+                        android:layout_marginStart="@dimen/dp_10"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Q：积分有效期？"
+                        android:layout_marginTop="@dimen/dp_20"
+                        android:textSize="@dimen/sp_18"
+                        android:textColor="@color/black"
+                        android:padding="@dimen/dp_10"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/term_of_validity_step_1"
+                        android:textSize="@dimen/sp_15"
+                        android:layout_marginStart="@dimen/dp_10"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/term_of_validity_step_2"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:layout_marginBottom="@dimen/dp_10"
+                        android:textSize="@dimen/sp_15"
+                        android:layout_marginStart="@dimen/dp_10"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="免责说明"
+                        android:textSize="@dimen/sp_18"
+                        android:textColor="@color/black"
+                        android:padding="@dimen/dp_10"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/exemption_explain"
+                        android:textSize="@dimen/sp_15"
+                        android:layout_marginStart="@dimen/dp_10"
+                        android:layout_marginBottom="@dimen/dp_10"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>

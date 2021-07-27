@@ -252,7 +252,19 @@
         <activity android:name=".ui.activity.famousDoctorHall.ui.HospitalSurveyActivity"/>
         <activity android:name=".ui.activity.famousDoctorHall.ui.FamousDoctorInfoActivity"/>
         <activity android:name=".ui.activity.consultation.ConsultationActivity" />
-        <activity android:name=".ui.fragment.educationchild.ui.BookDetailsActivity" /> <!-- 设置key -->
+        <activity android:name=".ui.activity.integral.ui.IntegralActivity"/>
+        <activity android:name=".ui.activity.integral.ui.IntegralShopAActivity"/>
+        <activity android:name=".ui.activity.integral.ui.GoodsDetailsActivity"/>
+        <activity android:name=".ui.fragment.educationchild.ui.BookDetailsActivity" />
+        <activity android:name=".ui.activity.integral.ui.IntegralDetailActivity"/>
+        <activity android:name=".ui.activity.integral.ui.ChooseAddressActivity"/>
+        <activity android:name=".ui.activity.integral.ui.ExchangeGoodsActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name=".ui.activity.integral.ui.OrderListActivity"/>
+        <activity android:name=".ui.activity.integral.ui.OrderInfoActivity"/>
+        <activity android:name=".ui.activity.integral.ui.IntegralExplainActivity" />
+        <activity android:name=".ui.activity.integral.ui.LogisticDetailActivity"/>
+        <activity android:name=".ui.activity.integral.ui.LogisticDetailActivity" /> <!-- 设置key -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="d0ed306fda341a9e51d8b7a17b013b84" /> <!-- 声明定位service -->

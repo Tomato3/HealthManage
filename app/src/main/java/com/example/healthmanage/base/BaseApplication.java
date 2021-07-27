@@ -40,6 +40,10 @@ import java.util.List;
 import static com.example.healthmanage.utils.Constants.HTAG;
 
 public class BaseApplication extends Application implements Application.ActivityLifecycleCallbacks{
+    //    防止多次点击造成的页面一直返回
+    private static final int MIN_DELAY_TIME = 400;  // 两次点击间隔不能少于400ms 往大调也可以
+    private static long lastClickTime;
+
     //static 代码段可以防止内存泄露
     static {
         //设置全局的Header构建器
@@ -75,6 +79,15 @@ public class BaseApplication extends Application implements Application.Activity
         BaseApplication.token = token;
     }
 
+    private static String integrals;
+
+    public static String getIntegrals() {
+        return integrals;
+    }
+
+    public static void setIntegrals(String integrals) {
+        BaseApplication.integrals = integrals;
+    }
 
     public static LoginResponse.DataBean.UserInfoBean getUserInfoBean() {
         return userInfoBean;
@@ -263,4 +276,14 @@ public class BaseApplication extends Application implements Application.Activity
     public void onActivityDestroyed(@NonNull @NotNull Activity activity) {
         SlideBack.unregister(activity);
     }
+    public static boolean isFastClick() { //这个方法可以放到公共类里
+        boolean flag = true;
+        long currentClickTime = System.currentTimeMillis();
+        if ((currentClickTime - lastClickTime) >= MIN_DELAY_TIME) {
+            flag = false;
+        }
+        lastClickTime = currentClickTime;
+        return flag;
+    }
+
 }

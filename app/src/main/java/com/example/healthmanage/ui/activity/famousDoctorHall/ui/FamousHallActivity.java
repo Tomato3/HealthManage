@@ -243,6 +243,7 @@ public class FamousHallActivity extends BaseActivity<ActivityFamousHallBinding, 
                         dataBinding.tvCity.setText("全国");
                         dataBinding.tvDepartment.setText("全部科室");
                         dataBinding.tvRank.setText("职级");
+                        cityPopWindow.setFocusable(false);
                         break;
                     case R.id.rbt_hospital:
                         tabPosition=1;
@@ -258,6 +259,7 @@ public class FamousHallActivity extends BaseActivity<ActivityFamousHallBinding, 
                         gradeId=0;
                         dataBinding.tvHospitalCity.setText("全国");
                         dataBinding.tvHospitalRank.setText("按等级");
+                        cityPopWindow.setFocusable(false);
                         break;
                 }
             }
@@ -316,39 +318,51 @@ public class FamousHallActivity extends BaseActivity<ActivityFamousHallBinding, 
         dataBinding.layoutProfessional.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dataBinding.tvRank.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_blue),null);
-                dataBinding.tvRank.setTextColor(getColor(R.color.colorBlue));
-                dataBinding.tvCity.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_black),null);
-                dataBinding.tvCity.setTextColor(getColor(R.color.colorBlack));
-                dataBinding.tvDepartment.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_black),null);
-                dataBinding.tvDepartment.setTextColor(getColor(R.color.colorBlack));
-                showRankPop();
+                if (rankPopupWindow.isFocusable()){
+                    onDismiss();
+                }else {
+                    dataBinding.tvRank.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_blue),null);
+                    dataBinding.tvRank.setTextColor(getColor(R.color.colorBlue));
+                    dataBinding.tvCity.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_black),null);
+                    dataBinding.tvCity.setTextColor(getColor(R.color.colorBlack));
+                    dataBinding.tvDepartment.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_black),null);
+                    dataBinding.tvDepartment.setTextColor(getColor(R.color.colorBlack));
+                    showRankPop();
+                }
             }
         });
         dataBinding.layoutChooseCity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dataBinding.tvCity.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_blue),null);
-                dataBinding.tvCity.setTextColor(getColor(R.color.colorBlue));
-                dataBinding.tvDepartment.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_black),null);
-                dataBinding.tvDepartment.setTextColor(getColor(R.color.colorBlack));
-                dataBinding.tvRank.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_black),null);
-                dataBinding.tvRank.setTextColor(getColor(R.color.colorBlack));
-                showCityPop();
+                if (cityPopWindow.isFocusable()){
+                    onDismiss();
+                }else {
+                    dataBinding.tvCity.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_blue),null);
+                    dataBinding.tvCity.setTextColor(getColor(R.color.colorBlue));
+                    dataBinding.tvDepartment.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_black),null);
+                    dataBinding.tvDepartment.setTextColor(getColor(R.color.colorBlack));
+                    dataBinding.tvRank.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_black),null);
+                    dataBinding.tvRank.setTextColor(getColor(R.color.colorBlack));
+                    showCityPop();
+                }
             }
         });
 
         dataBinding.layoutDepartment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dataBinding.tvDepartment.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_blue),null);
-                dataBinding.tvDepartment.setTextColor(getColor(R.color.colorBlue));
-                dataBinding.tvRank.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_black),null);
-                dataBinding.tvRank.setTextColor(getColor(R.color.colorBlack));
-                dataBinding.tvCity.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_black),null);
-                dataBinding.tvCity.setTextColor(getColor(R.color.colorBlack));
-                showDepartmentPop();
-                viewModel.getHospitalDepartment();
+                if (departMentPopupWindow.isFocusable()){
+                    onDismiss();
+                }else {
+                    dataBinding.tvDepartment.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_blue),null);
+                    dataBinding.tvDepartment.setTextColor(getColor(R.color.colorBlue));
+                    dataBinding.tvRank.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_black),null);
+                    dataBinding.tvRank.setTextColor(getColor(R.color.colorBlack));
+                    dataBinding.tvCity.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_black),null);
+                    dataBinding.tvCity.setTextColor(getColor(R.color.colorBlack));
+                    showDepartmentPop();
+                    viewModel.getHospitalDepartment();
+                }
 
             }
         });
@@ -356,17 +370,31 @@ public class FamousHallActivity extends BaseActivity<ActivityFamousHallBinding, 
         dataBinding.layoutHospitalChooseCity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dataBinding.tvHospitalCity.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_blue),null);
-                dataBinding.tvHospitalCity.setTextColor(getColor(R.color.colorBlue));
-                showCityPop();
+                if (cityPopWindow.isFocusable()){
+                    onDismiss();
+                }else {
+                    dataBinding.tvHospitalCity.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_blue),null);
+                    dataBinding.tvHospitalCity.setTextColor(getColor(R.color.colorBlue));
+                    dataBinding.tvHospitalRank.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_black),null);
+                    dataBinding.tvHospitalRank.setTextColor(getColor(R.color.colorBlack));
+                    showCityPop();
+                }
             }
         });
 
         dataBinding.layoutHospitalChooseGrade.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showGradePop();
-                viewModel.getHospitalTypeList();
+                if (gradePopupWindow.isFocusable()){
+                    onDismiss();
+                }else {
+                    dataBinding.tvHospitalCity.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_black),null);
+                    dataBinding.tvHospitalCity.setTextColor(getColor(R.color.colorBlack));
+                    dataBinding.tvHospitalRank.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_blue),null);
+                    dataBinding.tvHospitalRank.setTextColor(getColor(R.color.colorBlue));
+                    showGradePop();
+                    viewModel.getHospitalTypeList();
+                }
             }
         });
 
@@ -658,7 +686,7 @@ public class FamousHallActivity extends BaseActivity<ActivityFamousHallBinding, 
 //        bgAlpha(0.5f);
         cityPopWindow.setContentView(departmentView);
         cityPopWindow.setBackgroundDrawable(new PaintDrawable());
-        cityPopWindow.setFocusable(true);
+        cityPopWindow.setFocusable(false);
         cityPopWindow.setOutsideTouchable(true);
         if (tabPosition==0){
             cityPopWindow.showAsDropDown(dataBinding.layoutDropDoctorMenu,0,0);
@@ -779,7 +807,7 @@ public class FamousHallActivity extends BaseActivity<ActivityFamousHallBinding, 
 //        bgAlpha(0.5f);
         rankPopupWindow.setContentView(departmentView);
         rankPopupWindow.setBackgroundDrawable(new PaintDrawable());
-        rankPopupWindow.setFocusable(true);
+        rankPopupWindow.setFocusable(false);
         rankPopupWindow.setOutsideTouchable(true);
 
         rankPopupWindow.showAsDropDown(dataBinding.layoutDropDoctorMenu,0,0);
@@ -864,7 +892,7 @@ public class FamousHallActivity extends BaseActivity<ActivityFamousHallBinding, 
 //        bgAlpha(0.5f);
         departMentPopupWindow.setContentView(departmentView);
         departMentPopupWindow.setBackgroundDrawable(new PaintDrawable());
-        departMentPopupWindow.setFocusable(true);
+        departMentPopupWindow.setFocusable(false);
         departMentPopupWindow.setOutsideTouchable(true);
         departMentPopupWindow.showAsDropDown(dataBinding.layoutDropDoctorMenu,0,0);
 
@@ -914,7 +942,7 @@ public class FamousHallActivity extends BaseActivity<ActivityFamousHallBinding, 
 //        bgAlpha(0.5f);
         gradePopupWindow.setContentView(gradeView);
         gradePopupWindow.setBackgroundDrawable(new PaintDrawable());
-        gradePopupWindow.setFocusable(true);
+        gradePopupWindow.setFocusable(false);
         gradePopupWindow.setOutsideTouchable(true);
         gradePopupWindow.showAsDropDown(dataBinding.layoutDropHospitalMenu,0,0);
     }
@@ -1024,12 +1052,26 @@ public class FamousHallActivity extends BaseActivity<ActivityFamousHallBinding, 
     @Override
     public void onDismiss() {
         bgAlpha(1);
-        departMentPopupWindow.setFocusable(false);
-        dataBinding.tvDepartment.requestFocus(View.FOCUS_UP);
-        rankPopupWindow.setFocusable(false);
-        dataBinding.tvRank.requestFocus(View.FOCUS_UP);
-        cityPopWindow.setFocusable(false);
-        dataBinding.tvCity.requestFocus(View.FOCUS_UP);
+        if (departMentPopupWindow.isFocusable()){
+            departMentPopupWindow.setFocusable(false);
+        }else {
+            departMentPopupWindow.setFocusable(true);
+        }
+        if (cityPopWindow.isFocusable()){
+            cityPopWindow.setFocusable(false);
+        }else {
+            cityPopWindow.setFocusable(true);
+        }
+        if (rankPopupWindow.isFocusable()){
+            rankPopupWindow.setFocusable(false);
+        }else {
+            rankPopupWindow.setFocusable(true);
+        }
+        if (gradePopupWindow.isFocusable()){
+            gradePopupWindow.setFocusable(false);
+        }else {
+            gradePopupWindow.setFocusable(true);
+        }
         dataBinding.tvDepartment.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_black),null);
         dataBinding.tvDepartment.setTextColor(getColor(R.color.black));
         dataBinding.tvRank.setCompoundDrawablesRelativeWithIntrinsicBounds(null,null,getResources().getDrawable(R.drawable.ic_drop_black),null);

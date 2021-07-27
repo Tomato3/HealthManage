@@ -33,6 +33,7 @@ import com.example.healthmanage.ui.activity.consultation.response.PatientInfoBea
 import com.example.healthmanage.ui.activity.delegate.response.CreateDelegateResponse;
 import com.example.healthmanage.ui.activity.delegate.response.DelegateBean;
 import com.example.healthmanage.ui.activity.delegate.response.DelegateListResponse;
+import com.example.healthmanage.ui.activity.famousDoctorHall.response.AppraiseResponse;
 import com.example.healthmanage.ui.activity.famousDoctorHall.response.DepartMentResponse;
 import com.example.healthmanage.ui.activity.famousDoctorHall.response.FamousDoctorInfoResponse;
 import com.example.healthmanage.ui.activity.famousDoctorHall.response.FamousDoctorListResponse;
@@ -47,6 +48,17 @@ import com.example.healthmanage.ui.activity.healthreport.HealthReportInfo;
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportConfirmResponse;
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportDetailResponse;
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportResponse;
+import com.example.healthmanage.ui.activity.integral.response.AddressResponse;
+import com.example.healthmanage.ui.activity.integral.response.ExchangeGoodsBean;
+import com.example.healthmanage.ui.activity.integral.response.ExchangeIntegralResponse;
+import com.example.healthmanage.ui.activity.integral.response.GoodsDetailResponse;
+import com.example.healthmanage.ui.activity.integral.response.GoodsListResponse;
+import com.example.healthmanage.ui.activity.integral.response.IntegralDetailResponse;
+import com.example.healthmanage.ui.activity.integral.response.IntegralResponse;
+import com.example.healthmanage.ui.activity.integral.response.IntegralRuleResponse;
+import com.example.healthmanage.ui.activity.integral.response.LogisticResponse;
+import com.example.healthmanage.ui.activity.integral.response.OrderInfoResponse;
+import com.example.healthmanage.ui.activity.integral.response.OrderListResponse;
 import com.example.healthmanage.ui.activity.invitemember.response.InviteSucceedResponse;
 import com.example.healthmanage.ui.activity.memberdetail.bean.CreateTaskBean;
 import com.example.healthmanage.ui.activity.memberdetail.response.CreateTaskResponse;
@@ -116,6 +128,7 @@ import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -1352,6 +1365,16 @@ public interface ApiServer {
                                                        @Query("token") String token);
 
     /**
+     * 个人评价
+     * @param systemUserId
+     * @param token
+     * @return
+     */
+    @GET("api/famousDoctorHall/appraiseList")
+    Observable<AppraiseResponse> getAppraiseList(@Query("systemUserId") int systemUserId,
+                                                 @Query("token") String token);
+
+    /**
      * 文摘
      */
     /**
@@ -1359,7 +1382,7 @@ public interface ApiServer {
      * @param token
      * @return
      */
-    @GET("api/appPeriodical/getYearList")
+    @GET("api/journal/getYearList")
     Observable<YearResponse> getYearList(@Query("token") String token);
 
     /**
@@ -1368,7 +1391,7 @@ public interface ApiServer {
      * @param token
      * @return
      */
-    @GET("api/appPeriodical/getBookListByYear")
+    @GET("api/journal/getBookListByYear")
     Observable<BookListResponse> getBookListByYear(@Query("year") String year,
                                                    @Query("token") String token);
 
@@ -1378,7 +1401,7 @@ public interface ApiServer {
      * @param token
      * @return
      */
-    @GET("api/appPeriodical/subscribeBook")
+    @GET("api/journal/subscribeBook")
     Observable<SubscribeResponse> subscribeBook(@Query("bookId") String bookId,
                                                 @Query("token") String token);
 
@@ -1388,7 +1411,7 @@ public interface ApiServer {
      * @param token
      * @return
      */
-    @GET("api/appPeriodical/cancelSubscribeBook")
+    @GET("api/journal/cancelSubscribeBook")
     Observable<SubscribeResponse> cancelSubscribeBook(@Query("bookId") String bookId,
                                                 @Query("token") String token);
 
@@ -1398,7 +1421,7 @@ public interface ApiServer {
      * @param token
      * @return
      */
-    @GET("api/appPeriodical/getBookArticle")
+    @GET("api/journal/getBookArticle")
     Observable<BookArticleResponse> getBookArticle(@Query("id") String id,
                                                    @Query("token") String token);
 
@@ -1408,8 +1431,109 @@ public interface ApiServer {
      * @param token
      * @return
      */
-    @GET("api/appPeriodical/getBookCatalogList")
+    @GET("api/journal/getBookCatalogList")
     Observable<BookMenuResponse> getBookCatalogList(@Query("bookId") String bookId,
                                                   @Query("token") String token);
+
+    /**
+     * 我的积分
+     */
+    /**
+     * 我的积分完成规则
+     * @param token
+     * @return
+     */
+    @GET("api/integral/getIntegralRule")
+    Observable<IntegralRuleResponse> getIntegralRule(@Query("token") String token);
+
+    /**
+     * 当前积分
+     * @param token
+     * @return
+     */
+    @GET("api/integral/getIntegral")
+    Observable<IntegralResponse> getIntegral(@Query("token") String token);
+
+    /**
+     * 积分商城
+     * @param point
+     * @param token
+     * @return
+     */
+    @GET("api/integral/getGoodsList")
+    Observable<GoodsListResponse> getGoodsList(@Query("point") String point,
+                                               @Query("token") String token);
+
+    /**
+     * 商品详情
+     * @param id
+     * @param token
+     * @return
+     */
+    @GET("api/integral/getGoodsInfo")
+    Observable<GoodsDetailResponse> getGoodsInfo(@Query("id") int id,
+                                                 @Query("token") String token);
+
+    /**
+     * 积分明细
+     * @param type
+     * @param token
+     * @param date
+     * @return
+     */
+    @GET("api/integral/getIntegralDetail")
+    Observable<IntegralDetailResponse> getIntegralDetail(@Query("type") int type,
+                                                         @Query("token") String token,
+                                                         @Query("date") String date);
+
+    /**
+     * 获取积分订单列表
+     * @param status
+     * @param token
+     * @return
+     */
+    @GET("api/integral/getOrderList")
+    Observable<OrderListResponse> getOrderList(@Query("status") String status,
+                                               @Query("token") String token);
+
+    /**
+     * 查询默认地址
+     * @param token
+     * @return
+     */
+    @GET("/cj/ysk-location/queryOneByUserId")
+    Observable<AddressResponse> queryOneByUserId(@Header("token") String token);
+
+    /**
+     * 兑换商品
+     * @param exchangeGoodsBean
+     * @return
+     */
+    @Headers("Content-Type:application/json; charset=utf-8")
+    @POST("api/integral/exchangeGoods")
+    Observable<ExchangeIntegralResponse> exchangeGoods(@Body ExchangeGoodsBean exchangeGoodsBean);
+
+    /**
+     * 获取商品详情
+     * @param id
+     * @param token
+     * @return
+     */
+    @GET("api/integral/getOrderInfo")
+    Observable<OrderInfoResponse> getOrderInfo(@Query("id") int id,
+                                               @Query("token") String token);
+
+    /**
+     * 查询物流信息
+     * @param courierNumber
+     * @param courierCompanyAbbr
+     * @param token
+     * @return
+     */
+    @GET("api/integral/getLogistics")
+    Observable<LogisticResponse> getLogistics(@Query("courierNumber") String courierNumber,
+                                              @Query("courierCompanyAbbr") String courierCompanyAbbr,
+                                              @Query("token") String token);
+
 }
 

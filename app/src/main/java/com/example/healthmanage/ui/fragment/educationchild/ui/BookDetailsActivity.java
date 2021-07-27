@@ -87,10 +87,8 @@ public class BookDetailsActivity extends BaseActivity<ActivityBookDetailsBinding
         viewModel.mBookMenuResponseMutableLiveData.observe(this, new Observer<BookMenuResponse>() {
             @Override
             public void onChanged(BookMenuResponse bookMenuResponse) {
-                if (bookMenuResponse.getStatus() == 200) {
-                    if (bookMenuResponse.getData().size() > 0) {
-                        dataBinding.contentTv.setText(bookMenuResponse.getData().get(0).getName());
-                    }
+                if (bookMenuResponse.getData()!=null && bookMenuResponse.getData().size()>0){
+                    dataBinding.contentTv.setText(bookMenuResponse.getData().get(0).getName());
                     initCateRv(bookMenuResponse);
                 }
             }

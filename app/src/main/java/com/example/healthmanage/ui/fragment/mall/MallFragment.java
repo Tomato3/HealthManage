@@ -76,9 +76,8 @@ public class MallFragment extends BaseFragment<FragmentMallBinding,MallViewModel
         webSettings.setUseWideViewPort(true);
         webSettings.setLoadWithOverviewMode(true);
         mWebView.setWebViewClient(new MyWebViewClient());
-//        webView.loadUrl("http://192.168.199.165:8080/");
         mWebView.loadUrl("http://shop.yi-shoukang.com");
-//        webView.loadUrl("http://www.baidu.com");
+//        mWebView.loadUrl("http://192.168.199.148:8081");
 
         mWebView.addJavascriptInterface(this, "androidjs");
         mWebView.setWebContentsDebuggingEnabled(true);
@@ -120,6 +119,7 @@ public class MallFragment extends BaseFragment<FragmentMallBinding,MallViewModel
     }
 
     private String referer = "http://shop.yi-shoukang.com";
+//    private String referer = "http://192.168.199.148:8081";
 
     private class MyWebViewClient extends WebViewClient {
         @Override

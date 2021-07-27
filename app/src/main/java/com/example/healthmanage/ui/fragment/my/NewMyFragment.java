@@ -28,6 +28,7 @@ import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.base.BaseFragment;
 import com.example.healthmanage.databinding.FragmentNewMyBinding;
+import com.example.healthmanage.ui.activity.integral.ui.IntegralActivity;
 import com.example.healthmanage.ui.activity.my.aboutus.AboutUsActivity;
 import com.example.healthmanage.ui.activity.myinfo.MyInfoActivity;
 import com.example.healthmanage.ui.activity.mypoint.MyPointActivity;
@@ -58,7 +59,7 @@ public class NewMyFragment extends BaseFragment<FragmentNewMyBinding,MyViewModel
                 startActivity(AboutUsActivity.class);
                 break;
             case R.id.tv_mypoint:
-                startActivity(MyPointActivity.class);
+                startActivity(IntegralActivity.class);
                 break;
         }
     }

@@ -168,7 +168,7 @@ public class MemberManageListActivity extends BaseActivity<ActivityVipTeamBindin
         mMemberTeamAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                jumpMemberDetails(mDataBeanList.get(position).getId(),mDataBeanList.get(position).getAppUser().getNickName());
+                jumpMemberDetails(mDataBeanList.get(position).getAppUser().getId(),mDataBeanList.get(position).getAppUser().getNickName());
             }
         });
     }

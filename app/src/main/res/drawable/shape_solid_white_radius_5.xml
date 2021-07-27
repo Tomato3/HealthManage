@@ -3,7 +3,7 @@
 
     <stroke
         android:width="@dimen/dp_0.1"
-        android:color="@color/colorPageBg" />
+        android:color="@color/recyclerView_background" />
     <solid android:color="@color/colorWhite" />
     <corners android:radius="5dp" />
 </shape>
