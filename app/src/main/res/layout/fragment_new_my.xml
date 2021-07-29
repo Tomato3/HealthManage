@@ -139,6 +139,17 @@
                 android:gravity="center"/>
 
             <TextView
+                android:id="@+id/tv_mywallet"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/my_wallet"
+                android:textSize="16sp"
+                android:textColor="@color/colorBlack"
+                android:drawableTop="@drawable/ic_my_wallet"
+                android:gravity="center"/>
+
+            <TextView
                 android:id="@+id/tv_myorder"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -245,6 +256,27 @@
                 android:text="@string/my_agent"
                 android:textColor="@color/colorBlack"
                 android:drawableStart="@drawable/img_my_agent"
+                android:drawableEnd="@drawable/more_icon"
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp_10"
+                android:drawablePadding="@dimen/dp_10"
+                android:textSize="@dimen/sp_20"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:layout_marginStart="@dimen/dp_45"
+                android:layout_marginEnd="@dimen/dp_25"
+                android:background="@color/color_line_grey"/>
+
+            <TextView
+                android:id="@+id/tv_my_collect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:text="@string/my_collect"
+                android:textColor="@color/colorBlack"
+                android:drawableStart="@drawable/ic_collect"
                 android:drawableEnd="@drawable/more_icon"
                 android:gravity="center_vertical"
                 android:padding="@dimen/dp_10"

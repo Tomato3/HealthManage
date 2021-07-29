@@ -25,6 +25,7 @@ import com.example.healthmanage.ui.activity.academicJournals.bean.EditPeriodical
 import com.example.healthmanage.ui.activity.academicJournals.response.AddOrEditSucceedResponse;
 import com.example.healthmanage.ui.activity.academicJournals.response.PeriodicalInfoResponse;
 import com.example.healthmanage.ui.activity.academicJournals.response.PeriodicalListResponse;
+import com.example.healthmanage.ui.activity.appraise.response.AppraiseListResponse;
 import com.example.healthmanage.ui.activity.consultation.response.AddConsultationPlanResponse;
 import com.example.healthmanage.ui.activity.consultation.response.AddPatientInfoResponse;
 import com.example.healthmanage.ui.activity.consultation.response.ConsultationListResponse;
@@ -49,6 +50,7 @@ import com.example.healthmanage.ui.activity.healthreport.response.HealthReportCo
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportDetailResponse;
 import com.example.healthmanage.ui.activity.healthreport.response.HealthReportResponse;
 import com.example.healthmanage.ui.activity.integral.response.AddressResponse;
+import com.example.healthmanage.ui.activity.integral.response.ConfirmReceiptResponse;
 import com.example.healthmanage.ui.activity.integral.response.ExchangeGoodsBean;
 import com.example.healthmanage.ui.activity.integral.response.ExchangeIntegralResponse;
 import com.example.healthmanage.ui.activity.integral.response.GoodsDetailResponse;
@@ -1534,6 +1536,22 @@ public interface ApiServer {
     Observable<LogisticResponse> getLogistics(@Query("courierNumber") String courierNumber,
                                               @Query("courierCompanyAbbr") String courierCompanyAbbr,
                                               @Query("token") String token);
+
+    /**
+     * 确认收货
+     * @param id
+     * @param token
+     * @return
+     */
+    @GET("/api/integral/confirmReceipt")
+    Observable<ConfirmReceiptResponse> confirmReceipt(@Query("id") int id,
+                                                      @Query("token") String token);
+
+    /**
+     * 我的评价
+     */
+    @GET("api/doctorAppraiseSys/appraiseList")
+    Observable<AppraiseListResponse> appraiseList(@Query("token") String token);
 
 }
 

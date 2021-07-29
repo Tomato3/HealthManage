@@ -87,7 +87,7 @@ public class BookListResponse {
         private String createTime;
         private String updateTime;
         private int isUsed;
-        private Object articleCategoryId;
+        private int articleCategoryId;
         private int status;
 
         public int getId() {
@@ -162,11 +162,11 @@ public class BookListResponse {
             this.isUsed = isUsed;
         }
 
-        public Object getArticleCategoryId() {
+        public int getArticleCategoryId() {
             return articleCategoryId;
         }
 
-        public void setArticleCategoryId(Object articleCategoryId) {
+        public void setArticleCategoryId(int articleCategoryId) {
             this.articleCategoryId = articleCategoryId;
         }
 

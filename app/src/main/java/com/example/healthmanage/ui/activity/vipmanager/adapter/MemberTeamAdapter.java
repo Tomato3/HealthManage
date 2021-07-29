@@ -59,7 +59,7 @@ public class MemberTeamAdapter extends BaseQuickAdapter<MemberTeamListResponse.D
             /**
              * （+"\u3000｜\u3000"+item.getOld()）
              */
-            switch (item.getRank()){
+            switch (item.getAppUser().getRank()){
                 case 0:
                     helper.setText(R.id.vip_info_tv,"普通会员"+"\u3000｜\u3000"+sex);
                     break;

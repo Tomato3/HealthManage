@@ -106,9 +106,9 @@ public class OrderListResponse {
         private int goodsId;
         private Object deliverTime;
         private Object logisticsType;
-        private Object courierNumber;
+        private String courierNumber;
         private Object courierCompany;
-        private Object courierCompanyAbbr;
+        private String courierCompanyAbbr;
         private int delFlag;
         /**
          * id : 1
@@ -267,11 +267,11 @@ public class OrderListResponse {
             this.logisticsType = logisticsType;
         }
 
-        public Object getCourierNumber() {
+        public String getCourierNumber() {
             return courierNumber;
         }
 
-        public void setCourierNumber(Object courierNumber) {
+        public void setCourierNumber(String courierNumber) {
             this.courierNumber = courierNumber;
         }
 
@@ -283,11 +283,11 @@ public class OrderListResponse {
             this.courierCompany = courierCompany;
         }
 
-        public Object getCourierCompanyAbbr() {
+        public String getCourierCompanyAbbr() {
             return courierCompanyAbbr;
         }
 
-        public void setCourierCompanyAbbr(Object courierCompanyAbbr) {
+        public void setCourierCompanyAbbr(String courierCompanyAbbr) {
             this.courierCompanyAbbr = courierCompanyAbbr;
         }
 

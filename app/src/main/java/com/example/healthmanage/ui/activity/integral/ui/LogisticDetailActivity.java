@@ -16,13 +16,8 @@ import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.databinding.ActivityLogisticDetailBinding;
 import com.example.healthmanage.ui.activity.integral.IntegralViewModel;
 import com.example.healthmanage.ui.activity.integral.adapter.LogisticAdapter;
-import com.example.healthmanage.ui.activity.integral.adapter.OrderListAdapter;
 import com.example.healthmanage.ui.activity.integral.response.LogisticResponse;
-import com.example.healthmanage.view.GridItemDecoration;
 import com.example.healthmanage.widget.TitleToolBar;
-
-import org.greenrobot.eventbus.EventBus;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -38,6 +33,10 @@ public class LogisticDetailActivity extends BaseActivity<ActivityLogisticDetailB
     private TitleToolBar mTitleToolBar = new TitleToolBar();
     private List<LogisticResponse.DataBean.TracesBean> mTracesBeans;
     private LogisticAdapter mLogisticAdapter;
+    //快递单号
+    private String courierNumber;
+    //快递公司代码
+    private String courierCompanyAbbr;
 
     @Override
     protected void initData() {
@@ -49,23 +48,18 @@ public class LogisticDetailActivity extends BaseActivity<ActivityLogisticDetailB
         mTitleToolBar.setBackIconSrc(R.drawable.back_black);
         viewModel.setTitleToolBar(mTitleToolBar);
 
-        viewModel.getLogistics("75488742571441","ZTO");
+        courierNumber = getIntent().getStringExtra("courierNumber");
+        courierCompanyAbbr = getIntent().getStringExtra("courierCompanyAbbr");
+        viewModel.getLogistics(courierNumber,courierCompanyAbbr);
         mTracesBeans = new ArrayList<>();
         mLogisticAdapter = new LogisticAdapter(mTracesBeans);
         dataBinding.recyclerViewLogistic.setLayoutManager(new LinearLayoutManager(this));
-        //最后一个不显示分割线且自定义分割线
-//        GridItemDecoration gridItemDecoration = new GridItemDecoration(this, DividerItemDecoration.VERTICAL);
-//        gridItemDecoration.setDrawable(ContextCompat.getDrawable(this, R.drawable.divider_notice));
-//        if (dataBinding.recyclerViewLogistic.getItemDecorationCount()==0){
-//            dataBinding.recyclerViewLogistic.addItemDecoration(gridItemDecoration);
-//        }
         dataBinding.recyclerViewLogistic.setAdapter(mLogisticAdapter);
     }
 
     @Override
     protected void registerUIChangeEventObserver() {
         super.registerUIChangeEventObserver();
-        EventBus.getDefault().post(new LogisticResponse().getData());
         viewModel.mLogisticsMutableLiveData.observe(this, new Observer<LogisticResponse.DataBean>() {
             @Override
             public void onChanged(LogisticResponse.DataBean dataBean) {

@@ -97,6 +97,7 @@
     <string name="my_studio">"我的工作室"</string>
     <string name="legal_advice">"法律咨询"</string>
     <string name="my_agent">"我的代买"</string>
+    <string name="my_collect">"我的收藏"</string>
     <string name="my_identity_authentication">"身份认证"</string>
     <string name="my_wallet">"我的钱包"</string>
     <string name="my_study">"我的学习"</string>
@@ -162,7 +163,6 @@
     <string name="term_of_validity_step_1">1.积分永久有效，不清零；</string>
     <string name="term_of_validity_step_2">2.当发现用户存在其他违规/非法行为时，将清除全部积分。</string>
     <string name="exemption_explain">本积分奖励计划由保健医苑制定并保留所有的解释权和修改权。修改以积分说明为准，不做另行通知。</string>
-
 
 
     /**====== 异常 ======**/

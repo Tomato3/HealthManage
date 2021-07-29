@@ -25,6 +25,7 @@ import com.example.healthmanage.ui.activity.academicJournals.bean.EditPeriodical
 import com.example.healthmanage.ui.activity.academicJournals.response.AddOrEditSucceedResponse;
 import com.example.healthmanage.ui.activity.academicJournals.response.PeriodicalInfoResponse;
 import com.example.healthmanage.ui.activity.academicJournals.response.PeriodicalListResponse;
+import com.example.healthmanage.ui.activity.appraise.response.AppraiseListResponse;
 import com.example.healthmanage.ui.activity.consultation.response.AddConsultationPlanResponse;
 import com.example.healthmanage.ui.activity.consultation.response.AddPatientInfoResponse;
 import com.example.healthmanage.ui.activity.consultation.response.ConsultationListResponse;
@@ -1213,6 +1214,10 @@ public class ApiWrapper extends RetrofitHttpUtils {
 
     public Observable<LogisticResponse> getLogistics(String courierNumber, String courierCompanyAbbr,String token){
         return getApiServer().getLogistics(courierNumber, courierCompanyAbbr, token);
+    }
+
+    public Observable<AppraiseListResponse> appraiseList(String token){
+        return getApiServer().appraiseList(token);
     }
 
 }

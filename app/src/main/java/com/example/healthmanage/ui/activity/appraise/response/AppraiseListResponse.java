@@ -1,20 +1,20 @@
-package com.example.healthmanage.ui.activity.vipmanager.response;
+package com.example.healthmanage.ui.activity.appraise.response;
 
 import java.util.List;
 
 /**
  * desc:
- * date:2021/6/22 13:36
+ * date:2021/7/29 9:38
  * author:bWang
  */
-public class MemberTeamListResponse {
+public class AppraiseListResponse {
 
     /**
      * requestId : null
      * errorLog : null
      * status : 0
      * message : 成功
-     * data : [{"id":1,"systemUserId":78,"userId":92,"rank":0,"status":1,"createTime":"2021-06-21 17:13:48","appUser":{"id":92,"userName":"王斌","nickName":"王斌","password":null,"sex":0,"phone":"13584869132","avatar":"http://119.23.187.176:8083/picture/893b0933136318b88aef8db6fdb12ec3.jpg","signature":null,"email":null,"emailFlag":null,"isUsed":null,"regTime":null,"updateTime":null,"lastLoginTime":null,"userType":0,"cityNameCn":null,"cityNamePy":null,"birthday":null,"loginCount":null,"regIp":null,"rank":null,"parentId":null,"wxid":null,"provinceCode":null,"cityCode":null,"countyCode":null,"provinceName":null,"cityName":null,"countyName":null,"seerUserId":null,"old":20,"point":null,"appSceneList":null,"token":null,"followStatus":null}}]
+     * data : [{"id":1,"userId":92,"systemUserId":79,"healthConsultId":112,"score":3,"content":"防守打法胜多负少","createTime":1627025074000,"appUser":{"id":92,"userName":"王斌","nickName":"王斌","password":null,"sex":0,"phone":null,"avatar":"http://10.1.20.166:8080/picture/0bd47b2aafb85f9ea51c44f4d27084c1.jpg","signature":null,"email":null,"emailFlag":null,"isUsed":null,"regTime":null,"updateTime":null,"lastLoginTime":null,"userType":null,"cityNameCn":null,"cityNamePy":null,"birthday":null,"loginCount":null,"regIp":null,"parentId":null,"wxid":null,"provinceCode":null,"cityCode":null,"countyCode":null,"provinceName":null,"cityName":null,"countyName":null,"seerUserId":null,"old":20,"delFlag":null,"point":null,"appSceneList":null,"token":null}}]
      */
 
     private Object requestId;
@@ -23,12 +23,13 @@ public class MemberTeamListResponse {
     private String message;
     /**
      * id : 1
-     * systemUserId : 78
      * userId : 92
-     * rank : 0
-     * status : 1
-     * createTime : 2021-06-21 17:13:48
-     * appUser : {"id":92,"userName":"王斌","nickName":"王斌","password":null,"sex":0,"phone":"13584869132","avatar":"http://119.23.187.176:8083/picture/893b0933136318b88aef8db6fdb12ec3.jpg","signature":null,"email":null,"emailFlag":null,"isUsed":null,"regTime":null,"updateTime":null,"lastLoginTime":null,"userType":0,"cityNameCn":null,"cityNamePy":null,"birthday":null,"loginCount":null,"regIp":null,"rank":null,"parentId":null,"wxid":null,"provinceCode":null,"cityCode":null,"countyCode":null,"provinceName":null,"cityName":null,"countyName":null,"seerUserId":null,"old":20,"point":null,"appSceneList":null,"token":null,"followStatus":null}
+     * systemUserId : 79
+     * healthConsultId : 112
+     * score : 3
+     * content : 防守打法胜多负少
+     * createTime : 1627025074000
+     * appUser : {"id":92,"userName":"王斌","nickName":"王斌","password":null,"sex":0,"phone":null,"avatar":"http://10.1.20.166:8080/picture/0bd47b2aafb85f9ea51c44f4d27084c1.jpg","signature":null,"email":null,"emailFlag":null,"isUsed":null,"regTime":null,"updateTime":null,"lastLoginTime":null,"userType":null,"cityNameCn":null,"cityNamePy":null,"birthday":null,"loginCount":null,"regIp":null,"parentId":null,"wxid":null,"provinceCode":null,"cityCode":null,"countyCode":null,"provinceName":null,"cityName":null,"countyName":null,"seerUserId":null,"old":20,"delFlag":null,"point":null,"appSceneList":null,"token":null}
      */
 
     private List<DataBean> data;
@@ -75,19 +76,20 @@ public class MemberTeamListResponse {
 
     public static class DataBean {
         private int id;
-        private int systemUserId;
         private int userId;
-        private int status;
-        private String createTime;
-        private boolean isSelect;
+        private int systemUserId;
+        private int healthConsultId;
+        private int score;
+        private String content;
+        private long createTime;
         /**
          * id : 92
          * userName : 王斌
          * nickName : 王斌
          * password : null
          * sex : 0
-         * phone : 13584869132
-         * avatar : http://119.23.187.176:8083/picture/893b0933136318b88aef8db6fdb12ec3.jpg
+         * phone : null
+         * avatar : http://10.1.20.166:8080/picture/0bd47b2aafb85f9ea51c44f4d27084c1.jpg
          * signature : null
          * email : null
          * emailFlag : null
@@ -95,13 +97,12 @@ public class MemberTeamListResponse {
          * regTime : null
          * updateTime : null
          * lastLoginTime : null
-         * userType : 0
+         * userType : null
          * cityNameCn : null
          * cityNamePy : null
          * birthday : null
          * loginCount : null
          * regIp : null
-         * rank : null
          * parentId : null
          * wxid : null
          * provinceCode : null
@@ -112,21 +113,13 @@ public class MemberTeamListResponse {
          * countyName : null
          * seerUserId : null
          * old : 20
+         * delFlag : null
          * point : null
          * appSceneList : null
          * token : null
-         * followStatus : null
          */
 
         private AppUserBean appUser;
-
-        public boolean isSelect() {
-            return isSelect;
-        }
-
-        public void setSelect(boolean select) {
-            isSelect = select;
-        }
 
         public int getId() {
             return id;
@@ -134,14 +127,6 @@ public class MemberTeamListResponse {
 
         public void setId(int id) {
             this.id = id;
-        }
-
-        public int getSystemUserId() {
-            return systemUserId;
-        }
-
-        public void setSystemUserId(int systemUserId) {
-            this.systemUserId = systemUserId;
         }
 
         public int getUserId() {
@@ -152,20 +137,43 @@ public class MemberTeamListResponse {
             this.userId = userId;
         }
 
-
-        public int getStatus() {
-            return status;
+        public int getSystemUserId() {
+            return systemUserId;
         }
 
-        public void setStatus(int status) {
-            this.status = status;
+        public void setSystemUserId(int systemUserId) {
+            this.systemUserId = systemUserId;
         }
 
-        public String getCreateTime() {
+        public int getHealthConsultId() {
+            return healthConsultId;
+        }
+
+        public void setHealthConsultId(int healthConsultId) {
+            this.healthConsultId = healthConsultId;
+        }
+
+        public int getScore() {
+            return score;
+        }
+
+        public void setScore(int score) {
+            this.score = score;
+        }
+
+        public String getContent() {
+            return content;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
+
+        public long getCreateTime() {
             return createTime;
         }
 
-        public void setCreateTime(String createTime) {
+        public void setCreateTime(long createTime) {
             this.createTime = createTime;
         }
 
@@ -183,7 +191,7 @@ public class MemberTeamListResponse {
             private String nickName;
             private Object password;
             private int sex;
-            private String phone;
+            private Object phone;
             private String avatar;
             private Object signature;
             private Object email;
@@ -192,13 +200,12 @@ public class MemberTeamListResponse {
             private Object regTime;
             private Object updateTime;
             private Object lastLoginTime;
-            private int userType;
+            private Object userType;
             private Object cityNameCn;
             private Object cityNamePy;
             private Object birthday;
             private Object loginCount;
             private Object regIp;
-            private int rank;
             private Object parentId;
             private Object wxid;
             private Object provinceCode;
@@ -209,10 +216,10 @@ public class MemberTeamListResponse {
             private Object countyName;
             private Object seerUserId;
             private int old;
+            private Object delFlag;
             private Object point;
             private Object appSceneList;
             private Object token;
-            private int followStatus;
 
             public int getId() {
                 return id;
@@ -254,11 +261,11 @@ public class MemberTeamListResponse {
                 this.sex = sex;
             }
 
-            public String getPhone() {
+            public Object getPhone() {
                 return phone;
             }
 
-            public void setPhone(String phone) {
+            public void setPhone(Object phone) {
                 this.phone = phone;
             }
 
@@ -326,11 +333,11 @@ public class MemberTeamListResponse {
                 this.lastLoginTime = lastLoginTime;
             }
 
-            public int getUserType() {
+            public Object getUserType() {
                 return userType;
             }
 
-            public void setUserType(int userType) {
+            public void setUserType(Object userType) {
                 this.userType = userType;
             }
 
@@ -372,14 +379,6 @@ public class MemberTeamListResponse {
 
             public void setRegIp(Object regIp) {
                 this.regIp = regIp;
-            }
-
-            public int getRank() {
-                return rank;
-            }
-
-            public void setRank(int rank) {
-                this.rank = rank;
             }
 
             public Object getParentId() {
@@ -462,6 +461,14 @@ public class MemberTeamListResponse {
                 this.old = old;
             }
 
+            public Object getDelFlag() {
+                return delFlag;
+            }
+
+            public void setDelFlag(Object delFlag) {
+                this.delFlag = delFlag;
+            }
+
             public Object getPoint() {
                 return point;
             }
@@ -484,14 +491,6 @@ public class MemberTeamListResponse {
 
             public void setToken(Object token) {
                 this.token = token;
-            }
-
-            public int getFollowStatus() {
-                return followStatus;
-            }
-
-            public void setFollowStatus(int followStatus) {
-                this.followStatus = followStatus;
             }
         }
     }

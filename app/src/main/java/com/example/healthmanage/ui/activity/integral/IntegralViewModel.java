@@ -240,6 +240,10 @@ public class IntegralViewModel extends BaseViewModel {
         });
     }
 
+    /**
+     * 兑换商品
+     * @param exchangeGoodsBean
+     */
     public void exchangeGoods(ExchangeGoodsBean exchangeGoodsBean){
         mUsersRemoteSource.exchangeGoods(exchangeGoodsBean, new UsersInterface.ExchangeGoodsCallback() {
             @Override

@@ -146,6 +146,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
+                        android:padding="@dimen/dp_10"
                         android:text="暂无物流信息"/>
 
                 </RelativeLayout>

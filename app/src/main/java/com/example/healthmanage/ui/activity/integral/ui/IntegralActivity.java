@@ -4,14 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.base.BaseApplication;
@@ -20,7 +18,6 @@ import com.example.healthmanage.ui.activity.integral.IntegralViewModel;
 import com.example.healthmanage.ui.activity.integral.adapter.IntegralRulesAdapter;
 import com.example.healthmanage.ui.activity.integral.response.IntegralResponse;
 import com.example.healthmanage.ui.activity.integral.response.IntegralRuleResponse;
-import com.example.healthmanage.utils.ToastUtils;
 import com.example.healthmanage.view.GridItemDecoration;
 import com.example.healthmanage.widget.TitleToolBar;
 

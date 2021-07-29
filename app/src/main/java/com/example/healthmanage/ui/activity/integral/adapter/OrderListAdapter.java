@@ -62,5 +62,6 @@ public class OrderListAdapter extends BaseQuickAdapter<OrderListResponse.DataBea
         helper.setText(R.id.tv_goods_name,item.getName());
         helper.setText(R.id.tv_goods_integral,item.getPoint()+"积分");
         helper.setText(R.id.tv_integral_number, Html.fromHtml("<font color=\"#666666\">"+"共"+item.getExchangeQuantity()+"件商品，消耗："+"</font>"+"<font color=\"#FF3A30\">"+item.getPoint()+"积分"+"</font>"));
+        helper.addOnClickListener(R.id.tv_see_logistics);
     }
 }

@@ -52,63 +52,66 @@ class HomeVipAdapter extends RecyclerView.Adapter<HomeVipAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.name.setText(mList.get(position).getAppUser().getNickName());
-        String s = "";
-        switch (mList.get(position).getRank()) {
-            case 0:
-                s = "普通会员";
-                break;
-            case 1:
-                s = "高级会员";
-                break;
-            case 2:
-                s = "贵宾会员";
-                break;
-            case 3:
-                s = "至尊会员";
-                break;
-        }
-        holder.level.setText(s);
-        Glide.with(mContext)
-                .load("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3126544359,3032901862&fm=26&gp=0.jpg")
-                .apply(RequestOptions.circleCropTransform())
-                .into(holder.ava);
-        holder.tvGoManager.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, MemberNewDetailActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("MemberName", mList.get(position).getAppUser().getNickName());
-                bundle.putInt("MemberId", mList.get(position).getAppUser().getId());
+        if (mList.get(position).getAppUser()!=null){
+            holder.name.setText(mList.get(position).getAppUser().getNickName());
+            String s = "";
+            switch (mList.get(position).getAppUser().getRank()) {
+                case 0:
+                    s = "普通会员";
+                    break;
+                case 1:
+                    s = "高级会员";
+                    break;
+                case 2:
+                    s = "贵宾会员";
+                    break;
+                case 3:
+                    s = "至尊会员";
+                    break;
+            }
+            holder.level.setText(s);
+            Glide.with(mContext)
+                    .load("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3126544359,3032901862&fm=26&gp=0.jpg")
+                    .apply(RequestOptions.circleCropTransform())
+                    .into(holder.ava);
+            holder.tvGoManager.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, MemberNewDetailActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("MemberName", mList.get(position).getAppUser().getNickName());
+                    bundle.putInt("MemberId", mList.get(position).getAppUser().getId());
 //        bundle.putBoolean("FocusState", focusState);
-                intent.putExtras(bundle);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(intent);
-            }
-        });
-        holder.tvGoHistory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent historyIntent = new Intent(mContext, HistoryDataActivity.class);
-                Bundle historyBundle = new Bundle();
-                historyBundle.putInt("memberId",mList.get(position).getAppUser().getId());
-                historyBundle.putString("memberName",mList.get(position).getAppUser().getNickName());
-                historyIntent.putExtras(historyBundle);
-                mContext.startActivity(historyIntent);
-            }
-        });
-        holder.layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(BaseApplication.getInstance(), MemberNewDetailActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("MemberName", mList.get(position).getAppUser().getNickName());
-                bundle.putInt("MemberId", mList.get(position).getAppUser().getId());
-                intent.putExtras(bundle);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(intent);
-            }
-        });
+                    intent.putExtras(bundle);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    mContext.startActivity(intent);
+                }
+            });
+            holder.tvGoHistory.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent historyIntent = new Intent(mContext, HistoryDataActivity.class);
+                    Bundle historyBundle = new Bundle();
+                    historyBundle.putInt("memberId",mList.get(position).getAppUser().getId());
+                    historyBundle.putString("memberName",mList.get(position).getAppUser().getNickName());
+                    historyIntent.putExtras(historyBundle);
+                    mContext.startActivity(historyIntent);
+                }
+            });
+            holder.layout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(BaseApplication.getInstance(), MemberNewDetailActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("MemberName", mList.get(position).getAppUser().getNickName());
+                    bundle.putInt("MemberId", mList.get(position).getAppUser().getId());
+                    intent.putExtras(bundle);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    mContext.startActivity(intent);
+                }
+            });
+        }
+
     }
 
     @Override

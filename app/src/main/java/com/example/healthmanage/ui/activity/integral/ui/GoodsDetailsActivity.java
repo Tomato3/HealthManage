@@ -1,6 +1,7 @@
 package com.example.healthmanage.ui.activity.integral.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
@@ -15,6 +16,7 @@ import com.example.healthmanage.base.BaseActivity;
 import com.example.healthmanage.databinding.ActivityGoodsDetailsBinding;
 import com.example.healthmanage.ui.activity.integral.IntegralViewModel;
 import com.example.healthmanage.ui.activity.integral.response.GoodsDetailResponse;
+import com.example.healthmanage.ui.fragment.education.NewEducationFragment;
 import com.example.healthmanage.utils.MImageGetter;
 import com.example.healthmanage.widget.TitleToolBar;
 import com.youth.banner.loader.ImageLoader;
@@ -35,8 +37,9 @@ public class GoodsDetailsActivity extends BaseActivity<ActivityGoodsDetailsBindi
     private Context mContext;
     private TitleToolBar mTitleToolBar = new TitleToolBar();
     private List<String> banners;
+    private MImageGetter mImageGetter;
     private int goodsId;
-
+    private GoodsDetailResponse.DataBean mDataBean;
 
     @Override
     protected void initData() {
@@ -50,7 +53,6 @@ public class GoodsDetailsActivity extends BaseActivity<ActivityGoodsDetailsBindi
         banners = new ArrayList<>();
         goodsId = getIntent().getIntExtra("id",0);
         viewModel.getGoodsInfo(goodsId);
-
     }
 
     @Override
@@ -60,6 +62,7 @@ public class GoodsDetailsActivity extends BaseActivity<ActivityGoodsDetailsBindi
             @Override
             public void onChanged(GoodsDetailResponse goodsDetailResponse) {
                 if (goodsDetailResponse!=null){
+                    mDataBean = goodsDetailResponse.getData();
                     //轮播图片
                     if (!TextUtils.isEmpty(goodsDetailResponse.getData().getDetailsPoster())){
                         banners = Stream.of(goodsDetailResponse.getData().getDetailsPoster().split(",")).collect(Collectors.toList());
@@ -78,10 +81,9 @@ public class GoodsDetailsActivity extends BaseActivity<ActivityGoodsDetailsBindi
         dataBinding.ivExchange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(mContext,ExchangeGoodsActivity.class);
-//                intent.putExtra("goodsInfo",mDataBean);
-//                startActivity(intent);
-                startActivity(LogisticDetailActivity.class);
+                Intent intent = new Intent(mContext,ExchangeGoodsActivity.class);
+                intent.putExtra("goodsInfo",mDataBean);
+                startActivity(intent);
             }
         });
     }

@@ -97,13 +97,13 @@ public class ChooseMemberActivity extends BaseActivity<ActivityChooseMemberBindi
                         chooseMemberAdapter.notifyDataSetChanged();
                         transferId = String.valueOf(mDataBeanList.get(position).getId());
                         memberName = mDataBeanList.get(position).getAppUser().getNickName();
-                        if (mDataBeanList.get(position).getRank()==0){
+                        if (mDataBeanList.get(position).getAppUser().getRank()==0){
                             memberStatus = "普通会员";
-                        }else if (mDataBeanList.get(position).getRank()==1){
+                        }else if (mDataBeanList.get(position).getAppUser().getRank()==1){
                             memberStatus = "高级会员";
-                        }else if (mDataBeanList.get(position).getRank()==2){
+                        }else if (mDataBeanList.get(position).getAppUser().getRank()==2){
                             memberStatus = "贵宾会员";
-                        }else if (mDataBeanList.get(position).getRank()==3){
+                        }else if (mDataBeanList.get(position).getAppUser().getRank()==3){
                             memberStatus = "至尊会员";
                         }
                         break;

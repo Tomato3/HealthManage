@@ -2,6 +2,7 @@ package com.example.healthmanage.ui.fragment.my;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -9,6 +10,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +31,7 @@ import com.example.healthmanage.R;
 import com.example.healthmanage.base.BaseApplication;
 import com.example.healthmanage.base.BaseFragment;
 import com.example.healthmanage.databinding.FragmentNewMyBinding;
+import com.example.healthmanage.ui.activity.appraise.ui.AppraiseListActivity;
 import com.example.healthmanage.ui.activity.integral.ui.IntegralActivity;
 import com.example.healthmanage.ui.activity.my.aboutus.AboutUsActivity;
 import com.example.healthmanage.ui.activity.myinfo.MyInfoActivity;
@@ -38,7 +42,10 @@ import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.File;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,6 +67,9 @@ public class NewMyFragment extends BaseFragment<FragmentNewMyBinding,MyViewModel
                 break;
             case R.id.tv_mypoint:
                 startActivity(IntegralActivity.class);
+                break;
+            case R.id.tv_mycomment:
+                startActivity(AppraiseListActivity.class);
                 break;
         }
     }
@@ -94,6 +104,30 @@ public class NewMyFragment extends BaseFragment<FragmentNewMyBinding,MyViewModel
                     .apply(new RequestOptions().circleCrop())
                     .into(dataBinding.avatarImgMy);
         }
+
+        if (BaseApplication.getUserInfoBean().getAppDoctorInfo().getRoleId()==9){
+            dataBinding.tvMyorder.setVisibility(View.GONE);
+            dataBinding.tvMycomment.setVisibility(View.GONE);
+            dataBinding.tvMywallet.setVisibility(View.VISIBLE);
+            dataBinding.tvMyWallet.setVisibility(View.GONE);
+            dataBinding.tvMyAgent.setVisibility(View.GONE);
+            dataBinding.tvMyCollect.setVisibility(View.VISIBLE);
+        }else if (BaseApplication.getUserInfoBean().getAppDoctorInfo().getRoleId()==11){
+            dataBinding.tvMyorder.setVisibility(View.GONE);
+            dataBinding.tvMycomment.setVisibility(View.VISIBLE);
+            dataBinding.tvMywallet.setVisibility(View.VISIBLE);
+            dataBinding.tvMyWallet.setVisibility(View.GONE);
+            dataBinding.tvMyAgent.setVisibility(View.GONE);
+            dataBinding.tvMyCollect.setVisibility(View.VISIBLE);
+        }else {
+            dataBinding.tvMyorder.setVisibility(View.VISIBLE);
+            dataBinding.tvMycomment.setVisibility(View.VISIBLE);
+            dataBinding.tvMywallet.setVisibility(View.GONE);
+            dataBinding.tvMyWallet.setVisibility(View.VISIBLE);
+            dataBinding.tvMyAgent.setVisibility(View.VISIBLE);
+            dataBinding.tvMyCollect.setVisibility(View.GONE);
+        }
+
     }
 
     @Override

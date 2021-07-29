@@ -131,6 +131,19 @@ public class OrderListActivity extends BaseActivity<ActivityIntegralOrderBinding
                 startActivity(intent);
             }
         });
+        mOrderListAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                switch (view.getId()){
+                    case R.id.tv_see_logistics:
+                        Intent intent = new Intent(mContext,LogisticDetailActivity.class);
+                        intent.putExtra("courierNumber",mDataBeans.get(position).getCourierNumber());
+                        intent.putExtra("courierCompanyAbbr",mDataBeans.get(position).getCourierCompanyAbbr());
+                        startActivity(intent);
+                        break;
+                }
+            }
+        });
     }
 
     @Override

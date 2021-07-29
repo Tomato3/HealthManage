@@ -2,25 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.healthmanage">
-
     <!-- 允许程序振动 -->
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <!-- 麦克风权限 -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <!-- 这个权限用于访问GPS定位(用于定位消息，如果不用定位相关可以移除) -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <!-- api 21后被标记为deprecated -->
-    <uses-permission android:name="android.permission.GET_TASKS" />
-    <!-- 用于获取wifi的获取权限 -->
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 麦克风权限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- 这个权限用于访问GPS定位(用于定位消息，如果不用定位相关可以移除) -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- api 21后被标记为deprecated -->
+    <uses-permission android:name="android.permission.GET_TASKS" /> <!-- 用于获取wifi的获取权限 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.CAMERA" /> <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"
+    <uses-permission
+        android:name="android.permission.CHANGE_CONFIGURATION"
         tools:ignore="ProtectedPermissions" /> <!-- 请求网络 -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 更改设置 -->
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
         tools:ignore="ProtectedPermissions" /> <!-- 用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 可以提高室内定位的精确度 -->
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /> <!-- 可以提高室内定位的精确度 -->
@@ -30,97 +27,91 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 读取缓存数据 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 用于读取手机当前的状态 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <!-- 允许程序修改声音设置信息 -->
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-    <!-- 允许程序访问电话状态 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <!-- 允许程序开机自动运行 -->
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <!-- 捕获屏幕所需权限，Q后新增权限(多人音视频屏幕分享使用) -->
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
-    <!-- IM SDK required end -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- 允许程序修改声音设置信息 -->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" /> <!-- 允许程序访问电话状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 允许程序开机自动运行 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> <!-- 捕获屏幕所需权限，Q后新增权限(多人音视频屏幕分享使用) -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
-    //requestLegacyExternalStorage Android 10以上需要添加，否则图片获取不到
     <application
         android:name=".base.BaseApplication"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:requestLegacyExternalStorage="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.activity.appraise.ui.AppraiseListActivity"></activity>
 
-        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
-        <!-- 设置环信应用的AppKey -->
-        <meta-data android:name="EASEMOB_APPKEY"  android:value="1101201022041744#healthmanage" />
-        <!-- 声明SDK所需的service SDK核心功能-->
-        <service android:name="com.hyphenate.chat.EMChatService" android:exported="true"/>
-        <service android:name="com.hyphenate.chat.EMJobService"
-            android:permission="android.permission.BIND_JOB_SERVICE"
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" /> <!-- 设置环信应用的AppKey -->
+        <meta-data
+            android:name="EASEMOB_APPKEY"
+            android:value="1101201022041744#healthmanage" /> <!-- 声明SDK所需的service SDK核心功能 -->
+        <service
+            android:name="com.hyphenate.chat.EMChatService"
+            android:exported="true" />
+        <service
+            android:name="com.hyphenate.chat.EMJobService"
             android:exported="true"
-            />
-        <!-- 声明SDK所需的receiver -->
+            android:permission="android.permission.BIND_JOB_SERVICE" /> <!-- 声明SDK所需的receiver -->
         <receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
-                <data android:scheme="package"/>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
             </intent-filter>
             <!-- 可选filter -->
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.USER_PRESENT" />
             </intent-filter>
-        </receiver>
-
-        <!-- 适配Android 7.0, 需要将下方的com.hyphenate.easeim替换为你的app包名 -->
+        </receiver> <!-- 适配Android 7.0, 需要将下方的com.hyphenate.easeim替换为你的app包名 -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileProvider"
-            android:grantUriPermissions="true"
             android:exported="false"
+            android:grantUriPermissions="true"
             tools:replace="android:authorities">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
-        </provider>
-
-        <!--展示大图-->
-        <activity android:name="com.hyphenate.easeui.ui.EaseShowBigImageActivity"
-            android:screenOrientation="portrait"/>
-
-        <!--地图-->
-        <activity android:name="com.hyphenate.easeui.ui.EaseBaiduMapActivity"
-            android:screenOrientation="portrait"/>
-
+        </provider> <!-- 展示大图 -->
+        <activity
+            android:name="com.hyphenate.easeui.ui.EaseShowBigImageActivity"
+            android:screenOrientation="portrait" /> <!-- 地图 -->
+        <activity
+            android:name="com.hyphenate.easeui.ui.EaseBaiduMapActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.main.MainActivity"
             android:launchMode="singleTask" />
         <activity
             android:name=".ui.activity.registerorforget.RegisterOrForgetActivity"
-            android:launchMode="singleTask" />
-<!--        <!=android:launchMode="singleTask"=>-->
+            android:launchMode="singleTask" /> <!-- <!=android:launchMode="singleTask"=> -->
         <activity
             android:name=".ui.activity.login.LoginNewActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc">
+            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.memberdetail.MemberDetailActivity"
-            android:screenOrientation="landscape"
-            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"/>
+        <activity
+            android:name=".ui.activity.memberdetail.MemberDetailActivity"
+            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"
+            android:screenOrientation="landscape" />
         <activity android:name=".base.ContainerActivity" />
         <activity android:name=".ui.activity.memberlist.MemberListActivity" />
         <activity
             android:name=".ui.activity.splash.SplashActivity"
-            android:launchMode="singleTask"></activity>
+            android:launchMode="singleTask" />
         <activity android:name=".ui.activity.mystudio.MyStudioActivity" />
         <activity android:name=".ui.activity.searchMember.SearchMemberActivity" />
         <activity android:name=".ui.activity.mytask.MyTaskActivity" />
@@ -143,128 +134,154 @@
         <activity android:name=".ui.activity.legaladvice.LegalAdviceActivity" />
         <activity android:name=".ui.activity.doctorhall.DoctorHallActivity" />
         <activity android:name=".ui.activity.test.TestActivity" />
-        <activity android:name=".ui.activity.qualification.QualificationActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"/>
+        <activity
+            android:name=".ui.activity.qualification.QualificationActivity"
+            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"
+            android:screenOrientation="portrait" />
         <activity android:name=".ui.activity.doctorhall.doctordetail.DoctorDetailActivity" />
         <activity android:name=".ui.activity.doctorhall.doctordetail.appointmentregistration.AppointmentRegistrationActivity" />
         <activity android:name=".ui.activity.consultationinfo.ConsultationInfoActivity" />
-        <activity android:name=".ui.activity.qualification.SelectDepartmentActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"/>
-        <activity android:name=".ui.activity.qualification.SelectHospitalActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"/>
-        <activity android:name=".ui.activity.vipmanager.VipTeamNewActivity"/>
-        <activity android:name=".ui.activity.vipmanager.MemberManageListActivity"/>
-        <activity android:name=".ui.activity.memberdetail.MemberNewDetailActivity"
-            android:screenOrientation="portrait"
+        <activity
+            android:name=".ui.activity.qualification.SelectDepartmentActivity"
             android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"
-            android:theme="@style/mainStyle"/>
-        <activity android:name=".ui.activity.my.aboutus.AboutUsActivity"/>
-        <activity android:name=".ui.activity.mytask.MyNewTaskActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"/>
-        <activity android:name=".ui.activity.signmember.SignMemberActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"/>
-        <activity android:name=".ui.activity.team.TeamActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"/>
-        <activity android:name=".ui.activity.healthrecord.HealthRecordActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"/>
-        <activity android:name=".ui.activity.healthreport.ui.HealthReportActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.qualification.SelectHospitalActivity"
             android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"
-            android:launchMode="singleTask"/>
-        <activity android:name=".ui.activity.healthreport.ui.CreateHealthReportActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.activity.vipmanager.VipTeamNewActivity" />
+        <activity android:name=".ui.activity.vipmanager.MemberManageListActivity" />
+        <activity
+            android:name=".ui.activity.memberdetail.MemberNewDetailActivity"
+            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"
             android:screenOrientation="portrait"
-            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"/>
-        <activity android:name=".ui.activity.healthreport.ui.HealthReportDetailActivity"
+            android:theme="@style/mainStyle" />
+        <activity android:name=".ui.activity.my.aboutus.AboutUsActivity" />
+        <activity
+            android:name=".ui.activity.mytask.MyNewTaskActivity"
+            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.signmember.SignMemberActivity"
+            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.team.TeamActivity"
+            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.healthrecord.HealthRecordActivity"
+            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.healthreport.ui.HealthReportActivity"
+            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.healthreport.ui.CreateHealthReportActivity"
+            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"
             android:screenOrientation="portrait"
-            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"/>
-        <activity android:name=".ui.activity.workplan.ui.WorkPlanActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"/>
-        <activity android:name=".ui.activity.workplan.ui.CreateWorkPlanActivity"/>
-        <activity android:name=".ui.activity.workplan.ui.WorkPlanDetailActivity"/>
-        <activity android:name=".ui.activity.mytask.DealTaskActivity"/>
-        <activity android:name=".ui.activity.mytask.WatchTaskDetailActivity"/>
-        <activity android:name=".ui.activity.mytask.TransMitDealActivity"
-            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"/>
-        <activity android:name=".ui.activity.mytask.HealthTaskDetailActivity"/>
-        <activity android:name=".ui.activity.consultation.ChatTestActivity"/>
-        <activity android:name=".ui.activity.consultation.EMCChatActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize"/>
-        <activity android:name=".ui.activity.consultation.GetHospitalDepartmentListActivity"/>
-        <activity android:name=".ui.activity.consultation.ConsultationPatientActivity"/>
-        <activity android:name=".ui.activity.referral.ChooseMemberActivity"/>
-        <activity android:name=".ui.activity.referral.PatientReferralActivity"/>
-        <activity android:name=".ui.activity.referral.ReferralActivity"/>
-        <activity android:name=".ui.activity.consultation.ConsultationDetailActivity"/>
-        <activity android:name=".ui.activity.referral.ReferralDetailActivity"/>
-        <activity android:name=".ui.activity.temperature.ui.TemperatureActivity"/>
-        <activity android:name=".ui.activity.temperature.ui.TemperatureReplyActivity"/>
-        <activity android:name=".ui.activity.temperature.ui.TransmitTemperatureActivity"/>
-        <activity android:name=".ui.activity.team.TeamDetailActivity"/>
-        <activity android:name=".ui.activity.temperature.ui.CreatePrescriptionActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".ui.activity.temperature.ui.ReplyActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".ui.activity.temperature.ui.PrescriptionModelActivity"/>
-        <activity android:name=".ui.activity.temperature.ui.ChoosePrescriptionActivity"/>
-        <activity android:name=".ui.activity.temperature.ui.PrescriptionDetailActivity"/>
-        <activity android:name=".ui.activity.temperature.ui.SignPrescriptionActivity"/>
-        <activity android:name=".ui.activity.team.ui.JoinTeamActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".ui.activity.team.ui.InvitationMemberActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".ui.activity.team.ui.BusinessTeamActivity"/>
-        <activity android:name=".ui.activity.personalRequest.ui.CreatePersonalRequestActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".ui.activity.academicJournals.ui.CreateAcademicJournalsActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".ui.activity.notice.ui.NewsNoticeActivity"/>
-        <activity android:name=".ui.activity.team.TeamSignActivity"/>
-        <activity android:name=".ui.activity.registerorforget.ForgetPasswordActivity"/>
-        <activity android:name=".ui.activity.team.ui.BusinessDealActivity"/>
-        <activity android:name=".ui.activity.team.ui.BusinessInfoActivity"/>
-        <activity android:name=".ui.activity.team.ui.BusinessDetailToCompleteActivity"/>
-        <activity android:name=".ui.activity.delegate.ui.DelegateTaskActivity"/>
-        <activity android:name=".ui.activity.delegate.ui.ChooseDelegatePersonActivity"/>
-        <activity android:name=".ui.activity.delegate.ui.CreateDelegateTaskActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".ui.activity.delegate.ui.DelegateInfoActivity"/>
-        <activity android:name=".ui.activity.personalRequest.ui.PersonalRequestActivity"/>
-        <activity android:name=".ui.activity.academicJournals.ui.AcademicJournalsActivity"/>
-        <activity android:name=".ui.activity.academicJournals.ui.EditAcademicActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".ui.activity.academicJournals.ui.AcademicInfoActivity"/>
-        <activity android:name=".ui.activity.invitemember.InviteNewMemberActivity"/>
-        <activity android:name=".ui.activity.shop.ui.ApplyOpenShopActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".ui.activity.famousDoctorHall.ui.FamousHallActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".ui.activity.famousDoctorHall.ui.HospitalDetailActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".ui.activity.famousDoctorHall.ui.HospitalSurveyActivity"/>
-        <activity android:name=".ui.activity.famousDoctorHall.ui.FamousDoctorInfoActivity"/>
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.activity.healthreport.ui.HealthReportDetailActivity"
+            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.workplan.ui.WorkPlanActivity"
+            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.activity.workplan.ui.CreateWorkPlanActivity" />
+        <activity android:name=".ui.activity.workplan.ui.WorkPlanDetailActivity" />
+        <activity android:name=".ui.activity.mytask.DealTaskActivity" />
+        <activity android:name=".ui.activity.mytask.WatchTaskDetailActivity" />
+        <activity
+            android:name=".ui.activity.mytask.TransMitDealActivity"
+            android:configChanges="navigation|orientation|screenSize|keyboard|keyboardHidden|fontScale|mnc|mcc" />
+        <activity android:name=".ui.activity.mytask.HealthTaskDetailActivity" />
+        <activity android:name=".ui.activity.consultation.ChatTestActivity" />
+        <activity
+            android:name=".ui.activity.consultation.EMCChatActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity android:name=".ui.activity.consultation.GetHospitalDepartmentListActivity" />
+        <activity android:name=".ui.activity.consultation.ConsultationPatientActivity" />
+        <activity android:name=".ui.activity.referral.ChooseMemberActivity" />
+        <activity android:name=".ui.activity.referral.PatientReferralActivity" />
+        <activity android:name=".ui.activity.referral.ReferralActivity" />
+        <activity android:name=".ui.activity.consultation.ConsultationDetailActivity" />
+        <activity android:name=".ui.activity.referral.ReferralDetailActivity" />
+        <activity android:name=".ui.activity.temperature.ui.TemperatureActivity" />
+        <activity android:name=".ui.activity.temperature.ui.TemperatureReplyActivity" />
+        <activity android:name=".ui.activity.temperature.ui.TransmitTemperatureActivity" />
+        <activity android:name=".ui.activity.team.TeamDetailActivity" />
+        <activity
+            android:name=".ui.activity.temperature.ui.CreatePrescriptionActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.activity.temperature.ui.ReplyActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity android:name=".ui.activity.temperature.ui.PrescriptionModelActivity" />
+        <activity android:name=".ui.activity.temperature.ui.ChoosePrescriptionActivity" />
+        <activity android:name=".ui.activity.temperature.ui.PrescriptionDetailActivity" />
+        <activity android:name=".ui.activity.temperature.ui.SignPrescriptionActivity" />
+        <activity
+            android:name=".ui.activity.team.ui.JoinTeamActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.activity.team.ui.InvitationMemberActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity android:name=".ui.activity.team.ui.BusinessTeamActivity" />
+        <activity
+            android:name=".ui.activity.personalRequest.ui.CreatePersonalRequestActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.activity.academicJournals.ui.CreateAcademicJournalsActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity android:name=".ui.activity.notice.ui.NewsNoticeActivity" />
+        <activity android:name=".ui.activity.team.TeamSignActivity" />
+        <activity android:name=".ui.activity.registerorforget.ForgetPasswordActivity" />
+        <activity android:name=".ui.activity.team.ui.BusinessDealActivity" />
+        <activity android:name=".ui.activity.team.ui.BusinessInfoActivity" />
+        <activity android:name=".ui.activity.team.ui.BusinessDetailToCompleteActivity" />
+        <activity android:name=".ui.activity.delegate.ui.DelegateTaskActivity" />
+        <activity android:name=".ui.activity.delegate.ui.ChooseDelegatePersonActivity" />
+        <activity
+            android:name=".ui.activity.delegate.ui.CreateDelegateTaskActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity android:name=".ui.activity.delegate.ui.DelegateInfoActivity" />
+        <activity android:name=".ui.activity.personalRequest.ui.PersonalRequestActivity" />
+        <activity android:name=".ui.activity.academicJournals.ui.AcademicJournalsActivity" />
+        <activity
+            android:name=".ui.activity.academicJournals.ui.EditAcademicActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity android:name=".ui.activity.academicJournals.ui.AcademicInfoActivity" />
+        <activity android:name=".ui.activity.invitemember.InviteNewMemberActivity" />
+        <activity
+            android:name=".ui.activity.shop.ui.ApplyOpenShopActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.activity.famousDoctorHall.ui.FamousHallActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.activity.famousDoctorHall.ui.HospitalDetailActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity android:name=".ui.activity.famousDoctorHall.ui.HospitalSurveyActivity" />
+        <activity android:name=".ui.activity.famousDoctorHall.ui.FamousDoctorInfoActivity" />
         <activity android:name=".ui.activity.consultation.ConsultationActivity" />
-        <activity android:name=".ui.activity.integral.ui.IntegralActivity"/>
-        <activity android:name=".ui.activity.integral.ui.IntegralShopAActivity"/>
-        <activity android:name=".ui.activity.integral.ui.GoodsDetailsActivity"/>
+        <activity android:name=".ui.activity.integral.ui.IntegralActivity" />
+        <activity android:name=".ui.activity.integral.ui.IntegralShopAActivity" />
+        <activity android:name=".ui.activity.integral.ui.GoodsDetailsActivity" />
         <activity android:name=".ui.fragment.educationchild.ui.BookDetailsActivity" />
-        <activity android:name=".ui.activity.integral.ui.IntegralDetailActivity"/>
-        <activity android:name=".ui.activity.integral.ui.ChooseAddressActivity"/>
-        <activity android:name=".ui.activity.integral.ui.ExchangeGoodsActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".ui.activity.integral.ui.OrderListActivity"/>
-        <activity android:name=".ui.activity.integral.ui.OrderInfoActivity"/>
+        <activity android:name=".ui.activity.integral.ui.IntegralDetailActivity" />
+        <activity android:name=".ui.activity.integral.ui.ChooseAddressActivity" />
+        <activity
+            android:name=".ui.activity.integral.ui.ExchangeGoodsActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity android:name=".ui.activity.integral.ui.OrderListActivity" />
+        <activity android:name=".ui.activity.integral.ui.OrderInfoActivity" />
         <activity android:name=".ui.activity.integral.ui.IntegralExplainActivity" />
-        <activity android:name=".ui.activity.integral.ui.LogisticDetailActivity"/>
-        <activity android:name=".ui.activity.integral.ui.LogisticDetailActivity" /> <!-- 设置key -->
+        <activity android:name=".ui.activity.integral.ui.LogisticDetailActivity" />
+        <activity android:name=".ui.activity.setting.ui.SettingActivity" /> <!-- 设置key -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="d0ed306fda341a9e51d8b7a17b013b84" /> <!-- 声明定位service -->
